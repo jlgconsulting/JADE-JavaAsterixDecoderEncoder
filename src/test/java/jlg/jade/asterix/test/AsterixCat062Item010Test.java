@@ -1,14 +1,17 @@
-package jlg.jade.asterix.test;/*
+/*
 * Created by dan-geabunea on 4/18/2016.
 * This code is the property of JLG Consulting. Please
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
 
+package jlg.jade.asterix.test;
+
 import jlg.jade.asterix.AsterixDecodingException;
 import jlg.jade.asterix.AsterixItem;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.cat062.AsterixCat062Item010;
+import jlg.jade.constants.Constants;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -23,7 +26,7 @@ public class AsterixCat062Item010Test {
 
     @Before
     public void init() {
-        logger = LoggerFactory.getLogger("jlg.jade.logger");
+        logger = LoggerFactory.getLogger(Constants.LOGGER_NAME);
     }
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
@@ -34,7 +37,7 @@ public class AsterixCat062Item010Test {
         AsterixItem asterixItem = new AsterixCat062Item010(logger);
 
         //act
-        asterixItem.parseData(data, currentIndex);
+        asterixItem.parseData(data, currentIndex, data.length);
     }
 
     @Test
@@ -45,7 +48,7 @@ public class AsterixCat062Item010Test {
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010(logger);
 
         //act
-        asterixItem.parseData(data, currentIndex);
+        asterixItem.parseData(data, currentIndex, data.length);
 
         //assert
         assertEquals("Sac not decoded correctly", 200, asterixItem.getSac());
@@ -60,7 +63,7 @@ public class AsterixCat062Item010Test {
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010(logger);
 
         //act
-        int result = asterixItem.parseData(data, currentIndex);
+        int result = asterixItem.parseData(data, currentIndex, data.length);
 
         //assert
         int expectedCurrentIndex = currentIndex + AsterixItemLength.TWO_BYTES.getValue();

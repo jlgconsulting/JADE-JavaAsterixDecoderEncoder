@@ -24,9 +24,10 @@ public abstract class AsterixItem {
      * Parses the data in an attempt to populate the Asterix item. If the data is valid, the item is populated.
      * @param inputData the byte array containing the data
      * @param currentIndex the current index of the array
+     * @param inputLength the length of the current data, because not all the input array is populated
      * @return the current index of the array after the data has been read and the information has been populated
      */
-    public abstract int parseData(byte[] inputData, int currentIndex);
+    public abstract int parseData(byte[] inputData, int currentIndex, int inputLength);
 
     protected void validate(){
         return;

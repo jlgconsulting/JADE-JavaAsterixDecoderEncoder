@@ -35,10 +35,10 @@ public class AsterixCat062Item010 extends AsterixItem {
     }
 
     @Override
-    public int parseData(byte[] inputData, int currentIndex) {
+    public int parseData(byte[] inputData, int currentIndex, int inputLength) {
         reset();
         logger.debug("Item062/010 data:");
-        int remainingLength = inputData.length - currentIndex;
+        int remainingLength = inputLength - currentIndex;
         if (itemLength.getValue() > remainingLength) {
             logger.error("Unexpected end of data found while creating Item062_010");
             throw new AsterixDecodingException.UnexpectedEndOfData();
