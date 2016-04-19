@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix.cat062;
+package jlg.jade.cat062;
 
 /**
  * The UAP enum maps the Asterix Cat-062 UAP bits. The order and value of the enum are

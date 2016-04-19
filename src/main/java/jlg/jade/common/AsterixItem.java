@@ -4,21 +4,14 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix;
-
-import org.slf4j.Logger;
+package jlg.jade.common;
 
 /**
  * Generic definition of an Asterix item. All implementation of items will derive from
  * this base class
  */
-public abstract class AsterixItem {
-    protected final Logger logger;
+public abstract class AsterixItem extends DebugMessageSource {
     protected AsterixItemLength itemLength;
-
-    public AsterixItem(Logger logger){
-        this.logger = logger;
-    }
 
     /**
      * Parses the data in an attempt to populate the Asterix item. If the data is valid, the item is populated.
@@ -43,15 +36,18 @@ public abstract class AsterixItem {
      * this item. If not, an UnexpectedEndOfData exception is thrown
      * @param currentIndex the current index in the input array
      * @param inputLength the length of the input array
-     * @throws jlg.jade.asterix.AsterixDecodingException.UnexpectedEndOfData
+     * @throws jlg.jade.common.AsterixDecodingException.UnexpectedEndOfData
      */
     protected void checkLength(int currentIndex, int inputLength){
         String itemName = this.getClass().getSimpleName();
-        logger.debug(itemName + ":");
+
+        appendDebugMsg(itemName + ":");
+
         int remainingLength = inputLength - currentIndex;
         if (itemLength.getValue() > remainingLength) {
-            logger.error("Unexpected end of data found while creating " + itemName);
-            throw new AsterixDecodingException.UnexpectedEndOfData();
+            appendDebugMsg("Unexpected end of data found while creating " + itemName);
+            throw new AsterixDecodingException.UnexpectedEndOfData("Unexpected end of data found while creating " + itemName);
         }
     }
+
 }

@@ -6,17 +6,15 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.asterix.cat062.AsterixCat062Fspec;
-import jlg.jade.asterix.cat062.AsterixCat062UAP;
-import jlg.jade.constants.Constants;
+import jlg.jade.cat062.AsterixCat062Fspec;
+import jlg.jade.cat062.AsterixCat062UAP;
+import jlg.jade.common.Constants;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class Cat062FspecTest {
 
@@ -37,7 +35,7 @@ public class Cat062FspecTest {
         byte[] fspecInputData = new byte[]{(byte) 191,79, (byte) 173,3,2};
 
         //act
-        AsterixCat062Fspec fspec = new AsterixCat062Fspec(logger);
+        AsterixCat062Fspec fspec = new AsterixCat062Fspec();
         fspec.parseData(fspecInputData, 0);
 
         //assert
@@ -88,12 +86,26 @@ public class Cat062FspecTest {
     }
 
     @Test
+    public void should_populate_debug_message_after_parsing_fspec(){
+        //arrange
+        byte[] fspecInputData = new byte[]{(byte) 191,79, (byte) 173,3,2};
+
+        //act
+        AsterixCat062Fspec fspec = new AsterixCat062Fspec();
+        fspec.parseData(fspecInputData, 0);    //5 octets => current index will increase by 5
+
+        //assert
+        logger.debug(fspec.getDebugString());
+        assertNotNull(fspec.getDebugString());
+    }
+
+    @Test
     public void should_increase_current_index_after_parsing_fspec(){
         //arrange
         byte[] fspecInputData = new byte[]{(byte) 191,79, (byte) 173,3,2};
 
         //act
-        AsterixCat062Fspec fspec = new AsterixCat062Fspec(logger);
+        AsterixCat062Fspec fspec = new AsterixCat062Fspec();
         int result = fspec.parseData(fspecInputData, 0);    //5 octets => current index will increase by 5
 
         //assert

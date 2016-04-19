@@ -4,11 +4,10 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix.cat062;
+package jlg.jade.cat062;
 
-import jlg.jade.asterix.AsterixItem;
-import jlg.jade.asterix.AsterixItemLength;
-import org.slf4j.Logger;
+import jlg.jade.common.AsterixItem;
+import jlg.jade.common.AsterixItemLength;
 
 /**
  * Cat 062 Item 015 - Service Identification - Optional
@@ -17,8 +16,7 @@ import org.slf4j.Logger;
 public class AsterixCat062Item015 extends AsterixItem {
     private int serviceIdentification;
 
-    public AsterixCat062Item015(Logger logger){
-        super(logger);
+    public AsterixCat062Item015(){
         itemLength = AsterixItemLength.ONE_BYTE;
     }
 
@@ -28,7 +26,7 @@ public class AsterixCat062Item015 extends AsterixItem {
         checkLength(currentIndex, inputLength);
 
         serviceIdentification = Byte.toUnsignedInt(inputData[currentIndex]);
-        logger.debug(String.format("%-30s %-20s", "Service identification:", serviceIdentification));
+        appendDebugMsg(String.format("%-30s %-20s", "Service identification:", serviceIdentification));
         currentIndex++;
 
         return currentIndex;

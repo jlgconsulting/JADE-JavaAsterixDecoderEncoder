@@ -4,10 +4,10 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix.cat062;
+package jlg.jade.cat062;
 
-import jlg.jade.asterix.AsterixDecodingException;
-import org.slf4j.Logger;
+import jlg.jade.common.DebugMessageSource;
+import jlg.jade.common.AsterixDecodingException;
 
 import java.util.BitSet;
 
@@ -16,31 +16,29 @@ import java.util.BitSet;
  * are true if the item is in the message and false otherwise. You can use this array in conjuction with the
  * AsterixCat062UAP enum to make code more understandable.
  */
-public class AsterixCat062Fspec {
-    private Logger logger;
+public class AsterixCat062Fspec extends DebugMessageSource {
     private final int FSPEC_LENGTH = 40;
     private final int FSPEC_MAX_BYTES = 5;
     private final int BYTE_LENGTH = 8;
     boolean[] fspecList;
 
-    public AsterixCat062Fspec(Logger logger){
-        this.logger = logger;
+    public AsterixCat062Fspec(){
         this.fspecList = new boolean[FSPEC_LENGTH];
     }
 
     public int parseData(byte[] inputData, int currentIndex){
-        logger.debug("## FSPEC Data:");
+        appendDebugMsg("## FSPEC Data:");
 
         BitSet bs;
         for(int i=0;i<FSPEC_MAX_BYTES;i++){
             int fspecOctet = Byte.toUnsignedInt(inputData[currentIndex+i]);
-            logger.debug(String.format("%-5s %-1s value: %-10s", "Octet",i+1, fspecOctet));
+            appendDebugMsg(String.format("%-5s %-1s value: %-10s", "Octet",i+1, fspecOctet));
 
             bs = BitSet.valueOf(new byte[]{inputData[currentIndex+i]});
             for(int j=0;j<BYTE_LENGTH;j++){
                 fspecList[j + (i*8)] = bs.get(j);
                 if(bs.get(j)) {
-                    logger.debug("Cat062 " + AsterixCat062UAP.values()[j + (i * 8)] + " has been added to FSPEC with a value of 1");
+                    appendDebugMsg("Cat062 " + AsterixCat062UAP.values()[j + (i * 8)] + " has been added to FSPEC with a value of 1");
                 }
             }
 
@@ -61,5 +59,9 @@ public class AsterixCat062Fspec {
      */
     public boolean isItemInFspec(AsterixCat062UAP cat062Item){
         return fspecList[cat062Item.ordinal()];
+    }
+
+    public int getLength(){
+        return fspecList.length;
     }
 }

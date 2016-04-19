@@ -7,17 +7,18 @@
 
 package jlg.jade.test.asterix;
 
-import jlg.jade.asterix.AsterixDecodingException;
-import jlg.jade.asterix.AsterixItem;
-import jlg.jade.asterix.AsterixItemLength;
-import jlg.jade.asterix.cat062.AsterixCat062Item010;
-import jlg.jade.constants.Constants;
+import jlg.jade.common.AsterixDecodingException;
+import jlg.jade.common.AsterixItem;
+import jlg.jade.common.AsterixItemLength;
+import jlg.jade.cat062.AsterixCat062Item010;
+import jlg.jade.common.Constants;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class AsterixCat062Item010Test {
@@ -34,7 +35,7 @@ public class AsterixCat062Item010Test {
         //arrange
         byte[] data = {1, 2, 3, 4};
         int currentIndex = 3;
-        AsterixItem asterixItem = new AsterixCat062Item010(logger);
+        AsterixItem asterixItem = new AsterixCat062Item010();
 
         //act
         asterixItem.parseData(data, currentIndex, data.length);
@@ -45,7 +46,7 @@ public class AsterixCat062Item010Test {
         //arrange
         byte[] data = {(byte) 200, (byte) 244};
         int currentIndex = 0;
-        AsterixCat062Item010 asterixItem = new AsterixCat062Item010(logger);
+        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
         asterixItem.parseData(data, currentIndex, data.length);
@@ -53,6 +54,22 @@ public class AsterixCat062Item010Test {
         //assert
         assertEquals("Sac not decoded correctly", 200, asterixItem.getSac());
         assertEquals("Sic not decoded correctly", 244, asterixItem.getSic());
+
+    }
+
+    @Test
+    public void should_populate_debug_message_after_parsing_data() {
+        //arrange
+        byte[] data = {(byte) 200, (byte) 244};
+        int currentIndex = 0;
+        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
+
+        //act
+        asterixItem.parseData(data, currentIndex, data.length);
+
+        //assert
+        logger.debug(asterixItem.getDebugString());
+        assertNotNull(asterixItem.getDebugString());
     }
 
     @Test
@@ -60,7 +77,7 @@ public class AsterixCat062Item010Test {
         //arrange
         byte[] data = {(byte) 200, (byte) 244};
         int currentIndex = 0;
-        AsterixCat062Item010 asterixItem = new AsterixCat062Item010(logger);
+        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
         int result = asterixItem.parseData(data, currentIndex, data.length);
