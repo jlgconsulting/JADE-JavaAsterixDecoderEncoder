@@ -33,5 +33,25 @@ public abstract class AsterixItem {
         return;
     }
 
+    /**
+     * Reset all Asterix item fields to their default values
+     */
     public abstract void reset();
+
+    /**
+     * Checks if the remaining length in the input array is greater or equal than the needed length for
+     * this item. If not, an UnexpectedEndOfData exception is thrown
+     * @param currentIndex the current index in the input array
+     * @param inputLength the length of the input array
+     * @throws jlg.jade.asterix.AsterixDecodingException.UnexpectedEndOfData
+     */
+    protected void checkLength(int currentIndex, int inputLength){
+        String itemName = this.getClass().getSimpleName();
+        logger.debug(itemName + ":");
+        int remainingLength = inputLength - currentIndex;
+        if (itemLength.getValue() > remainingLength) {
+            logger.error("Unexpected end of data found while creating " + itemName);
+            throw new AsterixDecodingException.UnexpectedEndOfData();
+        }
+    }
 }

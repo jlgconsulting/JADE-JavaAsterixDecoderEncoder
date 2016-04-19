@@ -12,7 +12,7 @@ import jlg.jade.asterix.AsterixItemLength;
 import org.slf4j.Logger;
 
 /**
- * Cat-062 Item 010 - Data Source Identifier
+ * Cat-062 Item 010 - Data Source Identifier - Mandatory
  * Identification of the system sending the data (SAC-SIC)
  */
 public class AsterixCat062Item010 extends AsterixItem {
@@ -37,18 +37,13 @@ public class AsterixCat062Item010 extends AsterixItem {
     @Override
     public int parseData(byte[] inputData, int currentIndex, int inputLength) {
         reset();
-        logger.debug("Item062/010 data:");
-        int remainingLength = inputLength - currentIndex;
-        if (itemLength.getValue() > remainingLength) {
-            logger.error("Unexpected end of data found while creating Item062_010");
-            throw new AsterixDecodingException.UnexpectedEndOfData();
-        }
+        checkLength(currentIndex, inputLength);
 
         sac = Byte.toUnsignedInt(inputData[currentIndex]);
         sic = Byte.toUnsignedInt(inputData[currentIndex + 1]);
 
-        logger.debug(String.format("%-20s %-20s", "SAC", sac));
-        logger.debug(String.format("%-20s %-20s", "SAC", sic));
+        logger.debug(String.format("%-30s %-20s", "SAC:", sac));
+        logger.debug(String.format("%-30s %-20s", "SAC:", sic));
 
         currentIndex += currentIndex + itemLength.getValue();
         return currentIndex;
