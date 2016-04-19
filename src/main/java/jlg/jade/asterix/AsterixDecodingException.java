@@ -9,16 +9,8 @@ package jlg.jade.asterix;
 public class AsterixDecodingException {
 
     public static class UnexpectedEndOfData extends RuntimeException{
-        public UnexpectedEndOfData(){
-            super();
-        }
+    }
 
-        public UnexpectedEndOfData(String message){
-            super(message);
-        }
-
-        public UnexpectedEndOfData(String message, Exception e){
-            super(message,e);
-        }
+    public static class UndeterminedFspecEnd extends RuntimeException {
     }
 }

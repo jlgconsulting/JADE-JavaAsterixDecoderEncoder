@@ -5,7 +5,7 @@
 * conditions you can use or modify this source code.
 */
 
-package jlg.jade.asterix.test;
+package jlg.jade.test.asterix;
 
 import jlg.jade.asterix.AsterixDecodingException;
 import jlg.jade.asterix.AsterixItem;

@@ -4,11 +4,10 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix.test;
+package jlg.jade.test.asterix;
 
 import jlg.jade.asterix.AsterixDecodingException;
 import jlg.jade.asterix.AsterixItem;
-import jlg.jade.asterix.cat062.AsterixCat062Item010;
 import jlg.jade.asterix.cat062.AsterixCat062Item015;
 import jlg.jade.constants.Constants;
 import org.junit.Before;
