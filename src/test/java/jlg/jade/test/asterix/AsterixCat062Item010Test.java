@@ -8,8 +8,8 @@
 package jlg.jade.test.asterix;
 
 import jlg.jade.common.AsterixDecodingException;
-import jlg.jade.common.AsterixItem;
-import jlg.jade.common.AsterixItemLength;
+import jlg.jade.abstraction.AsterixItem;
+import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.cat062.AsterixCat062Item010;
 import jlg.jade.common.Constants;
 import org.junit.Before;
@@ -38,7 +38,7 @@ public class AsterixCat062Item010Test {
         AsterixItem asterixItem = new AsterixCat062Item010();
 
         //act
-        asterixItem.parseData(data, currentIndex, data.length);
+        asterixItem.decode(data, currentIndex, data.length);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class AsterixCat062Item010Test {
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
-        asterixItem.parseData(data, currentIndex, data.length);
+        asterixItem.decode(data, currentIndex, data.length);
 
         //assert
         assertEquals("Sac not decoded correctly", 200, asterixItem.getSac());
@@ -65,7 +65,7 @@ public class AsterixCat062Item010Test {
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
-        asterixItem.parseData(data, currentIndex, data.length);
+        asterixItem.decode(data, currentIndex, data.length);
 
         //assert
         logger.debug(asterixItem.getDebugString());
@@ -80,7 +80,7 @@ public class AsterixCat062Item010Test {
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
-        int result = asterixItem.parseData(data, currentIndex, data.length);
+        int result = asterixItem.decode(data, currentIndex, data.length);
 
         //assert
         int expectedCurrentIndex = currentIndex + AsterixItemLength.TWO_BYTES.getValue();

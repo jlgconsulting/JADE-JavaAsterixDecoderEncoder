@@ -36,7 +36,7 @@ public class Cat062FspecTest {
 
         //act
         AsterixCat062Fspec fspec = new AsterixCat062Fspec();
-        fspec.parseData(fspecInputData, 0);
+        fspec.decode(fspecInputData, 0);
 
         //assert
         assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_010));
@@ -92,7 +92,7 @@ public class Cat062FspecTest {
 
         //act
         AsterixCat062Fspec fspec = new AsterixCat062Fspec();
-        fspec.parseData(fspecInputData, 0);    //5 octets => current index will increase by 5
+        fspec.decode(fspecInputData, 0);    //5 octets => current index will increase by 5
 
         //assert
         logger.debug(fspec.getDebugString());
@@ -106,7 +106,7 @@ public class Cat062FspecTest {
 
         //act
         AsterixCat062Fspec fspec = new AsterixCat062Fspec();
-        int result = fspec.parseData(fspecInputData, 0);    //5 octets => current index will increase by 5
+        int result = fspec.decode(fspecInputData, 0);    //5 octets => current index will increase by 5
 
         //assert
         assertEquals(5, result);

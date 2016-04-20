@@ -6,8 +6,9 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.common.AsterixItem;
-import jlg.jade.common.AsterixItemLength;
+import jlg.jade.abstraction.AsterixItem;
+import jlg.jade.asterix.AsterixItemLength;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Cat 062 Item 015 - Service Identification - Optional
@@ -21,15 +22,20 @@ public class AsterixCat062Item015 extends AsterixItem {
     }
 
     @Override
-    public int parseData(byte[] inputData, int currentIndex, int inputLength) {
+    public int decode(byte[] input, int offset, int length) {
         reset();
-        checkLength(currentIndex, inputLength);
+        checkLength(offset, length);
 
-        serviceIdentification = Byte.toUnsignedInt(inputData[currentIndex]);
+        serviceIdentification = Byte.toUnsignedInt(input[offset]);
         appendDebugMsg(String.format("%-30s %-20s", "Service identification:", serviceIdentification));
-        currentIndex++;
+        offset++;
 
-        return currentIndex;
+        return offset;
+    }
+
+    @Override
+    public int encode(byte[] dest, int offset, int length) {
+        throw new NotImplementedException();
     }
 
     @Override
@@ -40,4 +46,5 @@ public class AsterixCat062Item015 extends AsterixItem {
     public int getServiceIdentification() {
         return serviceIdentification;
     }
+
 }

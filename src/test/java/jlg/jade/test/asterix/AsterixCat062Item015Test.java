@@ -7,7 +7,7 @@
 package jlg.jade.test.asterix;
 
 import jlg.jade.common.AsterixDecodingException;
-import jlg.jade.common.AsterixItem;
+import jlg.jade.abstraction.AsterixItem;
 import jlg.jade.cat062.AsterixCat062Item015;
 import jlg.jade.common.Constants;
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class AsterixCat062Item015Test {
         AsterixItem asterixItem = new AsterixCat062Item015();
 
         //act
-        asterixItem.parseData(inputData,currentIndex,inputData.length);
+        asterixItem.decode(inputData,currentIndex,inputData.length);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class AsterixCat062Item015Test {
         AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
 
         //act
-        asterixItem.parseData(data, currentIndex, data.length);
+        asterixItem.decode(data, currentIndex, data.length);
 
         //assert
         assertEquals("Service identification not decoded correctly", 200, asterixItem.getServiceIdentification());
@@ -59,7 +59,7 @@ public class AsterixCat062Item015Test {
         AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
 
         //act
-        asterixItem.parseData(data, currentIndex, data.length);
+        asterixItem.decode(data, currentIndex, data.length);
 
         //assert
         logger.debug(asterixItem.getDebugString());
@@ -74,7 +74,7 @@ public class AsterixCat062Item015Test {
         AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
 
         //act
-        int result = asterixItem.parseData(data, currentIndex, data.length);
+        int result = asterixItem.decode(data, currentIndex, data.length);
 
         //assert
         assertEquals("Current index not incremented correctly", currentIndex+1, result);

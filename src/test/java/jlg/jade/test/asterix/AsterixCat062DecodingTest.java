@@ -7,7 +7,7 @@
 package jlg.jade.test.asterix;
 
 import jlg.finalframe.FinalFrameReader;
-import jlg.jade.common.AsterixDecoder;
+import jlg.jade.AsterixDecoder;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -77,7 +77,7 @@ public class AsterixCat062DecodingTest {
             DatagramPacket packet = new DatagramPacket(networkBuffer, networkBuffer.length);
             while (true) {
                 client.receive(packet);
-                decoder.decode(networkBuffer, packet.getLength());
+                decoder.decode(networkBuffer, 0, packet.getLength());
 
                 //accumulate and print info
                 receivedDatagrams++;
@@ -116,7 +116,7 @@ public class AsterixCat062DecodingTest {
             DatagramPacket packet = new DatagramPacket(networkBuffer, networkBuffer.length);
             while (true) {
                 client.receive(packet);
-                decoder.decode(networkBuffer, packet.getLength());
+                decoder.decode(networkBuffer, 0, packet.getLength());
 
                 //accumulate and print info
                 receivedDatagrams++;
@@ -141,7 +141,7 @@ public class AsterixCat062DecodingTest {
         while (is.available() > 0) {
             byte[] ffPayload = ffReader.read(is);
             if (ffPayload != null) {
-                decoder.decode(ffPayload, ffPayload.length);
+                decoder.decode(ffPayload,0, ffPayload.length);
                 receivedBytes += ffPayload.length + 12;
             }
         }

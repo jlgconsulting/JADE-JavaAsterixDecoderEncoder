@@ -6,8 +6,9 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.common.AsterixItem;
-import jlg.jade.common.AsterixItemLength;
+import jlg.jade.abstraction.AsterixItem;
+import jlg.jade.asterix.AsterixItemLength;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Cat-062 Item 010 - Data Source Identifier - Mandatory
@@ -32,18 +33,23 @@ public class AsterixCat062Item010 extends AsterixItem {
     }
 
     @Override
-    public int parseData(byte[] inputData, int currentIndex, int inputLength) {
+    public int decode(byte[] input, int offset, int length) {
         reset();
-        checkLength(currentIndex, inputLength);
+        checkLength(offset, length);
 
-        sac = Byte.toUnsignedInt(inputData[currentIndex]);
-        sic = Byte.toUnsignedInt(inputData[currentIndex + 1]);
+        sac = Byte.toUnsignedInt(input[offset]);
+        sic = Byte.toUnsignedInt(input[offset + 1]);
 
         appendDebugMsg(String.format("%-30s %-20s", "SAC:", sac));
         appendDebugMsg(String.format("%-30s %-20s", "SAC:", sic));
 
-        currentIndex += currentIndex + itemLength.getValue();
-        return currentIndex;
+        offset += offset + itemLength.getValue();
+        return offset;
+    }
+
+    @Override
+    public int encode(byte[] dest, int offset, int length) {
+        throw new NotImplementedException();
     }
 
     @Override

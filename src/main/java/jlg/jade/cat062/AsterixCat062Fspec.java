@@ -6,8 +6,9 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.common.DebugMessageSource;
+import jlg.jade.abstraction.*;
 import jlg.jade.common.AsterixDecodingException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.BitSet;
 
@@ -16,7 +17,7 @@ import java.util.BitSet;
  * are true if the item is in the message and false otherwise. You can use this array in conjuction with the
  * AsterixCat062UAP enum to make code more understandable.
  */
-public class AsterixCat062Fspec extends DebugMessageSource {
+public class AsterixCat062Fspec extends DebugMessageSource implements DecodableVariableLength, EncodableVariableLength {
     private final int FSPEC_LENGTH = 40;
     private final int FSPEC_MAX_BYTES = 5;
     private final int BYTE_LENGTH = 8;
@@ -26,15 +27,16 @@ public class AsterixCat062Fspec extends DebugMessageSource {
         this.fspecList = new boolean[FSPEC_LENGTH];
     }
 
-    public int parseData(byte[] inputData, int currentIndex){
+    @Override
+    public int decode(byte[] input, int offset){
         appendDebugMsg("## FSPEC Data:");
 
         BitSet bs;
         for(int i=0;i<FSPEC_MAX_BYTES;i++){
-            int fspecOctet = Byte.toUnsignedInt(inputData[currentIndex+i]);
+            int fspecOctet = Byte.toUnsignedInt(input[offset+i]);
             appendDebugMsg(String.format("%-5s %-1s value: %-10s", "Octet",i+1, fspecOctet));
 
-            bs = BitSet.valueOf(new byte[]{inputData[currentIndex+i]});
+            bs = BitSet.valueOf(new byte[]{input[offset+i]});
             for(int j=0;j<BYTE_LENGTH;j++){
                 fspecList[j + (i*8)] = bs.get(j);
                 if(bs.get(j)) {
@@ -44,12 +46,17 @@ public class AsterixCat062Fspec extends DebugMessageSource {
 
             //field extension is 0 => do not continue
             if(!bs.get(0)){
-                currentIndex += i+1;
-                return currentIndex;
+                offset += i+1;
+                return offset;
             }
         }
         //the FXBIT was never 0, so there is a problem with the FSPEC
         throw new AsterixDecodingException.UndeterminedFspecEnd();
+    }
+
+    @Override
+    public int encode(byte[] dest, int offset) {
+        throw new NotImplementedException();
     }
 
     /**

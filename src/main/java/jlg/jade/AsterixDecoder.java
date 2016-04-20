@@ -4,12 +4,19 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.common;
+package jlg.jade;
+
+import jlg.jade.asterix.AsterixDataBlock;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Main class for decoding raw data from the input communication medium.
+ * @implNote It is recommended to create a single instance of this class and use the decode method
+ * multiple times
+ */
 public class AsterixDecoder {
     private HashMap<Integer,Boolean> allowedCategories;
     private HashMap<Integer,Integer> nbOfDataBlocks;
@@ -39,19 +46,26 @@ public class AsterixDecoder {
         }
     }
 
-    public List<AsterixDataBlock> decode(byte[] inputData, int inputLength){
+    /**
+     * Decodes the Asterix data from the given input source.
+     * @param input The raw data
+     * @param offset The start offset in the raw data, at which reading should begin
+     * @param length The number of bytes to read
+     * @return The list of decoded Asterix data blocks
+     */
+    public List<AsterixDataBlock> decode(byte[] input, int offset, int length){
         List<AsterixDataBlock> dataBlocks = new ArrayList<>();
-        int inputIndex = 0;
+        int inputIndex = offset;
 
-        while(inputIndex < inputLength) {
-            int dataBlockCategory = Byte.toUnsignedInt(inputData[inputIndex]);
-            int dataBlockSize = Byte.toUnsignedInt(inputData[inputIndex+1]) * 256 + Byte.toUnsignedInt(inputData[inputIndex+2]);
+        while(inputIndex < length) {
+            int dataBlockCategory = Byte.toUnsignedInt(input[inputIndex]);
+            int dataBlockSize = Byte.toUnsignedInt(input[inputIndex+1]) * 256 + Byte.toUnsignedInt(input[inputIndex+2]);
             inputIndex += 3;
 
             if (allowedCategories.containsKey(dataBlockCategory)) {
-                AsterixDataBlock dataBlock = new AsterixDataBlock(dataBlockCategory, dataBlockSize);
+                AsterixDataBlock dataBlock = new AsterixDataBlock(dataBlockCategory);
                 dataBlocks.add(dataBlock);
-                inputIndex = dataBlock.parseData(inputData, inputIndex);
+                inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize);
 
                 int nbDataBlocks = this.nbOfDataBlocks.get(dataBlockCategory);
                 this.nbOfDataBlocks.replace(dataBlockCategory, nbDataBlocks + 1);

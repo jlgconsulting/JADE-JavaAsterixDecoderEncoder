@@ -5,7 +5,7 @@
 * conditions you can use or modify this source code.
 */
 
-package jlg.jade.common;
+package jlg.jade.asterix;
 
 public enum AsterixCategory {
     CAT_004(4),

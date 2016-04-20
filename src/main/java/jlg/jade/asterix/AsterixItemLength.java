@@ -1,4 +1,4 @@
-package jlg.jade.common;/*
+package jlg.jade.asterix;/*
 * Created by dan-geabunea on 4/18/2016.
 * This code is the property of JLG Consulting. Please
 * check the license terms for this product to see under what
