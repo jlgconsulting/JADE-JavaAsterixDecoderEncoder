@@ -7,34 +7,144 @@
 package jlg.jade.test.asterix;
 
 import jlg.finalframe.FinalFrameReader;
+import jlg.jade.common.AsterixDecoder;
 import jlg.jade.test.utils.TestHelper;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import java.io.*;
-import java.util.BitSet;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+import static org.junit.Assert.assertEquals;
 
 public class AsterixCat062DecodingTest {
 
     @Test
-    public void should_decode_cat_062_message() throws IOException {
+    public void when_file_is_used_as_input_should_decode_cat_062_message_from_larger_sample() throws IOException {
         //arrange
-        try(InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_correct_sample_one_packet.ff")){
+        int receivedBytes = 0;
+
+        AsterixDecoder decoder = new AsterixDecoder(62, 65);
+        try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_30min.ff")) {
             FinalFrameReader ffReader = new FinalFrameReader();
-            while (is.available() > 0){
-                byte[] ffPayload = ffReader.read(is);
-                if(ffPayload != null){
-                    int category = Byte.toUnsignedInt(ffPayload[0]);
-                    int length = Byte.toUnsignedInt(ffPayload[1])*256 + Byte.toUnsignedInt(ffPayload[2]);
-                    for(int i=0; i<length-3;i++){
-                        int val = Byte.toUnsignedInt(ffPayload[i]);
-                        System.out.printf(i + ": ");
-                        System.out.printf(String.valueOf(Byte.toUnsignedInt(ffPayload[i])) + " - ");
-                        BitSet bs = BitSet.valueOf(new byte[]{(byte) val});
-                        System.out.printf(bs.toString());
-                        System.out.println();
-                    }
+            receivedBytes = readFileToEnd(decoder, is, ffReader);
+        }
+        System.out.println("Processed " + receivedBytes + " bytes");
+
+        //assert
+        int expectedBytes = 2725638;
+        assertEquals(expectedBytes, receivedBytes);
+        assertEquals(34957, decoder.getNbOfDataBlocks().get(62).intValue());
+    }
+
+    @Test
+    public void when_file_is_used_as_input_and_final_frame_packet_is_large_should_decode_cat_062_message_from_larger_sample() throws IOException {
+        //arrange
+        int receivedBytes = 0;
+
+        AsterixDecoder decoder = new AsterixDecoder(62, 65);
+        try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_065_large_packet_30min.ff")) {
+            FinalFrameReader ffReader = new FinalFrameReader();
+            receivedBytes = readFileToEnd(decoder, is, ffReader);
+        }
+        System.out.println("Processed " + receivedBytes + " bytes");
+
+        //assert
+        int expectedBytes = 3003761;
+        assertEquals(expectedBytes, receivedBytes);
+    }
+
+
+    @Test
+    @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
+    public void  when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws IOException,InterruptedException {
+        //arrange
+        final int PORT = 3001;
+        final int MAX_PACKET_SIZE = 65507;
+        final int TIMEOUT = 5000;
+
+
+        //act
+        AsterixDecoder decoder = new AsterixDecoder(62, 65);
+        byte[] networkBuffer = new byte[MAX_PACKET_SIZE];
+        int receivedDatagrams = 0;
+        int receivedBytes = 0;
+        try (DatagramSocket client = new DatagramSocket(PORT)) {
+            client.setSoTimeout(TIMEOUT);
+            DatagramPacket packet = new DatagramPacket(networkBuffer, networkBuffer.length);
+            while (true) {
+                client.receive(packet);
+                decoder.decode(networkBuffer, packet.getLength());
+
+                //accumulate and print info
+                receivedDatagrams++;
+                receivedBytes += packet.getLength();
+                if (receivedDatagrams % 100 == 0) {
+                    System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
                 }
             }
+        } catch (InterruptedIOException e) {
+            System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
         }
+
+        //assert
+        //int expectedDatagrams = 34957;
+        //int expectedBytes = 2306154;
+        //assertEquals(expectedDatagrams, receivedDatagrams);
+        //assertEquals(expectedBytes, receivedBytes);
+    }
+
+    @Test()
+    @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
+    public void when_upd_unicast_is_used_as_input_should_decode_cat062_messages_from_larger_sample() throws IOException, InterruptedException {
+        //arrange
+        final int PORT = 3002;
+        final int MAX_PACKET_SIZE = 65507;
+        final int TIMEOUT = 5000;
+
+
+        //act
+        AsterixDecoder decoder = new AsterixDecoder(62, 65);
+        byte[] networkBuffer = new byte[MAX_PACKET_SIZE];
+        int receivedDatagrams = 0;
+        int receivedBytes = 0;
+        try (DatagramSocket client = new DatagramSocket(PORT)) {
+            client.setSoTimeout(TIMEOUT);
+            DatagramPacket packet = new DatagramPacket(networkBuffer, networkBuffer.length);
+            while (true) {
+                client.receive(packet);
+                decoder.decode(networkBuffer, packet.getLength());
+
+                //accumulate and print info
+                receivedDatagrams++;
+                receivedBytes += packet.getLength();
+                if (receivedDatagrams % 100 == 0) {
+                    System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
+                }
+            }
+        } catch (InterruptedIOException e) {
+            System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
+        }
+
+        //assert
+        int expectedDatagrams = 18163;
+        int expectedBytes = 2785805;
+        assertEquals(expectedDatagrams, receivedDatagrams);
+        assertEquals(expectedBytes, receivedBytes);
+    }
+
+    private int readFileToEnd(AsterixDecoder decoder, InputStream is, FinalFrameReader ffReader) throws IOException {
+        int receivedBytes = 0;
+        while (is.available() > 0) {
+            byte[] ffPayload = ffReader.read(is);
+            if (ffPayload != null) {
+                decoder.decode(ffPayload, ffPayload.length);
+                receivedBytes += ffPayload.length + 12;
+            }
+        }
+        return receivedBytes;
     }
 }

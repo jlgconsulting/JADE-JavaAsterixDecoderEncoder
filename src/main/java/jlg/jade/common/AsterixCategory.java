@@ -8,10 +8,20 @@
 package jlg.jade.common;
 
 public enum AsterixCategory {
-    CAT_004,
-    CAT_034,
-    CAT_048,
-    CAT_062,
-    CAT_065,
-    CAT_150
+    CAT_004(4),
+    CAT_034(34),
+    CAT_048(48),
+    CAT_062(62),
+    CAT_065(65),
+    CAT_150(150);
+
+    private int value;
+
+    private AsterixCategory(int value){
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
 }
