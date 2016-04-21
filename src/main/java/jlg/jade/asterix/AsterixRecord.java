@@ -7,15 +7,15 @@
 package jlg.jade.asterix;
 
 import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.DecodableVariableLength;
-import jlg.jade.abstraction.EncodableVariableLength;
+import jlg.jade.abstraction.DecodableFixedLength;
+import jlg.jade.abstraction.EncodableFixedLength;
 import jlg.jade.cat062.AsterixCat062Record;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Represents a single Asterix message of a given category.
  */
-public class AsterixRecord extends DebugMessageSource implements DecodableVariableLength, EncodableVariableLength {
+public class AsterixRecord extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
     private int category;
     private AsterixCat062Record cat062Record;
 

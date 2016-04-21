@@ -7,8 +7,8 @@
 package jlg.jade.asterix;
 
 import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.DecodableFixedLength;
-import jlg.jade.abstraction.EncodableFixedLength;
+import jlg.jade.abstraction.DecodableUnknownLength;
+import jlg.jade.abstraction.EncodableUnknownLength;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.List;
  * - a one octet field indicating the Asterix category
  * - a two octet field indicating the length of the data block, including the CAT and LEN fields
  */
-public class AsterixDataBlock extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
+public class AsterixDataBlock extends DebugMessageSource implements DecodableUnknownLength, EncodableUnknownLength {
     private int category;
     private List<AsterixRecord> records;
 

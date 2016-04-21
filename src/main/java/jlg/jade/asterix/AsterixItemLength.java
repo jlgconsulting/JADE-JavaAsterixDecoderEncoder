@@ -6,7 +6,6 @@ package jlg.jade.asterix;/*
 */
 
 public enum AsterixItemLength {
-    UNDEFINED(-2),
     VARIABLE(-1),
     ONE_BYTE(1),
     TWO_BYTES(2),

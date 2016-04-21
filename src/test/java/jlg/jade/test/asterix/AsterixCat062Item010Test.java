@@ -34,56 +34,42 @@ public class AsterixCat062Item010Test {
     public void when_remaining_input_data_length_less_than_2_bytes_should_throw() {
         //arrange
         byte[] data = {1, 2, 3, 4};
-        int currentIndex = 3;
-        AsterixItem asterixItem = new AsterixCat062Item010();
+        int offset = 3;
+        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
-        asterixItem.decode(data, currentIndex, data.length);
+        asterixItem.decode(data, offset);
     }
 
     @Test
     public void should_populate_item_with_correct_values() {
         //arrange
-        byte[] data = {(byte) 200, (byte) 244};
-        int currentIndex = 0;
+        byte[] data = {(byte) 70, (byte) 16};
+        int offset = 0;
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
-        asterixItem.decode(data, currentIndex, data.length);
+        asterixItem.decode(data, offset);
 
         //assert
-        assertEquals("Sac not decoded correctly", 200, asterixItem.getSac());
-        assertEquals("Sic not decoded correctly", 244, asterixItem.getSic());
+        assertEquals("Sac not decoded correctly", 70, asterixItem.getSac());
+        assertEquals("Sic not decoded correctly", 16, asterixItem.getSic());
 
     }
 
+
     @Test
-    public void should_populate_debug_message_after_parsing_data() {
+    public void should_increase_offset_after_parsing_the_data() {
         //arrange
-        byte[] data = {(byte) 200, (byte) 244};
-        int currentIndex = 0;
+        byte[] data = {(byte) 70, (byte) 16};
+        int offset = 0;
         AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
 
         //act
-        asterixItem.decode(data, currentIndex, data.length);
+        int result = asterixItem.decode(data, offset);
 
         //assert
-        logger.debug(asterixItem.getDebugString());
-        assertNotNull(asterixItem.getDebugString());
-    }
-
-    @Test
-    public void should_increase_current_index_after_parsing_the_data() {
-        //arrange
-        byte[] data = {(byte) 200, (byte) 244};
-        int currentIndex = 0;
-        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
-
-        //act
-        int result = asterixItem.decode(data, currentIndex, data.length);
-
-        //assert
-        int expectedCurrentIndex = currentIndex + AsterixItemLength.TWO_BYTES.getValue();
+        int expectedCurrentIndex = offset + AsterixItemLength.TWO_BYTES.getValue();
         assertEquals("Current index not incremented correctly", expectedCurrentIndex, result);
     }
 }

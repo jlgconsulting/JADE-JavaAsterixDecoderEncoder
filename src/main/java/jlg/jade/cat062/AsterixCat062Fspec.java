@@ -17,7 +17,7 @@ import java.util.BitSet;
  * are true if the item is in the message and false otherwise. You can use this array in conjuction with the
  * AsterixCat062UAP enum to make code more understandable.
  */
-public class AsterixCat062Fspec extends DebugMessageSource implements DecodableVariableLength, EncodableVariableLength {
+public class AsterixCat062Fspec extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
     private final int FSPEC_LENGTH = 40;
     private final int FSPEC_MAX_BYTES = 5;
     private final int BYTE_LENGTH = 8;
@@ -35,12 +35,14 @@ public class AsterixCat062Fspec extends DebugMessageSource implements DecodableV
         for(int i=0;i<FSPEC_MAX_BYTES;i++){
             int fspecOctet = Byte.toUnsignedInt(input[offset+i]);
             appendDebugMsg(String.format("%-5s %-1s value: %-10s", "Octet",i+1, fspecOctet));
+            appendNewLine();
 
             bs = BitSet.valueOf(new byte[]{input[offset+i]});
             for(int j=0;j<BYTE_LENGTH;j++){
                 fspecList[j + (i*8)] = bs.get(j);
                 if(bs.get(j)) {
                     appendDebugMsg("Cat062 " + AsterixCat062UAP.values()[j + (i * 8)] + " has been added to FSPEC with a value of 1");
+                    appendNewLine();
                 }
             }
 

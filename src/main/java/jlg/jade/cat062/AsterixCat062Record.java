@@ -12,7 +12,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 /**
  * Represents a single Asterix entity which contains a number of data items
  */
-public class AsterixCat062Record extends DebugMessageSource implements DecodableVariableLength, EncodableVariableLength {
+public class AsterixCat062Record extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
     private AsterixCat062Fspec fspec;
     private AsterixCat062Item010 item010;
     private AsterixCat062Item015 item015;

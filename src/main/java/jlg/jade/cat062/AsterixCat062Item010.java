@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.AsterixItem;
+import jlg.jade.abstraction.*;
 import jlg.jade.asterix.AsterixItemLength;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -14,47 +14,47 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Cat-062 Item 010 - Data Source Identifier - Mandatory
  * Identification of the system sending the data (SAC-SIC)
  */
-public class AsterixCat062Item010 extends AsterixItem {
+public class AsterixCat062Item010 extends AsterixItem implements DecodableFixedLength, EncodableFixedLength {
     private int sac;
     private int sic;
 
     public AsterixCat062Item010() {
-        itemLength = AsterixItemLength.TWO_BYTES;
-        sac = 0;
-        sic = 0;
+        this.sizeInBytes = AsterixItemLength.TWO_BYTES.getValue();
+        this.sac = 0;
+        this.sic = 0;
     }
 
     public int getSac() {
-        return sac;
+        return this.sac;
     }
 
     public int getSic() {
-        return sic;
+        return this.sic;
     }
 
     @Override
-    public int decode(byte[] input, int offset, int length) {
+    public int decode(byte[] input, int offset) {
         reset();
-        checkLength(offset, length);
+        checkLength(input, offset, this.sizeInBytes);
 
-        sac = Byte.toUnsignedInt(input[offset]);
-        sic = Byte.toUnsignedInt(input[offset + 1]);
+        this.sac = Byte.toUnsignedInt(input[offset]);
+        this.sic = Byte.toUnsignedInt(input[offset + 1]);
 
-        appendDebugMsg(String.format("%-30s %-20s", "SAC:", sac));
-        appendDebugMsg(String.format("%-30s %-20s", "SAC:", sic));
+        appendItemDebugMsg("SAC:", this.sac);
+        appendItemDebugMsg("SIC:", this.sic);
 
-        offset += offset + itemLength.getValue();
+        offset += offset + this.sizeInBytes;
         return offset;
     }
 
     @Override
-    public int encode(byte[] dest, int offset, int length) {
+    public int encode(byte[] dest, int offset) {
         throw new NotImplementedException();
     }
 
     @Override
     public void reset() {
-        sac = 0;
-        sic = 0;
+        this.sac = 0;
+        this.sic = 0;
     }
 }

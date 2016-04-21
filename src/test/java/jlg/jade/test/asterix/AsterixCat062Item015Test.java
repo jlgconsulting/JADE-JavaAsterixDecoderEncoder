@@ -30,53 +30,39 @@ public class AsterixCat062Item015Test {
     public void when_remaining_input_data_length_less_than_1_byte_should_throw(){
         //arrange
         byte inputData[] = {1,2,3,4};
-        int currentIndex = 4;
-        AsterixItem asterixItem = new AsterixCat062Item015();
+        int offset = 4;
+        AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
 
         //act
-        asterixItem.decode(inputData,currentIndex,inputData.length);
+        asterixItem.decode(inputData,offset);
     }
 
     @Test
     public void should_populate_item_with_correct_value(){
         //arrange
         byte[] data = {(byte) 200};
-        int currentIndex = 0;
+        int offset = 0;
         AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
 
         //act
-        asterixItem.decode(data, currentIndex, data.length);
+        asterixItem.decode(data, offset);
 
         //assert
         assertEquals("Service identification not decoded correctly", 200, asterixItem.getServiceIdentification());
     }
 
-    @Test
-    public void should_populate_debug_message_after_parsing_data(){
-        //arrange
-        byte[] data = {(byte) 200};
-        int currentIndex = 0;
-        AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
-
-        //act
-        asterixItem.decode(data, currentIndex, data.length);
-
-        //assert
-        logger.debug(asterixItem.getDebugString());
-        assertNotNull(asterixItem.getDebugString());
-    }
 
     @Test
     public void should_increase_current_index_after_parsing_data(){
         //arrange
         byte[] data = {(byte) 200};
-        int currentIndex = 0;
+        int offset = 0;
         AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
 
         //act
-        int result = asterixItem.decode(data, currentIndex, data.length);
+        int result = asterixItem.decode(data, offset);
 
         //assert
-        assertEquals("Current index not incremented correctly", currentIndex+1, result);
+        assertEquals("Current index not incremented correctly", offset+1, result);
     }
 }

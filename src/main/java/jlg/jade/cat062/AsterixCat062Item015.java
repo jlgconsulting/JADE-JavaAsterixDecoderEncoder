@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.AsterixItem;
+import jlg.jade.abstraction.*;
 import jlg.jade.asterix.AsterixItemLength;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -14,37 +14,38 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Cat 062 Item 015 - Service Identification - Optional
  * Identification of the service provided to one or more users
  */
-public class AsterixCat062Item015 extends AsterixItem {
+public class AsterixCat062Item015 extends AsterixItem implements DecodableFixedLength, EncodableFixedLength {
     private int serviceIdentification;
 
     public AsterixCat062Item015(){
-        itemLength = AsterixItemLength.ONE_BYTE;
+        sizeInBytes = AsterixItemLength.ONE_BYTE.getValue();
     }
 
     @Override
-    public int decode(byte[] input, int offset, int length) {
+    public int decode(byte[] input, int offset) {
         reset();
-        checkLength(offset, length);
+        checkLength(input, offset, this.sizeInBytes);
 
-        serviceIdentification = Byte.toUnsignedInt(input[offset]);
-        appendDebugMsg(String.format("%-30s %-20s", "Service identification:", serviceIdentification));
+        this.serviceIdentification = Byte.toUnsignedInt(input[offset]);
+
+        appendItemDebugMsg("Service identification:", this.serviceIdentification);
         offset++;
 
         return offset;
     }
 
     @Override
-    public int encode(byte[] dest, int offset, int length) {
+    public int encode(byte[] dest, int offset) {
         throw new NotImplementedException();
     }
 
     @Override
     public void reset() {
-        serviceIdentification = 0;
+        this.serviceIdentification = 0;
     }
 
     public int getServiceIdentification() {
-        return serviceIdentification;
+        return this.serviceIdentification;
     }
 
 }
