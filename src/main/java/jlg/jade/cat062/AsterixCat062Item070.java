@@ -34,13 +34,12 @@ public class AsterixCat062Item070 extends AsterixItem implements DecodableFixedL
         checkLength(input, offset, this.sizeInBytes);
 
         this.timeOfTrack =
-                    Byte.toUnsignedInt(input[offset]) * 256 * 256 +
-                    Byte.toUnsignedInt(input[offset+1]) * 256 +
-                    Byte.toUnsignedInt(input[offset+2]);
+                Byte.toUnsignedInt(input[offset]) * 256 * 256 +
+                        Byte.toUnsignedInt(input[offset + 1]) * 256 +
+                        Byte.toUnsignedInt(input[offset + 2]);
 
         appendItemDebugMsg("Time of track: ", this.timeOfTrack);
-        int totalSeconds = timeOfTrack / 128;
-        appendItemDebugMsg("Time of track (Human Readable): ", totalSeconds / 3600 + ":" + (totalSeconds % 3600) / 60 + ":" + totalSeconds % 60);
+        appendItemDebugMsg("Time of track (Human Readable): ", getHours() + ":" + getMinutes() + ":" + getSeconds());
 
         return offset + this.sizeInBytes;
     }
@@ -54,15 +53,15 @@ public class AsterixCat062Item070 extends AsterixItem implements DecodableFixedL
         return this.timeOfTrack;
     }
 
-    public int getHours(){
-        return 0;
+    public int getHours() {
+        return this.timeOfTrack / 128 / 3600;
     }
 
-    public int getMinutes(){
-        return 0;
+    public int getMinutes() {
+        return ((this.timeOfTrack / 128) % 3600) / 60;
     }
 
-    public int getSeconds(){
-        return 0;
+    public int getSeconds() {
+        return (this.timeOfTrack / 128) % 60;
     }
 }

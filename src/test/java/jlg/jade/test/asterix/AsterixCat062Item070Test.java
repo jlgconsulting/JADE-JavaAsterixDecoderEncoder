@@ -53,4 +53,20 @@ public class AsterixCat062Item070Test {
         //assert
         assertEquals("Offset not incremented after parsing the data", offset + item.getSizeInBytes(), result);
     }
+
+    @Test
+    public void should_convert_time_to_hh_mm_ss(){
+        //arrange
+        byte[] input = {103, (byte) 172, (byte) 233};
+        int offset = 0;
+        AsterixCat062Item070 item = new AsterixCat062Item070();
+
+        //act
+        item.decode(input,offset);
+
+        //assert
+        assertEquals(14, item.getHours());
+        assertEquals(44, item.getMinutes());
+        assertEquals(41, item.getSeconds());
+    }
 }
