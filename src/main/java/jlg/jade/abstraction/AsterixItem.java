@@ -15,9 +15,11 @@ import jlg.jade.common.AsterixDecodingException;
  */
 public abstract class AsterixItem extends DebugMessageSource {
     protected int sizeInBytes;
+    protected boolean isValid;
 
     protected AsterixItem(){
         this.sizeInBytes = AsterixItemLength.VARIABLE.getValue();
+        this.isValid = true;
     }
 
     protected void validate() {
@@ -76,5 +78,12 @@ public abstract class AsterixItem extends DebugMessageSource {
      */
     public int getSizeInBytes() {
         return sizeInBytes;
+    }
+
+    /**
+     * @return True when item is valid according to Asterix validation rules, and false otherwise.
+     */
+    public boolean isValid() {
+        return isValid;
     }
 }

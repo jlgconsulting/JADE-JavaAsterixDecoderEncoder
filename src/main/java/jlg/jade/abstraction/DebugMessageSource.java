@@ -6,8 +6,6 @@
 */
 package jlg.jade.abstraction;
 
-import java.util.Objects;
-
 /**
  * A class that provides basic debug information that can be used by the child classes in logging
  * scenarios
@@ -19,24 +17,24 @@ public abstract class DebugMessageSource {
         this.debugStringBuilder = new StringBuilder();
     }
 
-    public void appendDebugMsg(String msg) {
-        debugStringBuilder.append(msg);
-    }
-
-    public void appendItemDebugMsg(String property, Object value) {
-        debugStringBuilder.append(String.format("%-30s %-20s", property, value));
-        debugStringBuilder.append(System.lineSeparator());
-    }
-
-    public void appendNewLine(){
-        debugStringBuilder.append(System.lineSeparator());
-    }
-
     public String getDebugString() {
         return debugStringBuilder.toString();
     }
 
-    public void clearDebugMsg() {
+    protected void appendDebugMsg(String msg) {
+        debugStringBuilder.append(msg);
+    }
+
+    protected void appendItemDebugMsg(String property, Object value) {
+        debugStringBuilder.append(String.format("%-30s %-20s", property, value));
+        debugStringBuilder.append(System.lineSeparator());
+    }
+
+    protected void appendNewLine(){
+        debugStringBuilder.append(System.lineSeparator());
+    }
+
+    protected void clearDebugMsg() {
         debugStringBuilder.setLength(0);
     }
 }

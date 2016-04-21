@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.*;
 
-public class Cat062FspecTest {
+public class Cat062FspecDecodingTest {
 
     private Logger logger;
 

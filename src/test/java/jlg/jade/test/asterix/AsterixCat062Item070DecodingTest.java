@@ -13,10 +13,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class AsterixCat062Item070Test {
+public class AsterixCat062Item070DecodingTest {
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-    public void when_remaining_input_data_length_less_than_3_bytes_should_throw(){
+        public void when_remaining_input_data_length_less_than_3_bytes_should_throw(){
         //arrange
         byte[] input = {1,2};
         int offset = 0;
@@ -27,7 +27,7 @@ public class AsterixCat062Item070Test {
     }
 
     @Test
-    public void should_populate_item_with_correct_values(){
+    public void should_correctly_decode_data(){
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;
@@ -41,7 +41,7 @@ public class AsterixCat062Item070Test {
     }
 
     @Test
-    public void should_increment_offset_after_parsing_the_data(){
+    public void should_increment_offset_after_decoding(){
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;
@@ -51,7 +51,7 @@ public class AsterixCat062Item070Test {
         int result = item.decode(input,offset);
 
         //assert
-        assertEquals("Offset not incremented after parsing the data", offset + item.getSizeInBytes(), result);
+        assertEquals("Offset not incremented after decoding the data", offset + item.getSizeInBytes(), result);
     }
 
     @Test

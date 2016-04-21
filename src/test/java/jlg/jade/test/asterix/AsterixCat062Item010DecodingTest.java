@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
-public class AsterixCat062Item010Test {
+public class AsterixCat062Item010DecodingTest {
 
     private Logger logger;
 
@@ -31,7 +31,7 @@ public class AsterixCat062Item010Test {
     }
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-    public void when_remaining_input_data_length_less_than_2_bytes_should_throw() {
+    public void when_remaining_input_data_less_than_2_bytes_should_throw() {
         //arrange
         byte[] data = {1, 2, 3, 4};
         int offset = 3;
@@ -42,7 +42,7 @@ public class AsterixCat062Item010Test {
     }
 
     @Test
-    public void should_populate_item_with_correct_values() {
+    public void should_correctly_decode_data() {
         //arrange
         byte[] data = {(byte) 70, (byte) 16};
         int offset = 0;
@@ -59,7 +59,7 @@ public class AsterixCat062Item010Test {
 
 
     @Test
-    public void should_increase_offset_after_parsing_the_data() {
+    public void should_increase_offset_after_decoding() {
         //arrange
         byte[] data = {(byte) 70, (byte) 16};
         int offset = 0;

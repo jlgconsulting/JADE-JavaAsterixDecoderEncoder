@@ -8,4 +8,5 @@ package jlg.jade.common;
 
 public class Constants {
     public static String LOGGER_NAME = "jlg.jade.logger";
+    public static double LAT_LONG_WGS_PRECISION_CAT062 = 0.000005364;   //180 divided by 2^25
 }

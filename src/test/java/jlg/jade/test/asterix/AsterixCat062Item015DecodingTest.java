@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class AsterixCat062Item015Test {
+public class AsterixCat062Item015DecodingTest {
     private Logger logger;
 
     @Before
@@ -38,7 +38,7 @@ public class AsterixCat062Item015Test {
     }
 
     @Test
-    public void should_populate_item_with_correct_value(){
+    public void should_correctly_decode_data(){
         //arrange
         byte[] data = {(byte) 200};
         int offset = 0;
@@ -53,7 +53,7 @@ public class AsterixCat062Item015Test {
 
 
     @Test
-    public void should_increase_current_index_after_parsing_data(){
+    public void should_increase_offset_after_decoding(){
         //arrange
         byte[] data = {(byte) 200};
         int offset = 0;
