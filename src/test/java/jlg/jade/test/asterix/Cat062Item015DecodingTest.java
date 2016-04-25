@@ -6,27 +6,25 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.common.AsterixDecodingException;
 import jlg.jade.cat062.Cat062Item015;
-import jlg.jade.common.Constants;
-import org.junit.Before;
+import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class Cat062Item015DecodingTest {
-    private Logger logger;
 
-    @Before
-    public void init() {
-        logger = LoggerFactory.getLogger(Constants.LOGGER_NAME);
+    @Test
+    public void should_have_length_of_2_bytes(){
+        //arrange
+        Cat062Item015 item = new Cat062Item015();
+
+        //assert
+        assertEquals("Item size is not valid", 1, item.getSizeInBytes());
     }
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-    public void when_remaining_input_data_length_less_than_1_byte_should_throw(){
+    public void the_decode_method_when_remaining_input_data_length_less_than_1_byte_should_throw(){
         //arrange
         byte inputData[] = {1,2,3,4};
         int offset = 4;
@@ -37,7 +35,7 @@ public class Cat062Item015DecodingTest {
     }
 
     @Test
-    public void should_correctly_decode_data(){
+    public void the_decode_method_should_correctly_decode_data(){
         //arrange
         byte[] data = {(byte) 200};
         int offset = 0;
@@ -52,7 +50,7 @@ public class Cat062Item015DecodingTest {
 
 
     @Test
-    public void should_increase_offset_after_decoding(){
+    public void the_decode_method_should_increase_offset_after_decoding(){
         //arrange
         byte[] data = {(byte) 200};
         int offset = 0;

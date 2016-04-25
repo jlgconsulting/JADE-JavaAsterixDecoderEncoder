@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class Cat062Item105DecodingTest {
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-    public void when_remaining_input_data_less_than_8_bytes_should_throw() {
+    public void the_decode_method_when_remaining_input_data_less_than_8_bytes_should_throw() {
         //arrange
         byte[] input = {1, 2, 3, 4, 5, 6, 7};
         int offset = 0;
@@ -28,7 +28,7 @@ public class Cat062Item105DecodingTest {
     }
 
     @Test
-    public void should_correctly_decode_data() {
+    public void the_decode_method_should_correctly_decode_data() {
         //arrange
         byte[] input = {0, (byte) 146, 96, (byte) 221, 0, 45, (byte) 149, 81};
         int offset = 0;
@@ -44,7 +44,7 @@ public class Cat062Item105DecodingTest {
     }
 
     @Test
-    public void should_increase_offset_after_decoding() {
+    public void the_decode_method_should_increase_offset_after_decoding() {
         //arrange
         byte[] input = {0, (byte) 146, 96, (byte) 221, 0, 45, (byte) 149, 81};
         int offset = 0;
@@ -89,7 +89,7 @@ public class Cat062Item105DecodingTest {
     }
 
     @Test
-    public void when_latitude_below_minus_90_should_set_valid_flag_to_false() {
+    public void the_decode_method_when_latitude_below_minus_90_should_set_valid_flag_to_false() {
         //arrange
         int latitudeOutsideRange = (int) (-91 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange);
@@ -105,7 +105,7 @@ public class Cat062Item105DecodingTest {
     }
 
     @Test
-    public void when_longitude_above_180_should_set_valid_flag_to_false() {
+    public void the_decode_method_when_longitude_above_180_should_set_valid_flag_to_false() {
         //arrange
         int lonOutsideRange = (int) (181 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange);
@@ -121,7 +121,7 @@ public class Cat062Item105DecodingTest {
     }
 
     @Test
-    public void when_longitude_below_minus_180_should_set_valid_flag_to_false() {
+    public void the_decode_method_when_longitude_below_minus_180_should_set_valid_flag_to_false() {
         //arrange
         int lonOutsideRange = (int) (-181 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange);

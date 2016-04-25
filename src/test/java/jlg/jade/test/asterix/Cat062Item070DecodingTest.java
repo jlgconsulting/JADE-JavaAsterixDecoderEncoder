@@ -11,12 +11,21 @@ import jlg.jade.cat062.Cat062Item070;
 import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class Cat062Item070DecodingTest {
 
+    @Test
+    public void should_have_length_of_3_bytes(){
+        //arrange
+        Cat062Item070 item = new Cat062Item070();
+
+        //assert
+        assertEquals("Item size is not valid", 3, item.getSizeInBytes());
+    }
+
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-        public void when_remaining_input_data_length_less_than_3_bytes_should_throw(){
+        public void the_decode_method_when_remaining_input_data_length_less_than_3_bytes_should_throw(){
         //arrange
         byte[] input = {1,2};
         int offset = 0;
@@ -27,7 +36,7 @@ public class Cat062Item070DecodingTest {
     }
 
     @Test
-    public void should_correctly_decode_data(){
+    public void the_decode_method_should_correctly_decode_data(){
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;
@@ -41,7 +50,7 @@ public class Cat062Item070DecodingTest {
     }
 
     @Test
-    public void should_increment_offset_after_decoding(){
+    public void the_decode_method_should_increment_offset_after_decoding(){
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;

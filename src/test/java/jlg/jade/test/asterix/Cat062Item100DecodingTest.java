@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Cat062Item100Test {
+public class Cat062Item100DecodingTest {
 
     @Test
     public void should_have_length_of_6_bytes() {
@@ -25,7 +25,7 @@ public class Cat062Item100Test {
     }
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-    public void when_remaining_input_data_less_than_6_bytes_should_throw() {
+    public void the_decode_method_when_remaining_input_data_less_than_6_bytes_should_throw() {
         //arrange
         byte[] input = {1, 2, 3, 4, 5};
         int offset = 0;
@@ -36,7 +36,7 @@ public class Cat062Item100Test {
     }
 
     @Test
-    public void should_correctly_decode_data_for_negative_values() {
+    public void the_decode_method_should_correctly_decode_data_for_negative_values() {
         //arrange
         byte[] input = {(byte) 239, 91, 63, (byte) 243, (byte) 158, (byte) 167};
         int offset = 0;
@@ -52,7 +52,7 @@ public class Cat062Item100Test {
     }
 
     @Test
-    public void should_correctly_decode_data_for_positive_values() {
+    public void the_decode_method_should_correctly_decode_data_for_positive_values() {
         //arrange
         byte[] input = {13, (byte) 204, 99, 13, (byte) 204, 99};
         int offset = 0;
@@ -68,7 +68,7 @@ public class Cat062Item100Test {
     }
 
     @Test
-    public void should_increase_offset_after_decoding() {
+    public void the_decode_method_should_increase_offset_after_decoding() {
         //arrange
         byte[] input = {13, (byte) 204, 99, 13, (byte) 204, 99};
         int offset = 0;

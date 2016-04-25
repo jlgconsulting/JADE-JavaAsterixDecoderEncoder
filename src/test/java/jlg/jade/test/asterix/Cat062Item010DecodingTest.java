@@ -29,8 +29,17 @@ public class Cat062Item010DecodingTest {
         logger = LoggerFactory.getLogger(Constants.LOGGER_NAME);
     }
 
+    @Test
+    public void should_have_length_of_2_bytes(){
+        //arrange
+        Cat062Item010 item = new Cat062Item010();
+
+        //assert
+        assertEquals("Item aize is not valid", 2, item.getSizeInBytes());
+    }
+
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
-    public void when_remaining_input_data_less_than_2_bytes_should_throw() {
+    public void the_decode_method_when_remaining_input_data_less_than_2_bytes_should_throw() {
         //arrange
         byte[] data = {1, 2, 3, 4};
         int offset = 3;
@@ -41,7 +50,7 @@ public class Cat062Item010DecodingTest {
     }
 
     @Test
-    public void should_correctly_decode_data() {
+    public void the_decode_method_should_correctly_decode_data() {
         //arrange
         byte[] data = {(byte) 70, (byte) 16};
         int offset = 0;
@@ -58,7 +67,7 @@ public class Cat062Item010DecodingTest {
 
 
     @Test
-    public void should_increase_offset_after_decoding() {
+    public void the_decode_method_should_increase_offset_after_decoding() {
         //arrange
         byte[] data = {(byte) 70, (byte) 16};
         int offset = 0;
