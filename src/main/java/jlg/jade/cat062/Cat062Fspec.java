@@ -6,7 +6,9 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.*;
+import jlg.jade.abstraction.DebugMessageSource;
+import jlg.jade.abstraction.DecodableFixedLength;
+import jlg.jade.abstraction.EncodableFixedLength;
 import jlg.jade.common.AsterixDecodingException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -21,7 +23,7 @@ public class Cat062Fspec extends DebugMessageSource implements DecodableFixedLen
     private final int FSPEC_LENGTH = 40;
     private final int FSPEC_MAX_BYTES = 5;
     private final int BYTE_LENGTH = 8;
-    boolean[] fspecList;
+    private boolean[] fspecList;
 
     public Cat062Fspec(){
         this.fspecList = new boolean[FSPEC_LENGTH];

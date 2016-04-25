@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.*;
+import jlg.jade.abstraction.FixedLengthAsterixItem;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**

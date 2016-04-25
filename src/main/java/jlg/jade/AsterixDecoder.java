@@ -21,7 +21,7 @@ public class AsterixDecoder {
     private HashMap<Integer,Boolean> allowedCategories;
     private HashMap<Integer,Integer> nbOfDataBlocks;
 
-    protected AsterixDecoder(){
+    private AsterixDecoder(){
         allowedCategories = new HashMap<>();
         allowedCategories.put(4, false);
         allowedCategories.put(34, false);

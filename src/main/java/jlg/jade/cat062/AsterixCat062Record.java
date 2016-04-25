@@ -6,7 +6,9 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.*;
+import jlg.jade.abstraction.DebugMessageSource;
+import jlg.jade.abstraction.DecodableFixedLength;
+import jlg.jade.abstraction.EncodableFixedLength;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**

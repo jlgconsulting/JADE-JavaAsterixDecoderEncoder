@@ -13,7 +13,7 @@ package jlg.jade.abstraction;
 public abstract class DebugMessageSource {
     private StringBuilder debugStringBuilder;
 
-    public DebugMessageSource() {
+    protected DebugMessageSource() {
         this.debugStringBuilder = new StringBuilder();
     }
 

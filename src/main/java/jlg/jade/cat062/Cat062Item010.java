@@ -6,9 +6,8 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.*;
+import jlg.jade.abstraction.FixedLengthAsterixItem;
 import jlg.jade.asterix.AsterixItemLength;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Cat-062 Item 010 - Data Source Identifier - Mandatory
