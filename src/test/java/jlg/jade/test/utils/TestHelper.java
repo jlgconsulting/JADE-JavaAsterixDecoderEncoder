@@ -8,6 +8,7 @@ package jlg.jade.test.utils;
 
 import java.io.File;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -24,7 +25,7 @@ public class TestHelper {
         return fis;
     }
 
-    public static  byte[] fromIntToByteArray(int val, int arrayLength){
-        return ByteBuffer.allocate(arrayLength).putInt(val).array();
+    public static  byte[] fromIntToByteArray(int val){
+        return BigInteger.valueOf(val).toByteArray();
     }
 }

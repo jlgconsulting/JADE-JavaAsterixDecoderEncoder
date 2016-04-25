@@ -76,7 +76,7 @@ public class Cat062Item105DecodingTest {
     public void when_latitude_above_90_should_set_valid_flag_to_false() {
         //arrange
         int latitudeOutsideRange = (int) (91 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
-        byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange, 4);
+        byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange);
         byte[] input = {invalidLatArray[0], invalidLatArray[1], invalidLatArray[2], invalidLatArray[3], 0, 45, (byte) 149, 81};
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
@@ -92,7 +92,7 @@ public class Cat062Item105DecodingTest {
     public void when_latitude_below_minus_90_should_set_valid_flag_to_false() {
         //arrange
         int latitudeOutsideRange = (int) (-91 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
-        byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange, 4);
+        byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange);
         byte[] input = {invalidLatArray[0], invalidLatArray[1], invalidLatArray[2], invalidLatArray[3], 0, 45, (byte) 149, 81};
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
@@ -108,7 +108,7 @@ public class Cat062Item105DecodingTest {
     public void when_longitude_above_180_should_set_valid_flag_to_false() {
         //arrange
         int lonOutsideRange = (int) (181 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
-        byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange, 4);
+        byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange);
         byte[] input = {0, (byte) 146, 96, (byte) 221, invalidLonArray[0],invalidLonArray[1],invalidLonArray[2],invalidLonArray[3]};
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
@@ -124,7 +124,7 @@ public class Cat062Item105DecodingTest {
     public void when_longitude_below_minus_180_should_set_valid_flag_to_false() {
         //arrange
         int lonOutsideRange = (int) (-181 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
-        byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange, 4);
+        byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange);
         byte[] input = {0, (byte) 146, 96, (byte) 221, invalidLonArray[0],invalidLonArray[1],invalidLonArray[2],invalidLonArray[3]};
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
