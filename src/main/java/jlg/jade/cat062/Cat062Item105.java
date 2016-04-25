@@ -21,14 +21,16 @@ public class Cat062Item105 extends FixedLengthAsterixItem {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
+        //MSB must be interpreted as signed, so we do not covert it to unsigned value
+
         this.latitudeWsg84 =
-                        Byte.toUnsignedInt(input[offset]) * 256 * 256 * 256 +
+                        input[offset] * 256 * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 1]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 2]) * 256 +
                         Byte.toUnsignedInt(input[offset + 3]);
 
         this.longitudeWsg84 =
-                Byte.toUnsignedInt(input[offset+4]) * 256 * 256 * 256 +
+                        input[offset+4] * 256 * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 5]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 6]) * 256 +
                         Byte.toUnsignedInt(input[offset + 7]);

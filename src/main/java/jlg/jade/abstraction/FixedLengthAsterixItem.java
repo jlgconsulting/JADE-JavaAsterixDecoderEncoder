@@ -14,9 +14,13 @@ import jlg.jade.common.AsterixDecodingException;
  * base class;
  */
 public abstract class FixedLengthAsterixItem extends AsterixItem implements DecodableFixedLength {
+    public FixedLengthAsterixItem(){
+        this.sizeInBytes = setSizeInBytes();
+        this.valid = true;
+    }
+
     @Override
     public int decode(byte[] input, int offset) {
-        this.sizeInBytes = setSizeInBytes();
         checkLength(input,offset);
         int newOffset = decodeFromByteArray(input,offset);
         this.valid = validate();
