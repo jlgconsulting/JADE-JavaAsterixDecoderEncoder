@@ -22,7 +22,7 @@ import java.util.BitSet;
 
 import static org.junit.Assert.assertEquals;
 
-public class AsterixCat062DecodingTest {
+public class Cat062DecodingTest {
 
     @Test
     public void when_file_is_used_as_input_should_decode_cat_062_message_from_larger_sample() throws IOException {

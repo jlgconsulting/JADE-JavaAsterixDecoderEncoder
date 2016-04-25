@@ -14,16 +14,16 @@ import java.util.BitSet;
 
 /**
  * This class maps the FSPEC structure of Asterix Cat-062. Internally, it uses an array of booleans that
- * are true if the item is in the message and false otherwise. You can use this array in conjuction with the
- * AsterixCat062UAP enum to make code more understandable.
+ * are true if the item is in the message and false otherwise. You can use this array in conjunction with the
+ * Cat062UAP enum to make code more understandable.
  */
-public class AsterixCat062Fspec extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
+public class Cat062Fspec extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
     private final int FSPEC_LENGTH = 40;
     private final int FSPEC_MAX_BYTES = 5;
     private final int BYTE_LENGTH = 8;
     boolean[] fspecList;
 
-    public AsterixCat062Fspec(){
+    public Cat062Fspec(){
         this.fspecList = new boolean[FSPEC_LENGTH];
     }
 
@@ -41,7 +41,7 @@ public class AsterixCat062Fspec extends DebugMessageSource implements DecodableF
             for(int j=0;j<BYTE_LENGTH;j++){
                 fspecList[j + (i*8)] = bs.get(j);
                 if(bs.get(j)) {
-                    appendDebugMsg("Cat062 " + AsterixCat062UAP.values()[j + (i * 8)] + " has been added to FSPEC with a value of 1");
+                    appendDebugMsg("Cat062 " + Cat062UAP.values()[j + (i * 8)] + " has been added to FSPEC with a value of 1");
                     appendNewLine();
                 }
             }
@@ -66,7 +66,7 @@ public class AsterixCat062Fspec extends DebugMessageSource implements DecodableF
      * @param cat062Item the cat 062 item to verify
      * @return true, if the given item exists in the FSPEC, false otherwise
      */
-    public boolean isItemInFspec(AsterixCat062UAP cat062Item){
+    public boolean isItemInFspec(Cat062UAP cat062Item){
         return fspecList[cat062Item.ordinal()];
     }
 

@@ -13,12 +13,14 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Represents a single Asterix entity which contains a number of data items
  */
 public class AsterixCat062Record extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
-    private AsterixCat062Fspec fspec;
-    private AsterixCat062Item010 item010;
-    private AsterixCat062Item015 item015;
+    private Cat062Fspec fspec;
+    private Cat062Item010 item010;
+    private Cat062Item015 item015;
+    private Cat062Item070 item070;
+    private Cat062Item105 cat062Item105;
 
     public AsterixCat062Record(){
-        this.fspec = new AsterixCat062Fspec();
+        this.fspec = new Cat062Fspec();
     }
 
     @Override

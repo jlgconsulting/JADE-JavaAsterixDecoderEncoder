@@ -14,11 +14,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Cat-062 Item 010 - Data Source Identifier - Mandatory
  * Identification of the system sending the data (SAC-SIC)
  */
-public class AsterixCat062Item010 extends AsterixItem implements DecodableFixedLength, EncodableFixedLength {
+public class Cat062Item010 extends FixedLengthAsterixItem {
     private int sac;
     private int sic;
 
-    public AsterixCat062Item010() {
+    public Cat062Item010() {
         this.sizeInBytes = AsterixItemLength.TWO_BYTES.getValue();
         this.sac = 0;
         this.sic = 0;
@@ -33,9 +33,8 @@ public class AsterixCat062Item010 extends AsterixItem implements DecodableFixedL
     }
 
     @Override
-    public int decode(byte[] input, int offset) {
-        reset();
-        checkLength(input, offset, this.sizeInBytes);
+    protected int decodeFromByteArray(byte[] input, int offset) {
+        checkLength(input, offset);
 
         this.sac = Byte.toUnsignedInt(input[offset]);
         this.sic = Byte.toUnsignedInt(input[offset + 1]);
@@ -48,13 +47,12 @@ public class AsterixCat062Item010 extends AsterixItem implements DecodableFixedL
     }
 
     @Override
-    public int encode(byte[] dest, int offset) {
-        throw new NotImplementedException();
+    protected boolean validate() {
+        return true;
     }
 
     @Override
-    public void reset() {
-        this.sac = 0;
-        this.sic = 0;
+    protected int setSizeInBytes() {
+        return AsterixItemLength.TWO_BYTES.getValue();
     }
 }

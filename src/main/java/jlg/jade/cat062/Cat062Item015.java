@@ -6,25 +6,19 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.*;
+import jlg.jade.abstraction.FixedLengthAsterixItem;
 import jlg.jade.asterix.AsterixItemLength;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Cat 062 Item 015 - Service Identification - Optional
  * Identification of the service provided to one or more users
  */
-public class AsterixCat062Item015 extends AsterixItem implements DecodableFixedLength, EncodableFixedLength {
+public class Cat062Item015 extends FixedLengthAsterixItem {
     private int serviceIdentification;
 
-    public AsterixCat062Item015(){
-        sizeInBytes = AsterixItemLength.ONE_BYTE.getValue();
-    }
-
     @Override
-    public int decode(byte[] input, int offset) {
-        reset();
-        checkLength(input, offset, this.sizeInBytes);
+    protected int decodeFromByteArray(byte[] input, int offset) {
+        checkLength(input, offset);
 
         this.serviceIdentification = Byte.toUnsignedInt(input[offset]);
 
@@ -35,17 +29,16 @@ public class AsterixCat062Item015 extends AsterixItem implements DecodableFixedL
     }
 
     @Override
-    public int encode(byte[] dest, int offset) {
-        throw new NotImplementedException();
+    protected boolean validate() {
+        return true;
     }
 
     @Override
-    public void reset() {
-        this.serviceIdentification = 0;
+    protected int setSizeInBytes() {
+        return AsterixItemLength.ONE_BYTE.getValue();
     }
 
     public int getServiceIdentification() {
         return this.serviceIdentification;
     }
-
 }

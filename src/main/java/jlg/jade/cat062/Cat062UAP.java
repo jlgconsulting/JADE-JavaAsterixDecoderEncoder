@@ -13,7 +13,7 @@ package jlg.jade.cat062;
  * data, we have mapped the position of each bit (reverse order as this is the way data is
  * represented as BitSet
  */
-public enum AsterixCat062UAP {
+public enum Cat062UAP {
     //first byte
     FXBIT1,
     ITEM_185,

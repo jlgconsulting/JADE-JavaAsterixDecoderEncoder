@@ -7,8 +7,7 @@
 package jlg.jade.test.asterix;
 
 import jlg.jade.common.AsterixDecodingException;
-import jlg.jade.abstraction.AsterixItem;
-import jlg.jade.cat062.AsterixCat062Item015;
+import jlg.jade.cat062.Cat062Item015;
 import jlg.jade.common.Constants;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class AsterixCat062Item015DecodingTest {
+public class Cat062Item015DecodingTest {
     private Logger logger;
 
     @Before
@@ -31,7 +30,7 @@ public class AsterixCat062Item015DecodingTest {
         //arrange
         byte inputData[] = {1,2,3,4};
         int offset = 4;
-        AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
+        Cat062Item015 asterixItem = new Cat062Item015();
 
         //act
         asterixItem.decode(inputData,offset);
@@ -42,7 +41,7 @@ public class AsterixCat062Item015DecodingTest {
         //arrange
         byte[] data = {(byte) 200};
         int offset = 0;
-        AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
+        Cat062Item015 asterixItem = new Cat062Item015();
 
         //act
         asterixItem.decode(data, offset);
@@ -57,7 +56,7 @@ public class AsterixCat062Item015DecodingTest {
         //arrange
         byte[] data = {(byte) 200};
         int offset = 0;
-        AsterixCat062Item015 asterixItem = new AsterixCat062Item015();
+        Cat062Item015 asterixItem = new Cat062Item015();
 
         //act
         int result = asterixItem.decode(data, offset);

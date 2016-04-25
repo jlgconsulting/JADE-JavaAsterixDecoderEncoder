@@ -6,9 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.AsterixItem;
-import jlg.jade.abstraction.DecodableFixedLength;
-import jlg.jade.abstraction.EncodableFixedLength;
+import jlg.jade.abstraction.FixedLengthAsterixItem;
 import jlg.jade.asterix.AsterixItemLength;
 
 import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT062;
@@ -17,25 +15,12 @@ import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT062;
  * Cat 062 Item 105 - Calculated Position in WSG84 coordinates - Optional
  * Unit of measure for lat and lon is 180/pow(2,25). degrees
  */
-public class AsterixCat062Item105 extends AsterixItem implements DecodableFixedLength, EncodableFixedLength {
+public class Cat062Item105 extends FixedLengthAsterixItem {
     private int latitudeWsg84;
     private int longitudeWsg84;
 
-    public AsterixCat062Item105() {
-        this.sizeInBytes = AsterixItemLength.EIGHT_BYTES.getValue();
-    }
-
     @Override
-    public void reset() {
-        this.latitudeWsg84 = 0;
-        this.longitudeWsg84 = 0;
-    }
-
-    @Override
-    public int decode(byte[] input, int offset) {
-        reset();
-        checkLength(input, offset, this.sizeInBytes);
-
+    protected int decodeFromByteArray(byte[] input, int offset) {
         this.latitudeWsg84 =
                         Byte.toUnsignedInt(input[offset]) * 256 * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 1]) * 256 * 256 +
@@ -48,23 +33,35 @@ public class AsterixCat062Item105 extends AsterixItem implements DecodableFixedL
                         Byte.toUnsignedInt(input[offset + 6]) * 256 +
                         Byte.toUnsignedInt(input[offset + 7]);
 
+        appendItemDebugMsg("Latitude in Asterix", latitudeWsg84);
+        appendNewLine();
+        appendItemDebugMsg("Latitude in WSG84", getLatitudeDecimalWsg84());
+        appendNewLine();
+        appendItemDebugMsg("Longitude in Asterix", longitudeWsg84);
+        appendNewLine();
+        appendItemDebugMsg("Longitude in WSG84", getLongitudeDecimalWsg84());
+        appendNewLine();
+
         return offset + this.getSizeInBytes();
     }
 
     @Override
-    public int encode(byte[] dest, int offset) {
-        return 0;
+    protected boolean validate() {
+        if(getLatitudeDecimalWsg84() < -90 || getLatitudeDecimalWsg84() > 90){
+            appendDebugMsg("Item is not valid. Latitude is not within -90,90 range. Latitude: " + getLatitudeDecimalWsg84());
+            return false;
+        }
+        if(getLongitudeDecimalWsg84() < -180 || getLongitudeDecimalWsg84() > 180){
+            appendDebugMsg("Item is not valid. Longitude is not within -180,180 range. Longitude: " + getLongitudeWsg84());
+            return false;
+        }
+
+        return true;
     }
 
     @Override
-    protected void validate() {
-        if(getLatitudeDecimalWsg84() < -90 || getLatitudeDecimalWsg84() > 90){
-            appendDebugMsg("Latitude not valid according to specifications (between -90 and 90). Latitude: " + this.getLatitudeDecimalWsg84());
-        }
-        if(getLongitudeDecimalWsg84() < -180 || getLongitudeDecimalWsg84() > 180){
-            appendDebugMsg("Longitude not valid according to specifications (between -180 and 180). Longitude: " + this.getLongitudeWsg84());
-        }
-        this.isValid = false;
+    protected int setSizeInBytes() {
+        return AsterixItemLength.EIGHT_BYTES.getValue();
     }
 
     public int getLatitudeWsg84() {

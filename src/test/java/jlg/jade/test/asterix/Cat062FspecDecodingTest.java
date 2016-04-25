@@ -6,8 +6,8 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.AsterixCat062Fspec;
-import jlg.jade.cat062.AsterixCat062UAP;
+import jlg.jade.cat062.Cat062Fspec;
+import jlg.jade.cat062.Cat062UAP;
 import jlg.jade.common.Constants;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,54 +35,54 @@ public class Cat062FspecDecodingTest {
         byte[] fspecInputData = new byte[]{(byte) 191,79, (byte) 173,3,2};
 
         //act
-        AsterixCat062Fspec fspec = new AsterixCat062Fspec();
+        Cat062Fspec fspec = new Cat062Fspec();
         fspec.decode(fspecInputData, 0);
 
         //assert
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_010));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.SPAREBIT1));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_015));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_070));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_105));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_100));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_185));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.FXBIT1));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_010));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.SPAREBIT1));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_015));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_070));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_105));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_100));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_185));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.FXBIT1));
 
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_210));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_060));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_245));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_380));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_040));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_080));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_290));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.FXBIT2));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_210));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_060));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_245));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_380));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_040));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_080));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_290));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.FXBIT2));
 
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_200));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_295));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_136));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_130));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_135));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_220));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_390));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.FXBIT3));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_200));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_295));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_136));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_130));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_135));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_220));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_390));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.FXBIT3));
 
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_270));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_300));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_110));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_120));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_510));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.ITEM_500));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.ITEM_340));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.FXBIT4));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_270));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_300));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_110));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_120));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_510));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.ITEM_500));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_340));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.FXBIT4));
 
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.SPAREBIT2));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.SPAREBIT3));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.SPAREBIT4));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.SPAREBIT5));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.SPAREBIT6));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.RESERVED_EXPANSION));
-        assertTrue(fspec.isItemInFspec(AsterixCat062UAP.SPECIAL_PURPOSE));
-        assertFalse(fspec.isItemInFspec(AsterixCat062UAP.FXBIT5));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.SPAREBIT2));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.SPAREBIT3));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.SPAREBIT4));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.SPAREBIT5));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.SPAREBIT6));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.RESERVED_EXPANSION));
+        assertTrue(fspec.isItemInFspec(Cat062UAP.SPECIAL_PURPOSE));
+        assertFalse(fspec.isItemInFspec(Cat062UAP.FXBIT5));
     }
 
     @Test
@@ -91,7 +91,7 @@ public class Cat062FspecDecodingTest {
         byte[] fspecInputData = new byte[]{(byte) 191,79, (byte) 173,3,2};
 
         //act
-        AsterixCat062Fspec fspec = new AsterixCat062Fspec();
+        Cat062Fspec fspec = new Cat062Fspec();
         fspec.decode(fspecInputData, 0);    //5 octets => current index will increase by 5
 
         //assert
@@ -105,7 +105,7 @@ public class Cat062FspecDecodingTest {
         byte[] fspecInputData = new byte[]{(byte) 191,79, (byte) 173,3,2};
 
         //act
-        AsterixCat062Fspec fspec = new AsterixCat062Fspec();
+        Cat062Fspec fspec = new Cat062Fspec();
         int result = fspec.decode(fspecInputData, 0);    //5 octets => current index will increase by 5
 
         //assert

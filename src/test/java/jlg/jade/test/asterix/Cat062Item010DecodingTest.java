@@ -8,9 +8,8 @@
 package jlg.jade.test.asterix;
 
 import jlg.jade.common.AsterixDecodingException;
-import jlg.jade.abstraction.AsterixItem;
 import jlg.jade.asterix.AsterixItemLength;
-import jlg.jade.cat062.AsterixCat062Item010;
+import jlg.jade.cat062.Cat062Item010;
 import jlg.jade.common.Constants;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
-public class AsterixCat062Item010DecodingTest {
+public class Cat062Item010DecodingTest {
 
     private Logger logger;
 
@@ -35,7 +34,7 @@ public class AsterixCat062Item010DecodingTest {
         //arrange
         byte[] data = {1, 2, 3, 4};
         int offset = 3;
-        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
+        Cat062Item010 asterixItem = new Cat062Item010();
 
         //act
         asterixItem.decode(data, offset);
@@ -46,7 +45,7 @@ public class AsterixCat062Item010DecodingTest {
         //arrange
         byte[] data = {(byte) 70, (byte) 16};
         int offset = 0;
-        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
+        Cat062Item010 asterixItem = new Cat062Item010();
 
         //act
         asterixItem.decode(data, offset);
@@ -63,7 +62,7 @@ public class AsterixCat062Item010DecodingTest {
         //arrange
         byte[] data = {(byte) 70, (byte) 16};
         int offset = 0;
-        AsterixCat062Item010 asterixItem = new AsterixCat062Item010();
+        Cat062Item010 asterixItem = new Cat062Item010();
 
         //act
         int result = asterixItem.decode(data, offset);

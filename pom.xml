@@ -44,11 +44,19 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
             <groupId>jlg-consulting</groupId>
             <artifactId>final-frame-api</artifactId>
             <version>1.0</version>
             <scope>test</scope>
-        </dependency>
+        </dependency><dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+    </dependency>
     </dependencies>
 
     <build>

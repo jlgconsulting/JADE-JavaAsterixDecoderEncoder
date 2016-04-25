@@ -8,6 +8,8 @@ package jlg.jade.test.utils;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class TestHelper {
     public static File getFileFromResource(String fileName){
@@ -20,5 +22,9 @@ public class TestHelper {
     public static InputStream getFileInputStreamFromResource(String fileName){
         InputStream fis = TestHelper.class.getClassLoader().getResourceAsStream(fileName);
         return fis;
+    }
+
+    public static  byte[] fromIntToByteArray(int val, int arrayLength){
+        return ByteBuffer.allocate(arrayLength).putInt(val).array();
     }
 }

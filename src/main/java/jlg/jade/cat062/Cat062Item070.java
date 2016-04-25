@@ -15,23 +15,12 @@ import jlg.jade.asterix.AsterixItemLength;
  * expressed as UTC.
  * Unit of measure is 1/128 sec
  */
-public class AsterixCat062Item070 extends AsterixItem implements DecodableFixedLength, EncodableFixedLength {
+public class Cat062Item070 extends FixedLengthAsterixItem {
     private int timeOfTrack;
 
-    public AsterixCat062Item070() {
-        this.sizeInBytes = AsterixItemLength.THREE_BYTES.getValue();
-    }
-
-
     @Override
-    public void reset() {
-        this.timeOfTrack = 0;
-    }
-
-    @Override
-    public int decode(byte[] input, int offset) {
-        reset();
-        checkLength(input, offset, this.sizeInBytes);
+    protected int decodeFromByteArray(byte[] input, int offset) {
+        checkLength(input, offset);
 
         this.timeOfTrack =
                 Byte.toUnsignedInt(input[offset]) * 256 * 256 +
@@ -45,8 +34,13 @@ public class AsterixCat062Item070 extends AsterixItem implements DecodableFixedL
     }
 
     @Override
-    public int encode(byte[] dest, int offset) {
-        return 0;
+    protected boolean validate() {
+        return true;
+    }
+
+    @Override
+    protected int setSizeInBytes() {
+        return AsterixItemLength.THREE_BYTES.getValue();
     }
 
     public int getTimeOfTrack() {

@@ -7,20 +7,20 @@
 package jlg.jade.test.asterix;
 
 
-import jlg.jade.cat062.AsterixCat062Item070;
+import jlg.jade.cat062.Cat062Item070;
 import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class AsterixCat062Item070DecodingTest {
+public class Cat062Item070DecodingTest {
 
     @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
         public void when_remaining_input_data_length_less_than_3_bytes_should_throw(){
         //arrange
         byte[] input = {1,2};
         int offset = 0;
-        AsterixCat062Item070 item = new AsterixCat062Item070();
+        Cat062Item070 item = new Cat062Item070();
 
         //act
         item.decode(input, offset);
@@ -31,7 +31,7 @@ public class AsterixCat062Item070DecodingTest {
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;
-        AsterixCat062Item070 item = new AsterixCat062Item070();
+        Cat062Item070 item = new Cat062Item070();
 
         //act
         item.decode(input,offset);
@@ -45,7 +45,7 @@ public class AsterixCat062Item070DecodingTest {
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;
-        AsterixCat062Item070 item = new AsterixCat062Item070();
+        Cat062Item070 item = new Cat062Item070();
 
         //act
         int result = item.decode(input,offset);
@@ -59,7 +59,7 @@ public class AsterixCat062Item070DecodingTest {
         //arrange
         byte[] input = {103, (byte) 172, (byte) 233};
         int offset = 0;
-        AsterixCat062Item070 item = new AsterixCat062Item070();
+        Cat062Item070 item = new Cat062Item070();
 
         //act
         item.decode(input,offset);
