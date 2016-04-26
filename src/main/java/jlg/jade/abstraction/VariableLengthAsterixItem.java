@@ -6,8 +6,6 @@
 */
 package jlg.jade.abstraction;
 
-import jlg.jade.asterix.AsterixItemLength;
-
 import java.util.BitSet;
 
 /**
@@ -28,7 +26,7 @@ public abstract class VariableLengthAsterixItem extends AsterixItem implements D
 
     protected abstract int decodeFromByteArray(byte[] input, int offset);
 
-    protected int setSizeInBytes(byte[] input, int offset) {
+    private int setSizeInBytes(byte[] input, int offset) {
         int currentLength = 1;
         BitSet bs = BitSet.valueOf(new byte[]{input[offset+currentLength-1]});
 
