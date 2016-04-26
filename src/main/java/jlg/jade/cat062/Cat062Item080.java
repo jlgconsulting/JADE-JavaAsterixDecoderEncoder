@@ -14,6 +14,7 @@ import java.util.BitSet;
  * Cat 062 Item 080 - Track Status - Mandatory
  * Variable length data item comprising a first part of one Octet,
  * followed by 1-Octet extents as necessary.
+ * @implNote Extents 2 and 3 are not currently implemented. Extent 1 is partially implemented
  */
 public class Cat062Item080 extends VariableLengthAsterixItem {
     private int cfnValue;
@@ -21,6 +22,8 @@ public class Cat062Item080 extends VariableLengthAsterixItem {
     private int mrhValue;
     private int spiValue;
     private int monValue;
+    private int fpcValue;
+    private int simValue;
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
@@ -34,21 +37,100 @@ public class Cat062Item080 extends VariableLengthAsterixItem {
         decodeMonValue(octetBits);
 
         if (this.sizeInBytes >= 2) {
-            octetBits = BitSet.valueOf(new byte[]{input[offset + 1]});
             //parse first extent
+            octetBits = BitSet.valueOf(new byte[]{input[offset + 1]});
+
+            decodeFpcValue(octetBits);
+            decodeSimValue(octetBits);
         }
 
-        if (this.sizeInBytes >= 3) {
-            octetBits = BitSet.valueOf(new byte[]{input[offset + 2]});
-            //parse second extent
-        }
-
-        if (this.sizeInBytes >= 3) {
-            octetBits = BitSet.valueOf(new byte[]{input[offset + 3]});
-            //parse third extent
-        }
+        /**
+         * @implNote Extents 2 and 3 are not currently implemented. Extent 1 is partially implemented
+         * @implNote Extents 2 and 3 are not currently implemented. Extent 1 is partially implemented
+         */
 
         return offset + this.sizeInBytes;
+    }
+
+    @Override
+    protected boolean validate() {
+        return false;
+    }
+
+    /**
+     * Get the confirmed track value
+     * @return
+     * 0 - confirmed
+     * 1 - tentative
+     */
+    public int getCfnValue() {
+        return cfnValue;
+    }
+
+    /**
+     * Get the source of calculated altitude for I062/130
+     * @return
+     * 0 - no source
+     * 1 - GNSS
+     * 2 - 3D radar
+     * 3 - triangulation
+     * 4 - height from coverage
+     * 5 - speed look-up table
+     * 6 - default height
+     * 7 - multilateration
+     */
+    public int getSrcValue() {
+        return srcValue;
+    }
+
+    /**
+     * Get the most reliable height value
+     * @return
+     * 0 - barometric altitude more reliable
+     * 1 - geometric altitude more reliable
+     */
+    public int getMrhValue() {
+        return mrhValue;
+    }
+
+    /**
+     * Get the presence of SPI
+     * @return
+     * 0 - default value
+     * 1 - SPI present in last report
+     */
+    public int getSpiValue() {
+        return spiValue;
+    }
+
+    /**
+     * Get the sensor value
+     * @return
+     * 0 - multisensor track
+     * 1 - monosensor track
+     */
+    public int getMonValue() {
+        return monValue;
+    }
+
+    /**
+     * Get the flight plan correlation value
+     * @return
+     * 0 - not correlated with plan
+     * 1 - correlated with plan
+     */
+    public int getFpcValue() {
+        return fpcValue;
+    }
+
+    /**
+     * Get track simulation value
+     * @return
+     * 0 - actual track
+     * 1 - simulated track
+     */
+    public int getSimValue() {
+        return simValue;
     }
 
     private void decodeCfnValue(BitSet fixedPartBits) {
@@ -59,31 +141,6 @@ public class Cat062Item080 extends VariableLengthAsterixItem {
             this.cfnValue = 0;
         }
         appendItemDebugMsg("CFN (0=Confirmed,1=Tentative)", this.cfnValue);
-    }
-
-    @Override
-    protected boolean validate() {
-        return false;
-    }
-
-    public int getCfnValue() {
-        return cfnValue;
-    }
-
-    public int getSrcValue() {
-        return srcValue;
-    }
-
-    public int getMrhValue() {
-        return mrhValue;
-    }
-
-    public int getSpiValue() {
-        return spiValue;
-    }
-
-    public int getMonValue() {
-        return monValue;
     }
 
     private void decodeSrcValue(BitSet fixedPartBits) {
@@ -135,5 +192,25 @@ public class Cat062Item080 extends VariableLengthAsterixItem {
             this.monValue = 0;
         }
         appendItemDebugMsg("MON (0=Multisensor,1=Monosensor)", this.monValue);
+    }
+
+    private void decodeFpcValue(BitSet firstExtentBits){
+        final int FPC_BIT_INDEX = 4;
+        if (firstExtentBits.get(FPC_BIT_INDEX)) {
+            this.fpcValue = 1;
+        } else {
+            this.fpcValue = 0;
+        }
+        appendItemDebugMsg("FPC (0=Not correlated,1=Correlated with plan)", this.fpcValue);
+    }
+
+    private void decodeSimValue(BitSet firstExtentBits){
+        final int SIM_BIT_INDEX = 7;
+        if (firstExtentBits.get(SIM_BIT_INDEX)) {
+            this.simValue = 1;
+        } else {
+            this.simValue = 0;
+        }
+        appendItemDebugMsg("SIM (0=Actual track,1=Simulated track)", this.fpcValue);
     }
 }

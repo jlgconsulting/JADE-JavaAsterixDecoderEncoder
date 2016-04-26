@@ -154,4 +154,51 @@ public class Cat062Item080DecodingTest {
         assertEquals("MON not decoded correctly", expectedMon, item.getMonValue());
     }
 
+    @Test
+    @Parameters({"1,0,0","1,16,1"})
+    public void the_decode_method_should_correctly_decode_fpc_info(int firstOctet, int secondOctet, int expectedFpc) {
+
+        /**
+         * @implNote We assume only the first two octest are present to simplify. The first octet is 1, in order
+         * to conuinue to read the first extent
+         * 16 = 0001 0000 => fpc present
+         * 0  = 0000 0000 => fpc absent
+         */
+
+        //arrange
+        byte[] input = {(byte) firstOctet, (byte) secondOctet};
+        int offset = 0;
+        Cat062Item080 item = new Cat062Item080();
+
+        //act
+        item.decode(input, offset);
+
+        //assert
+        assertEquals("FPC not decoded correctly", expectedFpc, item.getFpcValue());
+    }
+
+
+    @Test
+    @Parameters({"1,0,0","1,128,1"})
+    public void the_decode_method_should_correctly_decode_sim_info(int firstOctet, int secondOctet, int expectedSim) {
+
+        /**
+         * @implNote We assume only the first two octest are present to simplify. The first octet is 1, in order
+         * to conuinue to read the first extent
+         * 128 = 1000 0000 => sim present
+         * 0   = 0000 0000 => sim absent
+         */
+
+        //arrange
+        byte[] input = {(byte) firstOctet, (byte) secondOctet};
+        int offset = 0;
+        Cat062Item080 item = new Cat062Item080();
+
+        //act
+        item.decode(input, offset);
+
+        //assert
+        assertEquals("SIM not decoded correctly", expectedSim, item.getSimValue());
+    }
+
 }
