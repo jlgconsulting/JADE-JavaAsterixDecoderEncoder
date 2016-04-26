@@ -20,8 +20,6 @@ abstract class AsterixItem extends DebugMessageSource {
 
     protected abstract boolean validate();
 
-    protected abstract int setSizeInBytes();
-
     /**
      * @return True when item is valid according to Asterix validation rules, and false otherwise.
      */

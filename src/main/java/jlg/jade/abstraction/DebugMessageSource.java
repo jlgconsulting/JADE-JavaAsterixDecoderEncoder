@@ -26,7 +26,7 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendItemDebugMsg(String property, Object value) {
-        debugStringBuilder.append(String.format("%-30s %-20s", property, value));
+        debugStringBuilder.append(String.format("%-50s %-20s", property, value));
         debugStringBuilder.append(System.lineSeparator());
     }
 

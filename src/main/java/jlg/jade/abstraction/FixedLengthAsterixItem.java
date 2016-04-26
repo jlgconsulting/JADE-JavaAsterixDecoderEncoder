@@ -27,6 +27,8 @@ public abstract class FixedLengthAsterixItem extends AsterixItem implements Deco
         return newOffset;
     }
 
+    protected abstract int setSizeInBytes();
+
     protected abstract int decodeFromByteArray(byte[] input, int offset);
 
     protected void checkLength(byte[] input, int offset) {
