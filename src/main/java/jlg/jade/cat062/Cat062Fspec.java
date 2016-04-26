@@ -20,18 +20,19 @@ import java.util.BitSet;
  * Cat062UAP enum to make code more understandable.
  */
 public class Cat062Fspec extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
-    private final int FSPEC_LENGTH = 40;
-    private final int FSPEC_MAX_BYTES = 5;
-    private final int BYTE_LENGTH = 8;
     private boolean[] fspecList;
 
     public Cat062Fspec(){
+        final int FSPEC_LENGTH = 40;
         this.fspecList = new boolean[FSPEC_LENGTH];
     }
 
     @Override
     public int decode(byte[] input, int offset){
         appendDebugMsg("## FSPEC Data:");
+
+        final int FSPEC_MAX_BYTES = 5;
+        final int BYTE_LENGTH = 8;
 
         BitSet bs;
         for(int i=0;i<FSPEC_MAX_BYTES;i++){

@@ -17,7 +17,7 @@ public enum AsterixCategory {
 
     private int value;
 
-    private AsterixCategory(int value){
+    AsterixCategory(int value){
         this.value = value;
     }
 

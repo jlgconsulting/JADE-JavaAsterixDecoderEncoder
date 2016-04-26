@@ -18,7 +18,7 @@ public enum AsterixItemLength {
 
     private int value;
 
-    private AsterixItemLength(int value) {
+    AsterixItemLength(int value) {
         this.value = value;
     }
 
