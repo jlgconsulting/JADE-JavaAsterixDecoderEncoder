@@ -10,7 +10,7 @@ import jlg.jade.cat062.Cat062Item245;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class Cat062Item245Test {
+public class Cat062Item245DecodingTest {
 
     /**
      * This item is not used any more, so decoding it is not necessary. The only impl it has
