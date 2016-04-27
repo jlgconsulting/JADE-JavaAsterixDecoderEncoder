@@ -14,6 +14,7 @@ import jlg.jade.asterix.AsterixItemLength;
  */
 public class Item380Subfield1 extends AsterixSubfield {
     private String targetAddress;
+    private String targetAddressHex;
 
     @Override
     protected int setSizeInBytes() {
@@ -22,11 +23,18 @@ public class Item380Subfield1 extends AsterixSubfield {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
-        this.targetAddress =
-                String.format("%d%d%d",
+        this.targetAddress = String.format("%d %d %d",
                         Byte.toUnsignedInt(input[offset]),
                         Byte.toUnsignedInt(input[offset + 1]),
                         Byte.toUnsignedInt(input[offset + 2]));
+
+        this.targetAddressHex = String.format("%s%s%s",
+                        Integer.toHexString(Byte.toUnsignedInt(input[offset])),
+                        Integer.toHexString(Byte.toUnsignedInt(input[offset+1])),
+                        Integer.toHexString(Byte.toUnsignedInt(input[offset+2])));
+
+        appendItemDebugMsg("Subfield #1 - Target Address (dec)", targetAddress);
+        appendItemDebugMsg("Subfield #2 - Target Address (hex)", targetAddressHex);
 
         return offset + this.sizeInBytes;
     }
@@ -38,5 +46,14 @@ public class Item380Subfield1 extends AsterixSubfield {
 
     public String getTargetAddress() {
         return targetAddress;
+    }
+
+    /**
+     * Get the target address in hex format (Mode S code). This format is used in operational
+     * HMI apps.
+     * @return
+     */
+    public String getTargetAddressHex() {
+        return targetAddressHex;
     }
 }

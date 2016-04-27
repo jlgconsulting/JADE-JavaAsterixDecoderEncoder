@@ -24,7 +24,7 @@ public class Item380Subfield1Test {
     }
 
     @Test
-    public void the_decode_method_should_correclty_decode_data(){
+    public void the_decode_method_should_correctlty_decode_data(){
         //arrange
         byte[] input = {75, (byte) 170, 104};
         int offset = 0;
@@ -35,7 +35,24 @@ public class Item380Subfield1Test {
         subfield.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Data not decoded correctly", "75170104", subfield.getTargetAddress());
+        assertEquals("Data not decoded correctly", "75 170 104", subfield.getTargetAddress());
+        assertTrue(subfield.isValid());
+    }
+
+    @Test
+    public void the_decode_method_should_convert_target_address_to_hex(){
+        //arrange
+        byte[] input = {75, (byte) 170, 104};
+        int offset = 0;
+        Item380Subfield1 subfield = new Item380Subfield1();
+
+
+        //act
+        subfield.decode(input, offset, input.length);
+
+        //assert
+        String expectedHex = "4baa68";
+        assertEquals("Mode S Hex address not converted correctly", expectedHex, subfield.getTargetAddressHex());
         assertTrue(subfield.isValid());
     }
 
@@ -53,4 +70,6 @@ public class Item380Subfield1Test {
         //assert
         assertEquals("Offset not incremented after decoding data", 3, newOffset);
     }
+
+
 }
