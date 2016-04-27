@@ -10,27 +10,30 @@ import jlg.jade.abstraction.AsterixSubfield;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
- * Item 380 Subfield #2 - Target Identification
- * Characters 1-8 (coded on 6 bits each) defining a target
- * identification when flight plan is available or the registration
- * marking when no flight plan is available
+ * Item 380 Subfield #4 - Indicated Air Speed
+ *
+ * @implSpec Not usually used anymore
  */
-public class Item380Subfield2 extends AsterixSubfield {
+public class Item380Subfield4 extends AsterixSubfield {
     @Override
     protected int setSizeInBytes() {
-        return AsterixItemLength.SIX_BYTES.getValue();
+        return AsterixItemLength.TWO_BYTES.getValue();
     }
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
-
         /**
          * @implNote
-         * This subfield is not decoded because it is not needed yet.
+         * Despite there are now two subfields (#26 and #27) reporting,
+         * respectively, the Indicated Airspeed track data and the Mach Number
+         * track data, this former subfield is kept free in order to prevent a full
+         * incompatibility with previous releases of ASTERIX Cat. 062 already
+         * implemented.
+         *
          * Will only increase offset.
          */
 
-        return offset + this.setSizeInBytes();
+        return offset + this.sizeInBytes;
     }
 
     @Override
