@@ -10,7 +10,7 @@ import jlg.jade.abstraction.AsterixSubfield;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
- * Item 380 Subfield #4 - Indicated Air Speed
+ * Item 380 Subfield #4 - Indicated Air Speed / Mach No
  *
  * @implSpec Not usually used anymore
  */
