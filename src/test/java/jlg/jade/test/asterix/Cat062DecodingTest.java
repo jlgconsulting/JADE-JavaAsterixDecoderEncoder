@@ -8,6 +8,8 @@ package jlg.jade.test.asterix;
 
 import jlg.finalframe.FinalFrameReader;
 import jlg.jade.AsterixDecoder;
+import jlg.jade.asterix.AsterixDataBlock;
+import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,11 +21,11 @@ import java.io.InterruptedIOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.BitSet;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class Cat062DecodingTest {
-
     @Test
     public void when_file_is_used_as_input_should_decode_cat_062_message_from_larger_sample() throws IOException {
         //arrange
@@ -142,16 +144,13 @@ public class Cat062DecodingTest {
     @Description("USed only for printing byte information that can help with developing the tool")
     @Ignore
     public void with_one_packet_should_print_bytes() throws IOException {
-        try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_cat062_one_packet.ff")) {
+        try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_one_packet_sample2.FF")) {
             FinalFrameReader ffReader = new FinalFrameReader();
             while (is.available() > 0) {
                 byte[] ffPayload = ffReader.read(is);
                 if (ffPayload != null) {
                     System.out.println("DATA BLOCK START");
                     for (int i=0;i<ffPayload.length;i++){
-                        int unsignedValue = Byte.toUnsignedInt(ffPayload[i]);
-
-                        System.out.print(String.format("%-8s",unsignedValue));
                         BitSet bs = BitSet.valueOf(new byte[]{ffPayload[i]});
                         System.out.print("ORIGINAL [ ");
                         for (int j=0;j<8;j++){
@@ -165,7 +164,7 @@ public class Cat062DecodingTest {
                         System.out.print("]");
 
                         System.out.print("   REVERSE [ ");
-                        for (int j=7;j>0;j--){
+                        for (int j=8;j>0;j--){
                             if(bs.get(j)){
                                 System.out.print(1 + " ");
                             }
@@ -173,9 +172,13 @@ public class Cat062DecodingTest {
                                 System.out.print(0 + " ");
                             }
                         }
-                        System.out.println("]");
+                        System.out.print("]   ");
+                        int unsignedValue = Byte.toUnsignedInt(ffPayload[i]);
 
-                        if(i == 0 || i==2 || i== 7){
+                        System.out.println(unsignedValue);
+
+
+                        if(i == 0 || i==2){
                             System.out.println("----------------------------------------------------------------");
                         }
                     }
