@@ -26,7 +26,7 @@ public class Item380Subfield2 extends AsterixSubfield {
 
         /**
          * @implNote
-         * This subfield is not decoded because it is not needed yet. 
+         * This subfield is not decoded because it is not needed yet.
          */
 
         return offset + this.setSizeInBytes();
