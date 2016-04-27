@@ -43,8 +43,7 @@ public class Item380Subfield5 extends AsterixSubfield{
     }
 
     /**
-     * Get the true air speed of the aircraft in knots
-     * @return
+     * @return The true air speed of the aircraft in knots
      */
     public int getTrueAirSpeedKn() {
         return trueAirSpeedKn;

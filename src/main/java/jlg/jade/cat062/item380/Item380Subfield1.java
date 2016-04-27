@@ -49,9 +49,8 @@ public class Item380Subfield1 extends AsterixSubfield {
     }
 
     /**
-     * Get the target address in hex format (Mode S code). This format is used in operational
+     * @return The target address in hex format (Mode S code). This format is used in operational
      * HMI apps.
-     * @return
      */
     public String getTargetAddressHex() {
         return targetAddressHex;

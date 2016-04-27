@@ -30,6 +30,8 @@ public class Item380Subfield2 extends AsterixSubfield {
          * Will only increase offset.
          */
 
+        appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
+
         return offset + this.setSizeInBytes();
     }
 
