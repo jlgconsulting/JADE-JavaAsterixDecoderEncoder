@@ -15,7 +15,7 @@ import jlg.jade.common.AsterixDecodingException;
 public abstract class AsterixSubfield extends FixedLengthAsterixItem implements Decodable {
     private boolean present;
 
-    public AsterixSubfield(){
+    protected AsterixSubfield(){
         this.sizeInBytes = setSizeInBytes();
         this.present = true;
     }

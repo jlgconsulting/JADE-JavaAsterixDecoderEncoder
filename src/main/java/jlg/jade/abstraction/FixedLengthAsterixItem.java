@@ -31,7 +31,7 @@ public abstract class FixedLengthAsterixItem extends AsterixItem implements Deco
 
     protected abstract int decodeFromByteArray(byte[] input, int offset);
 
-    protected void checkLength(byte[] input, int offset, int inputLength) {
+    void checkLength(byte[] input, int offset, int inputLength) {
         String itemName = this.getClass().getSimpleName();
 
         appendDebugMsg(itemName + ":");

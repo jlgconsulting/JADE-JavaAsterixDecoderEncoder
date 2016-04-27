@@ -51,7 +51,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
      *
      * @param input The raw data
      * @param offset The start offset in the raw data, at which reading should begin
-     * @param inputLength
+     * @param inputLength The ammount of data that nees to be read from the input
      * @return The new offset in the raw data
      */
     public int decode(byte[] input, int offset, int inputLength) {
