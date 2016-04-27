@@ -24,7 +24,7 @@ public class Cat062Item210DecodingTest {
         assertEquals("Size is not correct", 2, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_less_than_two_bytes_should_throw(){
         //arrange
         byte[] input = {1,2};
@@ -32,7 +32,7 @@ public class Cat062Item210DecodingTest {
         Cat062Item210 item = new Cat062Item210();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class Cat062Item210DecodingTest {
         Cat062Item210 item = new Cat062Item210();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Acceleration X axis not decoded correctly", -127, item.getAccelerationX());
@@ -60,7 +60,7 @@ public class Cat062Item210DecodingTest {
         Cat062Item210 item = new Cat062Item210();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Acceleration X axis not decoded correctly", 127, item.getAccelerationX());

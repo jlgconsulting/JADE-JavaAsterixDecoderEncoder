@@ -7,14 +7,14 @@
 package jlg.jade.cat062;
 
 import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.DecodableFixedLength;
-import jlg.jade.abstraction.EncodableFixedLength;
+import jlg.jade.abstraction.Decodable;
+import jlg.jade.abstraction.Encodable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Represents a single Asterix entity which contains a number of data items
  */
-public class AsterixCat062Record extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
+public class AsterixCat062Record extends DebugMessageSource implements Decodable, Encodable {
     private Cat062Fspec fspec;
     private Cat062Item010 item010;
     private Cat062Item015 item015;
@@ -26,7 +26,7 @@ public class AsterixCat062Record extends DebugMessageSource implements Decodable
     }
 
     @Override
-    public int decode(byte[] input, int offset) {
+    public int decode(byte[] input, int offset, int inputLength) {
         throw new NotImplementedException();
     }
 

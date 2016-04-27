@@ -25,7 +25,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         int expectedLength = 4;
@@ -41,7 +41,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        int newOffset = item.decode(input, offset);
+        int newOffset = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not incremented after decoding data", 4, newOffset);
@@ -63,7 +63,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("CFN not decoded correctly", expectedCfn, item.getCfnValue());
@@ -82,7 +82,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("SRC not decoded correctly", expectedSrc, item.getSrcValue());
@@ -104,7 +104,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("MRH not decoded correctly", expectedMrh, item.getMrhValue());
@@ -126,7 +126,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("SPI not decoded correctly", expectedSpi, item.getSpiValue());
@@ -148,7 +148,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("MON not decoded correctly", expectedMon, item.getMonValue());
@@ -171,7 +171,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("FPC not decoded correctly", expectedFpc, item.getFpcValue());
@@ -195,7 +195,7 @@ public class Cat062Item080DecodingTest {
         Cat062Item080 item = new Cat062Item080();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("SIM not decoded correctly", expectedSim, item.getSimValue());

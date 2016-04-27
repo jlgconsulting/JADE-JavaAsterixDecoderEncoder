@@ -13,10 +13,10 @@ import java.util.BitSet;
  * on the FX bit. If the FX bit is 0, then another octet of data is availbale, else the data
  * ends. Will be implemented by all Asterix items with variable length
  */
-public abstract class VariableLengthAsterixItem extends AsterixItem implements DecodableFixedLength {
+public abstract class VariableLengthAsterixItem extends AsterixItem implements Decodable {
 
     @Override
-    public int decode(byte[] input, int offset) {
+    public int decode(byte[] input, int offset, int inputLength) {
         this.sizeInBytes = setSizeInBytes(input, offset);
         int newOffset = decodeFromByteArray(input,offset);
         this.valid = validate();

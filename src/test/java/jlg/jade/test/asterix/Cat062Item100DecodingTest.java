@@ -24,7 +24,7 @@ public class Cat062Item100DecodingTest {
         assertEquals(6, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_data_less_than_6_bytes_should_throw() {
         //arrange
         byte[] input = {1, 2, 3, 4, 5};
@@ -32,7 +32,7 @@ public class Cat062Item100DecodingTest {
         Cat062Item100 item = new Cat062Item100();
 
         //assert
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class Cat062Item100DecodingTest {
         Cat062Item100 item = new Cat062Item100();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("X not decoded correctly", -1090753, item.getX());
@@ -59,7 +59,7 @@ public class Cat062Item100DecodingTest {
         Cat062Item100 item = new Cat062Item100();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("X not decoded correctly", 904291, item.getX());
@@ -75,7 +75,7 @@ public class Cat062Item100DecodingTest {
         Cat062Item100 item = new Cat062Item100();
 
         //act
-        int result = item.decode(input, offset);
+        int result = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not updated after data decoding", offset+6,result);

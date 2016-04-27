@@ -20,8 +20,6 @@ public class Cat062Item070 extends FixedLengthAsterixItem {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
-        checkLength(input, offset);
-
         this.timeOfTrack =
                 Byte.toUnsignedInt(input[offset]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 1]) * 256 +

@@ -34,7 +34,7 @@ public class Cat062Item245DecodingTest {
         int offset = 0;
 
         //act
-        int result = item.decode(input, offset);
+        int result = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not incremented after data decoding", offset + item.getSizeInBytes(), result);

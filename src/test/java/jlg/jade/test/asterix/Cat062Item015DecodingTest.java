@@ -23,7 +23,7 @@ public class Cat062Item015DecodingTest {
         assertEquals("Item size is not valid", 1, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_data_length_less_than_1_byte_should_throw(){
         //arrange
         byte inputData[] = {1,2,3,4};
@@ -31,7 +31,7 @@ public class Cat062Item015DecodingTest {
         Cat062Item015 asterixItem = new Cat062Item015();
 
         //act
-        asterixItem.decode(inputData,offset);
+        asterixItem.decode(inputData,offset, inputData.length);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class Cat062Item015DecodingTest {
         Cat062Item015 asterixItem = new Cat062Item015();
 
         //act
-        asterixItem.decode(data, offset);
+        asterixItem.decode(data, offset, data.length);
 
         //assert
         assertEquals("Service identification not decoded correctly", 200, asterixItem.getServiceIdentification());
@@ -57,7 +57,7 @@ public class Cat062Item015DecodingTest {
         Cat062Item015 asterixItem = new Cat062Item015();
 
         //act
-        int result = asterixItem.decode(data, offset);
+        int result = asterixItem.decode(data, offset, data.length);
 
         //assert
         assertEquals("Current index not incremented correctly", offset+1, result);

@@ -24,7 +24,7 @@ public class Cat062Item070DecodingTest {
         assertEquals("Item size is not valid", 3, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
         public void the_decode_method_when_remaining_input_data_length_less_than_3_bytes_should_throw(){
         //arrange
         byte[] input = {1,2};
@@ -32,7 +32,7 @@ public class Cat062Item070DecodingTest {
         Cat062Item070 item = new Cat062Item070();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class Cat062Item070DecodingTest {
         Cat062Item070 item = new Cat062Item070();
 
         //act
-        item.decode(input,offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Time of track information not decoded correctly", 6794473, item.getTimeOfTrack());
@@ -57,7 +57,7 @@ public class Cat062Item070DecodingTest {
         Cat062Item070 item = new Cat062Item070();
 
         //act
-        int result = item.decode(input,offset);
+        int result = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not incremented after decoding the data", offset + item.getSizeInBytes(), result);
@@ -71,7 +71,7 @@ public class Cat062Item070DecodingTest {
         Cat062Item070 item = new Cat062Item070();
 
         //act
-        item.decode(input,offset);
+        item.decode(input,offset, input.length);
 
         //assert
         assertEquals(14, item.getHours());

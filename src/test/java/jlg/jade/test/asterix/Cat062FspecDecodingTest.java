@@ -36,7 +36,7 @@ public class Cat062FspecDecodingTest {
 
         //act
         Cat062Fspec fspec = new Cat062Fspec();
-        fspec.decode(fspecInputData, 0);
+        fspec.decode(fspecInputData, 0, fspecInputData.length);
 
         //assert
         assertTrue(fspec.isItemInFspec(Cat062UAP.ITEM_010));
@@ -92,7 +92,7 @@ public class Cat062FspecDecodingTest {
 
         //act
         Cat062Fspec fspec = new Cat062Fspec();
-        fspec.decode(fspecInputData, 0);    //5 octets => current index will increase by 5
+        fspec.decode(fspecInputData, 0, fspecInputData.length);    //5 octets => current index will increase by 5
 
         //assert
         logger.debug(fspec.getDebugString());
@@ -106,7 +106,7 @@ public class Cat062FspecDecodingTest {
 
         //act
         Cat062Fspec fspec = new Cat062Fspec();
-        int result = fspec.decode(fspecInputData, 0);    //5 octets => current index will increase by 5
+        int result = fspec.decode(fspecInputData, 0, fspecInputData.length);    //5 octets => current index will increase by 5
 
         //assert
         assertEquals(5, result);

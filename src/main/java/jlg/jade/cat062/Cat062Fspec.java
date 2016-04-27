@@ -7,8 +7,8 @@
 package jlg.jade.cat062;
 
 import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.DecodableFixedLength;
-import jlg.jade.abstraction.EncodableFixedLength;
+import jlg.jade.abstraction.Decodable;
+import jlg.jade.abstraction.Encodable;
 import jlg.jade.common.AsterixDecodingException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -19,7 +19,7 @@ import java.util.BitSet;
  * are true if the item is in the message and false otherwise. You can use this array in conjunction with the
  * Cat062UAP enum to make code more understandable.
  */
-public class Cat062Fspec extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
+public class Cat062Fspec extends DebugMessageSource implements Decodable, Encodable {
     private boolean[] fspecList;
 
     public Cat062Fspec(){
@@ -28,7 +28,7 @@ public class Cat062Fspec extends DebugMessageSource implements DecodableFixedLen
     }
 
     @Override
-    public int decode(byte[] input, int offset){
+    public int decode(byte[] input, int offset, int inputLength){
         appendDebugMsg("## FSPEC Data:");
 
         final int FSPEC_MAX_BYTES = 5;

@@ -7,8 +7,7 @@
 package jlg.jade.asterix;
 
 import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.DecodableUnknownLength;
-import jlg.jade.abstraction.EncodableUnknownLength;
+import jlg.jade.abstraction.Decodable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.List;
  * - a one octet field indicating the Asterix category
  * - a two octet field indicating the length of the data block, including the CAT and LEN fields
  */
-public class AsterixDataBlock extends DebugMessageSource implements DecodableUnknownLength, EncodableUnknownLength {
+public class AsterixDataBlock extends DebugMessageSource implements Decodable {
     private int category;
     private List<AsterixRecord> records;
 
@@ -40,7 +39,7 @@ public class AsterixDataBlock extends DebugMessageSource implements DecodableUnk
     public int decode(byte[] input, int offset, int length) {
         while (offset < length) {
             AsterixRecord record = new AsterixRecord(category);
-            offset = record.decode(input, offset);
+            offset = record.decode(input, offset, length);
 
             //TODO: In production, after record is implemented, should return the output from the record decode method
             offset += (length - offset);

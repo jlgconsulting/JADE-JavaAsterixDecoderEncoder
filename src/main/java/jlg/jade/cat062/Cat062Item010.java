@@ -33,8 +33,6 @@ public class Cat062Item010 extends FixedLengthAsterixItem {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
-        checkLength(input, offset);
-
         this.sac = Byte.toUnsignedInt(input[offset]);
         this.sic = Byte.toUnsignedInt(input[offset + 1]);
 

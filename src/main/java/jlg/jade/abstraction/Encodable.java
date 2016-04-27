@@ -11,7 +11,7 @@ package jlg.jade.abstraction;
  * Interface used by all class that will be able to encode their data to Asterix format
  * in a byte array. The length of the data to be encoded must be unknown
  */
-public interface EncodableFixedLength {
+public interface Encodable {
     /**
      * Encodes the current class data into a byte array, that can be then sent over the network
      * or written to a file.

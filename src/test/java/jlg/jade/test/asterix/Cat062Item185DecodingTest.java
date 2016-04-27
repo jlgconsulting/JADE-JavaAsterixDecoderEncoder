@@ -24,7 +24,7 @@ public class Cat062Item185DecodingTest {
         assertEquals(4, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_data_is_less_than_4_bytes_should_throw() {
         //arrange
         byte[] input = {1, 2, 3};
@@ -32,7 +32,7 @@ public class Cat062Item185DecodingTest {
         Cat062Item185 item = new Cat062Item185();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class Cat062Item185DecodingTest {
         Cat062Item185 item = new Cat062Item185();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Vx not successfully decoded", -647, item.getVx());
@@ -60,7 +60,7 @@ public class Cat062Item185DecodingTest {
         Cat062Item185 item = new Cat062Item185();
 
         //act
-        int result = item.decode(input, offset);
+        int result = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not incremented after parsing the data", offset + 4, result);

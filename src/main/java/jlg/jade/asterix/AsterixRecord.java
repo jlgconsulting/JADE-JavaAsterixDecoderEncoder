@@ -7,15 +7,15 @@
 package jlg.jade.asterix;
 
 import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.DecodableFixedLength;
-import jlg.jade.abstraction.EncodableFixedLength;
+import jlg.jade.abstraction.Decodable;
+import jlg.jade.abstraction.Encodable;
 import jlg.jade.cat062.AsterixCat062Record;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Represents a single Asterix message of a given category.
  */
-public class AsterixRecord extends DebugMessageSource implements DecodableFixedLength, EncodableFixedLength {
+public class AsterixRecord extends DebugMessageSource implements Decodable, Encodable {
     private int category;
     private AsterixCat062Record cat062Record;
 
@@ -51,9 +51,10 @@ public class AsterixRecord extends DebugMessageSource implements DecodableFixedL
      *
      * @param input The raw data
      * @param offset The start offset in the raw data, at which reading should begin
+     * @param inputLength
      * @return The new offset in the raw data
      */
-    public int decode(byte[] input, int offset) {
+    public int decode(byte[] input, int offset, int inputLength) {
         return offset;
     }
 

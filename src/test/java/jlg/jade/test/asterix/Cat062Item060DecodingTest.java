@@ -24,7 +24,7 @@ public class Cat062Item060DecodingTest {
         assertEquals("Invalid item length", 2, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decoding_method_when_remaining_input_data_less_than_2_should_throw(){
         //arrange
         byte[] input = {1,2};
@@ -32,7 +32,7 @@ public class Cat062Item060DecodingTest {
         Cat062Item060 item = new Cat062Item060();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class Cat062Item060DecodingTest {
         Cat062Item060 item = new Cat062Item060();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Change of Mode3A not decoded correctly", false, item.getModeAChange());
@@ -59,7 +59,7 @@ public class Cat062Item060DecodingTest {
         Cat062Item060 item = new Cat062Item060();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Change of Mode3A not decoded correctly", true, item.getModeAChange());
@@ -75,7 +75,7 @@ public class Cat062Item060DecodingTest {
         Cat062Item060 item = new Cat062Item060();
 
         //act
-        int result = item.decode(input, offset);
+        int result = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not incremented after decoding data", offset+item.getSizeInBytes(), result);
@@ -89,7 +89,7 @@ public class Cat062Item060DecodingTest {
         Cat062Item060 item = new Cat062Item060();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Octal conversion of Mode 3A not correct", "5414", item.getModeAOctal());
@@ -103,7 +103,7 @@ public class Cat062Item060DecodingTest {
         Cat062Item060 item = new Cat062Item060();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Octal conversion of Mode 3A not correct", "0014", item.getModeAOctal());

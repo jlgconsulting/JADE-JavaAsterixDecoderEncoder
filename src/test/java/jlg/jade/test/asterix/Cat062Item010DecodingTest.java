@@ -38,7 +38,7 @@ public class Cat062Item010DecodingTest {
         assertEquals("Item aize is not valid", 2, item.getSizeInBytes());
     }
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_data_less_than_2_bytes_should_throw() {
         //arrange
         byte[] data = {1, 2, 3, 4};
@@ -46,7 +46,7 @@ public class Cat062Item010DecodingTest {
         Cat062Item010 asterixItem = new Cat062Item010();
 
         //act
-        asterixItem.decode(data, offset);
+        asterixItem.decode(data, offset, data.length);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class Cat062Item010DecodingTest {
         Cat062Item010 asterixItem = new Cat062Item010();
 
         //act
-        asterixItem.decode(data, offset);
+        asterixItem.decode(data, offset, data.length);
 
         //assert
         assertEquals("Sac not decoded correctly", 70, asterixItem.getSac());
@@ -74,7 +74,7 @@ public class Cat062Item010DecodingTest {
         Cat062Item010 asterixItem = new Cat062Item010();
 
         //act
-        int result = asterixItem.decode(data, offset);
+        int result = asterixItem.decode(data, offset, data.length);
 
         //assert
         int expectedCurrentIndex = offset + AsterixItemLength.TWO_BYTES.getValue();

@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class Cat062Item105DecodingTest {
 
-    @Test(expected = AsterixDecodingException.UnexpectedEndOfData.class)
+    @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_data_less_than_8_bytes_should_throw() {
         //arrange
         byte[] input = {1, 2, 3, 4, 5, 6, 7};
@@ -24,7 +24,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Latitude information not decoded correctly", 9593053, item.getLatitudeWsg84());
@@ -51,7 +51,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        int newOffset = item.decode(input, offset);
+        int newOffset = item.decode(input, offset, input.length);
 
         //assert
         assertEquals("Offset not incremented after decoding the data", offset + item.getSizeInBytes(), newOffset);
@@ -65,7 +65,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertEquals(51.457136292, item.getLatitudeDecimalWsg84(), 0.01);
@@ -82,7 +82,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertFalse(item.isValid());
@@ -98,7 +98,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertFalse(item.isValid());
@@ -114,7 +114,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertFalse(item.isValid());
@@ -130,7 +130,7 @@ public class Cat062Item105DecodingTest {
         Cat062Item105 item = new Cat062Item105();
 
         //act
-        item.decode(input, offset);
+        item.decode(input, offset, input.length);
 
         //assert
         assertFalse(item.isValid());

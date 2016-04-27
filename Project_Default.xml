@@ -11,7 +11,7 @@
     <option name="processComments" value="true" />
   </inspection_tool>
   <inspection_tool class="UnusedImport" enabled="true" level="WARNING" enabled_by_default="true" />
-  <inspection_tool class="unused" enabled="true" level="INFO" enabled_by_default="true">
+  <inspection_tool class="unused" enabled="false" level="INFO" enabled_by_default="false">
     <option name="LOCAL_VARIABLE" value="true" />
     <option name="FIELD" value="true" />
     <option name="METHOD" value="true" />
