@@ -16,7 +16,7 @@ import jlg.jade.abstraction.VariableLengthAsterixData;
  */
 public class Item380Subfield8 extends VariableLengthAsterixData {
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
 
         /**
          * @implNote
@@ -25,8 +25,6 @@ public class Item380Subfield8 extends VariableLengthAsterixData {
          */
 
         appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
-
-        return this.sizeInBytes;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Cat062Item070 extends FixedLengthAsterixData {
     private int timeOfTrack;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.timeOfTrack =
                 Byte.toUnsignedInt(input[offset]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 1]) * 256 +
@@ -27,8 +27,6 @@ public class Cat062Item070 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("Time of track: ", this.timeOfTrack);
         appendItemDebugMsg("Time of track (Human Readable): ", getHours() + ":" + getMinutes() + ":" + getSeconds());
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

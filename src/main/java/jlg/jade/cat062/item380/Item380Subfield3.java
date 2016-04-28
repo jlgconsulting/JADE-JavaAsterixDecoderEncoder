@@ -23,15 +23,13 @@ public class Item380Subfield3 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.magneticHeading =
                 Byte.toUnsignedInt(input[offset]) * 256 +
                 Byte.toUnsignedInt(input[offset+1]);
 
         appendItemDebugMsg("Magnetic heading", this.magneticHeading);
         appendItemDebugMsg("Magnetic heading (deg)", this.getMagneticHeadingDegrees());
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

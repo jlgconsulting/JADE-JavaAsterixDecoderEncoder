@@ -22,14 +22,12 @@ public class Item380Subfield5 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.trueAirSpeedKn =
                 Byte.toUnsignedInt(input[offset])* 256 +
                 Byte.toUnsignedInt(input[offset+1]);
 
         appendItemDebugMsg("True air speed (kn)", this.trueAirSpeedKn);
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

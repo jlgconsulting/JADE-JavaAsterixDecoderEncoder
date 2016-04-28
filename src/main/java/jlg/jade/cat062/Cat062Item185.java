@@ -24,11 +24,9 @@ public class Cat062Item185 extends FixedLengthAsterixData {
     private int vy;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.vx = input[offset]*256 + Byte.toUnsignedInt(input[offset+1]);
         this.vy = input[offset+2]*256 + Byte.toUnsignedInt(input[offset+3]);
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

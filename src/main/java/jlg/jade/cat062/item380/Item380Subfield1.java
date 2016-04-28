@@ -22,7 +22,7 @@ public class Item380Subfield1 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.targetAddress = String.format("%d %d %d",
                         Byte.toUnsignedInt(input[offset]),
                         Byte.toUnsignedInt(input[offset + 1]),
@@ -35,8 +35,6 @@ public class Item380Subfield1 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("Subfield #1 - Target Address (dec)", targetAddress);
         appendItemDebugMsg("Subfield #2 - Target Address (hex)", targetAddressHex);
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

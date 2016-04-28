@@ -17,14 +17,12 @@ public class Cat062Item040 extends FixedLengthAsterixData {
     private int trackNb;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.trackNb =
                 Byte.toUnsignedInt(input[offset]) * 256 +
                 Byte.toUnsignedInt(input[offset + 1]);
 
         appendItemDebugMsg("Track number", trackNb);
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class Cat062Item060 extends FixedLengthAsterixData {
     private int modeADecimal;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         BitSet firstOctetBits = BitSet.valueOf(new byte[]{input[offset]});
 
         /**
@@ -50,8 +50,6 @@ public class Cat062Item060 extends FixedLengthAsterixData {
         appendItemDebugMsg("Mode A changed", this.modeAChange);
         appendItemDebugMsg("Mode A value (decimal)", this.modeADecimal);
         appendItemDebugMsg("Mode A value (octal)", this.getModeAOctal());
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

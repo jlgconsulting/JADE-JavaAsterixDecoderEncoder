@@ -21,7 +21,7 @@ public class Item380Subfield4 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         /**
          * @implNote
          * Despite there are now two subfields (#26 and #27) reporting,
@@ -34,8 +34,6 @@ public class Item380Subfield4 extends FixedLengthAsterixData {
          */
 
         appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

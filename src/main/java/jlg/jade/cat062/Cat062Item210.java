@@ -20,14 +20,12 @@ public class Cat062Item210 extends FixedLengthAsterixData {
     private int accelerationY;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.accelerationX = input[offset];
         this.accelerationY = input[offset+1];
 
         appendItemDebugMsg("Acceleration X", this.accelerationX);
         appendItemDebugMsg("Acceleration Y", this.accelerationY);
-
-        return 0;
     }
 
     @Override

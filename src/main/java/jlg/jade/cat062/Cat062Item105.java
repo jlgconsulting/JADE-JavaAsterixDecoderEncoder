@@ -20,7 +20,7 @@ public class Cat062Item105 extends FixedLengthAsterixData {
     private int longitudeWsg84;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         //MSB must be interpreted as signed, so we do not covert it to unsigned value
 
         this.latitudeWsg84 =
@@ -43,8 +43,6 @@ public class Cat062Item105 extends FixedLengthAsterixData {
         appendNewLine();
         appendItemDebugMsg("Longitude in WSG84", getLongitudeDecimalWsg84());
         appendNewLine();
-
-        return offset + this.getSizeInBytes();
     }
 
     @Override

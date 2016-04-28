@@ -18,13 +18,13 @@ public abstract class VariableLengthAsterixData extends AsterixItem implements D
     @Override
     public int decode(byte[] input, int offset, int inputLength) {
         this.sizeInBytes = setSizeInBytes(input, offset);
-        int newOffset = decodeFromByteArray(input,offset);
+        decodeFromByteArray(input,offset);
         this.valid = validate();
 
-        return newOffset;
+        return offset + sizeInBytes;
     }
 
-    protected abstract int decodeFromByteArray(byte[] input, int offset);
+    protected abstract void decodeFromByteArray(byte[] input, int offset);
 
     private int setSizeInBytes(byte[] input, int offset) {
         int currentLength = 1;

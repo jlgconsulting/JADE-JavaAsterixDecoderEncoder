@@ -26,7 +26,7 @@ public class Cat062Item080 extends VariableLengthAsterixData {
     private int simValue;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         //parse first octet
         BitSet octetBits = BitSet.valueOf(new byte[]{input[offset]});
 
@@ -48,8 +48,6 @@ public class Cat062Item080 extends VariableLengthAsterixData {
          * @implNote Extents 2 and 3 are not currently implemented. Extent 1 is partially implemented
          * @implNote Extents 2 and 3 are not currently implemented. Extent 1 is partially implemented
          */
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

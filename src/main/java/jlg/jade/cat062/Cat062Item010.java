@@ -32,15 +32,12 @@ public class Cat062Item010 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.sac = Byte.toUnsignedInt(input[offset]);
         this.sic = Byte.toUnsignedInt(input[offset + 1]);
 
         appendItemDebugMsg("SAC:", this.sac);
         appendItemDebugMsg("SIC:", this.sic);
-
-        offset += offset + this.sizeInBytes;
-        return offset;
     }
 
     @Override

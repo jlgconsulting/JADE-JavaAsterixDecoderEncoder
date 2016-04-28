@@ -24,7 +24,7 @@ public class Item380Subfield6 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
 
         /**
          * @implNote
@@ -33,8 +33,6 @@ public class Item380Subfield6 extends FixedLengthAsterixData {
          */
 
         appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
-
-        return offset + this.sizeInBytes;
     }
 
     @Override

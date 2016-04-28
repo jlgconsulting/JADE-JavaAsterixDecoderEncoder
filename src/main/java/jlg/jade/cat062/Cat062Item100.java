@@ -19,7 +19,7 @@ public class Cat062Item100 extends FixedLengthAsterixData {
     private int y;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         //MSB must be interpreted as signed, so we do not covert it to unsigned value
 
         this.x =
@@ -33,8 +33,6 @@ public class Cat062Item100 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("X",this.x);
         appendItemDebugMsg("Y", this.y);
-
-        return offset + sizeInBytes;
     }
 
     @Override

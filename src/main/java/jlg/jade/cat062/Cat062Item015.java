@@ -17,13 +17,11 @@ public class Cat062Item015 extends FixedLengthAsterixData {
     private int serviceIdentification;
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         this.serviceIdentification = Byte.toUnsignedInt(input[offset]);
 
         appendItemDebugMsg("Service identification:", this.serviceIdentification);
         offset++;
-
-        return offset;
     }
 
     @Override

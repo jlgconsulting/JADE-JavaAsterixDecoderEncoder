@@ -28,7 +28,7 @@ public class Item380Subfield7 extends FixedLengthAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         BitSet firstOctetBits = BitSet.valueOf(new byte[]{input[offset]});
 
         final int MV_BIT_INDEX = 7;
@@ -74,8 +74,6 @@ public class Item380Subfield7 extends FixedLengthAsterixData {
                 firstOctetValueWithoutModes * 256 +
                         Byte.toUnsignedInt(input[offset + 1]);
         appendItemDebugMsg("Selected Altitude (25 ft)", selectedAltitude);
-
-        return offset + sizeInBytes;
     }
 
     @Override

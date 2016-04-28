@@ -17,15 +17,14 @@ public class Cat062Item245 extends FixedLengthAsterixData {
 
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
+    protected void decodeFromByteArray(byte[] input, int offset) {
         /**
          * @implNote
          * This item is not used anymore according to Asterix ICD (pg 39 v1.12). So, if it is present in the data,
          * we shall just increment the offset, without decoding.
          */
 
-        appendDebugMsg("Item is not used anymore. Skipping the decoding of data.");
-        return offset + this.getSizeInBytes();
+        appendDebugMsg("Item decoding not implemented. Skipping the decoding of data.");
     }
 
     @Override
