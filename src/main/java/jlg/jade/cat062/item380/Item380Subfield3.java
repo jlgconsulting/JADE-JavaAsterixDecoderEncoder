@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.AsterixSubfield;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.common.Constants;
 
@@ -14,7 +14,7 @@ import jlg.jade.common.Constants;
  * Item 380 Subfield #3 - Magnetic Heading
  * Unit of measure: 360° / 2^16 (0.0055 degrees)
  */
-public class Item380Subfield3 extends AsterixSubfield {
+public class Item380Subfield3 extends FixedLengthAsterixData {
     private int magneticHeading;
 
     @Override

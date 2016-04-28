@@ -6,14 +6,14 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Cat 062 Item 040 - Track number - Mandatory
  * Unique identification of a track
  */
-public class Cat062Item040 extends FixedLengthAsterixItem {
+public class Cat062Item040 extends FixedLengthAsterixData {
     private int trackNb;
 
     @Override

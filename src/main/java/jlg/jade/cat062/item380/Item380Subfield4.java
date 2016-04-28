@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.AsterixSubfield;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
@@ -14,7 +14,7 @@ import jlg.jade.asterix.AsterixItemLength;
  *
  * @implSpec Not usually used anymore
  */
-public class Item380Subfield4 extends AsterixSubfield {
+public class Item380Subfield4 extends FixedLengthAsterixData {
     @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.TWO_BYTES.getValue();

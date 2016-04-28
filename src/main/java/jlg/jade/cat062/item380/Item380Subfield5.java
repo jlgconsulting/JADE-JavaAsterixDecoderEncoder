@@ -6,14 +6,14 @@
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.AsterixSubfield;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Item 380 Subfield #5 - True Air Speed
  * Unit of measure: knots
  */
-public class Item380Subfield5 extends AsterixSubfield{
+public class Item380Subfield5 extends FixedLengthAsterixData {
     private int trueAirSpeedKn;
 
     @Override

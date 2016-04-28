@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
@@ -14,7 +14,7 @@ import jlg.jade.asterix.AsterixItemLength;
  * Calculated position in Cartesian co-ordinates with a resolution of
  * 0.5m, in two’s complement form
  */
-public class Cat062Item100 extends FixedLengthAsterixItem {
+public class Cat062Item100 extends FixedLengthAsterixData {
     private int x;
     private int y;
 

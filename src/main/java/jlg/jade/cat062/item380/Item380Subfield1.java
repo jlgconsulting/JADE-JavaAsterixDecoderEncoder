@@ -6,13 +6,13 @@
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.AsterixSubfield;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Item 380 #1 - Traget Address
  */
-public class Item380Subfield1 extends AsterixSubfield {
+public class Item380Subfield1 extends FixedLengthAsterixData {
     private String targetAddress;
     private String targetAddressHex;
 

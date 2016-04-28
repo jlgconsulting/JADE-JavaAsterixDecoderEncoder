@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.VariableLengthAsterixItem;
+import jlg.jade.abstraction.VariableLengthAsterixData;
 
 import java.util.BitSet;
 
@@ -16,7 +16,7 @@ import java.util.BitSet;
  * followed by 1-Octet extents as necessary.
  * @implNote Extents 2 and 3 are not currently implemented. Extent 1 is partially implemented
  */
-public class Cat062Item080 extends VariableLengthAsterixItem {
+public class Cat062Item080 extends VariableLengthAsterixData {
     private int cfnValue;
     private int srcValue;
     private int mrhValue;

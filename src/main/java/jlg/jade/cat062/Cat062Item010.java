@@ -6,14 +6,14 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Cat-062 Item 010 - Data Source Identifier - Mandatory
  * Identification of the system sending the data (SAC-SIC)
  */
-public class Cat062Item010 extends FixedLengthAsterixItem {
+public class Cat062Item010 extends FixedLengthAsterixData {
     private int sac;
     private int sic;
 

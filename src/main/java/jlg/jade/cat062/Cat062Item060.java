@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 import java.util.BitSet;
@@ -15,7 +15,7 @@ import java.util.BitSet;
  * Asterix Cat 062 Item 060 - Mode 3/A - Optional
  * Mode-3/A code converted into octal representation.
  */
-public class Cat062Item060 extends FixedLengthAsterixItem {
+public class Cat062Item060 extends FixedLengthAsterixData {
     private boolean modeAChange;
     private int modeADecimal;
 

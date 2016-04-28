@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.common.Constants;
 
@@ -19,7 +19,7 @@ import jlg.jade.common.Constants;
  * -8192m/s ≤ Vx ≤ 8191.75m/s
  * -8192m/s ≤ Vy ≤ 8191.75m/s
  */
-public class Cat062Item185 extends FixedLengthAsterixItem{
+public class Cat062Item185 extends FixedLengthAsterixData {
     private int vx;
     private int vy;
 

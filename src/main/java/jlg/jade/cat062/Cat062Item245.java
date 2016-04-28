@@ -6,14 +6,14 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Cat 062 Item 245 - Target (aircraft or vehicle) identification in 8 characters.
  * @implSpec  Item is not used any more according to Asterix ICD
  */
-public class Cat062Item245 extends FixedLengthAsterixItem {
+public class Cat062Item245 extends FixedLengthAsterixData {
 
 
     @Override

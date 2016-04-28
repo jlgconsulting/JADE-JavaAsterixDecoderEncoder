@@ -1,26 +1,20 @@
 /* 
-* Created by dan-geabunea on 4/27/2016.
+* Created by dan-geabunea on 4/28/2016.
 * This code is the property of JLG Consulting. Please
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.FixedLengthAsterixData;
-import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.abstraction.VariableLengthAsterixData;
 
 /**
- * Item 380 Subfield #2 - Target Identification
- * Characters 1-8 (coded on 6 bits each) defining a target
- * identification when flight plan is available or the registration
- * marking when no flight plan is available
+ * Item 380 Subfield #8 - Trajectory Intent Status
+ * @implSpec The FX is currently always 0, but this item is variable because it might get
+ * updated in the future.
+ * @implNote Not implemented yet
  */
-public class Item380Subfield2 extends FixedLengthAsterixData {
-    @Override
-    protected int setSizeInBytes() {
-        return AsterixItemLength.SIX_BYTES.getValue();
-    }
-
+public class Item380Subfield8 extends VariableLengthAsterixData {
     @Override
     protected int decodeFromByteArray(byte[] input, int offset) {
 
@@ -32,7 +26,7 @@ public class Item380Subfield2 extends FixedLengthAsterixData {
 
         appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
 
-        return offset + this.setSizeInBytes();
+        return this.sizeInBytes;
     }
 
     @Override

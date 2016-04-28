@@ -6,14 +6,14 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Cat 062 Item 015 - Service Identification - Optional
  * Identification of the service provided to one or more users
  */
-public class Cat062Item015 extends FixedLengthAsterixItem {
+public class Cat062Item015 extends FixedLengthAsterixData {
     private int serviceIdentification;
 
     @Override

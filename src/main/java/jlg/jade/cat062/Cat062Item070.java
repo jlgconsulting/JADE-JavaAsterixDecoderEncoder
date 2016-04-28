@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
@@ -15,7 +15,7 @@ import jlg.jade.asterix.AsterixItemLength;
  * expressed as UTC.
  * Unit of measure is 1/128 sec
  */
-public class Cat062Item070 extends FixedLengthAsterixItem {
+public class Cat062Item070 extends FixedLengthAsterixData {
     private int timeOfTrack;
 
     @Override

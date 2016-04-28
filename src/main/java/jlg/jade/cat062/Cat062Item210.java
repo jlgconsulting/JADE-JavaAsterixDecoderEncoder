@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
@@ -15,7 +15,7 @@ import jlg.jade.asterix.AsterixItemLength;
  * co-ordinates, in two’s complement form.
  * Unit of measure: 0.25 m/sec^2
  */
-public class Cat062Item210 extends FixedLengthAsterixItem {
+public class Cat062Item210 extends FixedLengthAsterixData {
     private int accelerationX;
     private int accelerationY;
 

@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.AsterixSubfield;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 import java.util.BitSet;
@@ -16,7 +16,7 @@ import java.util.BitSet;
  * The vertical intent value that corresponds with the ATC cleared
  * altitude, as derived from the Altitude Control Panel (FCU/MCP)
  */
-public class Item380Subfield7 extends AsterixSubfield {
+public class Item380Subfield7 extends FixedLengthAsterixData {
     private boolean manageVerticalModeActive;
     private boolean altitudeHoldActive;
     private boolean approachModeActive;

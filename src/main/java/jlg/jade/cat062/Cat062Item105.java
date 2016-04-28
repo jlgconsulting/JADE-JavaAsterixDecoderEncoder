@@ -6,7 +6,7 @@
 */
 package jlg.jade.cat062;
 
-import jlg.jade.abstraction.FixedLengthAsterixItem;
+import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT062;
@@ -15,7 +15,7 @@ import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT062;
  * Cat 062 Item 105 - Calculated Position in WSG84 coordinates - Optional
  * Unit of measure for lat and lon is 180/pow(2,25). degrees
  */
-public class Cat062Item105 extends FixedLengthAsterixItem {
+public class Cat062Item105 extends FixedLengthAsterixData {
     private int latitudeWsg84;
     private int longitudeWsg84;
 

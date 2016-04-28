@@ -9,11 +9,11 @@ package jlg.jade.abstraction;
 import java.util.BitSet;
 
 /**
- * Represents an Asterix item with a variable length, where the size is calculated based
+ * Represents an Asterix data item with a variable length, where the size is calculated based
  * on the FX bit. If the FX bit is 0, then another octet of data is availbale, else the data
  * ends. Will be implemented by all Asterix items with variable length
  */
-public abstract class VariableLengthAsterixItem extends AsterixItem implements Decodable {
+public abstract class VariableLengthAsterixData extends AsterixItem implements Decodable {
 
     @Override
     public int decode(byte[] input, int offset, int inputLength) {
@@ -28,7 +28,7 @@ public abstract class VariableLengthAsterixItem extends AsterixItem implements D
 
     private int setSizeInBytes(byte[] input, int offset) {
         int currentLength = 1;
-        BitSet bs = BitSet.valueOf(new byte[]{input[offset+currentLength-1]});
+        BitSet bs = BitSet.valueOf(new byte[]{input[offset]});
 
         while (bs.get(0)){
             appendDebugMsg("FX bit is 1. Continue to read data");
