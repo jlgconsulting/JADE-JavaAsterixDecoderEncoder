@@ -24,7 +24,7 @@ public class Cat062Item245 extends FixedLengthAsterixData {
          * we shall just increment the offset, without decoding.
          */
 
-        appendDebugMsg("Item decoding not implemented. Skipping the decoding of data.");
+        appendNotImplementedMsg();
     }
 
     @Override

@@ -21,12 +21,6 @@ public abstract class RepeatableAsterixData extends AsterixItem implements Decod
         this.repeatableBlockSizeInBytes = setRepeatableBlockSizeInBytes();
     }
 
-
-    @Override
-    protected boolean validate() {
-        return false;
-    }
-
     @Override
     public int decode(byte[] input, int offset, int inputLength) {
         this.sizeInBytes = setSizeInBytes(input, offset);

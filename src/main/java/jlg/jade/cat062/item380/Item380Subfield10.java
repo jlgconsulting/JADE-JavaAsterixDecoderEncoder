@@ -6,18 +6,18 @@
 */
 package jlg.jade.cat062.item380;
 
-import jlg.jade.abstraction.RepeatableAsterixData;
+import jlg.jade.abstraction.FixedLengthAsterixData;
+import jlg.jade.asterix.AsterixItemLength;
 
 /**
- * Item 380 Subfield #9 - Trajectory Intent Data
- * Repetitive Data Item starting with a one-octet Field Repetition
- * Indicator (REP) followed by at least one Trajectory Intent Point
- * comprising fifteen octets
+ * Item 380 Subfield 10 - Communications/ACAS capability and flight status
+ * reported by Mode S
  */
-public class Item380Subfield9 extends RepeatableAsterixData {
+public class Item380Subfield10 extends FixedLengthAsterixData {
+
     @Override
-    protected int setRepeatableBlockSizeInBytes() {
-        return 15;
+    protected int setSizeInBytes() {
+        return AsterixItemLength.TWO_BYTES.getValue();
     }
 
     @Override
