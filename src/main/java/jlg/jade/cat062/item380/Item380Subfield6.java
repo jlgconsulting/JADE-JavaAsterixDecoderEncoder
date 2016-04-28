@@ -32,7 +32,7 @@ public class Item380Subfield6 extends FixedLengthAsterixData {
          * Will only increase offset.
          */
 
-        appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
+        appendNotImplementedMsg();
     }
 
     @Override

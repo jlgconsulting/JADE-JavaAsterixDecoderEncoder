@@ -24,7 +24,7 @@ public class Item380Subfield8 extends VariableLengthAsterixData {
          * Will only increase offset.
          */
 
-        appendDebugMsg("Subfield decoding not implemented. Skipping this subfield.");
+        appendNotImplementedMsg();
     }
 
     @Override

@@ -34,6 +34,11 @@ public abstract class DebugMessageSource {
         debugStringBuilder.append(System.lineSeparator());
     }
 
+    protected void appendNotImplementedMsg(){
+        debugStringBuilder.append("This data is not implemented yet and will not be decoded.");
+        debugStringBuilder.append(System.lineSeparator());
+    }
+
     protected void clearDebugMsg() {
         debugStringBuilder.setLength(0);
     }
