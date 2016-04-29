@@ -43,7 +43,7 @@ public class Item380Subfield14Test implements BasicAsterixDataTestSuite {
     }
 
     @Test
-    @Parameters({"0,10,10","255,0,-1"})
+    @Parameters({"0,10,10","255,255,-1"})
     public void the_decode_method_should_correctly_decode_data(int firstOctet, int secondOctet, int expected){
         //arrange
         byte[] input = {(byte) firstOctet, (byte) secondOctet};

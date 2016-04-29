@@ -24,7 +24,7 @@ public class Item380Subfield13 extends FixedLengthAsterixData {
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
         this.barometricVerticalRate =
-                input[offset] + Byte.toUnsignedInt(input[offset+1]);
+                input[offset]*256 + Byte.toUnsignedInt(input[offset+1]);
         appendItemDebugMsg("Barometric vertical rate", this.barometricVerticalRate);
     }
 

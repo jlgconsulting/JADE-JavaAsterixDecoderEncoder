@@ -24,7 +24,7 @@ public class Item380Subfield14 extends FixedLengthAsterixData {
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
         this.geometricVerticalRate =
-                input[offset] + Byte.toUnsignedInt(input[offset+1]);
+                input[offset]*256 + Byte.toUnsignedInt(input[offset+1]);
         appendItemDebugMsg("Geometric vertical rate", this.geometricVerticalRate);
     }
 
