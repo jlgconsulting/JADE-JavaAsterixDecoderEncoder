@@ -39,9 +39,8 @@ public class Item380Subfield11Test implements BasicAsterixDataTestSuite {
         assertEquals("Offset not incremented after decoding of data", 2, result);
     }
 
-    @Override
     @Test
-    public void the_decode_method_should_set_valid_flag_to_true() {
+    public void the_validate_method_should_correctly_set_valid_flag() {
         //arrange
         byte[] input = {1,2};
         int offset = 0;

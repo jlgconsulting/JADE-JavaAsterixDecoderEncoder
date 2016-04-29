@@ -16,6 +16,4 @@ public interface BasicAsterixDataTestSuite {
     void should_have_length_correct_length();
 
     void the_decode_method_should_increment_offset_after_decoding_data();
-
-    void the_decode_method_should_set_valid_flag_to_true();
 }
