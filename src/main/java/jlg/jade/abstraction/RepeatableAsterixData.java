@@ -15,7 +15,7 @@ import jlg.jade.common.AsterixDecodingException;
  */
 public abstract class RepeatableAsterixData extends AsterixItem implements Decodable {
     private int repetitionFactor;
-    private int repeatableBlockSizeInBytes;
+    private final int repeatableBlockSizeInBytes;
 
     protected RepeatableAsterixData() {
         this.repeatableBlockSizeInBytes = setRepeatableBlockSizeInBytes();
@@ -44,7 +44,7 @@ public abstract class RepeatableAsterixData extends AsterixItem implements Decod
         return totalSize;
     }
 
-    void checkLength(byte[] input, int offset, int inputLength) {
+    private void checkLength(byte[] input, int offset, int inputLength) {
         String itemName = this.getClass().getSimpleName();
 
         appendDebugMsg(itemName + ":");

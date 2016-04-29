@@ -36,27 +36,15 @@ public class Item380Subfield7 extends FixedLengthAsterixData {
         final int AM_BIT_INDEX = 5;
 
         //decode mv
-        if (firstOctetBits.get(MV_BIT_INDEX)) {
-            manageVerticalModeActive = true;
-        } else {
-            manageVerticalModeActive = false;
-        }
+        manageVerticalModeActive = firstOctetBits.get(MV_BIT_INDEX);
         appendItemDebugMsg("Managed Vertical Mode Active", manageVerticalModeActive);
 
         //decode ah
-        if (firstOctetBits.get(AH_BIT_INDEX)) {
-            altitudeHoldActive = true;
-        } else {
-            altitudeHoldActive = false;
-        }
+        altitudeHoldActive = firstOctetBits.get(AH_BIT_INDEX);
         appendItemDebugMsg("Altitude Hold Active", altitudeHoldActive);
 
         //decode am
-        if (firstOctetBits.get(AM_BIT_INDEX)) {
-            approachModeActive = true;
-        } else {
-            approachModeActive = false;
-        }
+        approachModeActive = firstOctetBits.get(AM_BIT_INDEX);
         appendItemDebugMsg("Approach Mode Active", approachModeActive);
 
         //decode altitude
@@ -78,10 +66,7 @@ public class Item380Subfield7 extends FixedLengthAsterixData {
 
     @Override
     protected boolean validate() {
-        if (getSelectedAltitudeInFeet() < -1300 || getSelectedAltitudeInFeet() > 100000) {
-            return false;
-        }
-        return true;
+        return getSelectedAltitudeInFeet() >= -1300 && getSelectedAltitudeInFeet() <= 100000;
     }
 
     public boolean isManageVerticalModeActive() {

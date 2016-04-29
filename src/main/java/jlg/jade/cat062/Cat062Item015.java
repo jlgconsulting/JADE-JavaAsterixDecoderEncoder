@@ -21,7 +21,6 @@ public class Cat062Item015 extends FixedLengthAsterixData {
         this.serviceIdentification = Byte.toUnsignedInt(input[offset]);
 
         appendItemDebugMsg("Service identification:", this.serviceIdentification);
-        offset++;
     }
 
     @Override

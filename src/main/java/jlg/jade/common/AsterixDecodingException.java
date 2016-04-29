@@ -17,12 +17,6 @@ public class AsterixDecodingException {
     public static class UndeterminedFspecEnd extends RuntimeException {
     }
 
-    public static class DecodingOfAbsentFieldAttempted extends RuntimeException {
-        public DecodingOfAbsentFieldAttempted(String msg) {
-            super(msg);
-        }
-    }
-
     public static class AvailableLengthExceeded extends RuntimeException {
         public AvailableLengthExceeded(String msg) {
             super(msg);
