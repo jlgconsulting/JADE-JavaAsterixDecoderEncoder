@@ -12,4 +12,6 @@ public class Constants {
     public static final int FROM_ASTERIX_TO_METERS_PER_SECOND = 4;            //0.25 meters per second * 4 => 1 meter per second
     public static final double FROM_ASTERIX_MAGENTIC_HEADING_TO_DEGREES = 0.0055;
     public static final double FROM_ASTERIX_ROLL_ANGLE_TO_DEGREES = 0.01;
+    public static final double FROM_ASTERIX_GROUND_SPEED_TO_KNOTS = 0.22;
+    public static final double FROM_KNOT_TO_NM_PER_SECOND = 0.000277778;
 }
