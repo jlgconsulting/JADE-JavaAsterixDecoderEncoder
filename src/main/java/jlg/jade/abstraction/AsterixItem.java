@@ -18,7 +18,13 @@ abstract class AsterixItem extends DebugMessageSource {
         this.valid = true;
     }
 
-    protected abstract boolean validate();
+    /**
+     * Item is implicitly valid. Ovveride this method to implement
+     * validation rules.
+     */
+    protected boolean validate(){
+        return true;
+    }
 
     /**
      * @return True when item is valid according to Asterix validation rules, and false otherwise.
