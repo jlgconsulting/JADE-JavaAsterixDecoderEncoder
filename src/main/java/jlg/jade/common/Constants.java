@@ -14,4 +14,5 @@ public class Constants {
     public static final double FROM_ASTERIX_ROLL_ANGLE_TO_DEGREES = 0.01;
     public static final double FROM_ASTERIX_GROUND_SPEED_TO_KNOTS = 0.22;
     public static final double FROM_KNOT_TO_NM_PER_SECOND = 0.000277778;
+    public static final double FROM_ASTERIX_ALTITUDE_TO_FT = 6.25;
 }
