@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test;
+package jlg.jade.test.asterix.item380;
 
 import jlg.jade.cat062.item380.Item380Subfield19;
 import jlg.jade.test.asterix.item380.BasicAsterixDataTestSuite;

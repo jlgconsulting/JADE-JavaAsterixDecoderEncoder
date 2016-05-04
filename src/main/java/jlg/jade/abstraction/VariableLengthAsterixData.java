@@ -11,7 +11,9 @@ import java.util.BitSet;
 /**
  * Represents an Asterix data item with a variable length, where the size is calculated based
  * on the FX bit. If the FX bit is 0, then another octet of data is availbale, else the data
- * ends. Will be implemented by all Asterix items with variable length
+ * ends. Will be implemented by all Asterix items with variable length.
+ * Note: This subclass must be extended only if the total size of the item can be deduced from the
+ * FX bits. If the field has 2 parts (spec and data), then use the FspecAsterixData abstract class.
  */
 public abstract class VariableLengthAsterixData extends AsterixItem implements Decodable {
 
