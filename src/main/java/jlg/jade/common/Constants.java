@@ -15,4 +15,5 @@ public class Constants {
     public static final double FROM_ASTERIX_GROUND_SPEED_TO_KNOTS = 0.22;
     public static final double FROM_KNOT_TO_NM_PER_SECOND = 0.000277778;
     public static final double FROM_ASTERIX_ALTITUDE_TO_FT = 6.25;
+    public static final double FROM_ASTERIX_MACH_NB_TO_REAL_MACH_SPEED = 0.008;
 }
