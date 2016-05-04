@@ -8,6 +8,7 @@ package jlg.jade.cat062;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.asterix.DecodingNotImplemented;
 
 /**
  * Cat 062 Item 245 - Target (aircraft or vehicle) identification in 8 characters.
@@ -15,15 +16,9 @@ import jlg.jade.asterix.AsterixItemLength;
  */
 public class Cat062Item245 extends FixedLengthAsterixData {
 
-
     @Override
+    @DecodingNotImplemented(reason = "Not needed yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
-        /**
-         * @implNote
-         * This item is not used anymore according to Asterix ICD (pg 39 v1.12). So, if it is present in the data,
-         * we shall just increment the offset, without decoding.
-         */
-
         appendNotImplementedMsg();
     }
 

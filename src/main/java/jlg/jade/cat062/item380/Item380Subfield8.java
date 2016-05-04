@@ -7,6 +7,7 @@
 package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.VariableLengthAsterixData;
+import jlg.jade.asterix.DecodingNotImplemented;
 
 /**
  * Item 380 Subfield #8 - Trajectory Intent Status
@@ -16,14 +17,8 @@ import jlg.jade.abstraction.VariableLengthAsterixData;
  */
 public class Item380Subfield8 extends VariableLengthAsterixData {
     @Override
+    @DecodingNotImplemented(reason = "Not needed yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
-
-        /**
-         * @implNote
-         * This subfield is not decoded because it is not needed yet.
-         * Will only increase offset.
-         */
-
         appendNotImplementedMsg();
     }
 

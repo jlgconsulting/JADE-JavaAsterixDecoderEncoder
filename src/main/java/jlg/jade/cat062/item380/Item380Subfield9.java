@@ -7,6 +7,7 @@
 package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.RepeatableAsterixData;
+import jlg.jade.asterix.DecodingNotImplemented;
 
 /**
  * Item 380 Subfield #9 - Trajectory Intent Data
@@ -21,6 +22,7 @@ public class Item380Subfield9 extends RepeatableAsterixData {
     }
 
     @Override
+    @DecodingNotImplemented(reason = "Not needed yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }

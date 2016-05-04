@@ -15,14 +15,22 @@ import jlg.jade.asterix.DecodingNotImplemented;
  * Unit of measure: 0.0055 degrees
  */
 public class Item380Subfield17 extends FixedLengthAsterixData {
+    private int trackAngle;
+
     @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.TWO_BYTES.getValue();
     }
 
     @Override
-    @DecodingNotImplemented(reason = "Subfield is not used yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
-        appendNotImplementedMsg();
+        this.trackAngle =
+                Byte.toUnsignedInt(input[offset]) * 256 +
+                Byte.toUnsignedInt(input[offset + 1]);
+        appendItemDebugMsg("Track angle", this.trackAngle);
+    }
+
+    public int getTrackAngle() {
+        return trackAngle;
     }
 }

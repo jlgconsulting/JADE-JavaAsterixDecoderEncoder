@@ -8,6 +8,7 @@ package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.asterix.DecodingNotImplemented;
 
 /**
  * Item 380 Subfield 10 - Communications/ACAS capability and flight status
@@ -21,6 +22,7 @@ public class Item380Subfield10 extends FixedLengthAsterixData {
     }
 
     @Override
+    @DecodingNotImplemented(reason = "Not needed yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }

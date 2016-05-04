@@ -8,6 +8,7 @@ package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.asterix.DecodingNotImplemented;
 
 /**
  * Item 380 Subfield #6 - Selected altitude
@@ -24,14 +25,8 @@ public class Item380Subfield6 extends FixedLengthAsterixData {
     }
 
     @Override
+    @DecodingNotImplemented(reason = "Not needed yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
-
-        /**
-         * @implNote
-         * This subfield is not decoded because it is not needed yet.
-         * Will only increase offset.
-         */
-
         appendNotImplementedMsg();
     }
 

@@ -8,6 +8,7 @@ package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.asterix.TwoComplementDecoder;
 import jlg.jade.common.Constants;
 
 /**
@@ -24,8 +25,7 @@ public class Item380Subfield15 extends FixedLengthAsterixData{
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.rollAngle =
-                input[offset]*256 + Byte.toUnsignedInt(input[offset+1]);
+        this.rollAngle = TwoComplementDecoder.decodeFromTwoBytes(input, offset);
         appendItemDebugMsg("Roll Angle", this.rollAngle);
         appendItemDebugMsg("Roll Angle (deg)", getRollAngleDegrees());
     }

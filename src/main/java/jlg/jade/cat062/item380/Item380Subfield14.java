@@ -8,6 +8,7 @@ package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.asterix.TwoComplementDecoder;
 
 /**
  * Item 380 Subfield #14 - Geometric Vertical Rate
@@ -23,8 +24,7 @@ public class Item380Subfield14 extends FixedLengthAsterixData {
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.geometricVerticalRate =
-                input[offset]*256 + Byte.toUnsignedInt(input[offset+1]);
+        this.geometricVerticalRate = TwoComplementDecoder.decodeFromTwoBytes(input, offset);
         appendItemDebugMsg("Geometric vertical rate", this.geometricVerticalRate);
     }
 

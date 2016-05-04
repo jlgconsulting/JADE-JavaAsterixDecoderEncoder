@@ -8,6 +8,7 @@ package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
+import jlg.jade.asterix.DecodingNotImplemented;
 
 /**
  * Item 380 Subfield #4 - Indicated Air Speed / Mach No
@@ -21,18 +22,8 @@ public class Item380Subfield4 extends FixedLengthAsterixData {
     }
 
     @Override
+    @DecodingNotImplemented(reason = "Obsolete item. We can use #26 and #27")
     protected void decodeFromByteArray(byte[] input, int offset) {
-        /**
-         * @implNote
-         * Despite there are now two subfields (#26 and #27) reporting,
-         * respectively, the Indicated Airspeed track data and the Mach Number
-         * track data, this former subfield is kept free in order to prevent a full
-         * incompatibility with previous releases of ASTERIX Cat. 062 already
-         * implemented.
-         *
-         * Will only increase offset.
-         */
-
         appendNotImplementedMsg();
     }
 
