@@ -7,7 +7,6 @@
 package jlg.jade.cat062.item380;
 
 import jlg.jade.abstraction.FspecAsterixData;
-import jlg.jade.abstraction.VariableLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 
 /**
@@ -52,8 +51,288 @@ public class Cat062Item380 extends FspecAsterixData {
     }
 
     @Override
-    protected int decodeFromByteArray(byte[] input, int offset) {
-        return 0;
+    protected int decodeFromByteArray(byte[] input, int offset, int length) {
+        //subfield 1
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_1)){
+            subfield1 = new Item380Subfield1();
+            offset = subfield1.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 1 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 2
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_2)){
+            subfield2 = new Item380Subfield2();
+            offset = subfield2.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 2 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 3
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_3)){
+            subfield3 = new Item380Subfield3();
+            offset = subfield3.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 3 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 4
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_4)){
+            subfield4 = new Item380Subfield4();
+            offset = subfield3.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 4 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 5
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_5)){
+            subfield5 = new Item380Subfield5();
+            offset = subfield5.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 5 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 6
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_6)){
+            subfield6 = new Item380Subfield6();
+            offset = subfield6.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 6 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 7
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_7)){
+            subfield7 = new Item380Subfield7();
+            offset = subfield7.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 7 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 8
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_8)){
+            subfield8 = new Item380Subfield8();
+            offset = subfield8.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 8 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 9
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_9)){
+            subfield9 = new Item380Subfield9();
+            offset = subfield9.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 9 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 10
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_10)){
+            subfield10 = new Item380Subfield10();
+            offset = subfield10.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 10 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 11
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_11)){
+            subfield11 = new Item380Subfield11();
+            offset = subfield11.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 11 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 12
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_12)){
+            subfield12 = new Item380Subfield12();
+            offset = subfield12.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 12 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 13
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_13)){
+            subfield13 = new Item380Subfield13();
+            offset = subfield13.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 13 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 14
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_14)){
+            subfield14 = new Item380Subfield14();
+            offset = subfield14.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 14 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 15
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_15)){
+            subfield15 = new Item380Subfield15();
+            offset = subfield15.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 15 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 16
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_16)){
+            subfield16 = new Item380Subfield16();
+            offset = subfield16.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 16 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 17
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_17)){
+            subfield17 = new Item380Subfield17();
+            offset = subfield17.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 17 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 18
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_18)){
+            subfield18 = new Item380Subfield18();
+            offset = subfield18.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 18 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 19
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_19)){
+            subfield19 = new Item380Subfield19();
+            offset = subfield19.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 19 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 20
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_20)){
+            subfield20 = new Item380Subfield20();
+            offset = subfield20.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 20 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 21
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_21)){
+            subfield21 = new Item380Subfield21();
+            offset = subfield21.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 21 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 22
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_22)){
+            subfield22 = new Item380Subfield22();
+            offset = subfield22.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 22 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 23
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_23)){
+            subfield23 = new Item380Subfield23();
+            offset = subfield23.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 23 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 24
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_24)){
+            subfield24 = new Item380Subfield24();
+            offset = subfield24.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 24 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 25
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_25)){
+            subfield25 = new Item380Subfield25();
+            offset = subfield25.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 25 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 26
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_26)){
+            subfield26 = new Item380Subfield26();
+            offset = subfield26.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 26 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 27
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_27)){
+            subfield27 = new Item380Subfield27();
+            offset = subfield27.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 27 is not present in data");
+            appendNewLine();
+        }
+
+        //subfield 28
+        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_28)){
+            subfield28 = new Item380Subfield28();
+            offset = subfield28.decode(input, offset, length);
+        }
+        else{
+            appendDebugMsg("Subfield 28 is not present in data");
+            appendNewLine();
+        }
+
+        return offset;
     }
 
     public Item380Subfield1 getSubfield1() {

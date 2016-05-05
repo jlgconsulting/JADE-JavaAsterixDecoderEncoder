@@ -34,7 +34,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
     public int decode(byte[] input, int offset, int inputLength) {
         actualFspecSizeInBytes = readFspec(input, offset);
         offset += actualFspecSizeInBytes;
-        offset = decodeFromByteArray(input, offset);
+        offset = decodeFromByteArray(input, offset, inputLength);
 
         return offset;
     }
@@ -66,7 +66,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
      */
     protected abstract int setMaxFspecSizeInBytes();
 
-    protected abstract int decodeFromByteArray(byte[] input, int offset);
+    protected abstract int decodeFromByteArray(byte[] input, int offset, int length);
 
     private int readFspec(byte[] input, int offset) {
         final int FX_BIT_POS = 0;
