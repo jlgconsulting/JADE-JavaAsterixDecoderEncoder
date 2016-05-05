@@ -32,9 +32,14 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
 
     @Override
     public int decode(byte[] input, int offset, int inputLength) {
+        appendDebugMsg(this.getClass().getSimpleName()+":");
+        appendNewLine();
+
         actualFspecSizeInBytes = readFspec(input, offset);
         offset += actualFspecSizeInBytes;
         offset = decodeFromByteArray(input, offset, inputLength);
+
+
 
         return offset;
     }
@@ -98,6 +103,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
         for (int i = 0; i < currentLength; i++) {
             appendItemDebugMsg("Octet " + i, Byte.toUnsignedInt(input[offset + i]));
         }
+        appendNewLine();
 
         //return current offset
         return offset + currentLength;
