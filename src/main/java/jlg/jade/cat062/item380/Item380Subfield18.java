@@ -10,7 +10,6 @@ import jlg.jade.abstraction.FixedLengthAsterixData;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.TwoComplementDecoder;
 import jlg.jade.common.Constants;
-import org.junit.Test;
 
 /**
  * Item 380 Subfield 18 - Ground Speed

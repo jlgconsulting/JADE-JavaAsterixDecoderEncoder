@@ -6,10 +6,7 @@
 */
 package jlg.jade.abstraction;
 
-import java.util.Arrays;
 import java.util.BitSet;
-import java.util.stream.Collector;
-import java.util.stream.Stream;
 
 /**
  * Represents an Asterix data item where the content is split in two parts: a spec and the actual data.
@@ -92,7 +89,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
 
             //increase length and read next octet
             currentLength++;
-            if (bs.get(FX_BIT_POS) == false) {
+            if (!bs.get(FX_BIT_POS)) {
                 appendDebugMsg("FX bit is 0. Finished reading data for this item");
                 appendNewLine();
                 break;
