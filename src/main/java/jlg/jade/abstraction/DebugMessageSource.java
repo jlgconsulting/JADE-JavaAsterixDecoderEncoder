@@ -11,7 +11,7 @@ package jlg.jade.abstraction;
  * scenarios
  */
 public abstract class DebugMessageSource {
-    private StringBuilder debugStringBuilder;
+    private final StringBuilder debugStringBuilder;
 
     protected DebugMessageSource() {
         this.debugStringBuilder = new StringBuilder();

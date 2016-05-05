@@ -15,7 +15,7 @@ public enum AsterixCategory {
     CAT_065(65),
     CAT_150(150);
 
-    private int value;
+    private final int value;
 
     AsterixCategory(int value){
         this.value = value;

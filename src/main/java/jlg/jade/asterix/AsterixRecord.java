@@ -16,7 +16,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Represents a single Asterix message of a given category.
  */
 public class AsterixRecord extends DebugMessageSource implements Decodable, Encodable {
-    private int category;
+    private final int category;
     private AsterixCat062Record cat062Record;
 
     public AsterixRecord(int category) {

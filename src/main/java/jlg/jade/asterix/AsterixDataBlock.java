@@ -20,8 +20,8 @@ import java.util.List;
  * - a two octet field indicating the length of the data block, including the CAT and LEN fields
  */
 public class AsterixDataBlock extends DebugMessageSource implements Decodable {
-    private int category;
-    private List<AsterixRecord> records;
+    private final int category;
+    private final List<AsterixRecord> records;
 
     public AsterixDataBlock(int category) {
         this.category = category;

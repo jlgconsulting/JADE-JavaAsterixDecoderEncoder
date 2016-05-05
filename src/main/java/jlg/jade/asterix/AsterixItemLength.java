@@ -16,7 +16,7 @@ public enum AsterixItemLength {
     SEVEN_BYTES(7),
     EIGHT_BYTES(8);
 
-    private int value;
+    private final int value;
 
     AsterixItemLength(int value) {
         this.value = value;

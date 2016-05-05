@@ -6,6 +6,8 @@
 */
 package jlg.jade.abstraction;
 
+import jlg.jade.common.Constants;
+
 import java.util.BitSet;
 
 /**
@@ -14,17 +16,15 @@ import java.util.BitSet;
  * Will be extended by all Asterix data items that have fspec.
  */
 public abstract class FspecAsterixData extends AsterixItem implements Decodable {
-    public final int BYTES_TO_BITS = 8;
-
-    private int maxFspecSizeInBytes;
+    private final int maxFspecSizeInBytes;
     private int actualFspecSizeInBytes;
     private int nbPresentDataFields;
-    protected boolean[] fspec;
+    private final boolean[] fspec;
 
     public FspecAsterixData() {
         //initialize max fspec size and fspec array. All items will be false;
         this.maxFspecSizeInBytes = setMaxFspecSizeInBytes();
-        this.fspec = new boolean[maxFspecSizeInBytes * BYTES_TO_BITS];
+        this.fspec = new boolean[maxFspecSizeInBytes * Constants.BYTE_TO_BITS];
     }
 
     @Override
@@ -35,8 +35,6 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
         actualFspecSizeInBytes = readFspec(input, offset);
         offset += actualFspecSizeInBytes;
         offset = decodeFromByteArray(input, offset, inputLength);
-
-
 
         return offset;
     }

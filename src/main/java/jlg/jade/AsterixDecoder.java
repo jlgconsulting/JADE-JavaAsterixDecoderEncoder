@@ -18,8 +18,8 @@ import java.util.List;
  * multiple times
  */
 public class AsterixDecoder {
-    private HashMap<Integer,Boolean> allowedCategories;
-    private HashMap<Integer,Integer> nbOfDataBlocks;
+    private final HashMap<Integer,Boolean> allowedCategories;
+    private final HashMap<Integer,Integer> nbOfDataBlocks;
 
     private AsterixDecoder(){
         allowedCategories = new HashMap<>();
