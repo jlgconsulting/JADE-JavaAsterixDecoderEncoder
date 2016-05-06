@@ -8,6 +8,7 @@ package jlg.jade.cat062.item290;
 
 import jlg.jade.abstraction.Cat062AsterixAgingDataField;
 import jlg.jade.abstraction.FspecAsterixData;
+import jlg.jade.asterix.AsterixItemLength;
 
 /**
  * Cat 062 Item 390 - System track update ages
@@ -30,7 +31,7 @@ public class Cat062Item290 extends FspecAsterixData {
 
     @Override
     protected int setMaxFspecSizeInBytes() {
-        return 2;
+        return AsterixItemLength.TWO_BYTES.getValue();
     }
 
     @Override
@@ -39,130 +40,90 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield1 = new Cat062AsterixAgingDataField();
             offset = subfield1.decode(input,offset,length);
 
-            appendDebugMsg("(Track age)");
+            appendDebugMsg("Item290Subfield1 - Track age");
             appendNewLine();
             appendDebugMsg(subfield1.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 1 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_2)){
             subfield2 = new Cat062AsterixAgingDataField();
             offset = subfield2.decode(input,offset,length);
 
-            appendDebugMsg("(PSR age)");
+            appendDebugMsg("Item290Subfield2 - PSR age");
             appendNewLine();
             appendDebugMsg(subfield2.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 2 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_3)){
             subfield3 = new Cat062AsterixAgingDataField();
             offset = subfield3.decode(input,offset,length);
 
-            appendDebugMsg("(SSR age)");
+            appendDebugMsg("Item290Subfield3 - SSR age");
             appendNewLine();
             appendDebugMsg(subfield3.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 3 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_4)){
             subfield4 = new Cat062AsterixAgingDataField();
             offset = subfield4.decode(input,offset,length);
 
-            appendDebugMsg("(Mode S age)");
+            appendDebugMsg("Item290Subfield4 - Mode S age");
             appendNewLine();
             appendDebugMsg(subfield4.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 4 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_5)){
             subfield5 = new Item290Subfield5();
             offset = subfield5.decode(input,offset,length);
 
-            appendDebugMsg("(ADSC age)");
+            appendDebugMsg("Item290Subfield5 - ADSC age");
             appendNewLine();
             appendDebugMsg(subfield5.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 5 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_6)){
             subfield6 = new Cat062AsterixAgingDataField();
             offset = subfield6.decode(input,offset,length);
 
-            appendDebugMsg("(ADS-B age)");
+            appendDebugMsg("Item290Subfield6 - ADSB age");
             appendNewLine();
             appendDebugMsg(subfield6.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 6 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_7)){
             subfield7 = new Cat062AsterixAgingDataField();
             offset = subfield7.decode(input,offset,length);
 
-            appendDebugMsg("(ADS-B VDL age)");
+            appendDebugMsg("Item290Subfield7 - ADSB VDL age");
             appendNewLine();
             appendDebugMsg(subfield7.getDebugString());
         }
-        else{
-            appendDebugMsg("Item290Subfield 7 is not present in data");
-            appendNewLine();
-        }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_8)){
+        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_8)) {
             subfield8 = new Cat062AsterixAgingDataField();
-            offset = subfield8.decode(input,offset,length);
+            offset = subfield8.decode(input, offset, length);
 
-            appendDebugMsg("(ADS-B UAT age)");
+            appendDebugMsg("Item290Subfield8 - ADSB UAT age");
             appendNewLine();
             appendDebugMsg(subfield8.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 8 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_9)){
             subfield9 = new Cat062AsterixAgingDataField();
             offset = subfield9.decode(input,offset,length);
 
-            appendDebugMsg("(Loop age)");
+            appendDebugMsg("Item290Subfield9 - Loop age");
             appendNewLine();
             appendDebugMsg(subfield9.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 9 is not present in data");
-            appendNewLine();
         }
 
         if(isDataPresent(Cat062Item290Fspec.SUBFIELD_10)){
             subfield10 = new Cat062AsterixAgingDataField();
             offset = subfield10.decode(input,offset,length);
 
-            appendDebugMsg("(Multilateration age)");
+            appendDebugMsg("Item290Subfield10 - Multilateration age");
             appendNewLine();
             appendDebugMsg(subfield10.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item290Subfield 10 is not present in data");
-            appendNewLine();
         }
 
         return offset;

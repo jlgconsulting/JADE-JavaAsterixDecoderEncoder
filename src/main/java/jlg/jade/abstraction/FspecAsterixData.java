@@ -96,7 +96,8 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
             appendNewLine();
         }
         for (int i = 0; i < currentLength; i++) {
-            appendItemDebugMsg("Octet " + i, Byte.toUnsignedInt(input[offset + i]));
+            appendItemDebugMsg("Octet " + i + " (dec)", Byte.toUnsignedInt(input[offset + i]));
+            appendItemDebugMsg("Octet " + i + " (bin)", BitWriter.getBitsRightToLeft(input[offset + i]));
         }
         appendNewLine();
 

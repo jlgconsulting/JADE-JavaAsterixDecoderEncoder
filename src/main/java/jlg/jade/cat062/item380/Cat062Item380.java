@@ -58,20 +58,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield1.decode(input, offset, length);
             appendDebugMsg(subfield1.getDebugString());
         }
-        else{
-            appendDebugMsg(subfield1.getClass().getSimpleName() + ": Not present in data");
-            appendNewLine();
-        }
 
         //subfield 2
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_2)){
             subfield2 = new Item380Subfield2();
             offset = subfield2.decode(input, offset, length);
             appendDebugMsg(subfield2.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 2 is not present in data");
-            appendNewLine();
         }
 
         //subfield 3
@@ -80,20 +72,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield3.decode(input, offset, length);
             appendDebugMsg(subfield3.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 3 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 4
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_4)){
             subfield4 = new Item380Subfield4();
             offset = subfield4.decode(input, offset, length);
             appendDebugMsg(subfield4.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 4 is not present in data");
-            appendNewLine();
         }
 
         //subfield 5
@@ -102,20 +86,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield5.decode(input, offset, length);
             appendDebugMsg(subfield5.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 5 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 6
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_6)){
             subfield6 = new Item380Subfield6();
             offset = subfield6.decode(input, offset, length);
             appendDebugMsg(subfield6.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 6 is not present in data");
-            appendNewLine();
         }
 
         //subfield 7
@@ -124,20 +100,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield7.decode(input, offset, length);
             appendDebugMsg(subfield7.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 7 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 8
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_8)){
             subfield8 = new Item380Subfield8();
             offset = subfield8.decode(input, offset, length);
             appendDebugMsg(subfield8.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 8 is not present in data");
-            appendNewLine();
         }
 
         //subfield 9
@@ -146,20 +114,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield9.decode(input, offset, length);
             appendDebugMsg(subfield9.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 9 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 10
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_10)){
             subfield10 = new Item380Subfield10();
             offset = subfield10.decode(input, offset, length);
             appendDebugMsg(subfield10.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 10 is not present in data");
-            appendNewLine();
         }
 
         //subfield 11
@@ -168,20 +128,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield11.decode(input, offset, length);
             appendDebugMsg(subfield11.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 11 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 12
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_12)){
             subfield12 = new Item380Subfield12();
             offset = subfield12.decode(input, offset, length);
             appendDebugMsg(subfield12.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 12 is not present in data");
-            appendNewLine();
         }
 
         //subfield 13
@@ -190,20 +142,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield13.decode(input, offset, length);
             appendDebugMsg(subfield13.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 13 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 14
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_14)){
             subfield14 = new Item380Subfield14();
             offset = subfield14.decode(input, offset, length);
             appendDebugMsg(subfield14.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 14 is not present in data");
-            appendNewLine();
         }
 
         //subfield 15
@@ -212,20 +156,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield15.decode(input, offset, length);
             appendDebugMsg(subfield15.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 15 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 16
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_16)){
             subfield16 = new Item380Subfield16();
             offset = subfield16.decode(input, offset, length);
             appendDebugMsg(subfield16.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 16 is not present in data");
-            appendNewLine();
         }
 
         //subfield 17
@@ -234,20 +170,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield17.decode(input, offset, length);
             appendDebugMsg(subfield17.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 17 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 18
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_18)){
             subfield18 = new Item380Subfield18();
             offset = subfield18.decode(input, offset, length);
             appendDebugMsg(subfield18.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 18 is not present in data");
-            appendNewLine();
         }
 
         //subfield 19
@@ -256,20 +184,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield19.decode(input, offset, length);
             appendDebugMsg(subfield19.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 19 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 20
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_20)){
             subfield20 = new Item380Subfield20();
             offset = subfield20.decode(input, offset, length);
             appendDebugMsg(subfield20.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 20 is not present in data");
-            appendNewLine();
         }
 
         //subfield 21
@@ -278,20 +198,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield21.decode(input, offset, length);
             appendDebugMsg(subfield21.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 21 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 22
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_22)){
             subfield22 = new Item380Subfield22();
             offset = subfield22.decode(input, offset, length);
             appendDebugMsg(subfield22.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 22 is not present in data");
-            appendNewLine();
         }
 
         //subfield 23
@@ -300,20 +212,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield23.decode(input, offset, length);
             appendDebugMsg(subfield23.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 23 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 24
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_24)){
             subfield24 = new Item380Subfield24();
             offset = subfield24.decode(input, offset, length);
             appendDebugMsg(subfield24.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 24 is not present in data");
-            appendNewLine();
         }
 
         //subfield 25
@@ -322,20 +226,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield25.decode(input, offset, length);
             appendDebugMsg(subfield25.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 25 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 26
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_26)){
             subfield26 = new Item380Subfield26();
             offset = subfield26.decode(input, offset, length);
             appendDebugMsg(subfield26.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 26 is not present in data");
-            appendNewLine();
         }
 
         //subfield 27
@@ -344,20 +240,12 @@ public class Cat062Item380 extends FspecAsterixData {
             offset = subfield27.decode(input, offset, length);
             appendDebugMsg(subfield27.getDebugString());
         }
-        else{
-            appendDebugMsg("Item380Subfield 27 is not present in data");
-            appendNewLine();
-        }
 
         //subfield 28
         if(isDataPresent(Cat062Item380Fspec.SUBFIELD_28)){
             subfield28 = new Item380Subfield28();
             offset = subfield28.decode(input, offset, length);
             appendDebugMsg(subfield28.getDebugString());
-        }
-        else{
-            appendDebugMsg("Item380Subfield 28 is not present in data");
-            appendNewLine();
         }
 
         return offset;
