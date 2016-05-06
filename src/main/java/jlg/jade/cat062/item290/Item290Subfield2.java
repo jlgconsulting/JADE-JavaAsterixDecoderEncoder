@@ -12,12 +12,11 @@ import jlg.jade.asterix.UnsignedNumericDecoder;
 import jlg.jade.common.Constants;
 
 /**
- * Item 290 - Subfield 1 - Track Age
- * Actual track age since first occurence
- * Unit of measure 0.25 seconds
+ * Item 290 Subfield 2 - PSR Age
+ * Age of the last primary detection used to update the track
  */
-public class Item290Subfield1 extends FixedLengthAsterixData {
-    private int trackAge;
+public class Item290Subfield2 extends FixedLengthAsterixData {
+    private int psrAge;
 
     @Override
     protected int setSizeInBytes() {
@@ -26,22 +25,23 @@ public class Item290Subfield1 extends FixedLengthAsterixData {
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        trackAge = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
-        appendItemDebugMsg("Track age", trackAge);
-        appendItemDebugMsg("Track age (sec)", getTrackAgeSeconds());
+        this.psrAge = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
+        appendItemDebugMsg("PSR Age", this.psrAge);
+        appendItemDebugMsg("PSR Age (sec)", getPsrAgeSeconds());
+
     }
 
     /**
-     * @return The track age in 1/4 seconds
+     * @return The PSR age in 1/4 seconds
      */
-    public int getTrackAge() {
-        return trackAge;
+    public int getPsrAge() {
+        return psrAge;
     }
 
     /**
-     * @return The track age, expressed in seconds
+     * @return The PSR age in seconds
      */
-    public double getTrackAgeSeconds() {
-        return trackAge / Constants.FROM_QUARTER_OF_SEC_TO_SEC;
+    public int getPsrAgeSeconds() {
+        return psrAge / Constants.FROM_QUARTER_OF_SEC_TO_SEC;
     }
 }
