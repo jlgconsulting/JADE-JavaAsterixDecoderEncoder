@@ -4,15 +4,18 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix.item290;
+package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.item290.Item290Subfield1;
+import jlg.jade.abstraction.Cat062AsterixAgingDataField;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class Item290Subfield1Test extends MandatoryFixedLengthAsterixTests<Item290Subfield1> {
+/**
+ * Test for all one byte Asterix aging info
+ */
+public class Cat062OneByteAsterixAgingDataTest extends MandatoryFixedLengthAsterixTests<Cat062AsterixAgingDataField> {
 
     @Override
     protected int setExpectedItemSizeInBytes() {
@@ -20,8 +23,8 @@ public class Item290Subfield1Test extends MandatoryFixedLengthAsterixTests<Item2
     }
 
     @Override
-    protected Item290Subfield1 setFixedLengthAsterixDataInstance() {
-        return new Item290Subfield1();
+    protected Cat062AsterixAgingDataField setFixedLengthAsterixDataInstance() {
+        return new Cat062AsterixAgingDataField();
     }
 
     @Test
@@ -29,13 +32,13 @@ public class Item290Subfield1Test extends MandatoryFixedLengthAsterixTests<Item2
         //arrange
         byte[] input = {(byte) 255};
         int offset = 0;
-        Item290Subfield1 subfield1 = new Item290Subfield1();
+        Cat062AsterixAgingDataField subfield1 = new Cat062AsterixAgingDataField();
 
         //act
         subfield1.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Track age was not decoded correctly", 255, subfield1.getTrackAge());
+        assertEquals("Age was not decoded correctly", 255, subfield1.getAge());
     }
 
     @Test
@@ -43,12 +46,12 @@ public class Item290Subfield1Test extends MandatoryFixedLengthAsterixTests<Item2
         //arrange
         byte[] input = {(byte) 8};
         int offset = 0;
-        Item290Subfield1 subfield1 = new Item290Subfield1();
+        Cat062AsterixAgingDataField subfield1 = new Cat062AsterixAgingDataField();
 
         //act
         subfield1.decode(input, offset, input.length);
 
         //assert
-        assertEquals(2, subfield1.getTrackAgeSeconds(), 0.01);
+        assertEquals(2, subfield1.getAgeSeconds(), 0.01);
     }
 }
