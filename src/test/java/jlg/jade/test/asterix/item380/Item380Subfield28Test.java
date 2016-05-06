@@ -7,6 +7,7 @@
 package jlg.jade.test.asterix.item380;
 
 import jlg.jade.cat062.item380.Item380Subfield28;
+import jlg.jade.test.utils.BasicAsterixDataTestSuite;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

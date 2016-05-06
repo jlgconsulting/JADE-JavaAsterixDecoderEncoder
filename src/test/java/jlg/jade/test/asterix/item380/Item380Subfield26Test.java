@@ -7,6 +7,7 @@
 package jlg.jade.test.asterix.item380;
 
 import jlg.jade.cat062.item380.Item380Subfield26;
+import jlg.jade.test.utils.BasicAsterixDataTestSuite;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;

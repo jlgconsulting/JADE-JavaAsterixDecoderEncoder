@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix.item380;
+package jlg.jade.test.utils;
 
 /**
  * A template that shall be implemneted by all test classes that check
