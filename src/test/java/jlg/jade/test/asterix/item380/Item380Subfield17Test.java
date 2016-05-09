@@ -11,7 +11,6 @@ import jlg.jade.test.utils.BasicAsterixDataTestSuite;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class Item380Subfield17Test implements BasicAsterixDataTestSuite {
     @Override
@@ -47,7 +46,7 @@ public class Item380Subfield17Test implements BasicAsterixDataTestSuite {
         Item380Subfield17 subfield = new Item380Subfield17();
 
         //act
-        int result = subfield.decode(input, offset, input.length);
+        subfield.decode(input, offset, input.length);
 
         //assert
         assertEquals("Track angle not decoded correctly", 16864, subfield.getTrackAngle());

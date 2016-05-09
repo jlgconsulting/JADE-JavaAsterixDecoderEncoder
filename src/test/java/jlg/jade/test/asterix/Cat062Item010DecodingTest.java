@@ -22,13 +22,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class Cat062Item010DecodingTest {
 
-    private Logger logger;
-
-    @Before
-    public void init() {
-        logger = LoggerFactory.getLogger(Constants.LOGGER_NAME);
-    }
-
     @Test
     public void should_have_length_of_2_bytes(){
         //arrange

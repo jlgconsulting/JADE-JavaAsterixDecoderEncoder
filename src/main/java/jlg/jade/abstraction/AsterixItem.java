@@ -14,7 +14,7 @@ abstract class AsterixItem extends DebugMessageSource {
     protected int sizeInBytes;
     protected boolean valid;
 
-    public AsterixItem(){
+    AsterixItem(){
         this.valid = true;
     }
 

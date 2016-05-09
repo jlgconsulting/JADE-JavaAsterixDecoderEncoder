@@ -17,7 +17,7 @@ public class Cat062Item380Test {
      * We shall use 2 data samples, because not all samples are complete.
      */
 
-    private byte[] firstSampleItem380 = {
+    private final byte[] firstSampleItem380 = {
             (byte) 227,
             37,
             (byte) 177,
@@ -131,7 +131,7 @@ public class Cat062Item380Test {
     }
 
 
-    private byte[] secondSampleItem380Input = {
+    private final byte[] secondSampleItem380Input = {
             (byte) 227,
             5,
             1,

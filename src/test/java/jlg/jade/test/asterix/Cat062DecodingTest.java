@@ -8,8 +8,6 @@ package jlg.jade.test.asterix;
 
 import jlg.finalframe.FinalFrameReader;
 import jlg.jade.AsterixDecoder;
-import jlg.jade.asterix.AsterixDataBlock;
-import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -21,7 +19,6 @@ import java.io.InterruptedIOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.BitSet;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,7 +26,7 @@ public class Cat062DecodingTest {
     @Test
     public void when_file_is_used_as_input_should_decode_cat_062_message_from_larger_sample() throws IOException {
         //arrange
-        int receivedBytes = 0;
+        int receivedBytes;
 
         AsterixDecoder decoder = new AsterixDecoder(62, 65);
         try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_30min.ff")) {
@@ -47,7 +44,7 @@ public class Cat062DecodingTest {
     @Test
     public void when_file_is_used_as_input_and_final_frame_packet_is_large_should_decode_cat_062_message_from_larger_sample() throws IOException {
         //arrange
-        int receivedBytes = 0;
+        int receivedBytes;
 
         AsterixDecoder decoder = new AsterixDecoder(62, 65);
         try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_065_large_packet_30min.ff")) {

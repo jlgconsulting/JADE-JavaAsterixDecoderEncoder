@@ -9,8 +9,6 @@ package jlg.jade.test.utils;
 import java.io.File;
 import java.io.InputStream;
 import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 
 public class TestHelper {
     public static File getFileFromResource(String fileName){

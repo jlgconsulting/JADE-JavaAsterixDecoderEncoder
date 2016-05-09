@@ -21,7 +21,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
     private int nbPresentDataFields;
     private final boolean[] fspec;
 
-    public FspecAsterixData() {
+    protected FspecAsterixData() {
         //initialize max fspec size and fspec array. All items will be false;
         this.maxFspecSizeInBytes = setMaxFspecSizeInBytes();
         this.fspec = new boolean[maxFspecSizeInBytes * Constants.BYTE_TO_BITS];

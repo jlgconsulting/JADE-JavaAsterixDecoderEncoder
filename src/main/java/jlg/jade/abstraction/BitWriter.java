@@ -8,7 +8,7 @@ package jlg.jade.abstraction;
 
 import java.util.BitSet;
 
-public class BitWriter {
+class BitWriter {
     public static String getBitsRightToLeft(byte b){
         StringBuilder sb = new StringBuilder();
         BitSet bs = BitSet.valueOf(new byte[]{b});

@@ -11,7 +11,7 @@ public enum ModeOfMovementVerticalRate {
     Descent(2),
     Undetermined(3);
 
-    private int value;
+    private final int value;
 
     ModeOfMovementVerticalRate(int value) {
         this.value = value;

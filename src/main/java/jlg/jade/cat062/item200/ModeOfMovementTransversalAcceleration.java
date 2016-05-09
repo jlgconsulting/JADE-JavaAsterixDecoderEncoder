@@ -12,7 +12,7 @@ public enum ModeOfMovementTransversalAcceleration {
     LeftTurn(2),
     Undetermined(3);
 
-    private int value;
+    private final int value;
 
     ModeOfMovementTransversalAcceleration(int value){
         this.value = value;

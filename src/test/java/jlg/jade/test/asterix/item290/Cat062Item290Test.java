@@ -23,7 +23,7 @@ public class Cat062Item290Test {
         assertEquals("Fpsec size is invalid", 2, item.getMaxFspecSizeInBytes());
     }
 
-    private byte[] sampleInput = {
+    private final byte[] sampleInput = {
             127,
             (byte) 160,
             (byte) 255,

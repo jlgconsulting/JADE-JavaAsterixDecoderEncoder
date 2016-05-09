@@ -28,7 +28,7 @@ public class Cat062Item136Test extends MandatoryFixedLengthAsterixTests<Cat062It
     }
 
     @Test
-    @Parameters({"0,0,0", "1,1,257", "255,1,-255"})
+    @Parameters({"0,0,0", "1,1,257", "255,1,-255", "5,200,1480"})
     public void the_decode_method_should_correclty_decode_data(int firstOctet, int secondOctet, int expected) {
         //arrange
         byte[] input = {(byte) firstOctet, (byte) secondOctet};
