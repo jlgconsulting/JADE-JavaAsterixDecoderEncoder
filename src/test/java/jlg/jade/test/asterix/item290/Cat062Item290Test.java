@@ -106,4 +106,6 @@ public class Cat062Item290Test {
         //assert
         assertEquals("Offset not incremented after decoding of data", offset + sampleInput.length, result);
     }
+
+
 }
