@@ -39,7 +39,7 @@ public class Cat062Item136 extends FixedLengthAsterixData {
         if (this.measuredFLightLevel >= minAllowedValue && this.measuredFLightLevel <= maxAllowedValue) {
             return true;
         }
-        appendDebugMsg("MFL is not valid. The MFL must be between -15 and 1500 Asterix UM.");
+        appendDebugMsg("Measured Flight Level is invalid. The MFL must be between -15 and 1500 Asterix UM.");
         appendNewLine();
         return false;
     }
