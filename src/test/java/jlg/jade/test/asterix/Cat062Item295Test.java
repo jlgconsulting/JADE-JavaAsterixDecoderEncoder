@@ -6,9 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.item290.Cat062Item290;
-import jlg.jade.cat062.item295.Cat062Item295;
-import jlg.jade.cat062.item295.Cat062Item295Fspec;
+import jlg.jade.cat062.Cat062Item295;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -58,34 +56,20 @@ public class Cat062Item295Test {
         //assert
         assertEquals("Actual Subfield size is invalid", 5, item295.getActualFspecSizeInBytes());
 
-        assertEquals("Subfield not decoded correctly - Subfield #1", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_1));
-        assertEquals("Subfield not decoded correctly - Subfield #4", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_4));
-        assertEquals("Subfield not decoded correctly - Subfield #7", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_7));
-        assertEquals("Subfield not decoded correctly - Subfield #9", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_9));
-        assertEquals("Subfield not decoded correctly - Subfield #11", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_11));
-        assertEquals("Subfield not decoded correctly - Subfield #13", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_13));
-        assertEquals("Subfield not decoded correctly - Subfield #16", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_16));
-        assertEquals("Subfield not decoded correctly - Subfield #18", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_18));
-        assertEquals("Subfield not decoded correctly - Subfield #19", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_19));
-        assertEquals("Subfield not decoded correctly - Subfield #20", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_20));
-        assertEquals("Subfield not decoded correctly - Subfield #21", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_21));
-        assertEquals("Subfield not decoded correctly - Subfield #29", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_29));
-        assertEquals("Subfield not decoded correctly - Subfield #30", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_30));
-        assertEquals("Subfield not decoded correctly - Subfield #31", true, item295.isDataPresent(Cat062Item295Fspec
-                .SUBFIELD_31));
+        assertEquals("Subfield not decoded correctly - Subfield #1", true, item295.fspecDataAtIndex(7));
+        assertEquals("Subfield not decoded correctly - Subfield #4", true, item295.fspecDataAtIndex(4));
+        assertEquals("Subfield not decoded correctly - Subfield #7", true, item295.fspecDataAtIndex(1));
+        assertEquals("Subfield not decoded correctly - Subfield #9", true, item295.fspecDataAtIndex(14));
+        assertEquals("Subfield not decoded correctly - Subfield #11", true, item295.fspecDataAtIndex(12));
+        assertEquals("Subfield not decoded correctly - Subfield #13", true, item295.fspecDataAtIndex(10));
+        assertEquals("Subfield not decoded correctly - Subfield #16", true, item295.fspecDataAtIndex(22));
+        assertEquals("Subfield not decoded correctly - Subfield #18", true, item295.fspecDataAtIndex(20));
+        assertEquals("Subfield not decoded correctly - Subfield #19", true, item295.fspecDataAtIndex(19));
+        assertEquals("Subfield not decoded correctly - Subfield #20", true, item295.fspecDataAtIndex(18));
+        assertEquals("Subfield not decoded correctly - Subfield #21", true, item295.fspecDataAtIndex(17));
+        assertEquals("Subfield not decoded correctly - Subfield #29", true, item295.fspecDataAtIndex(37));
+        assertEquals("Subfield not decoded correctly - Subfield #30", true, item295.fspecDataAtIndex(38));
+        assertEquals("Subfield not decoded correctly - Subfield #31", true, item295.fspecDataAtIndex(39));
 
         assertEquals("Invalid number of present data items", 15, item295.getNbPresentDataFields());
     }

@@ -7,7 +7,6 @@
 package jlg.jade.test.asterix.item380;
 
 import jlg.jade.cat062.item380.Cat062Item380;
-import jlg.jade.cat062.item380.Cat062Item380Fspec;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -74,17 +73,17 @@ public class Cat062Item380Test {
         //assert
         assertEquals("Actual FSPEC length is invalid", 4, item380.getActualFspecSizeInBytes());
 
-        assertEquals("Invalid Item380 Fspec #1", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_1));
-        assertEquals("Invalid Item380 Fspec #2", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_2));
-        assertEquals("Invalid Item380 Fspec #3", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_3));
-        assertEquals("Invalid Item380 Fspec #7", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_7));
-        assertEquals("Invalid Item380 Fspec #10", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_10));
-        assertEquals("Invalid Item380 Fspec #13", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_13));
-        assertEquals("Invalid Item380 Fspec #15", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_15));
-        assertEquals("Invalid Item380 Fspec #17", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_17));
-        assertEquals("Invalid Item380 Fspec #18", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_18));
-        assertEquals("Invalid Item380 Fspec #26", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_26));
-        assertEquals("Invalid Item380 Fspec #27", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_27));
+        assertEquals("Invalid Item380 Fspec #1", true, item380.fspecDataAtIndex(7));
+        assertEquals("Invalid Item380 Fspec #2", true, item380.fspecDataAtIndex(6));
+        assertEquals("Invalid Item380 Fspec #3", true, item380.fspecDataAtIndex(5));
+        assertEquals("Invalid Item380 Fspec #7", true, item380.fspecDataAtIndex(1));
+        assertEquals("Invalid Item380 Fspec #10", true, item380.fspecDataAtIndex(13));
+        assertEquals("Invalid Item380 Fspec #13", true, item380.fspecDataAtIndex(10));
+        assertEquals("Invalid Item380 Fspec #15", true, item380.fspecDataAtIndex(23));
+        assertEquals("Invalid Item380 Fspec #17", true, item380.fspecDataAtIndex(21));
+        assertEquals("Invalid Item380 Fspec #18", true, item380.fspecDataAtIndex(20));
+        assertEquals("Invalid Item380 Fspec #26", true, item380.fspecDataAtIndex(27));
+        assertEquals("Invalid Item380 Fspec #27", true, item380.fspecDataAtIndex(26));
 
         assertEquals(11, item380.getNbPresentDataFields());
     }
@@ -174,14 +173,14 @@ public class Cat062Item380Test {
         //assert
         assertEquals("Actual FSPEC length is invalid", 4, item380.getActualFspecSizeInBytes());
 
-        assertEquals("Invalid Item380 Fspec #1", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_1));
-        assertEquals("Invalid Item380 Fspec #2", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_2));
-        assertEquals("Invalid Item380 Fspec #3", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_3));
-        assertEquals("Invalid Item380 Fspec #7", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_7));
-        assertEquals("Invalid Item380 Fspec #13", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_13));
-        assertEquals("Invalid Item380 Fspec #26", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_26));
-        assertEquals("Invalid Item380 Fspec #27", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_27));
-        assertEquals("Invalid Item380 Fspec #28", true, item380.isDataPresent(Cat062Item380Fspec.SUBFIELD_28));
+        assertEquals("Invalid Item380 Fspec #1", true, item380.fspecDataAtIndex(7));
+        assertEquals("Invalid Item380 Fspec #2", true, item380.fspecDataAtIndex(6));
+        assertEquals("Invalid Item380 Fspec #3", true, item380.fspecDataAtIndex(5));
+        assertEquals("Invalid Item380 Fspec #7", true, item380.fspecDataAtIndex(1));
+        assertEquals("Invalid Item380 Fspec #13", true, item380.fspecDataAtIndex(10));
+        assertEquals("Invalid Item380 Fspec #26", true, item380.fspecDataAtIndex(27));
+        assertEquals("Invalid Item380 Fspec #27", true, item380.fspecDataAtIndex(26));
+        assertEquals("Invalid Item380 Fspec #28", true, item380.fspecDataAtIndex(25));
 
         assertEquals(8, item380.getNbPresentDataFields());
     }
@@ -219,7 +218,7 @@ public class Cat062Item380Test {
 
         //act
         int result = item380.decode(secondSampleItem380Input, offset, length);
-
+        
         //assert
         assertEquals("Offset not incremented after decoding of data", secondSampleItem380Input.length, result);
     }

@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.cat062.item295;
+package jlg.jade.cat062;
 
 import jlg.jade.abstraction.Cat062AsterixAgingDataField;
 import jlg.jade.abstraction.FspecAsterixData;
@@ -53,7 +53,7 @@ public class Cat062Item295 extends FspecAsterixData {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset, int length) {
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_1)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_1)) {
             subfield1 = new Cat062AsterixAgingDataField();
             offset = subfield1.decode(input, offset, length);
             appendDebugMsg("Item295Subfield1 - MFL age");
@@ -61,7 +61,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield1.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_2)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_2)) {
             subfield2 = new Cat062AsterixAgingDataField();
             offset = subfield2.decode(input, offset, length);
             appendDebugMsg("Item295Subfield2 - Mode1 age");
@@ -69,7 +69,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield2.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_3)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_3)) {
             subfield3 = new Cat062AsterixAgingDataField();
             offset = subfield3.decode(input, offset, length);
             appendDebugMsg("Item295Subfield3 - Mode2 age");
@@ -77,7 +77,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield3.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_4)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_4)) {
             subfield4 = new Cat062AsterixAgingDataField();
             offset = subfield4.decode(input, offset, length);
             appendDebugMsg("Item295Subfield4 - Mode 3/A age");
@@ -85,7 +85,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield4.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_5)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_5)) {
             subfield5 = new Cat062AsterixAgingDataField();
             offset = subfield5.decode(input, offset, length);
             appendDebugMsg("Item295Subfield5 - Mode 4 age");
@@ -93,7 +93,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield5.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_6)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_6)) {
             subfield6 = new Cat062AsterixAgingDataField();
             offset = subfield6.decode(input, offset, length);
             appendDebugMsg("Item295Subfield6 - Mode5 age");
@@ -101,7 +101,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield6.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_7)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_7)) {
             subfield7 = new Cat062AsterixAgingDataField();
             offset = subfield7.decode(input, offset, length);
             appendDebugMsg("Item295Subfield7 - MGH age");
@@ -109,7 +109,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield7.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_8)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_8)) {
             subfield8 = new Cat062AsterixAgingDataField();
             offset = subfield8.decode(input, offset, length);
             appendDebugMsg("Item295Subfield8 - IAS/Mach age");
@@ -117,7 +117,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield8.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_9)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_9)) {
             subfield9 = new Cat062AsterixAgingDataField();
             offset = subfield9.decode(input, offset, length);
             appendDebugMsg("Item295Subfield9 - True airspeed age");
@@ -125,7 +125,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield9.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_10)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_10)) {
             subfield10 = new Cat062AsterixAgingDataField();
             offset = subfield10.decode(input, offset, length);
             appendDebugMsg("Item295Subfield10 - Selected altitude age");
@@ -133,7 +133,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield10.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_11)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_11)) {
             subfield11 = new Cat062AsterixAgingDataField();
             offset = subfield11.decode(input, offset, length);
             appendDebugMsg("Item295Subfield11 - Final state selected altitude age");
@@ -141,7 +141,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield11.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_12)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_12)) {
             subfield12 = new Cat062AsterixAgingDataField();
             offset = subfield12.decode(input, offset, length);
             appendDebugMsg("Item295Subfield12 - Trajectory intent age");
@@ -149,7 +149,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield12.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_13)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_13)) {
             subfield13 = new Cat062AsterixAgingDataField();
             offset = subfield13.decode(input, offset, length);
             appendDebugMsg("Item295Subfield13 - Comm/ACAS age");
@@ -157,7 +157,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield13.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_14)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_14)) {
             subfield14 = new Cat062AsterixAgingDataField();
             offset = subfield14.decode(input, offset, length);
             appendDebugMsg("Item295Subfield14 - ADSB");
@@ -165,7 +165,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield14.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_15)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_15)) {
             subfield15 = new Cat062AsterixAgingDataField();
             offset = subfield15.decode(input, offset, length);
             appendDebugMsg("Item295Subfield15 - RA Report age");
@@ -173,7 +173,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield15.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_16)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_16)) {
             subfield16 = new Cat062AsterixAgingDataField();
             offset = subfield16.decode(input, offset, length);
             appendDebugMsg("Item295Subfield16 - Barometric vertical age");
@@ -181,7 +181,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield16.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_17)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_17)) {
             subfield17 = new Cat062AsterixAgingDataField();
             offset = subfield17.decode(input, offset, length);
             appendDebugMsg("Item295Subfield17 - Geometric vertical age");
@@ -189,7 +189,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield17.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_18)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_18)) {
             subfield18 = new Cat062AsterixAgingDataField();
             offset = subfield18.decode(input, offset, length);
             appendDebugMsg("Item295Subfield18 - Roll angle age");
@@ -197,7 +197,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield18.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_19)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_19)) {
             subfield19 = new Cat062AsterixAgingDataField();
             offset = subfield19.decode(input, offset, length);
             appendDebugMsg("Item295Subfield19 - Track angle rate age");
@@ -205,7 +205,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield19.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_20)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_20)) {
             subfield20 = new Cat062AsterixAgingDataField();
             offset = subfield20.decode(input, offset, length);
             appendDebugMsg("Item295Subfield20 - Track angle age");
@@ -213,7 +213,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield20.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_21)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_21)) {
             subfield21 = new Cat062AsterixAgingDataField();
             offset = subfield21.decode(input, offset, length);
             appendDebugMsg("Item295Subfield21 - Ground speed age");
@@ -221,7 +221,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield21.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_22)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_22)) {
             subfield22 = new Cat062AsterixAgingDataField();
             offset = subfield22.decode(input, offset, length);
             appendDebugMsg("Item295Subfield22 - Velocity uncertainty age");
@@ -229,7 +229,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield22.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_23)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_23)) {
             subfield23 = new Cat062AsterixAgingDataField();
             offset = subfield23.decode(input, offset, length);
             appendDebugMsg("Item295Subfield23 - MET age");
@@ -237,7 +237,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield23.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_24)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_24)) {
             subfield24 = new Cat062AsterixAgingDataField();
             offset = subfield24.decode(input, offset, length);
             appendDebugMsg("Item295Subfield24 - Emmiter category age");
@@ -245,7 +245,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield24.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_25)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_25)) {
             subfield25 = new Cat062AsterixAgingDataField();
             offset = subfield25.decode(input, offset, length);
             appendDebugMsg("Item295Subfield25 - Pos age");
@@ -253,7 +253,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield25.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_26)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_26)) {
             subfield26 = new Cat062AsterixAgingDataField();
             offset = subfield26.decode(input, offset, length);
             appendDebugMsg("Item295Subfield26 - Geometric altitude age");
@@ -261,7 +261,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield26.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_27)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_27)) {
             subfield27 = new Cat062AsterixAgingDataField();
             offset = subfield27.decode(input, offset, length);
             appendDebugMsg("Item295Subfield27 - Pos uncertainty age");
@@ -269,7 +269,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield27.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_28)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_28)) {
             subfield28 = new Cat062AsterixAgingDataField();
             offset = subfield28.decode(input, offset, length);
             appendDebugMsg("Item295Subfield28 - Mode S MB data age");
@@ -277,7 +277,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield28.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_29)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_29)) {
             subfield29 = new Cat062AsterixAgingDataField();
             offset = subfield29.decode(input, offset, length);
             appendDebugMsg("Item295Subfield29 - Indicated airspeed data age");
@@ -285,7 +285,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield29.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_30)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_30)) {
             subfield30 = new Cat062AsterixAgingDataField();
             offset = subfield30.decode(input, offset, length);
             appendDebugMsg("Item295Subfield30 - Mach number data age");
@@ -293,7 +293,7 @@ public class Cat062Item295 extends FspecAsterixData {
             appendDebugMsg(subfield30.getDebugString());
         }
 
-        if (isDataPresent(Cat062Item295Fspec.SUBFIELD_31)) {
+        if (fspecDataAtIndex(Fspec.SUBFIELD_31)) {
             subfield31 = new Cat062AsterixAgingDataField();
             offset = subfield31.decode(input, offset, length);
             appendDebugMsg("Item295Subfield31 - Barometric pressure setting data age");
@@ -427,5 +427,48 @@ public class Cat062Item295 extends FspecAsterixData {
 
     public Cat062AsterixAgingDataField getSubfield31() {
         return subfield31;
+    }
+
+    private static class Fspec {
+        //first extent
+        public static final int SUBFIELD_7 = 1;
+        public static final int SUBFIELD_6 = 2;
+        public static final int SUBFIELD_5 = 3;
+        public static final int SUBFIELD_4 = 4;
+        public static final int SUBFIELD_3 = 5;
+        public static final int SUBFIELD_2 = 6;
+        public static final int SUBFIELD_1 = 7;
+
+        //second extent
+        public static final int SUBFIELD_14 = 9;
+        public static final int SUBFIELD_13 = 10;
+        public static final int SUBFIELD_12 = 11;
+        public static final int SUBFIELD_11 = 12;
+        public static final int SUBFIELD_10 = 13;
+        public static final int SUBFIELD_9 = 14;
+        public static final int SUBFIELD_8 = 15;
+
+        //third extent
+        public static final int SUBFIELD_21 = 17;
+        public static final int SUBFIELD_20 = 18;
+        public static final int SUBFIELD_19 = 19;
+        public static final int SUBFIELD_18 = 20;
+        public static final int SUBFIELD_17 = 21;
+        public static final int SUBFIELD_16 = 22;
+        public static final int SUBFIELD_15 = 23;
+
+        //forth extent
+        public static final int SUBFIELD_28 = 25;
+        public static final int SUBFIELD_27 = 26;
+        public static final int SUBFIELD_26 = 27;
+        public static final int SUBFIELD_25 = 28;
+        public static final int SUBFIELD_24 = 29;
+        public static final int SUBFIELD_23 = 30;
+        public static final int SUBFIELD_22 = 31;
+
+        //fifth extent
+        public static final int SUBFIELD_29 = 37;
+        public static final int SUBFIELD_30 = 38;
+        public static final int SUBFIELD_31 = 39;
     }
 }

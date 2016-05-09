@@ -53,196 +53,196 @@ public class Cat062Item380 extends FspecAsterixData {
     @Override
     protected int decodeFromByteArray(byte[] input, int offset, int length) {
         //subfield 1
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_1)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_1)){
             subfield1 = new Item380Subfield1();
             offset = subfield1.decode(input, offset, length);
             appendDebugMsg(subfield1.getDebugString());
         }
 
         //subfield 2
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_2)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_2)){
             subfield2 = new Item380Subfield2();
             offset = subfield2.decode(input, offset, length);
             appendDebugMsg(subfield2.getDebugString());
         }
 
         //subfield 3
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_3)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_3)){
             subfield3 = new Item380Subfield3();
             offset = subfield3.decode(input, offset, length);
             appendDebugMsg(subfield3.getDebugString());
         }
 
         //subfield 4
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_4)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_4)){
             subfield4 = new Item380Subfield4();
             offset = subfield4.decode(input, offset, length);
             appendDebugMsg(subfield4.getDebugString());
         }
 
         //subfield 5
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_5)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_5)){
             subfield5 = new Item380Subfield5();
             offset = subfield5.decode(input, offset, length);
             appendDebugMsg(subfield5.getDebugString());
         }
 
         //subfield 6
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_6)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_6)){
             subfield6 = new Item380Subfield6();
             offset = subfield6.decode(input, offset, length);
             appendDebugMsg(subfield6.getDebugString());
         }
 
         //subfield 7
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_7)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_7)){
             subfield7 = new Item380Subfield7();
             offset = subfield7.decode(input, offset, length);
             appendDebugMsg(subfield7.getDebugString());
         }
 
         //subfield 8
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_8)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_8)){
             subfield8 = new Item380Subfield8();
             offset = subfield8.decode(input, offset, length);
             appendDebugMsg(subfield8.getDebugString());
         }
 
         //subfield 9
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_9)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_9)){
             subfield9 = new Item380Subfield9();
             offset = subfield9.decode(input, offset, length);
             appendDebugMsg(subfield9.getDebugString());
         }
 
         //subfield 10
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_10)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_10)){
             subfield10 = new Item380Subfield10();
             offset = subfield10.decode(input, offset, length);
             appendDebugMsg(subfield10.getDebugString());
         }
 
         //subfield 11
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_11)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_11)){
             subfield11 = new Item380Subfield11();
             offset = subfield11.decode(input, offset, length);
             appendDebugMsg(subfield11.getDebugString());
         }
 
         //subfield 12
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_12)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_12)){
             subfield12 = new Item380Subfield12();
             offset = subfield12.decode(input, offset, length);
             appendDebugMsg(subfield12.getDebugString());
         }
 
         //subfield 13
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_13)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_13)){
             subfield13 = new Item380Subfield13();
             offset = subfield13.decode(input, offset, length);
             appendDebugMsg(subfield13.getDebugString());
         }
 
         //subfield 14
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_14)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_14)){
             subfield14 = new Item380Subfield14();
             offset = subfield14.decode(input, offset, length);
             appendDebugMsg(subfield14.getDebugString());
         }
 
         //subfield 15
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_15)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_15)){
             subfield15 = new Item380Subfield15();
             offset = subfield15.decode(input, offset, length);
             appendDebugMsg(subfield15.getDebugString());
         }
 
         //subfield 16
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_16)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_16)){
             subfield16 = new Item380Subfield16();
             offset = subfield16.decode(input, offset, length);
             appendDebugMsg(subfield16.getDebugString());
         }
 
         //subfield 17
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_17)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_17)){
             subfield17 = new Item380Subfield17();
             offset = subfield17.decode(input, offset, length);
             appendDebugMsg(subfield17.getDebugString());
         }
 
         //subfield 18
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_18)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_18)){
             subfield18 = new Item380Subfield18();
             offset = subfield18.decode(input, offset, length);
             appendDebugMsg(subfield18.getDebugString());
         }
 
         //subfield 19
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_19)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_19)){
             subfield19 = new Item380Subfield19();
             offset = subfield19.decode(input, offset, length);
             appendDebugMsg(subfield19.getDebugString());
         }
 
         //subfield 20
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_20)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_20)){
             subfield20 = new Item380Subfield20();
             offset = subfield20.decode(input, offset, length);
             appendDebugMsg(subfield20.getDebugString());
         }
 
         //subfield 21
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_21)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_21)){
             subfield21 = new Item380Subfield21();
             offset = subfield21.decode(input, offset, length);
             appendDebugMsg(subfield21.getDebugString());
         }
 
         //subfield 22
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_22)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_22)){
             subfield22 = new Item380Subfield22();
             offset = subfield22.decode(input, offset, length);
             appendDebugMsg(subfield22.getDebugString());
         }
 
         //subfield 23
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_23)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_23)){
             subfield23 = new Item380Subfield23();
             offset = subfield23.decode(input, offset, length);
             appendDebugMsg(subfield23.getDebugString());
         }
 
         //subfield 24
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_24)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_24)){
             subfield24 = new Item380Subfield24();
             offset = subfield24.decode(input, offset, length);
             appendDebugMsg(subfield24.getDebugString());
         }
 
         //subfield 25
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_25)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_25)){
             subfield25 = new Item380Subfield25();
             offset = subfield25.decode(input, offset, length);
             appendDebugMsg(subfield25.getDebugString());
         }
 
         //subfield 26
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_26)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_26)){
             subfield26 = new Item380Subfield26();
             offset = subfield26.decode(input, offset, length);
             appendDebugMsg(subfield26.getDebugString());
         }
 
         //subfield 27
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_27)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_27)){
             subfield27 = new Item380Subfield27();
             offset = subfield27.decode(input, offset, length);
             appendDebugMsg(subfield27.getDebugString());
         }
 
         //subfield 28
-        if(isDataPresent(Cat062Item380Fspec.SUBFIELD_28)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_28)){
             subfield28 = new Item380Subfield28();
             offset = subfield28.decode(input, offset, length);
             appendDebugMsg(subfield28.getDebugString());
@@ -361,5 +361,43 @@ public class Cat062Item380 extends FspecAsterixData {
 
     public Item380Subfield28 getSubfield28() {
         return subfield28;
+    }
+
+    private static class Fspec {
+        //first extent
+        public static final int SUBFIELD_7 = 1;
+        public static final int SUBFIELD_6 = 2;
+        public static final int SUBFIELD_5 = 3;
+        public static final int SUBFIELD_4 = 4;
+        public static final int SUBFIELD_3 = 5;
+        public static final int SUBFIELD_2 = 6;
+        public static final int SUBFIELD_1 = 7;
+
+        //second extent
+        public static final int SUBFIELD_14 = 9;
+        public static final int SUBFIELD_13 = 10;
+        public static final int SUBFIELD_12 = 11;
+        public static final int SUBFIELD_11 = 12;
+        public static final int SUBFIELD_10 = 13;
+        public static final int SUBFIELD_9 = 14;
+        public static final int SUBFIELD_8 = 15;
+
+        //third extent
+        public static final int SUBFIELD_21 = 17;
+        public static final int SUBFIELD_20 = 18;
+        public static final int SUBFIELD_19 = 19;
+        public static final int SUBFIELD_18 = 20;
+        public static final int SUBFIELD_17 = 21;
+        public static final int SUBFIELD_16 = 22;
+        public static final int SUBFIELD_15 = 23;
+
+        //forth extent
+        public static final int SUBFIELD_28 = 25;
+        public static final int SUBFIELD_27 = 26;
+        public static final int SUBFIELD_26 = 27;
+        public static final int SUBFIELD_25 = 28;
+        public static final int SUBFIELD_24 = 29;
+        public static final int SUBFIELD_23 = 30;
+        public static final int SUBFIELD_22 = 31;
     }
 }

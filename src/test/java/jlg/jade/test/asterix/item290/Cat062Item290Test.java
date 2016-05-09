@@ -7,7 +7,6 @@
 package jlg.jade.test.asterix.item290;
 
 import jlg.jade.cat062.item290.Cat062Item290;
-import jlg.jade.cat062.item290.Cat062Item290Fspec;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -50,26 +49,16 @@ public class Cat062Item290Test {
         //assert
         assertEquals("Actual FSPEC size is invalid", 2, item290.getActualFspecSizeInBytes());
 
-        assertEquals("FSPEC not decoded correctly - Subfield #1", false, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_1));
-        assertEquals("FSPEC not decoded correctly - Subfield #2", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_2));
-        assertEquals("FSPEC not decoded correctly - Subfield #3", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_3));
-        assertEquals("FSPEC not decoded correctly - Subfield #4", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_4));
-        assertEquals("FSPEC not decoded correctly - Subfield #5", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_5));
-        assertEquals("FSPEC not decoded correctly - Subfield #6", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_6));
-        assertEquals("FSPEC not decoded correctly - Subfield #7", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_7));
-        assertEquals("FSPEC not decoded correctly - Subfield #8", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_8));
-        assertEquals("FSPEC not decoded correctly - Subfield #9", false, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_9));
-        assertEquals("FSPEC not decoded correctly - Subfield #10", true, item290.isDataPresent(Cat062Item290Fspec
-                .SUBFIELD_10));
+        assertEquals("FSPEC not decoded correctly - Subfield #1", false, item290.fspecDataAtIndex(7));
+        assertEquals("FSPEC not decoded correctly - Subfield #2", true, item290.fspecDataAtIndex(6));
+        assertEquals("FSPEC not decoded correctly - Subfield #3", true, item290.fspecDataAtIndex(5));
+        assertEquals("FSPEC not decoded correctly - Subfield #4", true, item290.fspecDataAtIndex(4));
+        assertEquals("FSPEC not decoded correctly - Subfield #5", true, item290.fspecDataAtIndex(3));
+        assertEquals("FSPEC not decoded correctly - Subfield #6", true, item290.fspecDataAtIndex(2));
+        assertEquals("FSPEC not decoded correctly - Subfield #7", true, item290.fspecDataAtIndex(1));
+        assertEquals("FSPEC not decoded correctly - Subfield #8", true, item290.fspecDataAtIndex(15));
+        assertEquals("FSPEC not decoded correctly - Subfield #9", false, item290.fspecDataAtIndex(14));
+        assertEquals("FSPEC not decoded correctly - Subfield #10", true, item290.fspecDataAtIndex(13));
     }
 
     @Test

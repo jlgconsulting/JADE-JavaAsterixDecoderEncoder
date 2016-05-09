@@ -45,7 +45,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
      * @param fsepcIndex the bit index in the fspec array
      * @return true, if item is present in FSPEC, false otherwise
      */
-    public boolean isDataPresent(int fsepcIndex) {
+    public boolean fspecDataAtIndex(int fsepcIndex) {
         return fspec[fsepcIndex];
     }
 

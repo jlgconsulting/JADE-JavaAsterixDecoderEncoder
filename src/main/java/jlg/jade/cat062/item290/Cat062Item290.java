@@ -36,7 +36,7 @@ public class Cat062Item290 extends FspecAsterixData {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset, int length) {
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_1)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_1)){
             subfield1 = new Cat062AsterixAgingDataField();
             offset = subfield1.decode(input,offset,length);
 
@@ -45,7 +45,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield1.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_2)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_2)){
             subfield2 = new Cat062AsterixAgingDataField();
             offset = subfield2.decode(input,offset,length);
 
@@ -54,7 +54,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield2.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_3)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_3)){
             subfield3 = new Cat062AsterixAgingDataField();
             offset = subfield3.decode(input,offset,length);
 
@@ -63,7 +63,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield3.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_4)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_4)){
             subfield4 = new Cat062AsterixAgingDataField();
             offset = subfield4.decode(input,offset,length);
 
@@ -72,7 +72,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield4.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_5)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_5)){
             subfield5 = new Item290Subfield5();
             offset = subfield5.decode(input,offset,length);
 
@@ -81,7 +81,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield5.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_6)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_6)){
             subfield6 = new Cat062AsterixAgingDataField();
             offset = subfield6.decode(input,offset,length);
 
@@ -90,7 +90,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield6.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_7)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_7)){
             subfield7 = new Cat062AsterixAgingDataField();
             offset = subfield7.decode(input,offset,length);
 
@@ -99,7 +99,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield7.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_8)) {
+        if(fspecDataAtIndex(Fspec.SUBFIELD_8)) {
             subfield8 = new Cat062AsterixAgingDataField();
             offset = subfield8.decode(input, offset, length);
 
@@ -108,7 +108,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield8.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_9)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_9)){
             subfield9 = new Cat062AsterixAgingDataField();
             offset = subfield9.decode(input,offset,length);
 
@@ -117,7 +117,7 @@ public class Cat062Item290 extends FspecAsterixData {
             appendDebugMsg(subfield9.getDebugString());
         }
 
-        if(isDataPresent(Cat062Item290Fspec.SUBFIELD_10)){
+        if(fspecDataAtIndex(Fspec.SUBFIELD_10)){
             subfield10 = new Cat062AsterixAgingDataField();
             offset = subfield10.decode(input,offset,length);
 
@@ -167,5 +167,21 @@ public class Cat062Item290 extends FspecAsterixData {
 
     public Cat062AsterixAgingDataField getSubfield10() {
         return subfield10;
+    }
+    
+    private static class Fspec{
+        //first extent
+        public static final int SUBFIELD_7 = 1;
+        public static final int SUBFIELD_6 = 2;
+        public static final int SUBFIELD_5 = 3;
+        public static final int SUBFIELD_4 = 4;
+        public static final int SUBFIELD_3 = 5;
+        public static final int SUBFIELD_2 = 6;
+        public static final int SUBFIELD_1 = 7;
+
+        //second extent (4 spare bits)
+        public static final int SUBFIELD_10 = 13;
+        public static final int SUBFIELD_9 = 14;
+        public static final int SUBFIELD_8 = 15;
     }
 }
