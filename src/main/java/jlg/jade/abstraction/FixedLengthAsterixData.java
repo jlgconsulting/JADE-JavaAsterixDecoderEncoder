@@ -9,6 +9,8 @@ package jlg.jade.abstraction;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.common.AsterixDecodingException;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Generic definition of an Asterix data item with a fixed length. All fixed length items will derive from this
  * base class;
