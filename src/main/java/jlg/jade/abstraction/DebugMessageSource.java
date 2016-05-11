@@ -42,4 +42,10 @@ public abstract class DebugMessageSource {
     protected void clearDebugMsg() {
         debugStringBuilder.setLength(0);
     }
+
+    protected void appendErrorMessage(String msg){
+        debugStringBuilder.append("-- [ERR] - ");
+        debugStringBuilder.append(msg);
+        debugStringBuilder.append(System.lineSeparator());
+    }
 }
