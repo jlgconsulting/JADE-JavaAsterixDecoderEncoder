@@ -30,8 +30,8 @@ public class Item500Subfield1 extends FixedLengthAsterixData {
         this.accuracyOfPositionX = UnsignedNumericDecoder.decodeFromTwoBytes(input, offset);
         this.accuracyOfPositionY = UnsignedNumericDecoder.decodeFromTwoBytes(input, offset + 2);
 
-        appendItemDebugMsg("APC X Cartesian", this.accuracyOfPositionX);
-        appendItemDebugMsg("APC Y Cartesian", this.accuracyOfPositionY);
+        appendItemDebugMsg("APC X (Cartesian component)", this.accuracyOfPositionX);
+        appendItemDebugMsg("APC Y (Cartesian component)", this.accuracyOfPositionY);
     }
 
     /**
