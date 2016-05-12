@@ -28,7 +28,7 @@ public abstract class VariableLengthAsterixData extends AsterixItem implements D
 
     protected abstract void decodeFromByteArray(byte[] input, int offset);
 
-    private int setSizeInBytes(byte[] input, int offset) {
+    protected int setSizeInBytes(byte[] input, int offset) {
         int currentLength = 1;
         BitSet bs = BitSet.valueOf(new byte[]{input[offset]});
 
