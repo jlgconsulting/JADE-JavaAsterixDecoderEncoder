@@ -8,7 +8,14 @@ package jlg.jade.test.asterix.item500;
 
 import jlg.jade.cat062.item500.Item500Subfield2;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import static org.junit.Assert.assertEquals;
+
+@RunWith(JUnitParamsRunner.class)
 public class Item500Subfield2Test extends MandatoryFixedLengthAsterixTests<Item500Subfield2> {
     @Override
     protected int setExpectedItemSizeInBytes() {
@@ -19,4 +26,20 @@ public class Item500Subfield2Test extends MandatoryFixedLengthAsterixTests<Item5
     protected Item500Subfield2 setFixedLengthAsterixDataInstance() {
         return new Item500Subfield2();
     }
+
+    @Test
+    @Parameters({"1,1,257", "255,1,-255"})
+    public void the_decode_method_should_correctly_decode_data(int firstOctet, int secondOctet, int expected) {
+        //arrange
+        byte[] input = {(byte) firstOctet, (byte) secondOctet};
+        int offset = 0;
+        Item500Subfield2 subfield2 = new Item500Subfield2();
+
+        //act
+        subfield2.decode(input, offset, input.length);
+
+        //assert
+        assertEquals("Subfield not decoded correctly", expected, subfield2.getCovariance());
+    }
+
 }
