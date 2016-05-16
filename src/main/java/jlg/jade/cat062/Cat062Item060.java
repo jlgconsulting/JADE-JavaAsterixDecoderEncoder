@@ -7,6 +7,7 @@
 package jlg.jade.cat062;
 
 import jlg.jade.abstraction.FixedLengthAsterixData;
+import jlg.jade.abstraction.ModeACode;
 import jlg.jade.asterix.AsterixItemLength;
 
 import java.util.BitSet;
@@ -77,24 +78,6 @@ public class Cat062Item060 extends FixedLengthAsterixData {
     }
 
     public String getModeAOctal() {
-        String octal =  Integer.toOctalString(this.modeADecimal);
-
-        /**
-         * @implNote
-         * If octal representation has less than 4 digits, we
-         * have to prepend 0 at the beginning. In aviation, a Mode A
-         * code has 4 characters
-         */
-
-        if(octal.length() == 3){
-            return "0" + octal;
-        }
-        if(octal.length() == 2){
-            return "00" + octal;
-        }
-        if(octal.length() == 1){
-            return "000" + octal;
-        }
-        return octal;
+        return ModeACode.toOctal(this.modeADecimal);
     }
 }
