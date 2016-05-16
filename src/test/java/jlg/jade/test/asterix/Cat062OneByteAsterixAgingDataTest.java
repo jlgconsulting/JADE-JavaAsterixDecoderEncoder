@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.abstraction.Cat062AsterixAgingDataField;
+import jlg.jade.asterix.Cat062AsterixAgingDataField;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 

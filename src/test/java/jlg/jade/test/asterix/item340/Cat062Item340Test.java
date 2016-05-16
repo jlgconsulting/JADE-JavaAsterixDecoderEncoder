@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix.item340;
 
-import jlg.jade.cat062.item340.Cat062Item340;
+import jlg.jade.asterix.cat062.item340.Cat062Item340;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
 import org.junit.Test;
 

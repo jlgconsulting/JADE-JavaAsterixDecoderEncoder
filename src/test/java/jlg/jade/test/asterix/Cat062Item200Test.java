@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.item200.Cat062Item200;
+import jlg.jade.asterix.cat062.item200.Cat062Item200;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.utils;
 
-import jlg.jade.abstraction.FspecAsterixData;
+import jlg.jade.asterix.FspecAsterixData;
 import org.junit.Before;
 import org.junit.Test;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;

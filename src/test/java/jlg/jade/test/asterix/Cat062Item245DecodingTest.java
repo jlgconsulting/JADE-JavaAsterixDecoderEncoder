@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.Cat062Item245;
+import jlg.jade.asterix.cat062.Cat062Item245;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 

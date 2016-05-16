@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.Cat062Item105;
+import jlg.jade.asterix.cat062.Cat062Item105;
 import jlg.jade.common.AsterixDecodingException;
 import jlg.jade.common.Constants;
 import jlg.jade.test.utils.TestHelper;

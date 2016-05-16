@@ -6,8 +6,8 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.Cat062Fspec;
-import jlg.jade.cat062.Cat062UAP;
+import jlg.jade.asterix.cat062.Cat062Fspec;
+import jlg.jade.asterix.cat062.Cat062UAP;
 import jlg.jade.common.Constants;
 import org.junit.Before;
 import org.junit.Test;

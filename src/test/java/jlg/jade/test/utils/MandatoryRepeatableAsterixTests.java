@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.utils;
 
-import jlg.jade.abstraction.RepeatableAsterixData;
+import jlg.jade.asterix.RepeatableAsterixData;
 import org.junit.Before;
 import org.junit.Test;
 

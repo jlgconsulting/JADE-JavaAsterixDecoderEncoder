@@ -7,7 +7,7 @@
 package jlg.jade.test.asterix.item380;
 
 
-import jlg.jade.cat062.item380.Item380Subfield5;
+import jlg.jade.asterix.cat062.item380.Item380Subfield5;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;

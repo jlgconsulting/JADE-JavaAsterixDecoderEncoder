@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix.item500;
 
-import jlg.jade.cat062.item500.Cat062Item500;
+import jlg.jade.asterix.cat062.item500.Cat062Item500;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
 
 import static org.junit.Assert.assertEquals;

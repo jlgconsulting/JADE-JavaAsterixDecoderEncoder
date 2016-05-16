@@ -6,10 +6,10 @@
 */
 package jlg.jade.asterix;
 
-import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.Decodable;
-import jlg.jade.abstraction.Encodable;
-import jlg.jade.cat062.AsterixCat062Record;
+import jlg.jade.asterix.cat062.AsterixCat062Record;
+import jlg.jade.common.DebugMessageSource;
+import jlg.jade.common.Decodable;
+import jlg.jade.common.Encodable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**

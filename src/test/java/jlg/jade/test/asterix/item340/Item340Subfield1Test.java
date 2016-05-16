@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix.item340;
 
-import jlg.jade.cat062.item340.Item340Subfield1;
+import jlg.jade.asterix.cat062.item340.Item340Subfield1;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 

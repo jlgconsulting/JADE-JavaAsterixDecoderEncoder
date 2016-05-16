@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.Cat062Item185;
+import jlg.jade.asterix.cat062.Cat062Item185;
 import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 

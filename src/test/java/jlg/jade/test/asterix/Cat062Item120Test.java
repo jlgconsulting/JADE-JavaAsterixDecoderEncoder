@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix;
 
-import jlg.jade.cat062.Cat062Item120;
+import jlg.jade.asterix.cat062.Cat062Item120;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 
 public class Cat062Item120Test extends MandatoryFixedLengthAsterixTests<Cat062Item120> {

@@ -6,8 +6,8 @@
 */
 package jlg.jade.asterix;
 
-import jlg.jade.abstraction.DebugMessageSource;
-import jlg.jade.abstraction.Decodable;
+import jlg.jade.common.DebugMessageSource;
+import jlg.jade.common.Decodable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;

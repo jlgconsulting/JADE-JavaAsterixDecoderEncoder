@@ -9,12 +9,8 @@ package jlg.jade.test.asterix;
 
 import jlg.jade.common.AsterixDecodingException;
 import jlg.jade.asterix.AsterixItemLength;
-import jlg.jade.cat062.Cat062Item010;
-import jlg.jade.common.Constants;
-import org.junit.Before;
+import jlg.jade.asterix.cat062.Cat062Item010;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
