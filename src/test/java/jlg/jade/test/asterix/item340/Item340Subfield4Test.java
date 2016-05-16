@@ -39,7 +39,7 @@ public class Item340Subfield4Test extends MandatoryFixedLengthAsterixTests<Item3
         subfield4.decode(input, offset, input.length);
 
         ///assert
-        assertEquals("Subfield not decoded correctly (code validation)", expected, subfield4.isCodeValidation());
+        assertEquals("Subfield not decoded correctly (code validation)", expected, subfield4.getCodeValidation());
     }
 
     @Test

@@ -68,7 +68,7 @@ public class Item340Subfield5 extends FixedLengthAsterixData {
     /**
      * @return True, if the code is garbled, false, otherwise
      */
-    public boolean getCodeGarbled() {
+    public boolean isCodeGarbled() {
         return codeGarbled;
     }
 

@@ -54,7 +54,7 @@ public class Item340Subfield5Test extends MandatoryFixedLengthAsterixTests<Item3
         subfield5.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Subfield not decoded correctly (mode a garbled)", expected, subfield5.getCodeGarbled());
+        assertEquals("Subfield not decoded correctly (mode a garbled)", expected, subfield5.isCodeGarbled());
     }
 
     @Test

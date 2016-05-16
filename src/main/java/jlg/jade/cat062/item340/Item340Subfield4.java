@@ -69,7 +69,7 @@ public class Item340Subfield4 extends FixedLengthAsterixData {
     /**
      * @return True, if the mode c code has been validated, false otherwise
      */
-    public boolean isCodeValidation() {
+    public boolean getCodeValidation() {
         return codeValidation;
     }
 
