@@ -7,50 +7,16 @@
 package jlg.jade.test.asterix.item380;
 
 import jlg.jade.asterix.cat062.item380.Item380Subfield25;
-import jlg.jade.test.utils.BasicRepeatableAsterixDataTestSuite;
-import org.junit.Test;
+import jlg.jade.test.utils.MandatoryRepeatableAsterixTests;
 
-import static org.junit.Assert.assertEquals;
-
-public class Item380Subfield25Test implements BasicRepeatableAsterixDataTestSuite {
-
+public class Item380Subfield25Test extends MandatoryRepeatableAsterixTests<Item380Subfield25> {
     @Override
-    @Test
-    public void repeatable_block_size_should_be_correct() {
-        //arrange
-        Item380Subfield25 subfield = new Item380Subfield25();
-
-        //assert
-        assertEquals("Subfield has invalid rep block size", 8, subfield.getRepeatableBlockSizeInBytes());
+    protected int setExpectedRepeatableBlockSizeInBytes() {
+        return 8;
     }
 
     @Override
-    @Test
-    public void the_decode_method_should_calculate_correct_size() {
-        //arrange
-        byte[] inputWithTwoRepBlocks = {2, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8};
-        int offset = 0;
-        Item380Subfield25 subfield = new Item380Subfield25();
-
-        //act
-        subfield.decode(inputWithTwoRepBlocks, offset, inputWithTwoRepBlocks.length);
-
-        //assert
-        assertEquals("Repeatable subfield has invalid length", 17, subfield.getSizeInBytes());
-    }
-
-    @Override
-    @Test
-    public void the_decode_method_should_increment_offset_after_decoding_data() {
-        //arrange
-        byte[] inputWithTwoRepBlocks = {2, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8};
-        int offset = 0;
-        Item380Subfield25 subfield = new Item380Subfield25();
-
-        //act
-        int result = subfield.decode(inputWithTwoRepBlocks, offset, inputWithTwoRepBlocks.length);
-
-        //assert
-        assertEquals("Offset not incremented after data decoding", 17, result);
+    protected Item380Subfield25 setRepeatableAsterixDataInstance() {
+        return new Item380Subfield25();
     }
 }

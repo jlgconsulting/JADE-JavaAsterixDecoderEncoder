@@ -7,7 +7,7 @@
 package jlg.jade.test.asterix.item380;
 
 import jlg.jade.asterix.cat062.item380.Item380Subfield13;
-import jlg.jade.test.utils.BasicAsterixDataTestSuite;
+import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
@@ -17,36 +17,19 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
-public class Item380Subfield13Test implements BasicAsterixDataTestSuite {
+public class Item380Subfield13Test extends MandatoryFixedLengthAsterixTests<Item380Subfield13> {
     @Override
-    @Test
-    public void should_have_length_correct_length() {
-        //arrange
-        Item380Subfield13 subfield = new Item380Subfield13();
-
-        //assert
-        assertEquals("Subfield length is invalid", 2, subfield.getSizeInBytes());
+    protected int setExpectedItemSizeInBytes() {
+        return 2;
     }
 
-
-
     @Override
-    @Test
-    public void the_decode_method_should_increment_offset_after_decoding_data() {
-        //arrange
-        byte[] input = {0,10};
-        int offset = 0;
-        Item380Subfield13 subfield = new Item380Subfield13();
-
-        //act
-        int result = subfield.decode(input, offset, input.length);
-
-        //assert
-        assertEquals("Offset not incremented after decoding data", 2, result);
+    protected Item380Subfield13 setFixedLengthAsterixDataInstance() {
+        return new Item380Subfield13();
     }
 
     @Test
-    @Parameters({"0,10,10","255,255,-1"})
+    @Parameters({"0,10,10", "255,255,-1"})
     public void the_decode_method_should_correctly_decode_data(int firstOctet, int secondOctet, int expected) {
         //arrange
         byte[] input = {(byte) firstOctet, (byte) secondOctet};
@@ -61,9 +44,9 @@ public class Item380Subfield13Test implements BasicAsterixDataTestSuite {
     }
 
     @Test
-    public void the_decode_method_should_set_valid_flag_to_true(){
+    public void the_decode_method_should_set_valid_flag_to_true() {
         //arrange
-        byte[] input = {0,10};
+        byte[] input = {0, 10};
         int offset = 0;
         Item380Subfield13 subfield = new Item380Subfield13();
 

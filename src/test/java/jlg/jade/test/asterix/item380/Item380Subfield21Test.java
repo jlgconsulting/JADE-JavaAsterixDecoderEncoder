@@ -7,35 +7,20 @@
 package jlg.jade.test.asterix.item380;
 
 import jlg.jade.asterix.cat062.item380.Item380Subfield21;
-import jlg.jade.test.utils.BasicAsterixDataTestSuite;
+import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class Item380Subfield21Test implements BasicAsterixDataTestSuite {
+public class Item380Subfield21Test extends MandatoryFixedLengthAsterixTests<Item380Subfield21> {
     @Override
-    @Test
-    public void should_have_length_correct_length() {
-        //arrange
-        Item380Subfield21 subfield = new Item380Subfield21();
-
-        //assert
-        assertEquals("Invalid subfield length", 1, subfield.getSizeInBytes());
+    protected int setExpectedItemSizeInBytes() {
+        return 1;
     }
 
     @Override
-    @Test
-    public void the_decode_method_should_increment_offset_after_decoding_data() {
-        //arrange
-        byte[] input = {1};
-        int offset = 0;
-        Item380Subfield21 subfield = new Item380Subfield21();
-
-        //act
-        int result = subfield.decode(input, offset, input.length);
-
-        //assert
-        assertEquals("Offset not incremented after data decoding", offset + 1, result);
+    protected Item380Subfield21 setFixedLengthAsterixDataInstance() {
+        return new Item380Subfield21();
     }
 
     @Test
