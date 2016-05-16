@@ -8,6 +8,12 @@ package jlg.jade.common;
 
 public class AsterixDecodingException {
 
+    public static class ReservedFieldNotImplemented extends Exception {
+        public ReservedFieldNotImplemented(String msg) {
+            super(msg);
+        }
+    }
+
     public static class UnexpectedEndOfData extends RuntimeException {
         public UnexpectedEndOfData(String msg) {
             super(msg);
