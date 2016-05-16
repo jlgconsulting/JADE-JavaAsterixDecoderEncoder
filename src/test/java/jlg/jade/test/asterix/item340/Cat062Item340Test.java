@@ -25,7 +25,7 @@ public class Cat062Item340Test extends MandatoryFspecAsterixTests<Cat062Item340>
         return 1;
     }
 
-    private byte[] sampleInput = {
+    private final byte[] sampleInput = {
             (byte) 220,
             (byte) 132,
             5,

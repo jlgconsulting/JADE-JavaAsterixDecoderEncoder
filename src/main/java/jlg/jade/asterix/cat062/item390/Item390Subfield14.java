@@ -8,6 +8,7 @@ package jlg.jade.asterix.cat062.item390;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
+import jlg.jade.common.BitValueDecoder;
 
 import java.util.BitSet;
 
@@ -26,8 +27,8 @@ public class Item390Subfield14 extends FixedLengthAsterixData {
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
         BitSet bs = BitSet.valueOf(new byte[]{input[offset]});
-        this.standEmptiness = decodeFromTwoBits(bs, 6, 7);
-        this.standAvailability = decodeFromTwoBits(bs, 4, 5);
+        this.standEmptiness = BitValueDecoder.decodeFromTwoBits(bs, 6, 7);
+        this.standAvailability = BitValueDecoder.decodeFromTwoBits(bs, 4, 5);
 
         appendItemDebugMsg("EMP (0=Empty,1=Occupied,2=Unk,3=Invalid)", this.standEmptiness);
         appendItemDebugMsg("AVL (0=Available,1=Not available,2=Unk,3=Invalid)", this.standAvailability);
@@ -53,20 +54,5 @@ public class Item390Subfield14 extends FixedLengthAsterixData {
      */
     public int getStandAvailability() {
         return standAvailability;
-    }
-
-    private int decodeFromTwoBits(BitSet bs, int startBitIndex, int endBitIndex) {
-        final boolean startBit = bs.get(startBitIndex);
-        final boolean endBit = bs.get(endBitIndex);
-        if (!endBit && !startBit) {
-            return 0;
-        }
-        if (!endBit && startBit) {
-            return 1;
-        }
-        if (endBit && !startBit) {
-            return 2;
-        }
-        return 3;
     }
 }

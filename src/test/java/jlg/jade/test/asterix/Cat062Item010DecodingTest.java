@@ -13,7 +13,6 @@ import jlg.jade.asterix.cat062.Cat062Item010;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 
 public class Cat062Item010DecodingTest {

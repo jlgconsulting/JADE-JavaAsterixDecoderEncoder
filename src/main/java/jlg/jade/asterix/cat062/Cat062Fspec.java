@@ -20,7 +20,7 @@ import java.util.BitSet;
  * Cat062UAP enum to make code more understandable.
  */
 public class Cat062Fspec extends DebugMessageSource implements Decodable, Encodable {
-    private boolean[] fspecList;
+    private final boolean[] fspecList;
 
     public Cat062Fspec(){
         final int FSPEC_LENGTH = 40;

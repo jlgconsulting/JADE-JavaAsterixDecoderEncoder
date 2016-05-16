@@ -8,6 +8,7 @@ package jlg.jade.asterix.cat062.item390;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
+import jlg.jade.common.BitValueDecoder;
 
 import java.util.BitSet;
 
@@ -31,15 +32,15 @@ public class Item390Subfield4 extends FixedLengthAsterixData {
         BitSet bs = BitSet.valueOf(new byte[]{input[offset]});
 
         //decode traffic type
-        this.trafficType = decodeFromTwoBits(bs, 6, 7);
+        this.trafficType = BitValueDecoder.decodeFromTwoBits(bs, 6, 7);
         appendItemDebugMsg("Traffic type (0=Unk,1=GAT,2=OAT,3=NA)", this.trafficType);
 
         //decode flight rules
-        this.flightRules = decodeFromTwoBits(bs, 4, 5);
+        this.flightRules = BitValueDecoder.decodeFromTwoBits(bs, 4, 5);
         appendItemDebugMsg("Flight rules (0=IFR,1=VFR,2=NA,3=Ctrl. VFR)", this.flightRules);
 
         //decode RVSM
-        this.rvsm = decodeFromTwoBits(bs, 2, 3);
+        this.rvsm = BitValueDecoder.decodeFromTwoBits(bs, 2, 3);
         appendItemDebugMsg("RVSM (0=Unk,1=Approved,2=Exempt,3=Not approved)", this.rvsm);
 
         //decode HPR
@@ -92,20 +93,5 @@ public class Item390Subfield4 extends FixedLengthAsterixData {
      */
     public int getPriority() {
         return priority;
-    }
-
-    private int decodeFromTwoBits(BitSet bs, int startBitIndex, int endBitIndex) {
-        final boolean startBit = bs.get(startBitIndex);
-        final boolean endBit = bs.get(endBitIndex);
-        if (!endBit && !startBit) {
-            return 0;
-        }
-        if (!endBit && startBit) {
-            return 1;
-        }
-        if (endBit && !startBit) {
-            return 2;
-        }
-        return 3;
     }
 }

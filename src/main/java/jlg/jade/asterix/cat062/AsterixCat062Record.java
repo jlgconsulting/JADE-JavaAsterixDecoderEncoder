@@ -15,7 +15,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * Represents a single Asterix entity which contains a number of data items
  */
 public class AsterixCat062Record extends DebugMessageSource implements Decodable, Encodable {
-    private Cat062Fspec fspec;
+    private final Cat062Fspec fspec;
     private Cat062Item010 item010;
     private Cat062Item015 item015;
     private Cat062Item070 item070;
