@@ -7,48 +7,41 @@
 package jlg.jade.asterix;
 
 import jlg.jade.common.Decodable;
+import jlg.jade.common.UnsignedNumericDecoder;
 
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.function.Function;
 
 /**
- * Represents a reserved Asterix field, in which the implementation can be inserted as a Function at runtime.
+ * Represents a reserved Asterix field with defaulot behaviour:
+ * - interprets the first octet as the length of the item
+ * - skips the item
+ * For custom implementations, you need to derive from this class ad oerride the decode method
  */
 public class ReservedAsterixField extends AsterixItem implements Decodable {
     private Map<String, String> values;
-    private Function<ReservedAsterixField, Integer> decodingFunction;
 
-    /**
-     * Create an Asterix reserved field with a custom implementation
-     *
-     * @param decodingFunction The custom implementation for this field
-     */
-    public ReservedAsterixField(Function<ReservedAsterixField, Integer> decodingFunction) {
+    public ReservedAsterixField() {
         this.values = new Hashtable<>();
-        this.decodingFunction = decodingFunction;
     }
 
     @Override
     public int decode(byte[] input, int offset, int inputLength) {
         /**
          * @implNote
-         * We have the item present, but no custom implementation function. Will log and return -1
+         * We have the item present, but no custom implementation function. By default, we assume that the
+         * first octet represents the size of the reserved field.
          */
-        if (decodingFunction == null) {
-            appendNotImplementedMsg();
-            appendDebugMsg("Reserved field not implemented. Will return -1. You might loose data if you do not " +
-                    "implement this field.");
-            appendNewLine();
-            return -1;
-        }
 
-        int newOffset = decodingFunction.apply(this);
-        for (String key : values.keySet()) {
-            String value = values.get(key);
-            appendItemDebugMsg(key,value);
-        }
-        return newOffset;
+        appendNotImplementedMsg();
+        appendDebugMsg("Using default behaviour. Read length from first octet and " +
+                "skip data. You might loose data if you do not implement this field.");
+        appendNewLine();
+
+        int length = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
+        appendItemDebugMsg("Length ", length);
+
+        return offset + length;
     }
 
     /**

@@ -12,7 +12,7 @@ import jlg.jade.common.DebugMessageSource;
  * Generic definition of an Asterix item. All implementation of items will derive from
  * this base class
  */
-abstract class AsterixItem extends DebugMessageSource {
+public abstract class AsterixItem extends DebugMessageSource {
     protected int sizeInBytes;
     protected boolean valid;
 

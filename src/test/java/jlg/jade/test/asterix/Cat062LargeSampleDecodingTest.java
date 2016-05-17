@@ -22,7 +22,7 @@ import java.util.BitSet;
 
 import static org.junit.Assert.assertEquals;
 
-public class Cat062DecodingTest {
+public class Cat062LargeSampleDecodingTest {
     @Test
     public void when_file_is_used_as_input_should_decode_cat_062_message_from_larger_sample() throws IOException {
         //arrange
@@ -42,7 +42,9 @@ public class Cat062DecodingTest {
     }
 
     @Test
-    public void when_file_is_used_as_input_and_final_frame_packet_is_large_should_decode_cat_062_message_from_larger_sample() throws IOException {
+    public void
+    when_file_is_used_as_input_and_final_frame_packet_is_large_should_decode_cat_062_message_from_larger_sample()
+            throws IOException {
         //arrange
         int receivedBytes;
 
@@ -61,7 +63,9 @@ public class Cat062DecodingTest {
 
     @Test
     @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
-    public void  when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws IOException,InterruptedException {
+    public void
+    when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws
+            IOException, InterruptedException {
         //arrange
         final int PORT = 3001;
         final int MAX_PACKET_SIZE = 65507;
@@ -100,7 +104,8 @@ public class Cat062DecodingTest {
 
     @Test()
     @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
-    public void when_upd_unicast_is_used_as_input_should_decode_cat062_messages_from_larger_sample() throws IOException, InterruptedException {
+    public void when_upd_unicast_is_used_as_input_should_decode_cat062_messages_from_larger_sample() throws
+            IOException, InterruptedException {
         //arrange
         final int PORT = 3002;
         final int MAX_PACKET_SIZE = 65507;
@@ -147,25 +152,23 @@ public class Cat062DecodingTest {
                 byte[] ffPayload = ffReader.read(is);
                 if (ffPayload != null) {
                     System.out.println("DATA BLOCK START");
-                    for (int i=0;i<ffPayload.length;i++){
+                    for (int i = 0; i < ffPayload.length; i++) {
                         BitSet bs = BitSet.valueOf(new byte[]{ffPayload[i]});
                         System.out.print("ORIGINAL [ ");
-                        for (int j=0;j<8;j++){
-                            if(bs.get(j)){
+                        for (int j = 0; j < 8; j++) {
+                            if (bs.get(j)) {
                                 System.out.print(1 + " ");
-                            }
-                            else{
+                            } else {
                                 System.out.print(0 + " ");
                             }
                         }
                         System.out.print("]");
 
                         System.out.print("   REVERSE [ ");
-                        for (int j=8;j>0;j--){
-                            if(bs.get(j)){
+                        for (int j = 8; j > 0; j--) {
+                            if (bs.get(j)) {
                                 System.out.print(1 + " ");
-                            }
-                            else{
+                            } else {
                                 System.out.print(0 + " ");
                             }
                         }
@@ -175,7 +178,7 @@ public class Cat062DecodingTest {
                         System.out.println(unsignedValue);
 
 
-                        if(i == 0 || i==2){
+                        if (i == 0 || i == 2) {
                             System.out.println("----------------------------------------------------------------");
                         }
                     }
@@ -191,7 +194,7 @@ public class Cat062DecodingTest {
         while (is.available() > 0) {
             byte[] ffPayload = ffReader.read(is);
             if (ffPayload != null) {
-                decoder.decode(ffPayload,0, ffPayload.length);
+                decoder.decode(ffPayload, 0, ffPayload.length);
                 receivedBytes += ffPayload.length + 12;
             }
         }
