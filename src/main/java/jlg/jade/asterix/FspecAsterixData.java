@@ -90,18 +90,17 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
             //increase length and read next octet
             currentLength++;
             if (!bs.get(FX_BIT_POS)) {
-                appendDebugMsg("FX bit is 0. Finished reading data for this item");
+                appendDebugMsg("  -- FX bit is 0. Finished reading data for this item");
                 appendNewLine();
                 break;
             }
-            appendDebugMsg("FX bit is 1. Continue to read data");
+            appendDebugMsg("  -- FX bit is 1. Continue to read data");
             appendNewLine();
         }
         for (int i = 0; i < currentLength; i++) {
             appendItemDebugMsg("Octet " + i + " (dec)", Byte.toUnsignedInt(input[offset + i]));
             appendItemDebugMsg("Octet " + i + " (bin)", BitWriter.getBitsRightToLeft(input[offset + i]));
         }
-        appendNewLine();
 
         //return current length
         return currentLength;

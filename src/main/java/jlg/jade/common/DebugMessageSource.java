@@ -26,12 +26,12 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendItemDebugMsg(String property, Object value) {
-        debugStringBuilder.append(String.format("-- %-60s %-20s", property, value));
+        debugStringBuilder.append(String.format("  -- %-60s %-20s", property, value));
         debugStringBuilder.append(System.lineSeparator());
     }
 
     protected void appendItemCounterMsg(String property, Object nbPresent, Object nbInvalid){
-        debugStringBuilder.append(String.format("-- %-60s %-10s %-10s", property, nbPresent, nbInvalid));
+        debugStringBuilder.append(String.format("  -- %-60s %-10s %-10s", property, nbPresent, nbInvalid));
         debugStringBuilder.append(System.lineSeparator());
     }
 
@@ -40,7 +40,7 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendNotImplementedMsg(){
-        debugStringBuilder.append("-- This data is not implemented yet and will not be decoded.");
+        debugStringBuilder.append("  -- This data is not implemented yet and will not be decoded.");
         debugStringBuilder.append(System.lineSeparator());
     }
 
@@ -49,7 +49,7 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendErrorMessage(String msg){
-        debugStringBuilder.append("-- [ERR] - ");
+        debugStringBuilder.append("  -- [ERR] - ");
         debugStringBuilder.append(msg);
         debugStringBuilder.append(System.lineSeparator());
     }

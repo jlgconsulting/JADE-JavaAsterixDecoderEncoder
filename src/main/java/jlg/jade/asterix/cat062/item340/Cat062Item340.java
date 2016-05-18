@@ -34,8 +34,7 @@ public class Cat062Item340 extends FspecAsterixData {
             subfield1 = new Item340Subfield1();
             offset = subfield1.decode(input, offset, length);
 
-            appendDebugMsg("Item340Subfield1 - Sensor Identification");
-            appendNewLine();
+            appendDebugMsg("Sensor Identification - ");
             appendDebugMsg(subfield1.getDebugString());
         }
 
@@ -43,8 +42,7 @@ public class Cat062Item340 extends FspecAsterixData {
             subfield2 = new Item340Subfield2();
             offset = subfield2.decode(input, offset, length);
 
-            appendDebugMsg("Item340Subfield2 - Measured Position");
-            appendNewLine();
+            appendDebugMsg("Measured Position - ");
             appendDebugMsg(subfield2.getDebugString());
         }
 
@@ -52,8 +50,7 @@ public class Cat062Item340 extends FspecAsterixData {
             subfield3 = new Item340Subfield3();
             offset = subfield3.decode(input, offset, length);
 
-            appendDebugMsg("Item340Subfield3 - Measured 3D Height");
-            appendNewLine();
+            appendDebugMsg("Measured 3D Height - ");
             appendDebugMsg(subfield3.getDebugString());
         }
 
@@ -61,8 +58,7 @@ public class Cat062Item340 extends FspecAsterixData {
             subfield4 = new Item340Subfield4();
             offset = subfield4.decode(input, offset, length);
 
-            appendDebugMsg("Item340Subfield4 - Measured Mode C Code");
-            appendNewLine();
+            appendDebugMsg("Measured Mode C Code - ");
             appendDebugMsg(subfield4.getDebugString());
         }
 
@@ -70,8 +66,7 @@ public class Cat062Item340 extends FspecAsterixData {
             subfield5 = new Item340Subfield5();
             offset = subfield5.decode(input, offset, length);
 
-            appendDebugMsg("Item340Subfield5 - Measured Mode A Code");
-            appendNewLine();
+            appendDebugMsg("Measured Mode A Code - ");
             appendDebugMsg(subfield5.getDebugString());
         }
 
@@ -79,7 +74,7 @@ public class Cat062Item340 extends FspecAsterixData {
             subfield6 = new Item340Subfield6();
             offset = subfield6.decode(input, offset, length);
 
-            appendDebugMsg("Item340Subfield6 - Report Type");
+            appendDebugMsg("Report Type - ");
             appendNewLine();
             appendDebugMsg(subfield6.getDebugString());
         }

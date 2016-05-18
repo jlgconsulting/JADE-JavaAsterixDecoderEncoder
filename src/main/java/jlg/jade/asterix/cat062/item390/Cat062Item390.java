@@ -44,7 +44,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_1)) {
             subfield1 = new Item390Subfield1();
             offset = getSubfield1().decode(input, offset, length);
-            appendDebugMsg("Item390Subfield1 - FPPS Id Tag");
+            appendDebugMsg("FPPS Id Tag - ");
             appendNewLine();
             appendDebugMsg(getSubfield1().getDebugString());
         }
@@ -52,63 +52,56 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_2)) {
             subfield2 = new Item390Subfield2();
             offset = subfield2.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield2 - Callsign");
-            appendNewLine();
+            appendDebugMsg("Callsign - ");
             appendDebugMsg(subfield2.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_3)) {
             subfield3 = new Item390Subfield3();
             offset = subfield3.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield3 - IFPS Flight ID");
-            appendNewLine();
+            appendDebugMsg("IFPS Flight ID - ");
             appendDebugMsg(subfield3.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_4)) {
             subfield4 = new Item390Subfield4();
             offset = subfield4.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield4 - Flight Category");
-            appendNewLine();
+            appendDebugMsg("Flight Category - ");
             appendDebugMsg(subfield4.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_5)) {
             subfield5 = new Item390Subfield5();
             offset = subfield5.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield5 - Type of aircraft");
-            appendNewLine();
+            appendDebugMsg("Type of aircraft - ");
             appendDebugMsg(subfield5.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_6)) {
             subfield6 = new Item390Subfield6();
             offset = subfield6.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield6 - Wake Turbulence");
-            appendNewLine();
+            appendDebugMsg("Wake Turbulence Cat - ");
             appendDebugMsg(subfield6.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_7)) {
             subfield7 = new Item390Subfield7();
             offset = subfield7.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield7 - Departure airport");
-            appendNewLine();
+            appendDebugMsg("Departure airport - ");
             appendDebugMsg(subfield7.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_8)) {
             subfield8 = new Item390Subfield8();
             offset = subfield8.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield8 - Destination airport");
-            appendNewLine();
+            appendDebugMsg("Destination airport - ");
             appendDebugMsg(subfield8.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_9)) {
             subfield9 = new Item390Subfield9();
             offset = subfield9.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield9 - Runway Designation");
+            appendDebugMsg("Runway Designation - ");
             appendNewLine();
             appendDebugMsg(subfield9.getDebugString());
         }
@@ -116,7 +109,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_10)) {
             subfield10 = new Item390Subfield10();
             offset = subfield10.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield10 - CFL");
+            appendDebugMsg("CFL - ");
             appendNewLine();
             appendDebugMsg(subfield10.getDebugString());
         }
@@ -124,7 +117,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_11)) {
             subfield11 = new Item390Subfield11();
             offset = subfield11.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield11 - Current Ctrl Position");
+            appendDebugMsg("Current Ctrl Position - ");
             appendNewLine();
             appendDebugMsg(subfield11.getDebugString());
         }
@@ -132,7 +125,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_12)) {
             subfield12 = new Item390Subfield12();
             offset = subfield12.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield12 - Time of departure/arrival");
+            appendDebugMsg("Time of departure/arrival - ");
             appendNewLine();
             appendDebugMsg(subfield12.getDebugString());
         }
@@ -140,7 +133,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_13)) {
             subfield13 = new Item390Subfield13();
             offset = subfield13.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield13 - Aircraft Stand");
+            appendDebugMsg("Aircraft Stand - ");
             appendNewLine();
             appendDebugMsg(subfield13.getDebugString());
         }
@@ -148,7 +141,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_14)) {
             subfield14 = new Item390Subfield14();
             offset = subfield14.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield14 - Stand Status");
+            appendDebugMsg("Stand Status - ");
             appendNewLine();
             appendDebugMsg(subfield14.getDebugString());
         }
@@ -156,7 +149,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_15)) {
             subfield15 = new Item390Subfield15();
             offset = subfield15.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield15 - SID");
+            appendDebugMsg("SID - ");
             appendNewLine();
             appendDebugMsg(subfield15.getDebugString());
         }
@@ -164,7 +157,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_16)) {
             subfield16 = new Item390Subfield16();
             offset = subfield16.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield16 - STAR");
+            appendDebugMsg("STAR - ");
             appendNewLine();
             appendDebugMsg(subfield16.getDebugString());
         }
@@ -172,7 +165,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_17)) {
             subfield17 = new Item390Subfield17();
             offset = subfield17.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield17 - Pre emergency Mode 3/A");
+            appendDebugMsg("Pre emergency Mode 3/A - ");
             appendNewLine();
             appendDebugMsg(subfield17.getDebugString());
         }
@@ -180,7 +173,7 @@ public class Cat062Item390 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_18)) {
             subfield18 = new Item390Subfield18();
             offset = subfield18.decode(input, offset, length);
-            appendDebugMsg("Item390Subfield18 - Pre emergency callsign");
+            appendDebugMsg("Pre emergency callsign - ");
             appendNewLine();
             appendDebugMsg(subfield18.getDebugString());
         }

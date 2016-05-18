@@ -34,16 +34,21 @@ public abstract class VariableLengthAsterixData extends AsterixItem implements D
         int currentLength = 1;
         BitSet bs = BitSet.valueOf(new byte[]{input[offset]});
 
+        String itemName = this.getClass().getSimpleName();
+
+        appendDebugMsg(itemName + ":");
+        appendNewLine();
+
         while (bs.get(0)){
-            appendDebugMsg("FX bit is 1. Continue to read data");
+            appendDebugMsg("  -- FX bit is 1. Continue to read data");
             appendNewLine();
             //increase length and read next octet
             currentLength++;
             bs = BitSet.valueOf(new byte[]{input[offset+currentLength-1]});
         }
-        appendDebugMsg("FX bit is 0. Finished reading data for this item");
+        appendDebugMsg("  -- FX bit is 0. Finished reading data for this item");
         appendNewLine();
-        appendDebugMsg("Size of item is " + currentLength + " octets.");
+        appendDebugMsg("  -- Size of item is " + currentLength + " octets.");
         appendNewLine();
         for (int i=0; i<currentLength;i++){
             appendItemDebugMsg("Octet " + i, input[offset+i]);

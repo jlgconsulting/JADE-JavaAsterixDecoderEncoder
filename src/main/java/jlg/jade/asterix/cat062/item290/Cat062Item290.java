@@ -40,8 +40,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield1 = new Cat062AsterixAgingDataField();
             offset = subfield1.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield1 - Track age");
-            appendNewLine();
+            appendDebugMsg("Track age - ");
             appendDebugMsg(subfield1.getDebugString());
         }
 
@@ -49,8 +48,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield2 = new Cat062AsterixAgingDataField();
             offset = subfield2.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield2 - PSR age");
-            appendNewLine();
+            appendDebugMsg("PSR age - ");
             appendDebugMsg(subfield2.getDebugString());
         }
 
@@ -58,8 +56,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield3 = new Cat062AsterixAgingDataField();
             offset = subfield3.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield3 - SSR age");
-            appendNewLine();
+            appendDebugMsg("SSR age - ");
             appendDebugMsg(subfield3.getDebugString());
         }
 
@@ -67,7 +64,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield4 = new Cat062AsterixAgingDataField();
             offset = subfield4.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield4 - Mode S age");
+            appendDebugMsg("Mode S age - ");
             appendNewLine();
             appendDebugMsg(subfield4.getDebugString());
         }
@@ -76,7 +73,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield5 = new Item290Subfield5();
             offset = subfield5.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield5 - ADSC age");
+            appendDebugMsg("ADSC age - ");
             appendNewLine();
             appendDebugMsg(subfield5.getDebugString());
         }
@@ -85,7 +82,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield6 = new Cat062AsterixAgingDataField();
             offset = subfield6.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield6 - ADSB age");
+            appendDebugMsg("ADSB age - ");
             appendNewLine();
             appendDebugMsg(subfield6.getDebugString());
         }
@@ -94,7 +91,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield7 = new Cat062AsterixAgingDataField();
             offset = subfield7.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield7 - ADSB VDL age");
+            appendDebugMsg("ADSB VDL age - ");
             appendNewLine();
             appendDebugMsg(subfield7.getDebugString());
         }
@@ -103,7 +100,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield8 = new Cat062AsterixAgingDataField();
             offset = subfield8.decode(input, offset, length);
 
-            appendDebugMsg("Item290Subfield8 - ADSB UAT age");
+            appendDebugMsg("ADSB UAT age - ");
             appendNewLine();
             appendDebugMsg(subfield8.getDebugString());
         }
@@ -112,7 +109,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield9 = new Cat062AsterixAgingDataField();
             offset = subfield9.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield9 - Loop age");
+            appendDebugMsg("Loop age - ");
             appendNewLine();
             appendDebugMsg(subfield9.getDebugString());
         }
@@ -121,7 +118,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield10 = new Cat062AsterixAgingDataField();
             offset = subfield10.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield10 - Multilateration age");
+            appendDebugMsg("Multilateration age - ");
             appendNewLine();
             appendDebugMsg(subfield10.getDebugString());
         }
