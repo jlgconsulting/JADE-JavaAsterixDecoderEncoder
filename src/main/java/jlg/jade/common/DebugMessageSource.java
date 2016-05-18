@@ -26,12 +26,12 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendItemDebugMsg(String property, Object value) {
-        debugStringBuilder.append(String.format("-- %-50s %-20s", property, value));
+        debugStringBuilder.append(String.format("-- %-60s %-20s", property, value));
         debugStringBuilder.append(System.lineSeparator());
     }
 
     protected void appendItemCounterMsg(String property, Object nbPresent, Object nbInvalid){
-        debugStringBuilder.append(String.format("-- %-50s %-10s %-10s", property, nbPresent, nbInvalid));
+        debugStringBuilder.append(String.format("-- %-60s %-10s %-10s", property, nbPresent, nbInvalid));
         debugStringBuilder.append(System.lineSeparator());
     }
 

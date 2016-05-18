@@ -15,20 +15,21 @@ import java.util.BitSet;
  * Cat 062 Item 200 - Calculated mode of movement
  * Contains info about vertical rate, long acceleration, transversal acceleration and
  * altitude discrepency
+ *
  * @implNote The ADF, if set, indicates that a difference has been detected in the
  * altitude information derived from radar as compared to other technologies (such
  * as ADS-B).
  */
 public class Cat062Item200 extends FixedLengthAsterixData {
     private boolean altitudeDiscrepencyFlag;
-    private ModeOfMovementVerticalRate verticalRate;
-    private ModeOfMovementLongAcceleration longitudinalAcceleration;
-    private ModeOfMovementTransversalAcceleration transversalAcceleration;
+    private int verticalRate;
+    private int longitudinalAcceleration;
+    private int transversalAcceleration;
 
     public Cat062Item200() {
-        verticalRate = ModeOfMovementVerticalRate.Undetermined;
-        longitudinalAcceleration = ModeOfMovementLongAcceleration.Undetermined;
-        transversalAcceleration = ModeOfMovementTransversalAcceleration.Undetermined;
+        verticalRate = 3;
+        longitudinalAcceleration = 3;
+        transversalAcceleration = 3;
     }
 
     @Override
@@ -63,80 +64,80 @@ public class Cat062Item200 extends FixedLengthAsterixData {
 
     /**
      * @return The vertical mode of movement for the aircraft
-     * - level
-     * - climb
-     * - descend
-     * - undetermined
+     * - level = 0
+     * - climb = 1
+     * - descend = 2
+     * - undetermined = 3
      */
-    public ModeOfMovementVerticalRate getVerticalRate() {
+    public int getVerticalRate() {
         return verticalRate;
     }
 
     /**
      * @return The longitudinal acceleration for the aircraft (ground speed)
-     * - constant
-     * - increasing speed
-     * - decreasing speed
-     * - undetermined
+     * - constant = 0
+     * - increasing speed = 1
+     * - decreasing speed = 2
+     * - undetermined =3
      */
-    public ModeOfMovementLongAcceleration getLongitudinalAcceleration() {
+    public int getLongitudinalAcceleration() {
         return longitudinalAcceleration;
     }
 
     /**
      * @return The transversal acceleration for the aircraft (course)
-     * - constant course
-     * - tigth turn
-     * - left turn
-     * - undetermined
+     * - constant course = 0
+     * - tigth turn = 1
+     * - left turn = 2
+     * - undetermined = 3
      */
-    public ModeOfMovementTransversalAcceleration getTransversalAcceleration() {
+    public int getTransversalAcceleration() {
         return transversalAcceleration;
     }
 
 
-    private ModeOfMovementVerticalRate parseVerticalRate(BitSet bs) {
+    private int parseVerticalRate(BitSet bs) {
         final int BIT_INDEX_MIN = 2;
         final int BIT_INDEX_MAX = 3;
         if (!bs.get(BIT_INDEX_MIN) && !bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementVerticalRate.Level;
+            return ModeOfMovementVerticalRate.Level.getValue();
         }
         if (bs.get(BIT_INDEX_MIN) && !bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementVerticalRate.Climb;
+            return ModeOfMovementVerticalRate.Climb.getValue();
         }
         if (!bs.get(BIT_INDEX_MIN) && bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementVerticalRate.Descent;
+            return ModeOfMovementVerticalRate.Descent.getValue();
         }
-        return ModeOfMovementVerticalRate.Undetermined;
+        return ModeOfMovementVerticalRate.Undetermined.getValue();
     }
 
-    private ModeOfMovementLongAcceleration parseLongitudinalAcceleration(BitSet bs) {
+    private int parseLongitudinalAcceleration(BitSet bs) {
         final int BIT_INDEX_MIN = 4;
         final int BIT_INDEX_MAX = 5;
         if (!bs.get(BIT_INDEX_MIN) && !bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementLongAcceleration.ConstantGroundSpeed;
+            return ModeOfMovementLongAcceleration.ConstantGroundSpeed.getValue();
         }
         if (bs.get(BIT_INDEX_MIN) && !bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementLongAcceleration.IncreasingGroundSpeed;
+            return ModeOfMovementLongAcceleration.IncreasingGroundSpeed.getValue();
         }
         if (!bs.get(BIT_INDEX_MIN) && bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementLongAcceleration.DecreasingGroundSpeed;
+            return ModeOfMovementLongAcceleration.DecreasingGroundSpeed.getValue();
         }
-        return ModeOfMovementLongAcceleration.Undetermined;
+        return ModeOfMovementLongAcceleration.Undetermined.getValue();
     }
 
-    private ModeOfMovementTransversalAcceleration parseTransversalAcceleration(BitSet bs) {
+    private int parseTransversalAcceleration(BitSet bs) {
         final int BIT_INDEX_MIN = 6;
         final int BIT_INDEX_MAX = 7;
         if (!bs.get(BIT_INDEX_MIN) && !bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementTransversalAcceleration.ConstantCourse;
+            return ModeOfMovementTransversalAcceleration.ConstantCourse.getValue();
         }
         if (bs.get(BIT_INDEX_MIN) && !bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementTransversalAcceleration.RightTurn;
+            return ModeOfMovementTransversalAcceleration.RightTurn.getValue();
         }
         if (!bs.get(BIT_INDEX_MIN) && bs.get(BIT_INDEX_MAX)) {
-            return ModeOfMovementTransversalAcceleration.LeftTurn;
+            return ModeOfMovementTransversalAcceleration.LeftTurn.getValue();
         }
-        return ModeOfMovementTransversalAcceleration.Undetermined;
+        return ModeOfMovementTransversalAcceleration.Undetermined.getValue();
     }
 }

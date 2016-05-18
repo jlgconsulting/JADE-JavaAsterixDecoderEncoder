@@ -75,7 +75,7 @@ public abstract class RepeatableAsterixData extends AsterixItem implements Decod
         }
 
         //add byte information to debug message
-        appendDebugMsg(String.format("%-30s", "Received byte information: "));
+        appendDebugMsg(String.format("%-60s", "Received byte information: "));
         if (sizeInBytes != AsterixItemLength.VARIABLE.getValue()) {
             for (int i = offset; i < offset + sizeInBytes; i++) {
                 appendDebugMsg(" " + Byte.toUnsignedInt(input[i]));

@@ -36,13 +36,9 @@ public class Cat062Item105 extends FixedLengthAsterixData {
                         Byte.toUnsignedInt(input[offset + 7]);
 
         appendItemDebugMsg("Latitude in Asterix", latitudeWsg84);
-        appendNewLine();
         appendItemDebugMsg("Latitude in WSG84", getLatitudeDecimalWsg84());
-        appendNewLine();
         appendItemDebugMsg("Longitude in Asterix", longitudeWsg84);
-        appendNewLine();
         appendItemDebugMsg("Longitude in WSG84", getLongitudeDecimalWsg84());
-        appendNewLine();
     }
 
     @Override

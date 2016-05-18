@@ -54,8 +54,7 @@ public class Cat062Item200Test extends MandatoryFixedLengthAsterixTests<Cat062It
         item200.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Cat062 Item200 vertical rate not decoded correctly", expected, item200.getVerticalRate()
-                .getValue());
+        assertEquals("Cat062 Item200 vertical rate not decoded correctly", expected, item200.getVerticalRate());
     }
 
     @Test
@@ -71,8 +70,7 @@ public class Cat062Item200Test extends MandatoryFixedLengthAsterixTests<Cat062It
 
         //assert
         assertEquals("Cat062 Item200 longitudinal acc not decoded correctly", expected, item200
-                .getLongitudinalAcceleration()
-                .getValue());
+                .getLongitudinalAcceleration());
     }
 
     @Test
@@ -88,8 +86,7 @@ public class Cat062Item200Test extends MandatoryFixedLengthAsterixTests<Cat062It
 
         //assert
         assertEquals("Cat062 Item200 transversal acc not decoded correctly", expected, item200
-                .getTransversalAcceleration()
-                .getValue());
+                .getTransversalAcceleration());
     }
 
 

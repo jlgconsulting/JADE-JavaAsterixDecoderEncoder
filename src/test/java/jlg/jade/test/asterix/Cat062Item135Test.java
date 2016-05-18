@@ -43,7 +43,7 @@ public class Cat062Item135Test extends MandatoryFixedLengthAsterixTests<Cat062It
     }
 
     @Test
-    @Parameters({"5,200,1480", "129,1,257", "127,1,-255"})
+    @Parameters({"5,200,1480", "129,1,257", "127,1,-255","133,172,1452"})
     public void the_decode_method_should_correctly_decode_barometric_altitude(int firstOctet, int secondOctet, int
             expected) {
         //arrange

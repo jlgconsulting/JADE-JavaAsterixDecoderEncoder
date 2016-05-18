@@ -103,7 +103,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
         }
         appendNewLine();
 
-        //return current offset
-        return offset + currentLength;
+        //return current length
+        return currentLength;
     }
 }

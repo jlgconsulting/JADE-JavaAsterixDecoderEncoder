@@ -63,7 +63,6 @@ public class AsterixCat062Record extends FspecAsterixData {
     /**
      * Custom constructor, which has custom impleemntations for RE and SP fields, according to the specific
      * use cases. Use this constructor when you need to provide custom impl to RE and SP fields.
-     *
      */
     public AsterixCat062Record(ReservedFieldFactory reservedFieldFactory) {
         this.reservedFieldFactory = reservedFieldFactory;
@@ -76,7 +75,212 @@ public class AsterixCat062Record extends FspecAsterixData {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset, int length) {
-        return 0;
+        if (fspecDataAtIndex(Fspec.I062_010)) {
+            this.item010 = new Cat062Item010();
+            offset = this.item010.decode(input, offset, length);
+            appendDebugMsg("Data Source Identifier - ");
+            appendDebugMsg(this.item010.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_015)) {
+            this.item015 = new Cat062Item015();
+            offset = this.item015.decode(input, offset, length);
+            appendDebugMsg("Service Identification - ");
+            appendDebugMsg(this.item015.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_070)) {
+            this.item070 = new Cat062Item070();
+            offset = this.item070.decode(input, offset, length);
+            appendDebugMsg("Time of track - ");
+            appendDebugMsg(this.item070.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_105)) {
+            this.item105 = new Cat062Item105();
+            offset = this.item105.decode(input, offset, length);
+            appendDebugMsg("Track Position WSG-84 - ");
+            appendDebugMsg(this.item105.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_100)) {
+            this.item100 = new Cat062Item100();
+            offset = this.item100.decode(input, offset, length);
+            appendDebugMsg("Track Position Cartesian - ");
+            appendDebugMsg(this.item100.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_185)) {
+            this.item185 = new Cat062Item185();
+            offset = this.item185.decode(input, offset, length);
+            appendDebugMsg("Track Velocity Cartesian - ");
+            appendDebugMsg(this.item185.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_210)) {
+            this.item210 = new Cat062Item210();
+            offset = this.item210.decode(input, offset, length);
+            appendDebugMsg("Acceleration (Cartesian) - ");
+            appendDebugMsg(this.item210.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_060)) {
+            this.item060 = new Cat062Item060();
+            offset = this.item060.decode(input, offset, length);
+            appendDebugMsg("Mode 3/A - ");
+            appendDebugMsg(this.item060.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_245)) {
+            this.item245 = new Cat062Item245();
+            offset = this.item245.decode(input, offset, length);
+            appendDebugMsg("Target Identification - ");
+            appendDebugMsg(this.item245.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_380)) {
+            this.item380 = new Cat062Item380();
+            offset = this.item380.decode(input, offset, length);
+            appendDebugMsg("Aircraft Derived Data - ");
+            appendDebugMsg(this.item380.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_040)) {
+            this.item040 = new Cat062Item040();
+            offset = this.item040.decode(input, offset, length);
+            appendDebugMsg("Track Number - ");
+            appendDebugMsg(this.item040.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_080)) {
+            this.item080 = new Cat062Item080();
+            offset = this.item080.decode(input, offset, length);
+            appendDebugMsg("Track Status - ");
+            appendDebugMsg(this.item080.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_290)) {
+            this.item290 = new Cat062Item290();
+            offset = this.item290.decode(input, offset, length);
+            appendDebugMsg("Track Update Ages - ");
+            appendDebugMsg(this.item290.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_200)) {
+            this.item200 = new Cat062Item200();
+            offset = this.item200.decode(input, offset, length);
+            appendDebugMsg("Mode of Movement - ");
+            appendDebugMsg(this.item200.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_295)) {
+            this.item295 = new Cat062Item295();
+            offset = this.item295.decode(input, offset, length);
+            appendDebugMsg("Track Data Ages - ");
+            appendDebugMsg(this.item295.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_136)) {
+            this.item136 = new Cat062Item136();
+            offset = this.item136.decode(input, offset, length);
+            appendDebugMsg("Measured Flight Level - ");
+            appendDebugMsg(this.item136.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_130)) {
+            this.item130 = new Cat062Item130();
+            offset = this.item130.decode(input, offset, length);
+            appendDebugMsg("Geometric Altitude - ");
+            appendDebugMsg(this.item130.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_135)) {
+            this.item135 = new Cat062Item135();
+            offset = this.item135.decode(input, offset, length);
+            appendDebugMsg("Barometric Altitude - ");
+            appendDebugMsg(this.item135.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_220)) {
+            this.item220 = new Cat062Item220();
+            offset = this.item220.decode(input, offset, length);
+            appendDebugMsg("Rate of Climb / Descent - ");
+            appendDebugMsg(this.item220.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_390)) {
+            this.item390 = new Cat062Item390();
+            offset = this.item390.decode(input, offset, length);
+            appendDebugMsg("Flight Plan Data - ");
+            appendDebugMsg(this.item390.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_270)) {
+            this.item270 = new Cat062Item270();
+            offset = this.item270.decode(input, offset, length);
+            appendDebugMsg("Target Size & Orientation - ");
+            appendDebugMsg(this.item270.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_300)) {
+            this.item300 = new Cat062Item300();
+            offset = this.item300.decode(input, offset, length);
+            appendDebugMsg("Vehicle Fleet Identification - ");
+            appendDebugMsg(this.item300.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_110)) {
+            this.item110 = new Cat062Item110();
+            offset = this.item110.decode(input, offset, length);
+            appendDebugMsg("Mode 5 Data - ");
+            appendDebugMsg(this.item110.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_120)) {
+            this.item120 = new Cat062Item120();
+            offset = this.item120.decode(input, offset, length);
+            appendDebugMsg("Mode 2 Code - ");
+            appendDebugMsg(this.item120.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_510)) {
+            this.item510 = new Cat062Item510();
+            offset = this.item510.decode(input, offset, length);
+            appendDebugMsg("Composed Track Number - ");
+            appendDebugMsg(this.item510.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_500)) {
+            this.item500 = new Cat062Item500();
+            offset = this.item500.decode(input, offset, length);
+            appendDebugMsg("Estimated Accuracies - ");
+            appendDebugMsg(this.item500.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_340)) {
+            this.item340 = new Cat062Item340();
+            offset = this.item340.decode(input, offset, length);
+            appendDebugMsg("Measured Information - ");
+            appendDebugMsg(this.item340.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_SP)) {
+            this.specialPurposeField = this.reservedFieldFactory.createSpField();
+            offset = this.specialPurposeField.decode(input, offset, length);
+            appendDebugMsg("SP Field");
+            appendNewLine();
+            appendDebugMsg(this.specialPurposeField.getDebugString());
+        }
+
+        if (fspecDataAtIndex(Fspec.I062_RE)) {
+            this.reservedExpansionField = this.reservedFieldFactory.createReField();
+            offset = this.reservedExpansionField.decode(input, offset, length);
+            appendDebugMsg("RE Field");
+            appendDebugMsg(this.reservedExpansionField.getDebugString());
+        }
+        appendDebugMsg("*** End of AsterixCat062Record ***");
+
+        return offset;
     }
 
     public Cat062Item010 getItem010() {

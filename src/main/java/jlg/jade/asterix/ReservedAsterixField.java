@@ -34,7 +34,7 @@ public class ReservedAsterixField extends AsterixItem implements Decodable {
          */
 
         appendNotImplementedMsg();
-        appendDebugMsg("Using default behaviour. Read length from first octet and " +
+        appendDebugMsg("-- Using default behaviour. Read length from first octet and " +
                 "skip data. You might loose data if you do not implement this field.");
         appendNewLine();
 

@@ -8,6 +8,7 @@ package jlg.jade.asterix.cat062;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
+import jlg.jade.common.UnsignedNumericDecoder;
 
 import java.util.BitSet;
 
@@ -41,7 +42,7 @@ public class Cat062Item135 extends FixedLengthAsterixData {
          * - We need to substract 128 if MSB is 1 (QNH)
          * - We need to generate two complment if bit[6] = 1 (sign)
          */
-        byte firstOctetValueForCalculation = input[offset];
+        int firstOctetValueForCalculation = UnsignedNumericDecoder.decodeFromOneByte(input,offset);
         if (qnhCorrectionApplied) {
             firstOctetValueForCalculation = (byte) (input[offset] - 128);
         }
