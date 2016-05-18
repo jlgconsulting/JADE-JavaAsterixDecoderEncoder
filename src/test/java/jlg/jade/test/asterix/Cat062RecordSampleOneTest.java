@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Test the Asterix record class with sample one of data
  */
-public class Cat062RecordWithSampleOneTest extends MandatoryFspecAsterixTests<AsterixCat062Record> {
+public class Cat062RecordSampleOneTest extends MandatoryFspecAsterixTests<AsterixCat062Record> {
     @Override
     protected AsterixCat062Record setDataFieldInstance() {
         return new AsterixCat062Record();
@@ -92,10 +92,10 @@ public class Cat062RecordWithSampleOneTest extends MandatoryFspecAsterixTests<As
         AsterixCat062Record cat062Record = new AsterixCat062Record();
 
         //act
-        int result = cat062Record.decode(sampleInput, offset, sampleInput.length);
+        int result = cat062Record.decode(sampleInput, offset, 56);
 
         //assert
-        assertEquals("Offset not incremented after data decoding", 55, result);
+        assertEquals("Offset not incremented after data decoding", sampleInput.length, result);
     }
 
     @Override
