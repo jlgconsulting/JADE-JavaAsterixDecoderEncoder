@@ -43,11 +43,11 @@ public abstract class FixedLengthAsterixData extends AsterixItem implements Deco
          */
         if (offset + sizeInBytes > inputLength) {
             appendDebugMsg("Available length was exceeded while creating " + itemName +
-                    " input: " + input.length + ", offset: " + offset + ", length: " + sizeInBytes);
+                    " input: " + input.length + ", offset: " + offset + ", size of items: " + sizeInBytes);
             appendNewLine();
             throw new AsterixDecodingException.AvailableLengthExceeded("Available length was exceeded while creating " +
                     "" + itemName +
-                    " input: " + input.length + ", offset: " + offset + ", length: " + sizeInBytes);
+                    " input: " + input.length + ", offset: " + offset + ", size of items: " + sizeInBytes);
         }
 
         /**

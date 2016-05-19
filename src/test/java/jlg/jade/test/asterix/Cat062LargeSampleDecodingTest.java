@@ -8,6 +8,8 @@ package jlg.jade.test.asterix;
 
 import jlg.finalframe.FinalFrameReader;
 import jlg.jade.AsterixDecoder;
+import jlg.jade.asterix.AsterixDataBlock;
+import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,6 +21,7 @@ import java.io.InterruptedIOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.BitSet;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -48,7 +51,7 @@ public class Cat062LargeSampleDecodingTest {
         //arrange
         int receivedBytes;
 
-        AsterixDecoder decoder = new AsterixDecoder(62, 65);
+        AsterixDecoder decoder = new AsterixDecoder(62);
         try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_065_large_packet_30min.ff")) {
             FinalFrameReader ffReader = new FinalFrameReader();
             receivedBytes = readFileToEnd(decoder, is, ffReader);
@@ -62,18 +65,18 @@ public class Cat062LargeSampleDecodingTest {
 
 
     @Test
-    @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
+    //@Ignore("Can only be executed if an Asterix sender is feeding the decoder")
     public void
     when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws
             IOException, InterruptedException {
         //arrange
         final int PORT = 3001;
         final int MAX_PACKET_SIZE = 65507;
-        final int TIMEOUT = 5000;
+        final int TIMEOUT = 20000;
 
 
         //act
-        AsterixDecoder decoder = new AsterixDecoder(62, 65);
+        AsterixDecoder decoder = new AsterixDecoder(62);
         byte[] networkBuffer = new byte[MAX_PACKET_SIZE];
         int receivedDatagrams = 0;
         int receivedBytes = 0;
@@ -82,7 +85,12 @@ public class Cat062LargeSampleDecodingTest {
             DatagramPacket packet = new DatagramPacket(networkBuffer, networkBuffer.length);
             while (true) {
                 client.receive(packet);
-                decoder.decode(networkBuffer, 0, packet.getLength());
+                List<AsterixDataBlock> dataBlocks = decoder.decode(networkBuffer, 0, packet.getLength());
+                for (AsterixDataBlock dataBlock : dataBlocks) {
+                   for (AsterixRecord rec : dataBlock.getRecords()){
+                       System.out.println("Decoded new record");
+                   }
+                }
 
                 //accumulate and print info
                 receivedDatagrams++;
@@ -143,7 +151,7 @@ public class Cat062LargeSampleDecodingTest {
     }
 
     @Test
-    @Description("USed only for printing byte information that can help with developing the tool")
+    @Description("Used only for printing byte information that can help with developing the tool")
     @Ignore
     public void with_one_packet_should_print_bytes() throws IOException {
         try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_one_packet_sample2.FF")) {

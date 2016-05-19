@@ -32,7 +32,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 break;
             }
             case 62: {
-                break;
+                this.cat062Record = new AsterixCat062Record();
             }
             case 65: {
                 break;
@@ -55,6 +55,30 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
      * @return The new offset in the raw data
      */
     public int decode(byte[] input, int offset, int inputLength) {
+        switch (category) {
+            case 4: {
+                break;
+            }
+            case 34: {
+                break;
+            }
+            case 48: {
+                break;
+            }
+            case 62: {
+                return this.cat062Record.decode(input,offset,inputLength);
+            }
+            case 65: {
+                break;
+            }
+            case 150: {
+                break;
+            }
+            default:
+                throw new NotImplementedException();
+        }
+
+
         return offset;
     }
 

@@ -40,9 +40,11 @@ public class AsterixDecoder {
     }
 
     public AsterixDecoder(int... categoriesToDecode){
-        this();
+        allowedCategories = new HashMap<>();
+        nbOfDataBlocks = new HashMap<>();
         for(int category : categoriesToDecode){
-            allowedCategories.replace(category, true);
+            allowedCategories.put(category, true);
+            nbOfDataBlocks.put(category ,0);
         }
     }
 
@@ -60,15 +62,17 @@ public class AsterixDecoder {
         while(inputIndex < length) {
             int dataBlockCategory = Byte.toUnsignedInt(input[inputIndex]);
             int dataBlockSize = Byte.toUnsignedInt(input[inputIndex+1]) * 256 + Byte.toUnsignedInt(input[inputIndex+2]);
-            inputIndex += 3;
 
             if (allowedCategories.containsKey(dataBlockCategory)) {
                 AsterixDataBlock dataBlock = new AsterixDataBlock(dataBlockCategory);
-                dataBlocks.add(dataBlock);
+                inputIndex += 3;
                 inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize);
-
+                dataBlocks.add(dataBlock);
                 int nbDataBlocks = this.nbOfDataBlocks.get(dataBlockCategory);
                 this.nbOfDataBlocks.replace(dataBlockCategory, nbDataBlocks + 1);
+            }
+            else{
+                inputIndex += dataBlockSize;
             }
         }
         return dataBlocks;
