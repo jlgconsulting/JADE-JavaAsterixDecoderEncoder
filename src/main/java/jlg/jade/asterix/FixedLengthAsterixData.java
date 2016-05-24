@@ -33,7 +33,9 @@ public abstract class FixedLengthAsterixData extends AsterixItem implements Deco
     protected abstract void decodeFromByteArray(byte[] input, int offset);
 
     private void checkLength(byte[] input, int offset, int inputLength) {
-        String itemName = this.getClass().getSimpleName();
+        //String itemName = this.getClass().getSimpleName();
+
+        String itemName = "Static name";
 
         appendDebugMsg(itemName + ":");
         appendNewLine();
@@ -63,7 +65,7 @@ public abstract class FixedLengthAsterixData extends AsterixItem implements Deco
         }
 
         //add byte information to debug message
-        appendDebugMsg(String.format("  -- %-60s", "Received byte information: "));
+        appendDebugMsg("Received byte information: ");
         if (sizeInBytes != AsterixItemLength.VARIABLE.getValue()) {
             for (int i = offset; i < offset + sizeInBytes; i++) {
                 appendDebugMsg(" " + Byte.toUnsignedInt(input[i]));

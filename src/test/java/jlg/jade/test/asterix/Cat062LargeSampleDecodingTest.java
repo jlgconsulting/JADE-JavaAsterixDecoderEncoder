@@ -7,7 +7,7 @@
 package jlg.jade.test.asterix;
 
 import jlg.finalframe.FinalFrameReader;
-import jlg.jade.AsterixDecoder;
+import jlg.jade.example.AsterixDecoder;
 import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.test.utils.TestHelper;

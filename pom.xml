@@ -52,7 +52,6 @@
             <groupId>jlg-consulting</groupId>
             <artifactId>final-frame-api</artifactId>
             <version>1.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

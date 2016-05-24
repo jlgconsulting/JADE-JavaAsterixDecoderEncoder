@@ -26,8 +26,10 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendItemDebugMsg(String property, Object value) {
-        debugStringBuilder.append(String.format("  -- %-60s %-20s", property, value));
-        debugStringBuilder.append(System.lineSeparator());
+        debugStringBuilder.append("  -- " + property + " : " + value + System.lineSeparator());
+
+        //debugStringBuilder.append(String.format("  -- %-60s %-20s", property, value));
+        //debugStringBuilder.append(System.lineSeparator());
     }
 
     protected void appendItemCounterMsg(String property, Object nbPresent, Object nbInvalid){

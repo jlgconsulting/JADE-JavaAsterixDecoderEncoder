@@ -31,7 +31,7 @@ public abstract class FspecAsterixData extends AsterixItem implements Decodable 
 
     @Override
     public int decode(byte[] input, int offset, int inputLength) {
-        appendDebugMsg(this.getClass().getSimpleName()+":");
+        appendDebugMsg("CLASS" + ":");
         appendNewLine();
 
         actualFspecSizeInBytes = readFspec(input, offset);

@@ -34,7 +34,7 @@ public abstract class VariableLengthAsterixData extends AsterixItem implements D
         int currentLength = 1;
         BitSet bs = BitSet.valueOf(new byte[]{input[offset]});
 
-        String itemName = this.getClass().getSimpleName();
+        String itemName = "CLASS";
 
         appendDebugMsg(itemName + ":");
         appendNewLine();

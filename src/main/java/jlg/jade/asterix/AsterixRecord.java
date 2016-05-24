@@ -78,7 +78,6 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 throw new NotImplementedException();
         }
 
-
         return offset;
     }
 
