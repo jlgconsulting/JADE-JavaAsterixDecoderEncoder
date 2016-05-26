@@ -6,37 +6,12 @@
 */
 package jlg.jade.asterix.cat062.item390;
 
-import jlg.jade.asterix.AsterixItemLength;
-import jlg.jade.asterix.FixedLengthAsterixData;
+import jlg.jade.asterix.AsterixDataSourceIdentifierData;
 
 /**
  * Item 390 - Subfield 1 - FPPS Identification Tag (SAC-SIC)
  */
-public class Item390Subfield1 extends FixedLengthAsterixData {
-    private int sac;
-    private int sic;
-
-    @Override
-    protected int setSizeInBytes() {
-        return AsterixItemLength.TWO_BYTES.getValue();
-    }
-
-    @Override
-    protected void decodeFromByteArray(byte[] input, int offset) {
-        this.sac = Byte.toUnsignedInt(input[offset]);
-        this.sic = Byte.toUnsignedInt(input[offset + 1]);
-        appendItemDebugMsg("SAC", this.sac);
-        appendItemDebugMsg("SIC", this.sic);
-    }
-
-    public int getSac() {
-        return sac;
-    }
-
-    public int getSic() {
-        return sic;
-    }
-
+public class Item390Subfield1 extends AsterixDataSourceIdentifierData {
     @Override
     protected String setDisplayName() {
         return "Item390Subfield1 - Data Source Identification (FPPS)";

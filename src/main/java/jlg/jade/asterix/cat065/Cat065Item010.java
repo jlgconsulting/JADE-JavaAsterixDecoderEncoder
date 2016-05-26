@@ -1,19 +1,20 @@
 /* 
-* Created by dan-geabunea on 5/16/2016.
+* Created by dan-geabunea on 5/26/2016.
 * This code is the property of JLG Consulting. Please
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix.cat062.item340;
+package jlg.jade.asterix.cat065;
 
 import jlg.jade.asterix.AsterixDataSourceIdentifierData;
 
 /**
- * Item 340 Subfield 1 - Sensor Identification
+ * Cat 065 Item 010 - Data Source Identifier
+ * Identification of the SDPS sending the data
  */
-public class Item340Subfield1 extends AsterixDataSourceIdentifierData {
+public class Cat065Item010 extends AsterixDataSourceIdentifierData {
     @Override
     protected String setDisplayName() {
-        return "Item340Subfield1 - Data Source Identification";
+        return "Cat065Item010 - Data Source Identifier";
     }
 }
