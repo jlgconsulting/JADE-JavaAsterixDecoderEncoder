@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix;
+package jlg.jade.test.asterix.cat062;
 
 import jlg.jade.asterix.Cat062AsterixAgingDataField;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;

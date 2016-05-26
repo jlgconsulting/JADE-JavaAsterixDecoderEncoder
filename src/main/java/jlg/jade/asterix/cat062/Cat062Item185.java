@@ -44,6 +44,10 @@ public class Cat062Item185 extends FixedLengthAsterixData {
             appendDebugMsg("Invalid item. Vy is not within limits of -32768 and 32767. Vx: " + this.vx);
             return false;
         }
+
+        appendItemDebugMsg("Vx",this.getVx());
+        appendItemDebugMsg("Vy", this.getVy());
+
         return true;
     }
 
