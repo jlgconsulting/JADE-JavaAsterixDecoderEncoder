@@ -44,6 +44,6 @@ public class Cat062AsterixAgingDataField extends FixedLengthAsterixData {
 
     @Override
     protected String setDisplayName() {
-        return "AsterixAgingField";
+        return "Asterix Aging Field";
     }
 }

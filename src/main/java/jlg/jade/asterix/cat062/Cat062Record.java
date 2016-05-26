@@ -62,7 +62,7 @@ public class Cat062Record extends FspecAsterixData {
 
     @Override
     protected String setDisplayName() {
-        return "*** Cat062Record ***";
+        return "*** Category 062 Record ***";
     }
 
     /**
@@ -254,7 +254,7 @@ public class Cat062Record extends FspecAsterixData {
             appendDebugMsg(this.specialPurposeField.getDebugString());
         }
 
-        appendDebugMsg("*** End of Cat062Record ***");
+        appendDebugMsg("*** End of Category 062 Record ***");
         appendNewLine();
 
         return offset;

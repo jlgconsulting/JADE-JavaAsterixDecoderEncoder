@@ -49,7 +49,7 @@ public abstract class VariableLengthAsterixData extends AsterixItem implements D
         appendDebugMsg("  -- Size of item is " + currentLength + " octets.");
         appendNewLine();
         for (int i=0; i<currentLength;i++){
-            appendItemDebugMsg("Octet " + i, input[offset+i]);
+            appendItemDebugMsg("Octet " + i, Byte.toUnsignedInt(input[offset+i]));
         }
         return currentLength;
     }
