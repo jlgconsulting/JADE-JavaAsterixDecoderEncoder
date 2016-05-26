@@ -40,6 +40,11 @@ public class Item380Subfield27 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield27 - Mach Number";
+    }
+
     /**
      * @return The mach number in Asterix unit of measure
      */

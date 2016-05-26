@@ -24,4 +24,9 @@ public class Cat062Item120 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item120 - Track Mode 2";
+    }
 }

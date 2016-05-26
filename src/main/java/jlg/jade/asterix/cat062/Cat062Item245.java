@@ -28,6 +28,11 @@ public class Cat062Item245 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item245 - Traget Identification (Aircraft & Vehicle)";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.SEVEN_BYTES.getValue();
     }

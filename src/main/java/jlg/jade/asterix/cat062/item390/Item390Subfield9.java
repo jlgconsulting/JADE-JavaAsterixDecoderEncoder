@@ -40,4 +40,9 @@ public class Item390Subfield9 extends FixedLengthAsterixData {
     public String getRunwayDesignator() {
         return runwayDesignator;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield9 - Runway Designation";
+    }
 }

@@ -9,6 +9,9 @@ package jlg.jade.asterix.cat062.item110;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FspecAsterixData;
 
+/**
+ * Cat062 Item 110 - Mode 5 Data reports & Extended Mode 1 Code - Optional
+ */
 public class Cat062Item110 extends FspecAsterixData {
     private Item110Subfield1 subfield1;
     private Item110Subfield2 subfield2;
@@ -28,21 +31,18 @@ public class Cat062Item110 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_1)) {
             subfield1 = new Item110Subfield1();
             offset = subfield1.decode(input, offset, length);
-            appendDebugMsg("Mode 5 Summary - ");
             appendDebugMsg(subfield1.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_2)) {
             subfield2 = new Item110Subfield2();
             offset = subfield2.decode(input, offset, length);
-            appendDebugMsg("Mode 5 PIN/National Origin - ");
             appendDebugMsg(subfield2.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_3)) {
             subfield3 = new Item110Subfield3();
             offset = subfield3.decode(input, offset, length);
-            appendDebugMsg("Mode 5 Reported Pos");
             appendNewLine();
             appendDebugMsg(subfield3.getDebugString());
         }
@@ -50,7 +50,6 @@ public class Cat062Item110 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_4)) {
             subfield4 = new Item110Subfield4();
             offset = subfield4.decode(input, offset, length);
-            appendDebugMsg("Mode 5 GNSS Altitude");
             appendNewLine();
             appendDebugMsg(subfield4.getDebugString());
         }
@@ -58,7 +57,6 @@ public class Cat062Item110 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_5)) {
             subfield5 = new Item110Subfield5();
             offset = subfield5.decode(input, offset, length);
-            appendDebugMsg("Extended Mode 1 Code");
             appendNewLine();
             appendDebugMsg(subfield5.getDebugString());
         }
@@ -66,7 +64,6 @@ public class Cat062Item110 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_6)) {
             subfield6 = new Item110Subfield6();
             offset = subfield6.decode(input, offset, length);
-            appendDebugMsg("Time offset for POS and GA");
             appendNewLine();
             appendDebugMsg(subfield6.getDebugString());
         }
@@ -74,7 +71,6 @@ public class Cat062Item110 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_7)) {
             subfield7 = new Item110Subfield7();
             offset = subfield7.decode(input, offset, length);
-            appendDebugMsg("X Pulse Presence");
             appendNewLine();
             appendDebugMsg(subfield7.getDebugString());
         }
@@ -108,6 +104,11 @@ public class Cat062Item110 extends FspecAsterixData {
 
     public Item110Subfield7 getSubfield7() {
         return subfield7;
+    }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item110 - Mode 5 Data reports & Extended Mode 1 Code";
     }
 
     private static class Fspec {

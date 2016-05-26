@@ -25,4 +25,9 @@ public class Item380Subfield19 extends FixedLengthAsterixData{
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield19 - Velocity Uncertainty";
+    }
 }

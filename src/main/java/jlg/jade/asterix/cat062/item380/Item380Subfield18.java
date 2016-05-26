@@ -43,6 +43,11 @@ public class Item380Subfield18 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield18 - Ground Speed";
+    }
+
     public int getGroundSpeed() {
         return groundSpeed;
     }

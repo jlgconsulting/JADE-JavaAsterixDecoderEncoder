@@ -28,4 +28,9 @@ public class Item390Subfield17 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield17 - Pre-emergency Mode 3/A";
+    }
 }

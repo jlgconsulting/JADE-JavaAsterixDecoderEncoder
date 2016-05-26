@@ -30,4 +30,9 @@ public class Item380Subfield11 extends FixedLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield11 - Status Reported by ADSB";
+    }
 }

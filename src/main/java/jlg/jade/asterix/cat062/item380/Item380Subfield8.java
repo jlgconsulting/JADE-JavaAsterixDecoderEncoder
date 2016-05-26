@@ -26,4 +26,9 @@ public class Item380Subfield8 extends VariableLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield8 - Trajectory Intent Status";
+    }
 }

@@ -34,4 +34,9 @@ public class Item380Subfield6 extends FixedLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield6 - Selected Altitude";
+    }
 }

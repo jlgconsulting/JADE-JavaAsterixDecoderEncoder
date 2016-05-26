@@ -50,6 +50,11 @@ public class Cat062Item130 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item130 - Calculated Track Geometric Altitude";
+    }
+
     /**
      * @return The Geometric altitude, expressed as 6.25 ft units
      */

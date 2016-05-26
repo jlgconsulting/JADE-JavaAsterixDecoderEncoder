@@ -44,6 +44,11 @@ public class Cat062Item136 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item136 - Measured Flight Level";
+    }
+
     /**
      * @return The measured flight level, expressed as 0.25 FL units
      */

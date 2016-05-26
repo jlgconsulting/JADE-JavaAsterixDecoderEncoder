@@ -46,4 +46,9 @@ public class Item390Subfield11 extends FixedLengthAsterixData {
     public int getControlCenter() {
         return controlCenter;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield11 - Current Control Position";
+    }
 }

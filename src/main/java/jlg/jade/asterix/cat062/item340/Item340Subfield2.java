@@ -52,4 +52,9 @@ public class Item340Subfield2 extends FixedLengthAsterixData {
     public int getMeasuredAzimuth() {
         return measuredAzimuth;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item340Subfield2 - Measured Position";
+    }
 }

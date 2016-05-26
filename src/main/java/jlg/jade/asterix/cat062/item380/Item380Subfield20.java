@@ -26,4 +26,9 @@ public class Item380Subfield20 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield20 - Meteorological Data";
+    }
 }

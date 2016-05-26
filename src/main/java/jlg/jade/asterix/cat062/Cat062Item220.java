@@ -38,4 +38,9 @@ public class Cat062Item220 extends FixedLengthAsterixData {
     public int getRocd() {
         return rocd;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item220 - ROCD (Rate of Climb / Descend)";
+    }
 }

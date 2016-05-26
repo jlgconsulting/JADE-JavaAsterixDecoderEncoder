@@ -47,4 +47,9 @@ public class Item500Subfield6 extends FixedLengthAsterixData {
     public int getAccuracyForVelocityY() {
         return accuracyForVelocityY;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield6 - Accurracy of Track Velocity";
+    }
 }

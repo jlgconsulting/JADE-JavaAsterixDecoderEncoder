@@ -48,4 +48,9 @@ public class Item380Subfield21 extends FixedLengthAsterixData {
     public int getEmiterCategory() {
         return emiterCategory;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield21 - Emmiter";
+    }
 }

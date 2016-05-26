@@ -42,6 +42,11 @@ public class Item380Subfield1 extends FixedLengthAsterixData {
         return true;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield1 - Target Address";
+    }
+
     public String getTargetAddress() {
         return targetAddress;
     }

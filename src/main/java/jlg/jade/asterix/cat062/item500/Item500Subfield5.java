@@ -36,4 +36,9 @@ public class Item500Subfield5 extends FixedLengthAsterixData {
     public int getAccuracyForBarometricAltitude() {
         return accuracyForBarometricAltitude;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield5 - Accurracy of Track Barometric Altitude";
+    }
 }

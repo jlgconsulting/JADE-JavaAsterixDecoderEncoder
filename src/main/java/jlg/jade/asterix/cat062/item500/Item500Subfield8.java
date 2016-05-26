@@ -35,4 +35,9 @@ public class Item500Subfield8 extends FixedLengthAsterixData {
     public int getAccuracyForRocd() {
         return accuracyForRocd;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield8 - Accurracy of ROCD";
+    }
 }

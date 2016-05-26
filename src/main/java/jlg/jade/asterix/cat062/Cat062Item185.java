@@ -48,6 +48,11 @@ public class Cat062Item185 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item185 - Calculated Track Velocity";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.FOUR_BYTES.getValue();
     }

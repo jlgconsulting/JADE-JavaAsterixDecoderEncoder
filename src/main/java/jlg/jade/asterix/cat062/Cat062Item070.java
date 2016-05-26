@@ -35,6 +35,11 @@ public class Cat062Item070 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item070 - Time of Track";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.THREE_BYTES.getValue();
     }

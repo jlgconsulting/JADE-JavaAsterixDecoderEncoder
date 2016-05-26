@@ -43,6 +43,11 @@ public class Item380Subfield23 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield23 - Geometric Altitude";
+    }
+
     public int getGeometricAltitude() {
         return geometricAltitude;
     }

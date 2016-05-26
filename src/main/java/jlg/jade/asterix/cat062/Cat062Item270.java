@@ -23,4 +23,9 @@ public class Cat062Item270 extends VariableLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item270 - Total Size & Orientation";
+    }
 }

@@ -72,6 +72,11 @@ public class Cat062Item135 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item135 - Track Barometric Altitude";
+    }
+
     /**
      * QNH Indicator
      *

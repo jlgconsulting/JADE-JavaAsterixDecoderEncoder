@@ -6,6 +6,7 @@
 */
 package jlg.jade.asterix;
 
+import jlg.jade.common.AsterixException;
 import jlg.jade.common.DebugMessageSource;
 
 /**
@@ -15,9 +16,14 @@ import jlg.jade.common.DebugMessageSource;
 public abstract class AsterixItem extends DebugMessageSource {
     protected int sizeInBytes;
     protected boolean valid;
+    private String displayName;
 
     AsterixItem(){
         this.valid = true;
+        this.displayName = setDisplayName();
+        if(this.displayName == null){
+            throw new AsterixException.InvalidDisplayName();
+        }
     }
 
     /**
@@ -42,4 +48,17 @@ public abstract class AsterixItem extends DebugMessageSource {
     public int getSizeInBytes() {
         return sizeInBytes;
     }
+
+    /**
+     * @return The display name of the Asterix Item (eg. Cat062Item390 - Flight Plan)
+     */
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    /**
+     * Set the display name of the Asterix field
+     * @return
+     */
+    protected abstract String setDisplayName();
 }

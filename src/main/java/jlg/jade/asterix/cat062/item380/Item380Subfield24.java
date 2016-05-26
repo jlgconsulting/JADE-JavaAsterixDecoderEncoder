@@ -24,4 +24,9 @@ public class Item380Subfield24 extends FixedLengthAsterixData{
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield24 - Position Uncertainty";
+    }
 }

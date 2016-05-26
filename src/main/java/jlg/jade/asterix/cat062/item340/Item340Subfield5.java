@@ -96,4 +96,9 @@ public class Item340Subfield5 extends FixedLengthAsterixData {
     public String getLastMeasuredModeACodeOctal() {
         return ModeACode.toOctal(this.lastMeasuredModeACode);
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item340Subfield5 - Last Measured Mode 3/A Code";
+    }
 }

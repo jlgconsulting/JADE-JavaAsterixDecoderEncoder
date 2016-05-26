@@ -40,6 +40,11 @@ public class Item380Subfield5 extends FixedLengthAsterixData {
         return true;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield5 - True Air Speed";
+    }
+
     /**
      * @return The true air speed of the aircraft in knots
      */

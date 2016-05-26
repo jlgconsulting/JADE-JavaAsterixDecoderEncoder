@@ -41,4 +41,9 @@ public class Item390Subfield5 extends FixedLengthAsterixData {
     public String getTypeOfAircraft() {
         return typeOfAircraft;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield5 - Type of Aircraft";
+    }
 }

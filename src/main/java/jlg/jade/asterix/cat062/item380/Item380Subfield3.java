@@ -37,6 +37,11 @@ public class Item380Subfield3 extends FixedLengthAsterixData {
         return true;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield3 - Magnetic Heading";
+    }
+
     /**
      * Get magnetic heading in Asterix unit of measure
      */

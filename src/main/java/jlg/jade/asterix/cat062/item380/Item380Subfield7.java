@@ -69,6 +69,11 @@ public class Item380Subfield7 extends FixedLengthAsterixData {
         return getSelectedAltitudeInFeet() >= -1300 && getSelectedAltitudeInFeet() <= 100000;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield7 - Final State Selected Altitude";
+    }
+
     public boolean isManageVerticalModeActive() {
         return manageVerticalModeActive;
     }

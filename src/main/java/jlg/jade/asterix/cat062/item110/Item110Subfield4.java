@@ -24,4 +24,9 @@ public class Item110Subfield4 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item110Subfield4 - Mode 5 GNSS Altitude";
+    }
 }

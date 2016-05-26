@@ -40,4 +40,9 @@ public class Item390Subfield16 extends FixedLengthAsterixData {
     public String getStandardInstrumentArrival() {
         return standardInstrumentArrival;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield16 - Standard Instrument Arrvial";
+    }
 }

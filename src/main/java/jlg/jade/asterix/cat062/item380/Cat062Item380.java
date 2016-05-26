@@ -46,6 +46,11 @@ public class Cat062Item380 extends FspecAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item380 - Aircraft Derived Data";
+    }
+
+    @Override
     protected int setMaxFspecSizeInBytes() {
         return AsterixItemLength.FOUR_BYTES.getValue();
     }

@@ -55,4 +55,9 @@ public class Item390Subfield14 extends FixedLengthAsterixData {
     public int getStandAvailability() {
         return standAvailability;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield14 - Stand Status";
+    }
 }

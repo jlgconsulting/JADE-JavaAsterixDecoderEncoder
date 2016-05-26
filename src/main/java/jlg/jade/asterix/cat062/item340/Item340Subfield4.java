@@ -66,6 +66,11 @@ public class Item340Subfield4 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item340Subfield4 - Last Measured Mode-C Code";
+    }
+
     /**
      * @return True, if the mode c code has been validated, false otherwise
      */

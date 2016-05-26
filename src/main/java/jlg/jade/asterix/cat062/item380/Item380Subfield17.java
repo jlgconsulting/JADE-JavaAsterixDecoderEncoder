@@ -32,4 +32,9 @@ public class Item380Subfield17 extends FixedLengthAsterixData {
     public int getTrackAngle() {
         return trackAngle;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield17 - Track Angle";
+    }
 }

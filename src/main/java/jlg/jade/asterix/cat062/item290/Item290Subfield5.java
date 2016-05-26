@@ -43,4 +43,9 @@ public class Item290Subfield5 extends FixedLengthAsterixData {
     public int getAgeSeconds(){
         return age / Constants.FROM_QUARTER_OF_SEC_TO_SEC;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item290Subfield5 - ADSC Age";
+    }
 }

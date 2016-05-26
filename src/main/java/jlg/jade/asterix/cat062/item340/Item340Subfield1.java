@@ -38,4 +38,9 @@ public class Item340Subfield1 extends FixedLengthAsterixData {
     public int getSic() {
         return sic;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item340Subfield1 - Data Source Identification";
+    }
 }

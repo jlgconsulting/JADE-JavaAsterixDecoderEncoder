@@ -36,4 +36,9 @@ public class Item390Subfield1 extends FixedLengthAsterixData {
     public int getSic() {
         return sic;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield1 - Data Source Identification (FPPS)";
+    }
 }

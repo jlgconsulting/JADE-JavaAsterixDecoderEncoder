@@ -47,4 +47,9 @@ public class Item390Subfield6 extends FixedLengthAsterixData {
     public String getWakeTurbulenceCategory() {
         return wakeTurbulenceCategory;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield6 - Wake Turbulence Category";
+    }
 }

@@ -42,6 +42,11 @@ public class Cat062Item100 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item100 - Calculated Track Position - Cartesian";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.SIX_BYTES.getValue();
     }

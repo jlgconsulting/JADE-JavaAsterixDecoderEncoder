@@ -34,4 +34,9 @@ public class Item340Subfield3 extends FixedLengthAsterixData {
     public int getMeasured3dDistance() {
         return measured3dDistance;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item340Subfield3 - Measured 3D Height";
+    }
 }

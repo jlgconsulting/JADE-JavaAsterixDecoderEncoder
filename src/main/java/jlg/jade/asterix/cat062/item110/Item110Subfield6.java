@@ -24,4 +24,9 @@ public class Item110Subfield6 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item110Subfield6 - Time Offset for POS and GA";
+    }
 }

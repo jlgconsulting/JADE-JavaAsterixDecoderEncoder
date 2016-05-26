@@ -11,7 +11,7 @@ import jlg.jade.asterix.Cat062AsterixAgingDataField;
 import jlg.jade.asterix.FspecAsterixData;
 
 /**
- * Cat 062 Item 390 - System track update ages
+ * Cat 062 Item 290 - System track update ages
  * Ages of the last plot/local track/target report update for each sensor type.
  * Compound Data Item, comprising a primary subfield of up to two
  * octets, followed by the indicated subfields.
@@ -165,7 +165,12 @@ public class Cat062Item290 extends FspecAsterixData {
     public Cat062AsterixAgingDataField getSubfield10() {
         return subfield10;
     }
-    
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item290 - System Track Update Ages";
+    }
+
     private static class Fspec{
         //first extent
         public static final int SUBFIELD_7 = 1;

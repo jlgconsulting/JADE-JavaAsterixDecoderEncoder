@@ -39,6 +39,11 @@ public class Item380Subfield15 extends FixedLengthAsterixData{
         return getRollAngleDegrees() >= -180 && getRollAngleDegrees() <= 180;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield15 - Roll Angle";
+    }
+
     public int getRollAngle() {
         return rollAngle;
     }

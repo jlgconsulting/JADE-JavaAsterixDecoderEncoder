@@ -46,4 +46,9 @@ public class Item390Subfield2 extends FixedLengthAsterixData {
     public String getCallsign() {
         return callsign;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield2 - Callsign";
+    }
 }

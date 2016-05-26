@@ -31,4 +31,9 @@ public class Item380Subfield4 extends FixedLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield4 - Indicate Air Speed / Mach Nb";
+    }
 }

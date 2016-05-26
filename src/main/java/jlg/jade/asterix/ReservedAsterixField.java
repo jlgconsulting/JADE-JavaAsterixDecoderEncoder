@@ -26,6 +26,11 @@ public class ReservedAsterixField extends AsterixItem implements Decodable {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "RE - Reserved Field";
+    }
+
+    @Override
     public int decode(byte[] input, int offset, int inputLength) {
         /**
          * @implNote

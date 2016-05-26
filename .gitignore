@@ -26,6 +26,7 @@ hs_err_pid*
 
 # Maven
 log/
+logs/
 target/
 classes/
 pom.xml.tag

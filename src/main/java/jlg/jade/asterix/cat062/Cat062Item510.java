@@ -49,4 +49,9 @@ public class Cat062Item510 extends VariableLengthAsterixData {
         }
         return currentLength;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item510 - Composed Track Number";
+    }
 }

@@ -31,6 +31,11 @@ public class Cat062Item040 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item040 - Track Number";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.TWO_BYTES.getValue();
     }

@@ -24,4 +24,9 @@ public class Item110Subfield5 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item110Subfield5 - Extended Mode 1";
+    }
 }

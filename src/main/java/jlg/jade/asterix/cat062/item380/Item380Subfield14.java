@@ -33,6 +33,11 @@ public class Item380Subfield14 extends FixedLengthAsterixData {
         return true;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield14 - Geometric Vertical Rate";
+    }
+
     public int getGeometricVerticalRate() {
         return geometricVerticalRate;
     }

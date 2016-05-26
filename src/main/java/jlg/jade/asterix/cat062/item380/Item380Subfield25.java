@@ -27,4 +27,9 @@ public class Item380Subfield25 extends RepeatableAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield25 - Mode-S MB Data";
+    }
 }

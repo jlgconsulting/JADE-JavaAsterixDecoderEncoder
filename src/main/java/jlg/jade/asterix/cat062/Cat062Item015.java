@@ -29,6 +29,11 @@ public class Cat062Item015 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item015 - Service ID";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.ONE_BYTE.getValue();
     }

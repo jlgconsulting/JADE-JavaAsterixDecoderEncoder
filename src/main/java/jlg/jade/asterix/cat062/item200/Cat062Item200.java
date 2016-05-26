@@ -33,6 +33,11 @@ public class Cat062Item200 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item200 - Calculated Mode of Movement";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.ONE_BYTE.getValue();
     }

@@ -60,6 +60,11 @@ public class AsterixCat062Record extends FspecAsterixData {
         this.reservedFieldFactory = new DefaultReservedFieldFactory();
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "AsterixCat062Record";
+    }
+
     /**
      * Custom constructor, which has custom impleemntations for RE and SP fields, according to the specific
      * use cases. Use this constructor when you need to provide custom impl to RE and SP fields.

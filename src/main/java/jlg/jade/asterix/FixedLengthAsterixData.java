@@ -33,22 +33,18 @@ public abstract class FixedLengthAsterixData extends AsterixItem implements Deco
     protected abstract void decodeFromByteArray(byte[] input, int offset);
 
     private void checkLength(byte[] input, int offset, int inputLength) {
-        //String itemName = this.getClass().getSimpleName();
-
-        String itemName = "Static name";
-
-        appendDebugMsg(itemName + ":");
+        appendDebugMsg(this.getDisplayName() + ":");
         appendNewLine();
 
         /**
          * @implNote No more available length
          */
         if (offset + sizeInBytes > inputLength) {
-            appendDebugMsg("Available length was exceeded while creating " + itemName +
+            appendDebugMsg("Available length was exceeded while creating " + this.getDisplayName() +
                     " input: " + input.length + ", offset: " + offset + ", size of items: " + sizeInBytes);
             appendNewLine();
             throw new AsterixDecodingException.AvailableLengthExceeded("Available length was exceeded while creating " +
-                    "" + itemName +
+                    "" + this.getDisplayName() +
                     " input: " + input.length + ", offset: " + offset + ", size of items: " + sizeInBytes);
         }
 
@@ -56,16 +52,16 @@ public abstract class FixedLengthAsterixData extends AsterixItem implements Deco
          * @implNote Input does not have enough data
          */
         if (input.length < offset + sizeInBytes) {
-            appendDebugMsg("Unexpected end of data found while creating " + itemName +
+            appendDebugMsg("Unexpected end of data found while creating " + this.getDisplayName() +
                     " input: " + input.length + ", offset: " + offset + ", length: " + sizeInBytes);
             appendNewLine();
             throw new AsterixDecodingException.UnexpectedEndOfData("Unexpected end of data found while creating " +
-                    itemName +
+                    this.getDisplayName() +
                     " input: " + input.length + ", offset: " + offset + ", length: " + sizeInBytes);
         }
 
         //add byte information to debug message
-        appendDebugMsg("Received byte information: ");
+        appendDebugMsg("Received raw bytes / octets: ");
         if (sizeInBytes != AsterixItemLength.VARIABLE.getValue()) {
             for (int i = offset; i < offset + sizeInBytes; i++) {
                 appendDebugMsg(" " + Byte.toUnsignedInt(input[i]));

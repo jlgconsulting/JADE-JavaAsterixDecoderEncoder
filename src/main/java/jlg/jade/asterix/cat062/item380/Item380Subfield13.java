@@ -33,6 +33,11 @@ public class Item380Subfield13 extends FixedLengthAsterixData {
         return true;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield13 - Barometric Vertical Rate";
+    }
+
     /**
      * @return The barometric vertical rate in 6.25 ft/min
      */

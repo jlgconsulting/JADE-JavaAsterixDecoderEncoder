@@ -55,6 +55,11 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item080 - Track Status";
+    }
+
     /**
      * Get the confirmed track value
      * @return

@@ -24,4 +24,9 @@ public class Item340Subfield6 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item340Subfield6 - Report Type";
+    }
 }

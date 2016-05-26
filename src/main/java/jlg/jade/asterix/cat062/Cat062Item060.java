@@ -59,6 +59,11 @@ public class Cat062Item060 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item060 - Mode 3/A";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.TWO_BYTES.getValue();
     }

@@ -42,4 +42,9 @@ public class Cat062Item300 extends FixedLengthAsterixData {
         appendNewLine();
         return false;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item300 - Vehicle Fleet Identification";
+    }
 }

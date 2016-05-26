@@ -27,4 +27,9 @@ public class Item390Subfield12 extends RepeatableAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield12 - Time of Departure / Arrival";
+    }
 }

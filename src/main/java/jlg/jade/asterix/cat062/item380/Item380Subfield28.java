@@ -28,4 +28,9 @@ public class Item380Subfield28 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield28 - Barometric Pressure Setting";
+    }
 }

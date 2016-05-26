@@ -45,4 +45,9 @@ public class Item390Subfield10 extends FixedLengthAsterixData {
          */
         return cfl / 4;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield10 - Current Cleared Flight Level";
+    }
 }

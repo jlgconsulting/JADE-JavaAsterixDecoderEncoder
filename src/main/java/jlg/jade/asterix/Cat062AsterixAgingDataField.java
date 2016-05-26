@@ -41,4 +41,9 @@ public class Cat062AsterixAgingDataField extends FixedLengthAsterixData {
     public double getAgeSeconds() {
         return this.age / Constants.FROM_QUARTER_OF_SEC_TO_SEC;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "AsterixAgingField";
+    }
 }

@@ -94,4 +94,9 @@ public class Item390Subfield4 extends FixedLengthAsterixData {
     public int getPriority() {
         return priority;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield4 - Flicht Category";
+    }
 }

@@ -41,4 +41,9 @@ public class Item390Subfield7 extends FixedLengthAsterixData {
     public String getDepartureAirport() {
         return departureAirport;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield7 - Departure Airport";
+    }
 }

@@ -40,4 +40,9 @@ public class Item390Subfield15 extends FixedLengthAsterixData {
     public String getStandardInstrumentDeparture() {
         return standardInstrumentDeparture;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield15 - Standard Instrumented Departure";
+    }
 }

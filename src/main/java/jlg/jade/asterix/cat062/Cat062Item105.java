@@ -56,6 +56,11 @@ public class Cat062Item105 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item105 - Calculated Track Positions WSG-84";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.EIGHT_BYTES.getValue();
     }

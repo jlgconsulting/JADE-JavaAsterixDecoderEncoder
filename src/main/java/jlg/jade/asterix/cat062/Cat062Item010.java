@@ -46,6 +46,11 @@ public class Cat062Item010 extends FixedLengthAsterixData {
     }
 
     @Override
+    protected String setDisplayName() {
+        return "Cat062Item010 - Data Source Identifier";
+    }
+
+    @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.TWO_BYTES.getValue();
     }

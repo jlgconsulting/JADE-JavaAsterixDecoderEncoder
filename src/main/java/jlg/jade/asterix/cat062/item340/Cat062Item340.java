@@ -33,48 +33,36 @@ public class Cat062Item340 extends FspecAsterixData {
         if (fspecDataAtIndex(Fspec.SUBFIELD_1)) {
             subfield1 = new Item340Subfield1();
             offset = subfield1.decode(input, offset, length);
-
-            appendDebugMsg("Sensor Identification - ");
             appendDebugMsg(subfield1.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_2)) {
             subfield2 = new Item340Subfield2();
             offset = subfield2.decode(input, offset, length);
-
-            appendDebugMsg("Measured Position - ");
             appendDebugMsg(subfield2.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_3)) {
             subfield3 = new Item340Subfield3();
             offset = subfield3.decode(input, offset, length);
-
-            appendDebugMsg("Measured 3D Height - ");
             appendDebugMsg(subfield3.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_4)) {
             subfield4 = new Item340Subfield4();
             offset = subfield4.decode(input, offset, length);
-
-            appendDebugMsg("Measured Mode C Code - ");
             appendDebugMsg(subfield4.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_5)) {
             subfield5 = new Item340Subfield5();
             offset = subfield5.decode(input, offset, length);
-
-            appendDebugMsg("Measured Mode A Code - ");
             appendDebugMsg(subfield5.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_6)) {
             subfield6 = new Item340Subfield6();
             offset = subfield6.decode(input, offset, length);
-
-            appendDebugMsg("Report Type - ");
             appendNewLine();
             appendDebugMsg(subfield6.getDebugString());
         }
@@ -104,6 +92,11 @@ public class Cat062Item340 extends FspecAsterixData {
 
     public Item340Subfield6 getSubfield6() {
         return subfield6;
+    }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item340 - Measured Information";
     }
 
     private static class Fspec {

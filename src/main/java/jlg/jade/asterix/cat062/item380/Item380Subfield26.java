@@ -39,6 +39,11 @@ public class Item380Subfield26 extends FixedLengthAsterixData {
         return false;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield26 - Indicated Air Speed";
+    }
+
     /**
      * @return The indicated air speed expressed in knots
      */

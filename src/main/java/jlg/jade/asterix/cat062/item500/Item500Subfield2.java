@@ -34,4 +34,9 @@ public class Item500Subfield2 extends FixedLengthAsterixData {
     public int getCovariance() {
         return covariance;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield2 - XY Covariance";
+    }
 }

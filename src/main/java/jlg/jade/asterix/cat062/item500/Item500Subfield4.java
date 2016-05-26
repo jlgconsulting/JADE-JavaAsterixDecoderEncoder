@@ -37,4 +37,9 @@ public class Item500Subfield4 extends FixedLengthAsterixData {
     public int getAccuracyForGeometricAltitude() {
         return accuracyForGeometricAltitude;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield4 - Accurracy of Track Geometric Altitude";
+    }
 }

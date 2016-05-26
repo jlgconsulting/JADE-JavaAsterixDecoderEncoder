@@ -42,4 +42,9 @@ public class Item390Subfield13 extends FixedLengthAsterixData {
     public String getAircraftStand() {
         return aircraftStand;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield13 - Aircraft Stand";
+    }
 }

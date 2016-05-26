@@ -34,4 +34,9 @@ public class Item380Subfield12 extends FixedLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield12 - ACAS Resolution Advisory Report";
+    }
 }

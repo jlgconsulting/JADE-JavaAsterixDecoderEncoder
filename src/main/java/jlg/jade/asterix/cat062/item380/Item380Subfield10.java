@@ -31,4 +31,9 @@ public class Item380Subfield10 extends FixedLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield10 - Communications/ACAS capability";
+    }
 }

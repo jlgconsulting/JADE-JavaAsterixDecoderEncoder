@@ -429,6 +429,11 @@ public class Cat062Item295 extends FspecAsterixData {
         return subfield31;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item295 - Track Data Ages";
+    }
+
     private static class Fspec {
         //first extent
         public static final int SUBFIELD_7 = 1;

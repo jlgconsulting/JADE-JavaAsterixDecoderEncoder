@@ -32,4 +32,9 @@ public class Item380Subfield2 extends FixedLengthAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield2 - Target Identification";
+    }
 }

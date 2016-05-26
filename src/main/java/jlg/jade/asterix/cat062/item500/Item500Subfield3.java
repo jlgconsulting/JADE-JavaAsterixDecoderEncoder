@@ -51,4 +51,9 @@ public class Item500Subfield3 extends FixedLengthAsterixData {
     public int getAccurracyForPositionLon() {
         return accurracyForPositionLon;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield3 - Accurracy of Track Position WSG-84";
+    }
 }

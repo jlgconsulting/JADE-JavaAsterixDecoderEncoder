@@ -31,4 +31,9 @@ public class Item380Subfield9 extends RepeatableAsterixData {
     protected boolean validate() {
         return true;
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item380Subfield9 - Trajectory Intent Data";
+    }
 }

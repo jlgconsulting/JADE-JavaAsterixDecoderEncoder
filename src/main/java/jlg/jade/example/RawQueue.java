@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.common;
+package jlg.jade.example;
 
 import org.springframework.stereotype.Component;
 

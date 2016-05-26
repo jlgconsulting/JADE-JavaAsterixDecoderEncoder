@@ -11,7 +11,7 @@ import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.UnsignedNumericDecoder;
 
 /**
- * Item 500 - Subfield 1 - Estimated accurracy og track position (cartesian)
+ * Item 500 - Subfield 1 - Estimated accurracy of track position (cartesian)
  * Estimated accuracy (i.e. standard deviation) of the
  * calculated position of a target expressed in Cartesian co-ordinates
  * Unit of measure: 0.5 m
@@ -48,5 +48,10 @@ public class Item500Subfield1 extends FixedLengthAsterixData {
      */
     public int getAccuracyOfPositionY() {
         return accuracyOfPositionY;
+    }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item500Subfield1 - Accurracy of Track Position Cartesian";
     }
 }

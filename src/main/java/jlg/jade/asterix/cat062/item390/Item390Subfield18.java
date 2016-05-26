@@ -31,4 +31,9 @@ public class Item390Subfield18 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         appendNotImplementedMsg();
     }
+
+    @Override
+    protected String setDisplayName() {
+        return "Item390Subfield18 - Pre-emergency callsign";
+    }
 }

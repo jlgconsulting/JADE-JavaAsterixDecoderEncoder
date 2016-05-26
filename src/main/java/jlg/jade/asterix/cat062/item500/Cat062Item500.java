@@ -122,6 +122,11 @@ public class Cat062Item500 extends FspecAsterixData {
         return subfield8;
     }
 
+    @Override
+    protected String setDisplayName() {
+        return "Cat062Item500 - Estimated Accuracies";
+    }
+
     private static class Fspec {
         //first extent
         public static final int SUBFIELD_7 = 1;
