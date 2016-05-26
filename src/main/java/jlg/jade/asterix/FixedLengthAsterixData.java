@@ -61,7 +61,7 @@ public abstract class FixedLengthAsterixData extends AsterixItem implements Deco
         }
 
         //add byte information to debug message
-        appendDebugMsg("Received raw bytes / octets: ");
+        appendDebugMsg("  -- Received raw bytes / octets: ");
         if (sizeInBytes != AsterixItemLength.VARIABLE.getValue()) {
             for (int i = offset; i < offset + sizeInBytes; i++) {
                 appendDebugMsg(" " + Byte.toUnsignedInt(input[i]));

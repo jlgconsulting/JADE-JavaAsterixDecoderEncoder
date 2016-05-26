@@ -47,7 +47,7 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
                 appendNewLine();
                 appendDebugMsg(record.getCat062Record().getDebugString());
             }
-            
+
             records.add(record);
         }
         return offset;

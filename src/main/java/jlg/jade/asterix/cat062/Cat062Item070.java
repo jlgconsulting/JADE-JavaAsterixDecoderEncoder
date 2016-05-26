@@ -26,7 +26,23 @@ public class Cat062Item070 extends FixedLengthAsterixData {
                         Byte.toUnsignedInt(input[offset + 2]);
 
         appendItemDebugMsg("Time of track: ", this.timeOfTrack);
-        appendItemDebugMsg("Time of track (Human Readable): ", getHours() + ":" + getMinutes() + ":" + getSeconds());
+
+        //we create strings for hours, minutes and seconds to be able to represent time like 04:45:09 (leading 0)
+        String hours = String.valueOf(getHours());
+        if(hours.length() == 1){
+            hours = "0" + hours;
+        }
+
+        String minutes = String.valueOf(getMinutes());
+        if(minutes.length() == 1){
+            minutes = "0" + minutes;
+        }
+        String seconds = String.valueOf(getSeconds());
+        if(seconds.length() == 1){
+            seconds = "0" + seconds;
+        }
+
+        appendItemDebugMsg("Time of track (HH:MM:SS): ", hours + ":" + minutes + ":" + seconds);
     }
 
     @Override
