@@ -26,8 +26,9 @@ public class Cat065Item000 extends FixedLengthAsterixData {
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.messageType = UnsignedNumericDecoder.decodeFromOneByte(input,offset);
-        appendItemDebugMsg("Message Type", this.messageType);
+        this.messageType = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
+        appendItemDebugMsg("Message Type (0=SDPD Status, 1=End of Batch, 2=Service Status)", this.messageType);
+
     }
 
     @Override
