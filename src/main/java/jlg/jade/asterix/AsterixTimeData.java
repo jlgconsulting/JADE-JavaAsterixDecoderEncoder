@@ -14,16 +14,16 @@ package jlg.jade.asterix;
  * @implSpec The time of the day value is reset to zero at every midnight
  */
 public abstract class AsterixTimeData extends FixedLengthAsterixData {
-    private int timeOfTrack;
+    private int time;
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.timeOfTrack =
+        this.time =
                 Byte.toUnsignedInt(input[offset]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 1]) * 256 +
                         Byte.toUnsignedInt(input[offset + 2]);
 
-        appendItemDebugMsg("Time of track: ", this.timeOfTrack);
+        appendItemDebugMsg("Time: ", this.time);
 
         //we create strings for hours, minutes and seconds to be able to represent time like 04:45:09 (leading 0)
         String hours = String.valueOf(getHours());
@@ -53,19 +53,19 @@ public abstract class AsterixTimeData extends FixedLengthAsterixData {
         return AsterixItemLength.THREE_BYTES.getValue();
     }
 
-    public int getTimeOfTrack() {
-        return this.timeOfTrack;
+    public int getTime() {
+        return this.time;
     }
 
     public int getHours() {
-        return this.timeOfTrack / 128 / 3600;
+        return this.time / 128 / 3600;
     }
 
     public int getMinutes() {
-        return ((this.timeOfTrack / 128) % 3600) / 60;
+        return ((this.time / 128) % 3600) / 60;
     }
 
     public int getSeconds() {
-        return (this.timeOfTrack / 128) % 60;
+        return (this.time / 128) % 60;
     }
 }

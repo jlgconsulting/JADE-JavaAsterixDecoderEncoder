@@ -6,6 +6,7 @@
 */
 package jlg.jade.asterix.cat065;
 
+import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.UnsignedNumericDecoder;
 
@@ -20,7 +21,7 @@ public class Cat065Item020 extends FixedLengthAsterixData {
 
     @Override
     protected int setSizeInBytes() {
-        return 1;
+        return AsterixItemLength.ONE_BYTE.getValue();
     }
 
     @Override

@@ -34,6 +34,6 @@ public class Cat065Item030Test extends MandatoryFixedLengthAsterixTests<Cat065It
         item030.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Data nod decoded correctly", 6801721, item030.getTimeOfTrack());
+        assertEquals("Data nod decoded correctly", 6801721, item030.getTime());
     }
 }

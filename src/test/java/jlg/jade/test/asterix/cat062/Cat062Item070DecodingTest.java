@@ -46,7 +46,7 @@ public class Cat062Item070DecodingTest {
         item.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Time of track information not decoded correctly", 6794473, item.getTimeOfTrack());
+        assertEquals("Time of track information not decoded correctly", 6794473, item.getTime());
     }
 
     @Test

@@ -18,7 +18,7 @@ import jlg.jade.asterix.cat062.item500.Cat062Item500;
 /**
  * Represents a single Asterix entity which contains a number of data items
  */
-public class AsterixCat062Record extends FspecAsterixData {
+public class Cat062Record extends FspecAsterixData {
     private ReservedFieldFactory reservedFieldFactory;
     private Cat062Item010 item010;
     private Cat062Item015 item015;
@@ -56,20 +56,20 @@ public class AsterixCat062Record extends FspecAsterixData {
      * Use this implementation only if these fields are missing. Otherwise, provide custom impl
      * for decoding and encoding of RE and SP
      */
-    public AsterixCat062Record() {
+    public Cat062Record() {
         this.reservedFieldFactory = new DefaultReservedFieldFactory();
     }
 
     @Override
     protected String setDisplayName() {
-        return "*** AsterixCat062Record ***";
+        return "*** Cat062Record ***";
     }
 
     /**
      * Custom constructor, which has custom impleemntations for RE and SP fields, according to the specific
      * use cases. Use this constructor when you need to provide custom impl to RE and SP fields.
      */
-    public AsterixCat062Record(ReservedFieldFactory reservedFieldFactory) {
+    public Cat062Record(ReservedFieldFactory reservedFieldFactory) {
         this.reservedFieldFactory = reservedFieldFactory;
     }
 
@@ -242,18 +242,19 @@ public class AsterixCat062Record extends FspecAsterixData {
             appendDebugMsg(this.item340.getDebugString());
         }
 
+        if (fspecDataAtIndex(Fspec.I062_RE)) {
+            this.reservedExpansionField = this.reservedFieldFactory.createReField();
+            offset = this.reservedExpansionField.decode(input, offset, length);
+            appendDebugMsg(this.reservedExpansionField.getDebugString());
+        }
+
         if (fspecDataAtIndex(Fspec.I062_SP)) {
             this.specialPurposeField = this.reservedFieldFactory.createSpField();
             offset = this.specialPurposeField.decode(input, offset, length);
             appendDebugMsg(this.specialPurposeField.getDebugString());
         }
 
-        if (fspecDataAtIndex(Fspec.I062_RE)) {
-            this.reservedExpansionField = this.reservedFieldFactory.createReField();
-            offset = this.reservedExpansionField.decode(input, offset, length);
-            appendDebugMsg(this.reservedExpansionField.getDebugString());
-        }
-        appendDebugMsg("*** End of AsterixCat062Record ***");
+        appendDebugMsg("*** End of Cat062Record ***");
         appendNewLine();
 
         return offset;

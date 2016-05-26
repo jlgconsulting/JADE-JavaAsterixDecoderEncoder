@@ -161,7 +161,7 @@ public class Cat062ItemCounter extends DebugMessageSource {
      *
      * @param record a new Asterix record
      */
-    public void increment(AsterixCat062Record record) {
+    public void increment(Cat062Record record) {
         clearDebugMsg();
         appendDebugMsg("Asterix Cat062 Counters");
 
@@ -937,7 +937,7 @@ public class Cat062ItemCounter extends DebugMessageSource {
         return itemSpInvalid;
     }
 
-    private void addCountersForItem390(AsterixCat062Record record) {
+    private void addCountersForItem390(Cat062Record record) {
         if (record.getItem390() != null) {
             this.item390Present += 1;
             if (!record.getItem390().isValid()) {
@@ -1133,7 +1133,7 @@ public class Cat062ItemCounter extends DebugMessageSource {
         }
     }
 
-    private void addCountersForItem380(AsterixCat062Record record) {
+    private void addCountersForItem380(Cat062Record record) {
         if (record.getItem380() != null) {
             this.item380Present += 1;
             if (!record.getItem380().isValid()) {

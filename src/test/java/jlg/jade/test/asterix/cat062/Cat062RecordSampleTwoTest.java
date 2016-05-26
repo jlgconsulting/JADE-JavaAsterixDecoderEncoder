@@ -6,15 +6,15 @@
 */
 package jlg.jade.test.asterix.cat062;
 
-import jlg.jade.asterix.cat062.AsterixCat062Record;
+import jlg.jade.asterix.cat062.Cat062Record;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
 
 import static org.junit.Assert.assertEquals;
 
-public class Cat062RecordSampleTwoTest extends MandatoryFspecAsterixTests<AsterixCat062Record> {
+public class Cat062RecordSampleTwoTest extends MandatoryFspecAsterixTests<Cat062Record> {
     @Override
-    protected AsterixCat062Record setDataFieldInstance() {
-        return new AsterixCat062Record();
+    protected Cat062Record setDataFieldInstance() {
+        return new Cat062Record();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Cat062RecordSampleTwoTest extends MandatoryFspecAsterixTests<Asteri
     public void the_decode_method_should_correctly_populate_fspec_field() {
         //arrange
         int offset = 0;
-        AsterixCat062Record cat062Record = new AsterixCat062Record();
+        Cat062Record cat062Record = new Cat062Record();
 
         //act
         cat062Record.decode(sampleInput, offset, sampleInput.length);
@@ -101,7 +101,7 @@ public class Cat062RecordSampleTwoTest extends MandatoryFspecAsterixTests<Asteri
     public void the_decode_method_should_correctly_decode_data() {
         //arrange
         int offset = 0;
-        AsterixCat062Record cat062Record = new AsterixCat062Record();
+        Cat062Record cat062Record = new Cat062Record();
 
         //act
         cat062Record.decode(sampleInput, offset, sampleInput.length);
@@ -110,7 +110,7 @@ public class Cat062RecordSampleTwoTest extends MandatoryFspecAsterixTests<Asteri
         assertEquals("Item not decoded correctly - 010", 132, cat062Record.getItem010().getSac());
         assertEquals("Item not decoded correctly - 010", 0, cat062Record.getItem010().getSic());
         assertEquals("Item not decoded correctly - 015", 160, cat062Record.getItem015().getServiceIdentification());
-        assertEquals("Item not decoded correctly - 070", 185177, cat062Record.getItem070().getTimeOfTrack());
+        assertEquals("Item not decoded correctly - 070", 185177, cat062Record.getItem070().getTime());
         assertEquals("Item not decoded correctly - 105", 8281059, cat062Record.getItem105().getLatitudeWsg84());
         assertEquals("Item not decoded correctly - 105", 4924365, cat062Record.getItem105().getLongitudeWsg84());
         assertEquals("Item not decoded correctly - 100", 482106, cat062Record.getItem100().getX());
@@ -172,7 +172,7 @@ public class Cat062RecordSampleTwoTest extends MandatoryFspecAsterixTests<Asteri
     public void the_decode_method_should_increment_offset_after_data_decoding() {
         //arrange
         int offset = 0;
-        AsterixCat062Record cat062Record = new AsterixCat062Record();
+        Cat062Record cat062Record = new Cat062Record();
 
         //act
         int result = cat062Record.decode(sampleInput, offset, sampleInput.length);
