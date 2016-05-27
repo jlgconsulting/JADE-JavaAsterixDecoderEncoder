@@ -4,16 +4,18 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.asterix.cat062;
+package jlg.jade.asterix.counters;
 
 import jlg.jade.asterix.AsterixDataBlock;
+import jlg.jade.asterix.cat062.Cat062Record;
+import jlg.jade.asterix.counters.AsterixItemCounter;
 import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.common.DebugMessageSource;
 
 /**
  * Counter class for Cat062 items and most of subfields.
  */
-public class Cat062ItemCounter extends DebugMessageSource {
+public class Cat062ItemCounter extends DebugMessageSource implements AsterixItemCounter {
     private int item010Present = 0;
     private int item010Invalid = 0;
     private int item015Present = 0;

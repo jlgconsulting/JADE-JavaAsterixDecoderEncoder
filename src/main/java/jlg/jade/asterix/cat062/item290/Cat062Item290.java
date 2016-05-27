@@ -173,17 +173,17 @@ public class Cat062Item290 extends FspecAsterixData {
 
     private static class Fspec{
         //first extent
-        public static final int SUBFIELD_7 = 1;
-        public static final int SUBFIELD_6 = 2;
-        public static final int SUBFIELD_5 = 3;
-        public static final int SUBFIELD_4 = 4;
-        public static final int SUBFIELD_3 = 5;
-        public static final int SUBFIELD_2 = 6;
-        public static final int SUBFIELD_1 = 7;
+        static final int SUBFIELD_7 = 1;
+        static final int SUBFIELD_6 = 2;
+        static final int SUBFIELD_5 = 3;
+        static final int SUBFIELD_4 = 4;
+        static final int SUBFIELD_3 = 5;
+        static final int SUBFIELD_2 = 6;
+        static final int SUBFIELD_1 = 7;
 
         //second extent (4 spare bits)
-        public static final int SUBFIELD_10 = 13;
-        public static final int SUBFIELD_9 = 14;
-        public static final int SUBFIELD_8 = 15;
+        static final int SUBFIELD_10 = 13;
+        static final int SUBFIELD_9 = 14;
+        static final int SUBFIELD_8 = 15;
     }
 }

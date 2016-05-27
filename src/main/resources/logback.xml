@@ -11,7 +11,7 @@
         </filter>
         <file>logs/jade.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>jade.%d{yyyy_MM_dd_HH_mm}_part%i.log</fileNamePattern>
+            <fileNamePattern>logs/jade.%d{yyyy_MM_dd_HH_mm}_part%i.log</fileNamePattern>
             <maxHistory>300</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>120000Kb</maxFileSize>
@@ -23,7 +23,7 @@
     </appender>
 
     <logger name="jlg.jade">
-        <appender-ref ref="ROLLING" />
+        <appender-ref ref="ROLLING"/>
     </logger>
 
 </configuration>

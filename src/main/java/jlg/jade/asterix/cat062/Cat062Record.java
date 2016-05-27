@@ -378,42 +378,42 @@ public class Cat062Record extends FspecAsterixData {
 
     private static class Fspec {
         //first octet
-        public final static int I062_185 = 1;
-        public final static int I062_100 = 2;
-        public final static int I062_105 = 3;
-        public final static int I062_070 = 4;
-        public final static int I062_015 = 5;
-        public final static int I062_010 = 7;
+        final static int I062_185 = 1;
+        final static int I062_100 = 2;
+        final static int I062_105 = 3;
+        final static int I062_070 = 4;
+        final static int I062_015 = 5;
+        final static int I062_010 = 7;
 
         //second octet
-        public final static int I062_290 = 9;
-        public final static int I062_080 = 10;
-        public final static int I062_040 = 11;
-        public final static int I062_380 = 12;
-        public final static int I062_245 = 13;
-        public final static int I062_060 = 14;
-        public final static int I062_210 = 15;
+        final static int I062_290 = 9;
+        final static int I062_080 = 10;
+        final static int I062_040 = 11;
+        final static int I062_380 = 12;
+        final static int I062_245 = 13;
+        final static int I062_060 = 14;
+        final static int I062_210 = 15;
 
         //third octet
-        public final static int I062_390 = 17;
-        public final static int I062_220 = 18;
-        public final static int I062_135 = 19;
-        public final static int I062_130 = 20;
-        public final static int I062_136 = 21;
-        public final static int I062_295 = 22;
-        public final static int I062_200 = 23;
+        final static int I062_390 = 17;
+        final static int I062_220 = 18;
+        final static int I062_135 = 19;
+        final static int I062_130 = 20;
+        final static int I062_136 = 21;
+        final static int I062_295 = 22;
+        final static int I062_200 = 23;
 
         //forth extent
-        public final static int I062_340 = 25;
-        public final static int I062_500 = 26;
-        public final static int I062_510 = 27;
-        public final static int I062_120 = 28;
-        public final static int I062_110 = 29;
-        public final static int I062_300 = 30;
-        public final static int I062_270 = 31;
+        final static int I062_340 = 25;
+        final static int I062_500 = 26;
+        final static int I062_510 = 27;
+        final static int I062_120 = 28;
+        final static int I062_110 = 29;
+        final static int I062_300 = 30;
+        final static int I062_270 = 31;
 
         //fifth octet
-        public final static int I062_SP = 33;
-        public final static int I062_RE = 34;
+        final static int I062_SP = 33;
+        final static int I062_RE = 34;
     }
 }
