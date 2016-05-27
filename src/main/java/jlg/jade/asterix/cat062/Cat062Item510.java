@@ -33,6 +33,9 @@ public class Cat062Item510 extends VariableLengthAsterixData {
         //3 octet sequences => FX bit is at each 3rd octet
         BitSet bs = BitSet.valueOf(new byte[]{input[offset + 2]});
 
+        appendDebugMsg(this.getDisplayName() + ":");
+        appendNewLine();
+
         while (bs.get(0)) {
             appendDebugMsg("FX bit is 1. Continue to read data");
             appendNewLine();
@@ -45,7 +48,7 @@ public class Cat062Item510 extends VariableLengthAsterixData {
         appendDebugMsg("Size of item is " + currentLength + " octets.");
         appendNewLine();
         for (int i = 0; i < currentLength; i++) {
-            appendItemDebugMsg("Octet " + i, input[offset + i]);
+            appendItemDebugMsg("Octet " + i, Byte.toUnsignedInt(input[offset + i]));
         }
         return currentLength;
     }

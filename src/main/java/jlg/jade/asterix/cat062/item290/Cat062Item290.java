@@ -48,7 +48,7 @@ public class Cat062Item290 extends FspecAsterixData {
             subfield2 = new Cat062AsterixAgingDataField();
             offset = subfield2.decode(input,offset,length);
 
-            appendDebugMsg("Item290Subfield1 - PSR age");
+            appendDebugMsg("Item290Subfield2 - PSR age");
             appendDebugMsg(subfield2.getDebugString());
         }
 
