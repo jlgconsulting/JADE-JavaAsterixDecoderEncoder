@@ -10,16 +10,14 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.concurrent.BlockingQueue;
 
-public class UdpReader implements Runnable {
+class UdpReader implements Runnable {
     private int port = 3001;
-    private final int MAX_PACKET_SIZE = 65507;
-    private final int TIMEOUT = 5000;
     private BlockingQueue<byte[]> rawQueue;
 
     public UdpReader() {
     }
 
-    public UdpReader(BlockingQueue<byte[]> rawQueue, String[] args) {
+    UdpReader(BlockingQueue<byte[]> rawQueue, String[] args) {
         if(args[2] != null){
             this.port = Integer.parseInt(args[2]);
         }
@@ -31,6 +29,9 @@ public class UdpReader implements Runnable {
     }
 
     private void ParseUdpData() {
+        final int MAX_PACKET_SIZE = 65507;
+        final int TIMEOUT = 5000;
+
         System.out.println("Starting UdpReader on port " + port);
 
         int receivedDatagrams = 0;

@@ -1026,14 +1026,19 @@ public class Cat062ItemCounter extends DebugMessageSource {
                 appendItemCounterMsg("  Subfield 6 - Wake Turbulence Category", item390Subfield6Present,
                         item390Subfield6Invalid);
 
-                if (record.getItem390().getSubfield6().getWakeTurbulenceCategory().equals("L")) {
-                    this.item390Subfield6L += 1;
-                } else if (record.getItem390().getSubfield6().getWakeTurbulenceCategory().equals("M")) {
-                    this.item390Subfield6M += 1;
-                } else if (record.getItem390().getSubfield6().getWakeTurbulenceCategory().equals("H")) {
-                    this.item390Subfield6H += 1;
-                } else {
-                    this.item390Subfield6J += 1;
+                switch (record.getItem390().getSubfield6().getWakeTurbulenceCategory()) {
+                    case "L":
+                        this.item390Subfield6L += 1;
+                        break;
+                    case "M":
+                        this.item390Subfield6M += 1;
+                        break;
+                    case "H":
+                        this.item390Subfield6H += 1;
+                        break;
+                    default:
+                        this.item390Subfield6J += 1;
+                        break;
                 }
                 appendItemCounterMsg("    Light", item390Subfield6L, "");
                 appendItemCounterMsg("    Medium", item390Subfield6M, "");

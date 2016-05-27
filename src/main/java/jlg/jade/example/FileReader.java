@@ -11,11 +11,11 @@ import jlg.finalframe.FinalFrameReader;
 import java.io.*;
 import java.util.concurrent.BlockingQueue;
 
-public class FileReader implements Runnable {
+class FileReader implements Runnable {
     private final BlockingQueue<byte[]> rawQueue;
-    private String filePath;
+    private final String filePath;
 
-    public FileReader(BlockingQueue<byte[]> rawQueue, String[] args){
+    FileReader(BlockingQueue<byte[]> rawQueue, String[] args){
         this.rawQueue = rawQueue;
         this.filePath = args[2];
     }
@@ -35,11 +35,7 @@ public class FileReader implements Runnable {
                 }
             }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         long endTime = System.currentTimeMillis();

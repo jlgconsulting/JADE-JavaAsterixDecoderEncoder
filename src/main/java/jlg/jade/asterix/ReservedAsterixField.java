@@ -19,7 +19,7 @@ import java.util.Map;
  * For custom implementations, you need to derive from this class ad oerride the decode method
  */
 public class ReservedAsterixField extends AsterixItem implements Decodable {
-    private Map<String, String> values;
+    private final Map<String, String> values;
 
     public ReservedAsterixField() {
         this.values = new Hashtable<>();

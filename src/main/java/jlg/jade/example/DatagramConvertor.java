@@ -13,15 +13,15 @@ import org.apache.commons.logging.LogFactory;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public class DatagramConvertor implements Runnable {
-    private BlockingQueue<byte[]> rawQueue;
+class DatagramConvertor implements Runnable {
+    private final BlockingQueue<byte[]> rawQueue;
     private boolean isLogEnabled = false;
-    private Log logger;
+    private final Log logger;
     private int numberOfQueueItems;
     private int numberOfReceivedBytes;
     private int numberOfReceivedBytesFinalFrame;
 
-    public DatagramConvertor(BlockingQueue<byte[]> rawQueue, String[] args) {
+    DatagramConvertor(BlockingQueue<byte[]> rawQueue, String[] args) {
         this.rawQueue = rawQueue;
         this.logger = LogFactory.getLog("jlg.jade");
         this.isLogEnabled = Boolean.parseBoolean(args[1]);

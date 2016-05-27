@@ -13,7 +13,6 @@ import java.util.concurrent.Executors;
 
 public class JadeApplication {
 
-
     public static void main(String[] args) {
         System.out.println("Java Asterix Decoder Encoder");
         BlockingQueue<byte[]> rawQueue = new ArrayBlockingQueue<>(4000);

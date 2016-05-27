@@ -24,10 +24,10 @@ public class BitValueDecoder {
         if (!endBit && !startBit) {
             return 0;
         }
-        if (!endBit && startBit) {
+        if (!endBit) {
             return 1;
         }
-        if (endBit && !startBit) {
+        if (!startBit) {
             return 2;
         }
         return 3;
