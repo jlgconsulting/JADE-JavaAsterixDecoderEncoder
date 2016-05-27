@@ -7,9 +7,9 @@
 
 package jlg.jade.test.asterix.cat062;
 
-import jlg.jade.common.AsterixDecodingException;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.cat062.Cat062Item010;
+import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

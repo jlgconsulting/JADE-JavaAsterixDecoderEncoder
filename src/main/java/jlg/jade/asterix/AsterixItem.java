@@ -16,7 +16,7 @@ import jlg.jade.common.DebugMessageSource;
 public abstract class AsterixItem extends DebugMessageSource {
     protected int sizeInBytes;
     protected boolean valid;
-    private String displayName;
+    private final String displayName;
 
     AsterixItem(){
         this.valid = true;
@@ -58,7 +58,7 @@ public abstract class AsterixItem extends DebugMessageSource {
 
     /**
      * Set the display name of the Asterix field
-     * @return
+     * @return The given display name for item
      */
     protected abstract String setDisplayName();
 }

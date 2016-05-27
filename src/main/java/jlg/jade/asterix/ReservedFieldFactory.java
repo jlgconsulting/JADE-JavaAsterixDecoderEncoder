@@ -7,8 +7,6 @@
 
 package jlg.jade.asterix;
 
-import jlg.jade.asterix.ReservedAsterixField;
-
 public interface ReservedFieldFactory {
     ReservedAsterixField createSpField();
 

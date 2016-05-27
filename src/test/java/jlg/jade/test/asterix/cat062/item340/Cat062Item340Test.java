@@ -4,15 +4,13 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix.item340;
+package jlg.jade.test.asterix.cat062.item340;
 
 import jlg.jade.asterix.cat062.item340.Cat062Item340;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class Cat062Item340Test extends MandatoryFspecAsterixTests<Cat062Item340> {
     @Override

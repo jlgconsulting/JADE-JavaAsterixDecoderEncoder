@@ -8,22 +8,11 @@ package jlg.jade.test.asterix.cat062;
 
 import jlg.jade.asterix.cat062.Cat062Fspec;
 import jlg.jade.asterix.cat062.Cat062UAP;
-import jlg.jade.common.Constants;
-import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.*;
 
 public class Cat062FspecDecodingTest {
-
-    private Logger logger;
-
-    @Before
-    public void init() {
-        logger = LoggerFactory.getLogger(Constants.LOGGER_NAME);
-    }
 
     /**
      * Array is constructed with data sample from ON (one packet). We can use C++ DAQ logs to generate test scenarios
@@ -95,7 +84,6 @@ public class Cat062FspecDecodingTest {
         fspec.decode(fspecInputData, 0, fspecInputData.length);    //5 octets => current index will increase by 5
 
         //assert
-        logger.debug(fspec.getDebugString());
         assertNotNull(fspec.getDebugString());
     }
 

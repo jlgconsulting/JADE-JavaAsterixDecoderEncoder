@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix.item110;
+package jlg.jade.test.asterix.cat062.item110;
 
 import jlg.jade.asterix.cat062.item110.Cat062Item110;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
@@ -26,7 +26,7 @@ public class Cat062Item110Test extends MandatoryFspecAsterixTests<Cat062Item110>
     /**
      * subfield 5,6,7 are present
      */
-    private byte[] sampleInput = {
+    private final byte[] sampleInput = {
             15,
             1,
             2,

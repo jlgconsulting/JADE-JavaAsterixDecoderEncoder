@@ -7,9 +7,9 @@
 package jlg.jade.test.asterix.cat062;
 
 import jlg.finalframe.FinalFrameReader;
-import jlg.jade.example.AsterixDecoder;
 import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.AsterixRecord;
+import jlg.jade.example.AsterixDecoder;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -36,7 +36,6 @@ public class Cat062LargeSampleDecodingTest {
             FinalFrameReader ffReader = new FinalFrameReader();
             receivedBytes = readFileToEnd(decoder, is, ffReader);
         }
-        System.out.println("Processed " + receivedBytes + " bytes");
 
         //assert
         int expectedBytes = 2725638;
@@ -56,7 +55,6 @@ public class Cat062LargeSampleDecodingTest {
             FinalFrameReader ffReader = new FinalFrameReader();
             receivedBytes = readFileToEnd(decoder, is, ffReader);
         }
-        System.out.println("Processed " + receivedBytes + " bytes");
 
         //assert
         int expectedBytes = 3003761;
@@ -65,7 +63,7 @@ public class Cat062LargeSampleDecodingTest {
 
 
     @Test
-    //@Ignore("Can only be executed if an Asterix sender is feeding the decoder")
+    @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
     public void
     when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws
             IOException, InterruptedException {

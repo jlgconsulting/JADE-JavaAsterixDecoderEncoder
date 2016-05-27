@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix.item500;
+package jlg.jade.test.asterix.cat062.item500;
 
 import jlg.jade.asterix.cat062.item500.Cat062Item500;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
@@ -22,7 +22,7 @@ public class Cat062Item500Test extends MandatoryFspecAsterixTests<Cat062Item500>
         return 2;
     }
 
-    private byte[] sampleInput = {
+    private final byte[] sampleInput = {
             (byte) 191,
             (byte) 128,
             0,

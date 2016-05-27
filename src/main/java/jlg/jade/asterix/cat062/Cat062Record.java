@@ -19,7 +19,7 @@ import jlg.jade.asterix.cat062.item500.Cat062Item500;
  * Represents a single Asterix entity which contains a number of data items
  */
 public class Cat062Record extends FspecAsterixData {
-    private ReservedFieldFactory reservedFieldFactory;
+    private final ReservedFieldFactory reservedFieldFactory;
     private Cat062Item010 item010;
     private Cat062Item015 item015;
     private Cat062Item070 item070;

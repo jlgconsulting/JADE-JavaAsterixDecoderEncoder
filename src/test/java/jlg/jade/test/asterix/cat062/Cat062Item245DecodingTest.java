@@ -8,6 +8,7 @@ package jlg.jade.test.asterix.cat062;
 
 import jlg.jade.asterix.cat062.Cat062Item245;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class Cat062Item245DecodingTest {

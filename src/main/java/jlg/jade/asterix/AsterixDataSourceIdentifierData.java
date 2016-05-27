@@ -15,7 +15,7 @@ public abstract class AsterixDataSourceIdentifierData extends FixedLengthAsterix
     private int sac;
     private int sic;
 
-    public AsterixDataSourceIdentifierData() {
+    protected AsterixDataSourceIdentifierData() {
         this.sizeInBytes = AsterixItemLength.TWO_BYTES.getValue();
         this.sac = 0;
         this.sic = 0;

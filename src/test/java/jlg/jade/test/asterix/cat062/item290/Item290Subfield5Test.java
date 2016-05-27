@@ -4,7 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.test.asterix.item290;
+package jlg.jade.test.asterix.cat062.item290;
 
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.asterix.cat062.item290.Item290Subfield5;

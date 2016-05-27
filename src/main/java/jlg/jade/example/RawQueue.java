@@ -14,7 +14,7 @@ import java.util.concurrent.BlockingQueue;
 
 @Component
 public class RawQueue{
-    private BlockingQueue<DatagramPacket> rawQueue;
+    private final BlockingQueue<DatagramPacket> rawQueue;
 
     public RawQueue(){
         this.rawQueue = new ArrayBlockingQueue<>(1000);

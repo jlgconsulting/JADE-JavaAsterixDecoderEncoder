@@ -12,7 +12,7 @@ import jlg.jade.asterix.*;
  * Asterix Category 065
  */
 public class Cat065Record extends FspecAsterixData {
-    private ReservedFieldFactory reservedFieldFactory;
+    private final ReservedFieldFactory reservedFieldFactory;
     private Cat065Item010 item010;
     private Cat065Item000 item000;
     private Cat065Item015 item015;
