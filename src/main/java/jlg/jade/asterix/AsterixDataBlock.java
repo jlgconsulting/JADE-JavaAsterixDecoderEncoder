@@ -43,9 +43,20 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
             offset = record.decode(input, offset, length);
 
             //append logs
-            if(category == 62){
-                appendNewLine();
-                appendDebugMsg(record.getCat062Record().getDebugString());
+            switch (category){
+                case 62:{
+                    appendNewLine();
+                    appendDebugMsg(record.getCat062Record().getDebugString());
+                    break;
+                }
+                case 65:{
+                    appendNewLine();
+                    appendDebugMsg(record.getCat065Record().getDebugString());
+                    break;
+                }
+                default:{
+                    break;
+                }
             }
 
             records.add(record);

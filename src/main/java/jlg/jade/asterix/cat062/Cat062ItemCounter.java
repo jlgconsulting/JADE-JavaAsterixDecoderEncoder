@@ -6,6 +6,8 @@
 */
 package jlg.jade.asterix.cat062;
 
+import jlg.jade.asterix.AsterixDataBlock;
+import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.common.DebugMessageSource;
 
 /**
@@ -156,14 +158,30 @@ public class Cat062ItemCounter extends DebugMessageSource {
     private int itemSpPresent = 0;
     private int itemSpInvalid = 0;
 
+
+    /**
+     * Increments counter values with the the ones received from a new data block
+     *
+     * @param asterixDataBlock An Asterix data block that has Cat 062 data
+     */
+    public void increment(AsterixDataBlock asterixDataBlock) {
+        for (AsterixRecord record : asterixDataBlock.getRecords()) {
+            if (record.getCat062Record() != null) {
+                increment(record.getCat062Record());
+            }
+        }
+    }
+
     /**
      * Adds the current counter values with the new counter values
      *
      * @param record a new Asterix record
      */
-    public void increment(Cat062Record record) {
+    private void increment(Cat062Record record) {
         clearDebugMsg();
-        appendDebugMsg("Asterix Cat062 Counters");
+        appendNewLine();
+        appendDebugMsg("Asterix Categoty 062 Counters");
+        appendNewLine();
 
         if (record.getItem010() != null) {
             this.item010Present += 1;

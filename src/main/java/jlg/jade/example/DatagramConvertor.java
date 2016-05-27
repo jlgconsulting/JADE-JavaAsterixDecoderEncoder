@@ -30,7 +30,7 @@ class DatagramConvertor implements Runnable {
     @Override
     public void run() {
         System.out.println("Start Convertor");
-        AsterixDecoder asterixDecoder = new AsterixDecoder(62);
+        AsterixDecoder asterixDecoder = new AsterixDecoder(62, 65);
         long startTime = System.currentTimeMillis();
         while (true) {
             try {

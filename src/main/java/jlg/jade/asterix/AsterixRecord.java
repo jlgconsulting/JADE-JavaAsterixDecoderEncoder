@@ -7,6 +7,7 @@
 package jlg.jade.asterix;
 
 import jlg.jade.asterix.cat062.Cat062Record;
+import jlg.jade.asterix.cat065.Cat065Record;
 import jlg.jade.common.DebugMessageSource;
 import jlg.jade.common.Decodable;
 import jlg.jade.common.Encodable;
@@ -18,6 +19,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class AsterixRecord extends DebugMessageSource implements Decodable, Encodable {
     private final int category;
     private Cat062Record cat062Record;
+    private Cat065Record cat065Record;
 
     public AsterixRecord(int category) {
         this.category = category;
@@ -35,7 +37,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 this.cat062Record = new Cat062Record();
             }
             case 65: {
-                break;
+                this.cat065Record = new Cat065Record();
             }
             case 150: {
                 break;
@@ -69,7 +71,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 return this.cat062Record.decode(input,offset,inputLength);
             }
             case 65: {
-                break;
+                return this.cat065Record.decode(input,offset,inputLength);
             }
             case 150: {
                 break;
@@ -99,5 +101,9 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
 
     public Cat062Record getCat062Record() {
         return cat062Record;
+    }
+
+    public Cat065Record getCat065Record() {
+        return cat065Record;
     }
 }
