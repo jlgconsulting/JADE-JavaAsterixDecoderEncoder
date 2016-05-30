@@ -30,6 +30,7 @@ public class Item390Subfield7 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         try {
             this.departureAirport = new String(input, offset, getSizeInBytes(), "UTF-8").replace("", "");
+            appendItemDebugMsg("Departure Airport", this.departureAirport);
         } catch (UnsupportedEncodingException e) {
             appendErrorMessage("Unsupported encoding exception");
         }

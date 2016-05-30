@@ -15,6 +15,9 @@ import jlg.jade.common.DebugMessageSource;
  * Counter class for Cat065
  */
 public class Cat065ItemCounter extends DebugMessageSource implements AsterixItemCounter {
+    private int nbRecords = 0;
+    private int nbOfInvalidRecords = 0;
+
     private int item010Present = 0;
     private int item010Invalid = 0;
     private int item000Present = 0;
@@ -33,6 +36,7 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
     private int itemReInvalid = 0;
     private int itemSpPresent = 0;
     private int itemSpInvalid = 0;
+
 
     /**
      * Increments counter values with the the ones received from a new data block
@@ -55,8 +59,14 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
     private void increment(Cat065Record record) {
         clearDebugMsg();
         appendNewLine();
-        appendDebugMsg("Asterix Categoty 065 Counters");
         appendNewLine();
+        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded","Nb. invalid");
+
+        this.nbRecords++;
+        if (!record.isValid()) {
+            this.nbOfInvalidRecords++;
+        }
+        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
 
         if (record.getItem010() != null) {
             this.item010Present = this.getItem010Present() + 1;
@@ -82,33 +92,33 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             appendItemCounterMsg("Item 015 - Service Identification", getItem015Present(), getItem015Invalid());
         }
 
-        if(record.getItem030() != null){
+        if (record.getItem030() != null) {
             this.item030Present = this.getItem030Present() + 1;
-            if(!record.getItem030().isValid()){
+            if (!record.getItem030().isValid()) {
                 this.item030Invalid = this.getItem030Invalid() + 1;
             }
             appendItemCounterMsg("Item 030 - Time of Message", getItem030Present(), getItem030Invalid());
         }
 
-        if(record.getItem020() != null){
+        if (record.getItem020() != null) {
             this.item020Present = this.getItem020Present() + 1;
-            if(!record.getItem020().isValid()){
+            if (!record.getItem020().isValid()) {
                 this.item020Invalid = this.getItem020Invalid() + 1;
             }
             appendItemCounterMsg("Item 020 - Batch Number", getItem020Present(), getItem020Invalid());
         }
 
-        if(record.getItem040() != null){
+        if (record.getItem040() != null) {
             this.item040Present = this.getItem040Present() + 1;
-            if(!record.getItem040().isValid()){
+            if (!record.getItem040().isValid()) {
                 this.item040Invalid = this.getItem040Invalid() + 1;
             }
             appendItemCounterMsg("Item 040 - SDPS Config and Status", getItem040Present(), getItem040Invalid());
         }
 
-        if(record.getItem050() != null){
+        if (record.getItem050() != null) {
             this.item050Present = this.getItem050Present() + 1;
-            if(!record.getItem050().isValid()){
+            if (!record.getItem050().isValid()) {
                 this.item050Invalid = this.getItem050Invalid() + 1;
             }
             appendItemCounterMsg("Item 050 - Service Status", getItem050Present(), getItem050Invalid());

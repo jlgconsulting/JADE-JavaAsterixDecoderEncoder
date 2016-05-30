@@ -7,15 +7,17 @@
 package jlg.jade.asterix.counters;
 
 import jlg.jade.asterix.AsterixDataBlock;
-import jlg.jade.asterix.cat062.Cat062Record;
-import jlg.jade.asterix.counters.AsterixItemCounter;
 import jlg.jade.asterix.AsterixRecord;
+import jlg.jade.asterix.cat062.Cat062Record;
 import jlg.jade.common.DebugMessageSource;
 
 /**
  * Counter class for Cat062 items and most of subfields.
  */
 public class Cat062ItemCounter extends DebugMessageSource implements AsterixItemCounter {
+    private int nbRecords = 0;
+    private int nbOfInvalidRecords = 0;
+
     private int item010Present = 0;
     private int item010Invalid = 0;
     private int item015Present = 0;
@@ -182,8 +184,13 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
     private void increment(Cat062Record record) {
         clearDebugMsg();
         appendNewLine();
-        appendDebugMsg("Asterix Categoty 062 Counters");
-        appendNewLine();
+        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded","Nb. invalid");
+
+        this.nbRecords++;
+        if(!record.isValid()){
+            this.nbOfInvalidRecords++;
+        }
+        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
 
         if (record.getItem010() != null) {
             this.item010Present += 1;

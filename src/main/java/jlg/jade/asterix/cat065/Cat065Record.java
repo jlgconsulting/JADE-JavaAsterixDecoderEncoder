@@ -113,6 +113,69 @@ public class Cat065Record extends FspecAsterixData {
         return "*** Category 065 Record ***";
     }
 
+    @Override
+    protected boolean validate() {
+        /**
+         * @implNote Validationfor the category 065 record is done by looking if the
+         * mandatory items are present and valid. The list of mandatory items for this category
+         * can be found in the Eurocontrol Cat065 ICD
+         */
+
+        if (this.item000 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 065 Record. Mandatory item is missing: Item 000");
+            appendNewLine();
+            return false;
+        }
+
+        if (this.item010 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 065 Record. Mandatory item is missing: Item 010");
+            appendNewLine();
+            return false;
+        }
+
+        if (this.item015 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 065 Record. Mandatory item is missing: Item 015");
+            appendNewLine();
+            return false;
+        }
+
+        if (this.item030 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 065 Record. Mandatory item is missing: Item 030");
+            appendNewLine();
+            return false;
+        }
+
+        if (this.item000.getMessageType() == 2) {
+            if (this.item020 == null) {
+                appendDebugMsg("  -- [WARNING] Msg is End of Batch. Invalid Cat 065 Record. Mandatory item is " +
+                        "missing: Item 020");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        if (this.item000.getMessageType() == 1) {
+            if (this.item040 == null) {
+                appendDebugMsg("  -- [WARNING] Msg is SDPS Status. Invalid Cat 065 Record. Mandatory item is missing:" +
+                        " Item 040");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        if (this.item000.getMessageType() == 1) {
+            if (this.item050 == null) {
+                appendDebugMsg("  -- [WARNING] Msg is Broadcast Svc. Invalid Cat 065 Record. Mandatory item is " +
+                        "missing: Item 050");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        //everything ok
+        return true;
+    }
+
     public ReservedFieldFactory getReservedFieldFactory() {
         return reservedFieldFactory;
     }

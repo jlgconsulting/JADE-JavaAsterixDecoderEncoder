@@ -7,6 +7,8 @@
 package jlg.jade.example;
 
 import jlg.jade.asterix.AsterixDataBlock;
+import jlg.jade.asterix.counters.Cat062ItemCounter;
+import jlg.jade.asterix.counters.Cat065ItemCounter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -29,6 +31,9 @@ class DatagramConvertor implements Runnable {
 
     @Override
     public void run() {
+        Cat062ItemCounter cat062ItemCounter = new Cat062ItemCounter();
+        Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
+
         System.out.println("Start Convertor");
         AsterixDecoder asterixDecoder = new AsterixDecoder(62, 65);
         long startTime = System.currentTimeMillis();

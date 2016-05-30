@@ -260,6 +260,70 @@ public class Cat062Record extends FspecAsterixData {
         return offset;
     }
 
+    @Override
+    protected boolean validate() {
+        /**
+         * @implNote Validationfor the category 062 record is done by looking if the
+         * mandatory items are present and valid. The list of mandatory items for this category
+         * can be found in the Eurocontrol Cat062 ICD
+         */
+
+        //validate item 010
+        if (item010 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is missing: Item 010");
+            appendNewLine();
+            return false;
+        } else {
+            if (!item010.isValid()) {
+                appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is invalid: Item 010");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        //validate item 040
+        if (item040 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is missing: Item 040");
+            appendNewLine();
+            return false;
+        } else {
+            if (!item040.isValid()) {
+                appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is invalid: Item 040");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        //validate item 070
+        if (item070 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is missing: Item 070");
+            appendNewLine();
+            return false;
+        } else {
+            if (!item070.isValid()) {
+                appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is invalid: Item 070");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        //validate item 080
+        if (item080 == null) {
+            appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is missing: Item 080");
+            appendNewLine();
+            return false;
+        } else {
+            if (!item080.isValid()) {
+                appendDebugMsg("  -- [WARNING] Invalid Cat 062 Record. Mandatory item is invalid: Item 080");
+                appendNewLine();
+                return false;
+            }
+        }
+
+        //everything ok
+        return true;
+    }
+
     public Cat062Item010 getItem010() {
         return item010;
     }

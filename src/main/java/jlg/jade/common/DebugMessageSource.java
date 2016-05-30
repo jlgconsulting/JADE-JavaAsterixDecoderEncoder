@@ -30,7 +30,7 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendItemCounterMsg(String property, Object nbPresent, Object nbInvalid) {
-        debugStringBuilder.append(String.format("  -- %-60s %-10s %-10s", property, nbPresent, nbInvalid));
+        debugStringBuilder.append(String.format("  -- %-60s %-12s %-12s", property, nbPresent, nbInvalid));
         debugStringBuilder.append(System.lineSeparator());
     }
 
