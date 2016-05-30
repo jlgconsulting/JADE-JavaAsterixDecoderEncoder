@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class Cat062Item080DecodingTest {
+public class Cat062Item080Test {
 
     @Test
     public void the_decode_method_should_correctly_determine_length() {

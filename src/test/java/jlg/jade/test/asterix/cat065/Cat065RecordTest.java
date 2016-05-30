@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class Cat065RecordDecodingTest extends MandatoryFspecAsterixTests<Cat065Record> {
+public class Cat065RecordTest extends MandatoryFspecAsterixTests<Cat065Record> {
     @Override
     protected Cat065Record setDataFieldInstance() {
         return new Cat065Record();

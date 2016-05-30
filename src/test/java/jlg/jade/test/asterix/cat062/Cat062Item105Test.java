@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Cat062Item105DecodingTest {
+public class Cat062Item105Test {
 
     @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
     public void the_decode_method_when_remaining_input_data_less_than_8_bytes_should_throw() {

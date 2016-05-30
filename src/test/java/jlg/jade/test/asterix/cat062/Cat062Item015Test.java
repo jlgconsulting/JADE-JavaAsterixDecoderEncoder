@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class Cat062Item015DecodingTest {
+public class Cat062Item015Test {
 
     @Test
     public void should_have_length_of_2_bytes(){

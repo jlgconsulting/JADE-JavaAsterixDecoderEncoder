@@ -436,44 +436,44 @@ public class Cat062Item295 extends FspecAsterixData {
 
     private static class Fspec {
         //first extent
-        public static final int SUBFIELD_7 = 1;
-        public static final int SUBFIELD_6 = 2;
-        public static final int SUBFIELD_5 = 3;
-        public static final int SUBFIELD_4 = 4;
-        public static final int SUBFIELD_3 = 5;
-        public static final int SUBFIELD_2 = 6;
-        public static final int SUBFIELD_1 = 7;
+        static final int SUBFIELD_7 = 1;
+        static final int SUBFIELD_6 = 2;
+        static final int SUBFIELD_5 = 3;
+        static final int SUBFIELD_4 = 4;
+        static final int SUBFIELD_3 = 5;
+        static final int SUBFIELD_2 = 6;
+        static final int SUBFIELD_1 = 7;
 
         //second extent
-        public static final int SUBFIELD_14 = 9;
-        public static final int SUBFIELD_13 = 10;
-        public static final int SUBFIELD_12 = 11;
-        public static final int SUBFIELD_11 = 12;
-        public static final int SUBFIELD_10 = 13;
-        public static final int SUBFIELD_9 = 14;
-        public static final int SUBFIELD_8 = 15;
+        static final int SUBFIELD_14 = 9;
+        static final int SUBFIELD_13 = 10;
+        static final int SUBFIELD_12 = 11;
+        static final int SUBFIELD_11 = 12;
+        static final int SUBFIELD_10 = 13;
+        static final int SUBFIELD_9 = 14;
+        static final int SUBFIELD_8 = 15;
 
         //third extent
-        public static final int SUBFIELD_21 = 17;
-        public static final int SUBFIELD_20 = 18;
-        public static final int SUBFIELD_19 = 19;
-        public static final int SUBFIELD_18 = 20;
-        public static final int SUBFIELD_17 = 21;
-        public static final int SUBFIELD_16 = 22;
-        public static final int SUBFIELD_15 = 23;
+        static final int SUBFIELD_21 = 17;
+        static final int SUBFIELD_20 = 18;
+        static final int SUBFIELD_19 = 19;
+        static final int SUBFIELD_18 = 20;
+        static final int SUBFIELD_17 = 21;
+        static final int SUBFIELD_16 = 22;
+        static final int SUBFIELD_15 = 23;
 
         //forth extent
-        public static final int SUBFIELD_28 = 25;
-        public static final int SUBFIELD_27 = 26;
-        public static final int SUBFIELD_26 = 27;
-        public static final int SUBFIELD_25 = 28;
-        public static final int SUBFIELD_24 = 29;
-        public static final int SUBFIELD_23 = 30;
-        public static final int SUBFIELD_22 = 31;
+        static final int SUBFIELD_28 = 25;
+        static final int SUBFIELD_27 = 26;
+        static final int SUBFIELD_26 = 27;
+        static final int SUBFIELD_25 = 28;
+        static final int SUBFIELD_24 = 29;
+        static final int SUBFIELD_23 = 30;
+        static final int SUBFIELD_22 = 31;
 
         //fifth extent
-        public static final int SUBFIELD_29 = 37;
-        public static final int SUBFIELD_30 = 38;
-        public static final int SUBFIELD_31 = 39;
+        static final int SUBFIELD_31 = 37;
+        static final int SUBFIELD_30 = 38;
+        static final int SUBFIELD_29 = 39;
     }
 }

@@ -25,7 +25,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class Cat062LargeSampleDecodingTest {
+public class Cat062LargeSampleTest {
     @Test
     public void when_file_is_used_as_input_should_decode_cat_062_message_from_larger_sample() throws IOException {
         //arrange
