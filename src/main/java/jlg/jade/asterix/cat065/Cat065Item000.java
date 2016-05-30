@@ -6,37 +6,14 @@
 */
 package jlg.jade.asterix.cat065;
 
-import jlg.jade.asterix.AsterixItemLength;
-import jlg.jade.asterix.FixedLengthAsterixData;
-import jlg.jade.common.UnsignedNumericDecoder;
+import jlg.jade.asterix.AsterixMessageTypeData;
 
 /**
  * Cat 065 Item 000 - Message Type
- * This Data Item allows for a more convenient handling of the
- * messages at the receiver side by further defining the type of
- * transaction.
  */
-public class Cat065Item000 extends FixedLengthAsterixData {
-    private int messageType;
-
-    @Override
-    protected int setSizeInBytes() {
-        return AsterixItemLength.ONE_BYTE.getValue();
-    }
-
-    @Override
-    protected void decodeFromByteArray(byte[] input, int offset) {
-        this.messageType = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
-        appendItemDebugMsg("Message Type (0=SDPD Status, 1=End of Batch, 2=Service Status)", this.messageType);
-
-    }
-
+public class Cat065Item000 extends AsterixMessageTypeData {
     @Override
     protected String setDisplayName() {
         return "Cat065Item000 - Message Type";
-    }
-
-    public int getMessageType() {
-        return messageType;
     }
 }

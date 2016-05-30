@@ -48,7 +48,13 @@ public abstract class DebugMessageSource {
     }
 
     protected void appendErrorMessage(String msg) {
-        debugStringBuilder.append("  -- [ERR] - ");
+        debugStringBuilder.append("  -- [ERROR] - ");
+        debugStringBuilder.append(msg);
+        debugStringBuilder.append(System.lineSeparator());
+    }
+
+    protected void appendWarningMessage(String msg) {
+        debugStringBuilder.append("  -- [WARNING] - ");
         debugStringBuilder.append(msg);
         debugStringBuilder.append(System.lineSeparator());
     }
