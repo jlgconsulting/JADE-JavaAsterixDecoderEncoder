@@ -9,13 +9,13 @@ package jlg.jade.asterix.cat004.item070;
 import jlg.jade.asterix.AsterixTimeData;
 
 /**
- * Cat 004 - Item 070 - Subfield 1 - Time to conflict
- * Time remaining to actual conflict situation
+ * Cat 004 - Item 070 - Subfield 2 - Time to Closest Approach
+ * Time to closest proximity between entities in conflict
  * Unit of measure: 1/128 sec
  */
-public class Item070Subfield1 extends AsterixTimeData {
+public class Item070Subfield2 extends AsterixTimeData {
     @Override
     protected String setDisplayName() {
-        return "Item070Subfield1 - Time to Conflict";
+        return "Item070Subfield2 - Time to Closest Approach";
     }
 }
