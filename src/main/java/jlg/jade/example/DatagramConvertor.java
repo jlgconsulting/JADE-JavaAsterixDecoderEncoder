@@ -35,7 +35,7 @@ class DatagramConvertor implements Runnable {
         Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
 
         System.out.println("Start Convertor");
-        AsterixDecoder asterixDecoder = new AsterixDecoder(62, 65);
+        AsterixDecoder asterixDecoder = new AsterixDecoder(65);
         long startTime = System.currentTimeMillis();
         while (true) {
             try {
@@ -53,7 +53,8 @@ class DatagramConvertor implements Runnable {
                     if (isLogEnabled) {
                         for (AsterixDataBlock adb : dataBlocks) {
                             String s = adb.getDebugString();
-                            logger.debug(adb.getDebugString());
+                            logger.debug(adb.getDebugString());;
+
                         }
                     }
                     System.out.println("Processed " +

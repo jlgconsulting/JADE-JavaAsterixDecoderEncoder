@@ -14,14 +14,15 @@ import java.util.List;
 
 /**
  * Main class for decoding raw data from the input communication medium.
+ *
  * @implNote It is recommended to create a single instance of this class and use the decode method
  * multiple times
  */
 public class AsterixDecoder {
-    private final HashMap<Integer,Boolean> allowedCategories;
-    private final HashMap<Integer,Integer> nbOfDataBlocks;
+    private final HashMap<Integer, Boolean> allowedCategories;
+    private final HashMap<Integer, Integer> nbOfDataBlocks;
 
-    private AsterixDecoder(){
+    private AsterixDecoder() {
         allowedCategories = new HashMap<>();
         allowedCategories.put(4, false);
         allowedCategories.put(34, false);
@@ -31,47 +32,62 @@ public class AsterixDecoder {
         allowedCategories.put(150, false);
 
         nbOfDataBlocks = new HashMap<>();
-        nbOfDataBlocks.put(4,0);
-        nbOfDataBlocks.put(34,0);
-        nbOfDataBlocks.put(48,0);
-        nbOfDataBlocks.put(62,0);
-        nbOfDataBlocks.put(65,0);
-        nbOfDataBlocks.put(150,0);
+        nbOfDataBlocks.put(4, 0);
+        nbOfDataBlocks.put(34, 0);
+        nbOfDataBlocks.put(48, 0);
+        nbOfDataBlocks.put(62, 0);
+        nbOfDataBlocks.put(65, 0);
+        nbOfDataBlocks.put(150, 0);
     }
 
-    public AsterixDecoder(int... categoriesToDecode){
+    public AsterixDecoder(int... categoriesToDecode) {
         allowedCategories = new HashMap<>();
         nbOfDataBlocks = new HashMap<>();
-        for(int category : categoriesToDecode){
+        for (int category : categoriesToDecode) {
             allowedCategories.put(category, true);
-            nbOfDataBlocks.put(category ,0);
+            nbOfDataBlocks.put(category, 0);
         }
     }
 
     /**
      * Decodes the Asterix data from the given input source.
-     * @param input The raw data
+     *
+     * @param input  The raw data
      * @param offset The start offset in the raw data, at which reading should begin
      * @param length The number of bytes to read
      * @return The list of decoded Asterix data blocks
      */
-    public List<AsterixDataBlock> decode(byte[] input, int offset, int length){
+    public List<AsterixDataBlock> decode(byte[] input, int offset, int length) {
         List<AsterixDataBlock> dataBlocks = new ArrayList<>();
         int inputIndex = offset;
 
-        while(inputIndex < length) {
+        while (inputIndex < length) {
             int dataBlockCategory = Byte.toUnsignedInt(input[inputIndex]);
-            int dataBlockSize = Byte.toUnsignedInt(input[inputIndex+1]) * 256 + Byte.toUnsignedInt(input[inputIndex+2]);
+            int dataBlockSize = Byte.toUnsignedInt(input[inputIndex + 1]) * 256 + Byte.toUnsignedInt(input[inputIndex + 2]);
 
             if (allowedCategories.containsKey(dataBlockCategory)) {
                 AsterixDataBlock dataBlock = new AsterixDataBlock(dataBlockCategory);
+
                 inputIndex += 3;
-                inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize);
+
+                if (inputIndex > 0) {
+                    /**
+                     * If raw data contains more data blocks, and offset greater
+                     * than 0 (already processed a data block), then we need to add the input offset to the data block
+                     * size.
+                     */
+                    inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize + inputIndex - 3);
+                } else {
+                    /**
+                     * If raw data is at begining, then offset is 0. No need to add anything to data block size.
+                     */
+                    inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize);
+                }
                 dataBlocks.add(dataBlock);
                 int nbDataBlocks = this.nbOfDataBlocks.get(dataBlockCategory);
                 this.nbOfDataBlocks.replace(dataBlockCategory, nbDataBlocks + 1);
-            }
-            else{
+            } else {
+                // Data block not in allowed categories. Skip decoding and add length to existing offset
                 inputIndex += dataBlockSize;
             }
         }

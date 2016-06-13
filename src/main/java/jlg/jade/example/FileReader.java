@@ -22,12 +22,9 @@ class FileReader implements Runnable {
 
     @Override
     public void run() {
-        int nbFinalFramePackets = 0;
-        int nbBytesReceived = 0;
         long startTime = System.currentTimeMillis();
         try (InputStream is = new FileInputStream(new File(filePath))) {
             FinalFrameReader ffReader = new FinalFrameReader();
-            AsterixDecoder asterixDecoder = new AsterixDecoder(62);
             while (is.available() > 0) {
                 byte[] ffPayload = ffReader.read(is);
                 if (ffPayload != null) {

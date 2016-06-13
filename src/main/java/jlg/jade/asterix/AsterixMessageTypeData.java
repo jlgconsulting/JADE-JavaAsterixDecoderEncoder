@@ -11,7 +11,7 @@ import jlg.jade.common.UnsignedNumericDecoder;
 /**
  * This Data Item allows for a more convenient handling of the
  * messages at the receiver side by further defining the type of
- * transaction. This is a base class to be implemnted by all items that
+ * transaction. This is a base class to be implemented by all items that
  * represent message types on one octet
  */
 public abstract class AsterixMessageTypeData extends FixedLengthAsterixData {
@@ -25,7 +25,7 @@ public abstract class AsterixMessageTypeData extends FixedLengthAsterixData {
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
         this.messageType = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
-        appendItemDebugMsg("Message Type (0=SDPD Status, 1=End of Batch, 2=Service Status)", this.messageType);
+        appendItemDebugMsg("Message Type (1=SDPD Status, 2=End of Batch, 3=Service Status)", this.messageType);
 
     }
 

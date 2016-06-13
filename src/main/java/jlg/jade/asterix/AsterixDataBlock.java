@@ -31,6 +31,7 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
     /**
      * Decodes the raw data to Asterix data block, containing zero or more Asterix
      * records
+     *
      * @param input  The raw data
      * @param offset The start offset in the raw data, at which reading should begin
      * @param length The number of bytes to read
@@ -43,18 +44,18 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
             offset = record.decode(input, offset, length);
 
             //append logs
-            switch (category){
-                case 62:{
+            switch (category) {
+                case 62: {
                     appendNewLine();
                     appendDebugMsg(record.getCat062Record().getDebugString());
                     break;
                 }
-                case 65:{
+                case 65: {
                     appendNewLine();
                     appendDebugMsg(record.getCat065Record().getDebugString());
                     break;
                 }
-                default:{
+                default: {
                     break;
                 }
             }
@@ -67,7 +68,8 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
     /**
      * Encodes the current Asterix data block into a byte array, that can be then sent over the network
      * or written to a file.
-     * @param dest The destination array
+     *
+     * @param dest   The destination array
      * @param offset The start offset in array dest at which writing should begin
      * @param length The number of bytes to write
      * @return The new offset in the dest array, after the data has been encoded, or -1 if data can not be written because end of array has

@@ -12,6 +12,7 @@ import jlg.jade.asterix.AsterixMessageTypeData;
  * Cat 065 Item 000 - Message Type
  */
 public class Cat065Item000 extends AsterixMessageTypeData {
+
     @Override
     protected String setDisplayName() {
         return "Cat065Item000 - Message Type";
