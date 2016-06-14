@@ -34,8 +34,9 @@ class DatagramConvertor implements Runnable {
         Cat062ItemCounter cat062ItemCounter = new Cat062ItemCounter();
         Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
 
-        System.out.println("Start Convertor");
-        AsterixDecoder asterixDecoder = new AsterixDecoder(65);
+        System.out.println("Start Datagram Convertor");
+        logger.debug("Start Datagram Convertor");
+        AsterixDecoder asterixDecoder = new AsterixDecoder(62, 65);
         long startTime = System.currentTimeMillis();
         while (true) {
             try {
@@ -52,9 +53,7 @@ class DatagramConvertor implements Runnable {
                     numberOfReceivedBytesFinalFrame += rawData.length + 12;
                     if (isLogEnabled) {
                         for (AsterixDataBlock adb : dataBlocks) {
-                            String s = adb.getDebugString();
-                            logger.debug(adb.getDebugString());;
-
+                            logger.debug(adb.getDebugString());
                         }
                     }
                     System.out.println("Processed " +
