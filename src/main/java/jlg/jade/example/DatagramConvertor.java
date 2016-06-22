@@ -31,8 +31,8 @@ class DatagramConvertor implements Runnable {
 
     @Override
     public void run() {
-        Cat062ItemCounter cat062ItemCounter = new Cat062ItemCounter();
-        Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
+        //Cat062ItemCounter cat062ItemCounter = new Cat062ItemCounter();
+        //Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
 
         System.out.println("Start Datagram Convertor");
         logger.debug("Start Datagram Convertor");

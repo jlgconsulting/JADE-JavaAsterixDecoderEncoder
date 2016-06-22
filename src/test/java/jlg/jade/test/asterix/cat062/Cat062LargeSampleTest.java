@@ -66,7 +66,7 @@ public class Cat062LargeSampleTest {
     @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
     public void
     when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws
-            IOException, InterruptedException {
+            IOException {
         //arrange
         final int PORT = 3001;
         final int MAX_PACKET_SIZE = 65507;
@@ -97,8 +97,6 @@ public class Cat062LargeSampleTest {
                     System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
                 }
             }
-        } catch (InterruptedIOException e) {
-            System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
         }
 
         //assert
@@ -111,7 +109,7 @@ public class Cat062LargeSampleTest {
     @Test()
     @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
     public void when_upd_unicast_is_used_as_input_should_decode_cat062_messages_from_larger_sample() throws
-            IOException, InterruptedException {
+            IOException {
         //arrange
         final int PORT = 3002;
         final int MAX_PACKET_SIZE = 65507;
@@ -137,7 +135,7 @@ public class Cat062LargeSampleTest {
                     System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
                 }
             }
-        } catch (InterruptedIOException e) {
+        } catch (IOException e) {
             System.out.println("Processed " + receivedDatagrams + " datagrams (" + receivedBytes + ") bytes");
         }
 

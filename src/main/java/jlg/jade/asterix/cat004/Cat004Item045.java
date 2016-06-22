@@ -45,23 +45,23 @@ public class Cat004Item045 extends FixedLengthAsterixData {
     @Override
     protected boolean validate() {
         BitSet bs = BitSet.valueOf(new byte[]{rawInput});
-        if(bs.get(0) == true){
+        if(bs.get(0)){
             appendWarningMessage("Invalid data. Bit 1 is spare and should be 0. Counting begins from 1 to match ICD.");
             return false;
         }
-        if(bs.get(4) == true){
+        if(bs.get(4)){
             appendWarningMessage("Invalid data. Bit 5 is spare and should be 0. Counting begins from 1 to match ICD.");
             return false;
         }
-        if(bs.get(5) == true){
+        if(bs.get(5)){
             appendWarningMessage("Invalid data. Bit 6 is spare and should be 0. Counting begins from 1 to match ICD.");
             return false;
         }
-        if(bs.get(6) == true){
+        if(bs.get(6)){
             appendWarningMessage("Invalid data. Bit 7 is spare and should be 0. Counting begins from 1 to match ICD.");
             return false;
         }
-        if(bs.get(7) == true){
+        if(bs.get(7)){
             appendWarningMessage("Invalid data. Bit 8 is spare and should be 0. Counting begins from 1 to match ICD.");
             return false;
         }

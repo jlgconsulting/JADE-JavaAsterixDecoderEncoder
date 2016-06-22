@@ -45,7 +45,7 @@ public abstract class MandatoryRepeatableAsterixTests<T extends RepeatableAsteri
         int offset = 0;
 
         //act
-        int result = asterixDataFieldInstance.decode(defaultInputData, offset, defaultInputData.length);
+        asterixDataFieldInstance.decode(defaultInputData, offset, defaultInputData.length);
 
         //assert
         assertEquals("Repeatable Asterix data field has invalid total size", expectedRepeatableBlockSize + 1,
