@@ -1,4 +1,4 @@
-package jlg.jade.asterix.cat004;
+package jlg.jade.asterix.cat004.item170_171;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.DecodingNotImplemented;

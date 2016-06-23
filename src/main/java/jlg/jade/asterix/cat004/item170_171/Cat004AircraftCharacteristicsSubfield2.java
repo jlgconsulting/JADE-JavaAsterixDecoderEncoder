@@ -1,20 +1,17 @@
-/**
- * Created by Dan Geabunea on 6/23/2016.
- */
-
-package jlg.jade.asterix.cat004;
+package jlg.jade.asterix.cat004.item170_171;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.DecodingNotImplemented;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
 /**
- * Cat004 - Item170/171 - Subfield 8 - ModeS Identifier
+ * Cat004 - Item 170/171 - Subfield 2 - Mode 3A Code
+ * Mode-3/A reply in octal representation
  */
-public class Cat004AircraftCharacteristicsSubfield8 extends FixedLengthAsterixData {
+public class Cat004AircraftCharacteristicsSubfield2 extends FixedLengthAsterixData {
     @Override
     protected int setSizeInBytes() {
-        return AsterixItemLength.SIX_BYTES.getValue();
+        return AsterixItemLength.TWO_BYTES.getValue();
     }
 
     @Override
@@ -25,6 +22,6 @@ public class Cat004AircraftCharacteristicsSubfield8 extends FixedLengthAsterixDa
 
     @Override
     protected String setDisplayName() {
-        return "Subfield8 - ModeS Identifier";
+        return "Subfield2 - Mode 3/A Code";
     }
 }

@@ -2,19 +2,19 @@
  * Created by Dan Geabunea on 6/23/2016.
  */
 
-package jlg.jade.asterix.cat004;
+package jlg.jade.asterix.cat004.item170_171;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.DecodingNotImplemented;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
 /**
- * Cat004 - Item170/171 - Subfield9 - FLight Plan Number for aircraft
+ * Cat004 - Item170/171 - Subfield 8 - ModeS Identifier
  */
-public class Cat004AircraftCharacteristicsSubfield9 extends FixedLengthAsterixData {
+public class Cat004AircraftCharacteristicsSubfield8 extends FixedLengthAsterixData {
     @Override
     protected int setSizeInBytes() {
-        return AsterixItemLength.FOUR_BYTES.getValue();
+        return AsterixItemLength.SIX_BYTES.getValue();
     }
 
     @Override
@@ -25,6 +25,6 @@ public class Cat004AircraftCharacteristicsSubfield9 extends FixedLengthAsterixDa
 
     @Override
     protected String setDisplayName() {
-        return "Subfield9 - Flight Plan Number";
+        return "Subfield8 - ModeS Identifier";
     }
 }

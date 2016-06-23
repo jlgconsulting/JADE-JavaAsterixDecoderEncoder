@@ -2,7 +2,7 @@
  * Created by Dan Geabunea on 6/23/2016.
  */
 
-package jlg.jade.asterix.cat004;
+package jlg.jade.asterix.cat004.item170_171;
 
 import jlg.jade.asterix.DecodingNotImplemented;
 import jlg.jade.asterix.VariableLengthAsterixData;

@@ -1,20 +1,19 @@
-/**
- * Created by Dan Geabunea on 6/23/2016.
- */
-
-package jlg.jade.asterix.cat004;
+package jlg.jade.asterix.cat004.item170_171;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.DecodingNotImplemented;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
 /**
- * Cat004 - Item170/171 - Subfield 10 - Cleared Flight Level for aircraft
+ * Cat 004 - Item 170/171 - Subfield 1 - Aircraft Identifier
+ *
+ * @implSpec The aircraft identifier is always left adjusted. If needed, the
+ * remaining characters are filled with space character
  */
-public class Cat004AircraftCharacteristicsSubfield10 extends FixedLengthAsterixData {
+public class Cat004AircraftCharacteristicsSubfield1 extends FixedLengthAsterixData {
     @Override
     protected int setSizeInBytes() {
-        return AsterixItemLength.TWO_BYTES.getValue();
+        return AsterixItemLength.SEVEN_BYTES.getValue();
     }
 
     @Override
@@ -25,6 +24,6 @@ public class Cat004AircraftCharacteristicsSubfield10 extends FixedLengthAsterixD
 
     @Override
     protected String setDisplayName() {
-        return "Subfield10 - Cleared Flight Level";
+        return "Subfield1 - Aircraft Identifier";
     }
 }

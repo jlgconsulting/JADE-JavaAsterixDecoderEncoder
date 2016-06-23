@@ -1,6 +1,6 @@
 package jlg.jade.test.asterix.cat004.item170_171;
 
-import jlg.jade.asterix.cat004.Cat004AircraftCharacteristicsSubfield6;
+import jlg.jade.asterix.cat004.item170_171.Cat004AircraftCharacteristicsSubfield6;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 

@@ -1,16 +1,20 @@
-package jlg.jade.asterix.cat004;
+/**
+ * Created by Dan Geabunea on 6/23/2016.
+ */
+
+package jlg.jade.asterix.cat004.item170_171;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.DecodingNotImplemented;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
 /**
- * Cat 004 - Item 170/171 - Subfield 4 - Predicted Conflict Position Cartesian
+ * Cat004 - Item170/171 - Subfield 10 - Cleared Flight Level for aircraft
  */
-public class Cat004AircraftCharacteristicsSubfield4 extends FixedLengthAsterixData {
+public class Cat004AircraftCharacteristicsSubfield10 extends FixedLengthAsterixData {
     @Override
     protected int setSizeInBytes() {
-        return AsterixItemLength.EIGHT_BYTES.getValue();
+        return AsterixItemLength.TWO_BYTES.getValue();
     }
 
     @Override
@@ -21,6 +25,6 @@ public class Cat004AircraftCharacteristicsSubfield4 extends FixedLengthAsterixDa
 
     @Override
     protected String setDisplayName() {
-        return "Subfield4 - Predicted Conflict Position Cartesian";
+        return "Subfield10 - Cleared Flight Level";
     }
 }

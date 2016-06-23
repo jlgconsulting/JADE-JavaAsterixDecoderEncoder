@@ -4,7 +4,7 @@
 
 package jlg.jade.test.asterix.cat004.item170_171;
 
-import jlg.jade.asterix.cat004.Cat004AircraftCharacteristicsSubfield7;
+import jlg.jade.asterix.cat004.item170_171.Cat004AircraftCharacteristicsSubfield7;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
