@@ -6,9 +6,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Dan Geabunea on 6/22/2016.
- */
 public class Cat004Item030Test extends MandatoryFixedLengthAsterixTests<Cat004Item030> {
     @Override
     protected int setExpectedItemSizeInBytes() {
