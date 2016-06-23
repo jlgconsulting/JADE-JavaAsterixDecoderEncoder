@@ -14,7 +14,9 @@ public enum AsterixItemLength {
     FIVE_BYTES(5),
     SIX_BYTES(6),
     SEVEN_BYTES(7),
-    EIGHT_BYTES(8);
+    EIGHT_BYTES(8),
+    NINE_BYTES(9),
+    TEN_BYTES(10);
 
     private final int value;
 
