@@ -30,7 +30,7 @@ public class Cat004Item076 extends FixedLengthAsterixData {
 
     @Override
     protected String setDisplayName() {
-        return "Cat004Item076";
+        return "Cat004Item076 - Vertical Deviation";
     }
 
     /**
