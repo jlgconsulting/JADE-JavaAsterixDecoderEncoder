@@ -13,9 +13,9 @@ import jlg.jade.asterix.AsterixTimeData;
  * Time to closest proximity between entities in conflict
  * Unit of measure: 1/128 sec
  */
-public class Item070Subfield2 extends AsterixTimeData {
+public class Cat004Item070Subfield2 extends AsterixTimeData {
     @Override
     protected String setDisplayName() {
-        return "Item070Subfield2 - Time to Closest Approach";
+        return "Cat004Item070Subfield2 - Time to Closest Approach";
     }
 }

@@ -13,9 +13,9 @@ import jlg.jade.asterix.AsterixTimeData;
  * Time remaining to actual conflict situation
  * Unit of measure: 1/128 sec
  */
-public class Item070Subfield1 extends AsterixTimeData {
+public class Cat004Item070Subfield1 extends AsterixTimeData {
     @Override
     protected String setDisplayName() {
-        return "Item070Subfield1 - Time to Conflict";
+        return "Cat004Item070Subfield1 - Time to Conflict";
     }
 }
