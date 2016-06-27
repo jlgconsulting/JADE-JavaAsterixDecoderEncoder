@@ -25,7 +25,35 @@ public class Cat004Item120 extends FspecAsterixData {
 
     @Override
     protected int decodeFromByteArray(byte[] input, int offset, int length) {
-        return 0;
+        //subfield 1
+        if (fspecDataAtIndex(Fspec.SUBFIELD_1)) {
+            subfield1 = new Cat004Item120Subfield1();
+            offset = subfield1.decode(input, offset, length);
+            appendDebugMsg(subfield1.getDebugString());
+        }
+
+        //subfield 2
+        if (fspecDataAtIndex(Fspec.SUBFIELD_2)) {
+            subfield2 = new Cat004Item120Subfield2();
+            offset = subfield2.decode(input, offset, length);
+            appendDebugMsg(subfield2.getDebugString());
+        }
+
+        //subfield 3
+        if (fspecDataAtIndex(Fspec.SUBFIELD_3)) {
+            subfield3 = new Cat004Item120Subfield3();
+            offset = subfield3.decode(input, offset, length);
+            appendDebugMsg(subfield3.getDebugString());
+        }
+
+        //subfield 4
+        if (fspecDataAtIndex(Fspec.SUBFIELD_4)) {
+            subfield4 = new Cat004Item120Subfield4();
+            offset = subfield4.decode(input, offset, length);
+            appendDebugMsg(subfield4.getDebugString());
+        }
+
+        return offset;
     }
 
     @Override
@@ -49,7 +77,7 @@ public class Cat004Item120 extends FspecAsterixData {
         return subfield4;
     }
 
-    private static class FSPEC {
+    private static class Fspec {
         //first extent
         public static final int SUBFIELD_4 = 4;
         public static final int SUBFIELD_3 = 5;
