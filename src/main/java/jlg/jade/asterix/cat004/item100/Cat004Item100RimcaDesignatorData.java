@@ -25,11 +25,6 @@ public abstract class Cat004Item100RimcaDesignatorData extends FixedLengthAsteri
         appendItemDebugMsg("Designator", this.designator);
     }
 
-    @Override
-    protected String setDisplayName() {
-        return "Cat004Item100RimcaDesignatorData";
-    }
-
     /**
      * @return RIMCA designator as string. If last characters are white spaces,
      * then they shall be trimmed
