@@ -49,7 +49,7 @@ public class Cat004Item120Subfield2 extends FixedLengthAsterixData {
      * For STCA, table id is 0001 (1)
      * For RIMCAS, table id is 0010 (2)
      *
-     * @return
+     * @ The table id
      */
     public int getTableId() {
         return tableId;

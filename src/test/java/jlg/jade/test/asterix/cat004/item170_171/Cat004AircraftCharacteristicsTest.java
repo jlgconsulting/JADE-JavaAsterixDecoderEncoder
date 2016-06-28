@@ -28,7 +28,7 @@ public class Cat004AircraftCharacteristicsTest extends
      * Subf4 is 0, 0, 1
      * Subf5 is 0, 1
      */
-    private byte[] input = {13, 0, 0, 0, 1, 0, 1};
+    private final byte[] input = {13, 0, 0, 0, 1, 0, 1};
 
     @Override
     @Test

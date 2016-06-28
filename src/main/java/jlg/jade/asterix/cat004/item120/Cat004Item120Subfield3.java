@@ -36,10 +36,7 @@ public class Cat004Item120Subfield3 extends FixedLengthAsterixData {
     @Override
     protected boolean validate() {
         final int MAX_VALUE = 200;  //200 asterix units are 100 percent
-        if (this.probability > MAX_VALUE) {
-            return false;
-        }
-        return true;
+        return this.probability <= MAX_VALUE;
     }
 
     /**

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class Cat004_AircraftCharacteristicsSubfield7Test {
+public class Cat004AircraftCharacteristicsSubfield7Test {
     @Test
     public void the_decode_method_should_increment_offset_after_decoding_data() {
         //arrange

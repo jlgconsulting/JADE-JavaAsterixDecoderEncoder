@@ -2,6 +2,11 @@
 <inspections version="1.0">
   <option name="myName" value="Project Default" />
   <inspection_tool class="Convert2streamapi" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+  <inspection_tool class="DefaultFileTemplate" enabled="false" level="WARNING" enabled_by_default="false">
+    <option name="CHECK_FILE_HEADER" value="true" />
+    <option name="CHECK_TRY_CATCH_SECTION" value="true" />
+    <option name="CHECK_METHOD_BODY" value="true" />
+  </inspection_tool>
   <inspection_tool class="ForCanBeForeach" enabled="false" level="WARNING" enabled_by_default="false">
     <option name="REPORT_INDEXED_LOOP" value="true" />
     <option name="ignoreUntypedCollections" value="false" />
@@ -16,6 +21,14 @@
     <option name="processCode" value="true" />
     <option name="processLiterals" value="true" />
     <option name="processComments" value="true" />
+  </inspection_tool>
+  <inspection_tool class="UnnecessaryLocalVariable" enabled="false" level="WARNING" enabled_by_default="false">
+    <option name="m_ignoreImmediatelyReturnedVariables" value="false" />
+    <option name="m_ignoreAnnotatedVariables" value="false" />
+  </inspection_tool>
+  <inspection_tool class="UnnecessaryLocalVariableJS" enabled="false" level="WARNING" enabled_by_default="false">
+    <option name="m_ignoreImmediatelyReturnedVariables" value="false" />
+    <option name="m_ignoreAnnotatedVariables" value="false" />
   </inspection_tool>
   <inspection_tool class="WeakerAccess" enabled="false" level="INFO" enabled_by_default="false">
     <option name="SUGGEST_PACKAGE_LOCAL_FOR_MEMBERS" value="false" />
