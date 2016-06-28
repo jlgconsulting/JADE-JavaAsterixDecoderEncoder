@@ -83,7 +83,5 @@ public class Cat004Item120Test extends MandatoryFspecAsterixTests<Cat004Item120>
         //assert
         assertEquals("Offset not incremented after decoding data", sampleInput.length, newOffset);
     }
-
-
 }
 
