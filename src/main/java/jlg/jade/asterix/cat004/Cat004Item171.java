@@ -2,7 +2,9 @@
  * Created by Dan Geabunea on 6/23/2016.
  */
 
-package jlg.jade.asterix.cat004.item170_171;
+package jlg.jade.asterix.cat004;
+
+import jlg.jade.asterix.cat004.item170_171.Cat004AircraftCharacteristicsBase;
 
 /**
  * Cat004 - Item 170 - Aircraft Identification and Characteristics 2
