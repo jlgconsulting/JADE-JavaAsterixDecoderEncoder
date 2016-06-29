@@ -6,6 +6,7 @@
 */
 package jlg.jade.asterix;
 
+import jlg.jade.asterix.cat004.Cat004Record;
 import jlg.jade.asterix.cat062.Cat062Record;
 import jlg.jade.asterix.cat065.Cat065Record;
 import jlg.jade.common.DebugMessageSource;
@@ -20,12 +21,13 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     private final int category;
     private Cat062Record cat062Record;
     private Cat065Record cat065Record;
+    private Cat004Record cat004Record;
 
     public AsterixRecord(int category) {
         this.category = category;
         switch (category) {
             case 4: {
-                break;
+                this.cat004Record = new Cat004Record();
             }
             case 34: {
                 break;
@@ -51,15 +53,15 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
      * Decodes the raw data to Asterix data block, containing zero or more Asterix
      * records
      *
-     * @param input The raw data
-     * @param offset The start offset in the raw data, at which reading should begin
+     * @param input       The raw data
+     * @param offset      The start offset in the raw data, at which reading should begin
      * @param inputLength The ammount of data that nees to be read from the input
      * @return The new offset in the raw data
      */
     public int decode(byte[] input, int offset, int inputLength) {
         switch (category) {
             case 4: {
-                break;
+                return this.cat004Record.decode(input, offset, inputLength);
             }
             case 34: {
                 break;
@@ -68,10 +70,10 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 break;
             }
             case 62: {
-                return this.cat062Record.decode(input,offset,inputLength);
+                return this.cat062Record.decode(input, offset, inputLength);
             }
             case 65: {
-                return this.cat065Record.decode(input,offset,inputLength);
+                return this.cat065Record.decode(input, offset, inputLength);
             }
             case 150: {
                 break;
@@ -86,9 +88,11 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     /**
      * Encodes the current Asterix record into a byte array, that can be then sent over the network
      * or written to a file.
-     * @param dest The destination array
+     *
+     * @param dest   The destination array
      * @param offset The start offset in array dest at which writing should begin
-     * @return The new offset in the dest array, after the data has been encoded, or -1 if data can not be written because end of array has
+     * @return The new offset in the dest array, after the data has been encoded, or -1 if data
+     * can not be written because end of array has
      * been reached
      */
     public int encode(byte[] dest, int offset) {
@@ -105,5 +109,9 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
 
     public Cat065Record getCat065Record() {
         return cat065Record;
+    }
+
+    public Cat004Record getCat004Record() {
+        return cat004Record;
     }
 }

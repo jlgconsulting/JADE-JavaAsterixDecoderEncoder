@@ -25,7 +25,7 @@ public abstract class AsterixMessageTypeData extends FixedLengthAsterixData {
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
         this.messageType = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
-        appendItemDebugMsg("Message Type (1=SDPD Status, 2=End of Batch, 3=Service Status)", this.messageType);
+        appendItemDebugMsg("Message Type (Check Asterix ICD for meaning)", this.messageType);
 
     }
 

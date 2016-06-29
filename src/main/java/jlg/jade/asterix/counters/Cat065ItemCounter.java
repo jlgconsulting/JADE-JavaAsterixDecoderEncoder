@@ -17,7 +17,6 @@ import jlg.jade.common.DebugMessageSource;
 public class Cat065ItemCounter extends DebugMessageSource implements AsterixItemCounter {
     private int nbRecords = 0;
     private int nbOfInvalidRecords = 0;
-
     private int item010Present = 0;
     private int item010Invalid = 0;
     private int item000Present = 0;
@@ -43,6 +42,7 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
      *
      * @param asterixDataBlock An Asterix data block that has Cat 065 data
      */
+    @Override
     public void increment(AsterixDataBlock asterixDataBlock) {
         for (AsterixRecord record : asterixDataBlock.getRecords()) {
             if (record.getCat065Record() != null) {
@@ -60,7 +60,7 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
         clearDebugMsg();
         appendNewLine();
         appendNewLine();
-        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded","Nb. invalid");
+        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded", "Nb. invalid");
 
         this.nbRecords++;
         if (!record.isValid()) {
@@ -73,7 +73,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem010().isValid()) {
                 this.item010Invalid = this.getItem010Invalid() + 1;
             }
-            appendItemCounterMsg("Item 010 - Data source identifier", getItem010Present(), getItem010Invalid());
+            appendItemCounterMsg("Item 010 - Data source identifier", getItem010Present(),
+                    getItem010Invalid());
         }
 
         if (record.getItem000() != null) {
@@ -81,7 +82,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem000().isValid()) {
                 this.item000Invalid = this.getItem000Invalid() + 1;
             }
-            appendItemCounterMsg("Item 000 - Message Type", getItem000Present(), getItem000Invalid());
+            appendItemCounterMsg("Item 000 - Message Type", getItem000Present(),
+                    getItem000Invalid());
         }
 
         if (record.getItem015() != null) {
@@ -89,7 +91,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem015().isValid()) {
                 this.item015Invalid = this.getItem015Invalid() + 1;
             }
-            appendItemCounterMsg("Item 015 - Service Identification", getItem015Present(), getItem015Invalid());
+            appendItemCounterMsg("Item 015 - Service Identification", getItem015Present(),
+                    getItem015Invalid());
         }
 
         if (record.getItem030() != null) {
@@ -97,7 +100,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem030().isValid()) {
                 this.item030Invalid = this.getItem030Invalid() + 1;
             }
-            appendItemCounterMsg("Item 030 - Time of Message", getItem030Present(), getItem030Invalid());
+            appendItemCounterMsg("Item 030 - Time of Message", getItem030Present(),
+                    getItem030Invalid());
         }
 
         if (record.getItem020() != null) {
@@ -105,7 +109,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem020().isValid()) {
                 this.item020Invalid = this.getItem020Invalid() + 1;
             }
-            appendItemCounterMsg("Item 020 - Batch Number", getItem020Present(), getItem020Invalid());
+            appendItemCounterMsg("Item 020 - Batch Number", getItem020Present(),
+                    getItem020Invalid());
         }
 
         if (record.getItem040() != null) {
@@ -113,7 +118,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem040().isValid()) {
                 this.item040Invalid = this.getItem040Invalid() + 1;
             }
-            appendItemCounterMsg("Item 040 - SDPS Config and Status", getItem040Present(), getItem040Invalid());
+            appendItemCounterMsg("Item 040 - SDPS Config and Status", getItem040Present(),
+                    getItem040Invalid());
         }
 
         if (record.getItem050() != null) {
@@ -121,7 +127,8 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem050().isValid()) {
                 this.item050Invalid = this.getItem050Invalid() + 1;
             }
-            appendItemCounterMsg("Item 050 - Service Status", getItem050Present(), getItem050Invalid());
+            appendItemCounterMsg("Item 050 - Service Status", getItem050Present(),
+                    getItem050Invalid());
         }
 
         if (record.getReservedExpansionField() != null) {
