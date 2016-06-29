@@ -6,7 +6,7 @@ package jlg.jade.asterix.counters;
 
 import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.AsterixRecord;
-import jlg.jade.asterix.cat004.Cat004MessageTypes;
+import jlg.jade.asterix.cat004.Cat004MessageType;
 import jlg.jade.asterix.cat004.Cat004Record;
 import jlg.jade.common.DebugMessageSource;
 
@@ -26,6 +26,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
     private int nbApwMessages = 0;
     private int nbMsawMessages = 0;
     private int nbEocMessages = 0;
+    private int nbAliveMessages = 0;
 
     private int item015Present = 0;
     private int item015Invalid = 0;
@@ -136,29 +137,34 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
                     item000Invalid);
 
             switch (record.getItem000().getMessageType()) {
-                case (Cat004MessageTypes.STCA):
+                case (Cat004MessageType.STCA):
                     nbStcaMessages++;
                     break;
-                case (Cat004MessageTypes.APW):
+                case (Cat004MessageType.APW):
                     nbApwMessages++;
                     break;
 
-                case (Cat004MessageTypes.MSAW):
+                case (Cat004MessageType.MSAW):
                     nbMsawMessages++;
                     break;
 
-                case (Cat004MessageTypes.EOC):
+                case (Cat004MessageType.EOC):
                     nbEocMessages++;
+                    break;
+
+                case (Cat004MessageType.ALIVE):
+                    nbAliveMessages++;
                     break;
 
                 default: {
                     break;
                 }
             }
-            appendItemCounterMsg("  - STCA", nbStcaMessages, 0);
-            appendItemCounterMsg("  - APW", nbApwMessages, 0);
-            appendItemCounterMsg("  - MSAW", nbMsawMessages, 0);
-            appendItemCounterMsg("  - EOC", nbEocMessages, 0);
+            appendItemCounterMsg("  ALIVE", nbAliveMessages, 0);
+            appendItemCounterMsg("  STCA", nbStcaMessages, 0);
+            appendItemCounterMsg("  APW", nbApwMessages, 0);
+            appendItemCounterMsg("  MSAW", nbMsawMessages, 0);
+            appendItemCounterMsg("  EOC", nbEocMessages, 0);
         }
 
         //increment counters for item 015

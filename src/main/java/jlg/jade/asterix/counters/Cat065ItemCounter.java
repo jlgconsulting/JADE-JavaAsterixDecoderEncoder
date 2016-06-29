@@ -60,7 +60,7 @@ public class Cat065ItemCounter extends DebugMessageSource implements AsterixItem
         clearDebugMsg();
         appendNewLine();
         appendNewLine();
-        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded", "Nb. invalid");
+        appendItemCounterMsg("Asterix Category 065 Counters", "Nb. decoded", "Nb. invalid");
 
         this.nbRecords++;
         if (!record.isValid()) {

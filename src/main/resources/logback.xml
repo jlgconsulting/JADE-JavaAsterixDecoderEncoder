@@ -2,7 +2,7 @@
 <!-- This configuration is being re-scanned every 10 seconds for changes -->
 <configuration scan="true" scanPeriod="90 seconds">
     <property name="logPattern"
-              value="Log message written on %d{yyyy-MM-dd HH:mm:ss}%n  %message%n%n----------------------------------------------------------------------------%n%n"/>
+              value="Log message written on %d{yyyy-MM-dd HH:mm:ss}%n  %message%n%n------------------------------------------------------------------------------------------%n%n"/>
 
     <!-- Rolling file appender. Control log level from here -->
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">

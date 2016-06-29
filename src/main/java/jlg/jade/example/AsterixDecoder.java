@@ -49,6 +49,15 @@ public class AsterixDecoder {
         }
     }
 
+    public AsterixDecoder(List<Integer> categoriesToDecode) {
+        allowedCategories = new HashMap<>();
+        nbOfDataBlocks = new HashMap<>();
+        for (int category : categoriesToDecode) {
+            allowedCategories.put(category, true);
+            nbOfDataBlocks.put(category, 0);
+        }
+    }
+
     /**
      * Decodes the Asterix data from the given input source.
      *
@@ -63,7 +72,8 @@ public class AsterixDecoder {
 
         while (inputIndex < length) {
             int dataBlockCategory = Byte.toUnsignedInt(input[inputIndex]);
-            int dataBlockSize = Byte.toUnsignedInt(input[inputIndex + 1]) * 256 + Byte.toUnsignedInt(input[inputIndex + 2]);
+            int dataBlockSize = Byte.toUnsignedInt(
+                    input[inputIndex + 1]) * 256 + Byte.toUnsignedInt(input[inputIndex + 2]);
 
             if (allowedCategories.containsKey(dataBlockCategory)) {
                 AsterixDataBlock dataBlock = new AsterixDataBlock(dataBlockCategory);
@@ -73,13 +83,16 @@ public class AsterixDecoder {
                 if (inputIndex > 0) {
                     /**
                      * If raw data contains more data blocks, and offset greater
-                     * than 0 (already processed a data block), then we need to add the input offset to the data block
+                     * than 0 (already processed a data block), then we need to add the input
+                     * offset to the data block
                      * size.
                      */
-                    inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize + inputIndex - 3);
+                    inputIndex = dataBlock.decode(input, inputIndex,
+                            dataBlockSize + inputIndex - 3);
                 } else {
                     /**
-                     * If raw data is at begining, then offset is 0. No need to add anything to data block size.
+                     * If raw data is at begining, then offset is 0. No need to add anything to
+                     * data block size.
                      */
                     inputIndex = dataBlock.decode(input, inputIndex, dataBlockSize);
                 }
@@ -87,7 +100,8 @@ public class AsterixDecoder {
                 int nbDataBlocks = this.nbOfDataBlocks.get(dataBlockCategory);
                 this.nbOfDataBlocks.replace(dataBlockCategory, nbDataBlocks + 1);
             } else {
-                // Data block not in allowed categories. Skip decoding and add length to existing offset
+                // Data block not in allowed categories. Skip decoding and add length to existing
+                // offset
                 inputIndex += dataBlockSize;
             }
         }

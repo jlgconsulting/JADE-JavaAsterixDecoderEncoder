@@ -45,6 +45,11 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
 
             //append logs
             switch (category) {
+                case 4: {
+                    appendNewLine();
+                    appendDebugMsg(record.getCat004Record().getDebugString());
+                    break;
+                }
                 case 62: {
                     appendNewLine();
                     appendDebugMsg(record.getCat062Record().getDebugString());
@@ -66,13 +71,15 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
     }
 
     /**
-     * Encodes the current Asterix data block into a byte array, that can be then sent over the network
+     * Encodes the current Asterix data block into a byte array, that can be then sent over the
+     * network
      * or written to a file.
      *
      * @param dest   The destination array
      * @param offset The start offset in array dest at which writing should begin
      * @param length The number of bytes to write
-     * @return The new offset in the dest array, after the data has been encoded, or -1 if data can not be written because end of array has
+     * @return The new offset in the dest array, after the data has been encoded, or -1 if data
+     * can not be written because end of array has
      * been reached
      */
     public int encode(byte[] dest, int offset, int length) {
