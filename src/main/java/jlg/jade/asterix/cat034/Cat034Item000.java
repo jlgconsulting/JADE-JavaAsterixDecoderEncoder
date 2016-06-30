@@ -27,7 +27,7 @@ public class Cat034Item000 extends FixedLengthAsterixData {
 
     @Override
     protected String setDisplayName() {
-        return "Cat034 Item000 - Message Type";
+        return "Cat034Item000 - Message Type";
     }
 
     public int getMessageType() {
