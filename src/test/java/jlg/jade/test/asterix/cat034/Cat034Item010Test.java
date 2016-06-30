@@ -1,5 +1,6 @@
 package jlg.jade.test.asterix.cat034;
 
+
 import jlg.jade.asterix.cat034.Cat034Item010;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
