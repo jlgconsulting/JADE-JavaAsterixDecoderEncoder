@@ -18,7 +18,7 @@ public class Cat034Item050Subfield5 extends FixedLengthAsterixData {
     @Override
     @DecodingNotImplemented(reason = "Item not needed yet")
     protected void decodeFromByteArray(byte[] input, int offset) {
-
+        appendNotImplementedMsg();
     }
 
     @Override
