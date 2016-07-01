@@ -4,7 +4,7 @@
 
 package jlg.jade.asterix.cat150;
 
-public enum Cat150Item030MessageType {
+public enum  Cat150Item030MessageType {
     UNKNOWN(-1),
     FLIGHT_PLAN_CREATION(1),
     FLIGHT_PLAN_MODIFICATION(2),
