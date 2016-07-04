@@ -4,6 +4,7 @@
 package jlg.jade.test.asterix.cat034;
 
 import jlg.jade.asterix.cat034.Cat034Item000;
+import jlg.jade.asterix.cat034.Cat034Item000MessageType;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 
@@ -31,6 +32,7 @@ public class Cat034Item000Test extends MandatoryFixedLengthAsterixTests<Cat034It
         cat034Item000.decode(input, offset, input.length);
 
         // assert
-        assertEquals("Item not decoded correctly", 2, cat034Item000.getMessageType());
+        assertEquals("Item not decoded correctly", Cat034Item000MessageType.SECTOR_CROSSING_MESSAGE,
+                     cat034Item000.getMessageType());
     }
 }
