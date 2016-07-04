@@ -24,7 +24,7 @@ public class Cat150Item120Test extends MandatoryFixedLengthAsterixTests<Cat150It
     @Test
     public void the_decode_Method_should_correctly_decode_data() {
         //arrange
-        byte[] input = {65, 66, 67, 68, 69, 70, 65};
+        byte[] input = {54, 53, 67, 68, 69, 70, 65};
         int offset = 0;
         Cat150Item120 cat150Item120 = new Cat150Item120();
 
@@ -32,10 +32,28 @@ public class Cat150Item120Test extends MandatoryFixedLengthAsterixTests<Cat150It
         cat150Item120.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Item not decoded correctly - nb aircraft", "AB",
+        assertEquals("Item not decoded correctly - nb aircraft", 65,
                 cat150Item120.getNumberOfAircraft());
         assertEquals("Item not decoded correctly - aircraft type", "CDEF",
                 cat150Item120.getTypeOfAircraft());
         assertEquals("Item not decoded correctly", "A", cat150Item120.getWakeTurbulence());
+    }
+
+    /**
+     * We need to override this test because the input data needs to be very specific. We need a
+     * numeric string on the first 2 characters and the generic test method does not provide this.
+     */
+    @Override
+    public void the_decode_method_should_increment_offset_after_decoding_data() {
+        //arrange
+        byte[] input = {54, 53, 67, 68, 69, 70, 65};
+        int offset = 0;
+        Cat150Item120 cat150Item120 = new Cat150Item120();
+
+        //act
+        int result = cat150Item120.decode(input, offset, input.length);
+
+        //assert
+        assertEquals("Offset not incremented after data decoding", input.length, result);
     }
 }
