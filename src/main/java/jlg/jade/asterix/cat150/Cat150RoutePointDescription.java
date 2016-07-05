@@ -4,16 +4,16 @@
 
 package jlg.jade.asterix.cat150;
 
-public class Cat150Item140RoutePoint {
+public class Cat150RoutePointDescription {
     private int type;
     private String description;
 
-    public Cat150Item140RoutePoint(int type, String description) {
+    public Cat150RoutePointDescription(int type, String description) {
         this.type = type;
         this.description = description;
     }
 
-    protected Cat150Item140RoutePoint() {
+    protected Cat150RoutePointDescription() {
     }
 
     public int getType() {
@@ -26,6 +26,6 @@ public class Cat150Item140RoutePoint {
 
     @Override
     public String toString() {
-        return "Type: " + this.getType() + "; Description: " + this.getDescription();
+        return "{ Type: " + this.getType() + "; Description: " + this.getDescription() + " }";
     }
 }

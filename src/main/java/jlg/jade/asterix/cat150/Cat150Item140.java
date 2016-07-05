@@ -18,7 +18,7 @@ import java.util.List;
  * are equal. Coordinate(1), description(1), etc.
  */
 public class Cat150Item140 extends RepeatableAsterixData {
-    private List<Cat150Item140RoutePoint> routePoints;
+    private List<Cat150RoutePointDescription> routePoints;
 
     public Cat150Item140() {
         this.routePoints = new ArrayList<>();
@@ -34,7 +34,7 @@ public class Cat150Item140 extends RepeatableAsterixData {
         for (int i = 0; i < this.getRepetitionFactor(); i++) {
             int type = UnsignedNumericDecoder.decodeFromOneByte(input, offset + (i * 12));
             String description = new String(input, offset + ((i * 12) + 1), 11).replace(" ", "");
-            Cat150Item140RoutePoint routePoint = new Cat150Item140RoutePoint(type, description);
+            Cat150RoutePointDescription routePoint = new Cat150RoutePointDescription(type, description);
             routePoints.add(routePoint);
 
             appendItemDebugMsg("Route point " + i, routePoint.toString());
@@ -49,7 +49,7 @@ public class Cat150Item140 extends RepeatableAsterixData {
     /**
      * @return The route point descriptions
      */
-    public List<Cat150Item140RoutePoint> getRoutePoints() {
+    public List<Cat150RoutePointDescription> getRoutePoints() {
         return routePoints;
     }
 }
