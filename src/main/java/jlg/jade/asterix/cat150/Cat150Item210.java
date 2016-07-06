@@ -9,11 +9,10 @@ import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.UnsignedNumericDecoder;
 
 /**
- * Cat150 Item220 - Maximum Plan Count
- * The maximum number of possible active plans
+ * Cat150 Item210 - Correlated Track Number
  */
-public class Cat150Item220 extends FixedLengthAsterixData {
-    private int maxPlanCount;
+public class Cat150Item210 extends FixedLengthAsterixData {
+    private int correlatedTrackNb;
 
     @Override
     protected int setSizeInBytes() {
@@ -22,16 +21,16 @@ public class Cat150Item220 extends FixedLengthAsterixData {
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.maxPlanCount = UnsignedNumericDecoder.decodeFromTwoBytes(input, offset);
-        this.appendItemDebugMsg("Max Plan Count", this.maxPlanCount);
+        this.correlatedTrackNb = UnsignedNumericDecoder.decodeFromTwoBytes(input, offset);
+        this.appendItemDebugMsg("Correlated Track Nb", this.correlatedTrackNb);
     }
 
     @Override
     protected String setDisplayName() {
-        return "Cat150Item220 - Max Plan Count";
+        return "Cat150Item210 - Correlated Track Number";
     }
 
-    public int getMaxPlanCount() {
-        return maxPlanCount;
+    public int getCorrelatedTrackNb() {
+        return correlatedTrackNb;
     }
 }
