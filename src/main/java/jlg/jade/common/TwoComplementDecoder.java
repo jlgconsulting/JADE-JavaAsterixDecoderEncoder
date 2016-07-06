@@ -16,7 +16,7 @@ public class TwoComplementDecoder {
 
     public static int decodeFromThreeBytes(byte[] input, int offset) {
         int result = input[offset] * 256 * 256 +
-                input[offset + 1] * 256 +
+                Byte.toUnsignedInt(input[offset + 1]) * 256 +
                 Byte.toUnsignedInt(input[offset + 2]);
 
         return result;

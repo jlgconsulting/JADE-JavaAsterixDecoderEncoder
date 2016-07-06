@@ -7,7 +7,7 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.TwoComplementDecoder;
 
-import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT034;
+import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT034_CAT048;
 
 /**
  * Cat034Item120 - 3D-Position Of Data Source
@@ -70,13 +70,13 @@ public class Cat034Item120 extends FixedLengthAsterixData{
      * Calculate the decimal value of the WSG84 latitude according the Asterix specification
      */
     public double getLatitudeDecimalWgs84() {
-        return this.latitudeWgs84 * LAT_LONG_WGS_PRECISION_CAT034;
+        return this.latitudeWgs84 * LAT_LONG_WGS_PRECISION_CAT034_CAT048;
     }
 
     /**
      * Calculate the decimal value of WSG84 longitude according the Asterix specification
      */
     public double getLongitutdeDecimalWgs84() {
-        return this.longitudeWgs84 * LAT_LONG_WGS_PRECISION_CAT034;
+        return this.longitudeWgs84 * LAT_LONG_WGS_PRECISION_CAT034_CAT048;
     }
 }
