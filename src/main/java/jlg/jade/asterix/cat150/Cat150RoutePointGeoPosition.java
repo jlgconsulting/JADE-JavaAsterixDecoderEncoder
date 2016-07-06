@@ -6,11 +6,11 @@ package jlg.jade.asterix.cat150;
 
 import jlg.jade.common.Constants;
 
-public class RoutePointGeoPosition {
+public class Cat150RoutePointGeoPosition {
     private int latitude;
     private int longitude;
 
-    public RoutePointGeoPosition(int latitude, int longitude) {
+    public Cat150RoutePointGeoPosition(int latitude, int longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

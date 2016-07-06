@@ -16,7 +16,7 @@ import java.util.List;
  * Route point positions in WSG 84 (latitude, longitude)
  */
 public class Cat150Item151 extends RepeatableAsterixData {
-    private List<RoutePointGeoPosition> routePoints;
+    private List<Cat150RoutePointGeoPosition> routePoints;
 
     public Cat150Item151() {
         this.routePoints = new ArrayList<>();
@@ -34,7 +34,7 @@ public class Cat150Item151 extends RepeatableAsterixData {
                     offset + ((i * 6)));
             int longitude = TwoComplementDecoder.decodeFromThreeBytes(input,
                     offset + ((i * 6) + 3));
-            RoutePointGeoPosition routePointGeoPosition = new RoutePointGeoPosition(latitude,
+            Cat150RoutePointGeoPosition routePointGeoPosition = new Cat150RoutePointGeoPosition(latitude,
                     longitude);
             this.routePoints.add(routePointGeoPosition);
 
@@ -47,7 +47,7 @@ public class Cat150Item151 extends RepeatableAsterixData {
         return "Cat150Item151 - Route Points, Geographical Pos";
     }
 
-    public List<RoutePointGeoPosition> getRoutePoints() {
+    public List<Cat150RoutePointGeoPosition> getRoutePoints() {
         return routePoints;
     }
 }
