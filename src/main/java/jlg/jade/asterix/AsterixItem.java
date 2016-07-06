@@ -18,7 +18,7 @@ public abstract class AsterixItem extends DebugMessageSource {
     protected boolean valid;
     private final String displayName;
 
-    AsterixItem(){
+    public AsterixItem(){
         this.valid = true;
         this.displayName = setDisplayName();
         if(this.displayName == null){
