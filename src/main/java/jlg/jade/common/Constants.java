@@ -20,4 +20,5 @@ public class Constants {
     public static final double FROM_ASTERIX_MACH_NB_TO_REAL_MACH_SPEED = 0.008;
     public static final int FROM_QUARTER_OF_SEC_TO_SEC = 4;
     public static final double FROM_ASTERIX_ALT_TO_FEET = 6.25;
+    public static final double SSR_PLOT_RUNLENGTH_TO_DEGREES = 0.044; // 360 divided by 2^13
 }

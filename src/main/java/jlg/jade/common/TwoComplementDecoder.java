@@ -21,4 +21,10 @@ public class TwoComplementDecoder {
 
         return result;
     }
+
+    public static int decodeFromOneByte(byte[] input, int offset) {
+        int result = input[offset];
+
+        return result;
+    }
 }
