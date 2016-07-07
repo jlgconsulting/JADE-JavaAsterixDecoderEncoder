@@ -1,9 +1,9 @@
 /**
  * Created by alexandru on 7/6/16.
  */
-package jlg.jade.test.asterix.cat048;
+package jlg.jade.test.asterix.cat048.item130;
 
-import jlg.jade.asterix.cat048.Cat048Item130Subfield7;
+import jlg.jade.asterix.cat048.item130.Cat048Item130Subfield7;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

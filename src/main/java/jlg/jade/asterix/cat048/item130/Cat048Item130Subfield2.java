@@ -1,7 +1,7 @@
 /**
  * Created by alexandru on 7/6/16.
  */
-package jlg.jade.asterix.cat048;
+package jlg.jade.asterix.cat048.item130;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;

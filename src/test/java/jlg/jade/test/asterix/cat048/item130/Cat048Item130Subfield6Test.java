@@ -1,9 +1,9 @@
 /**
  * Created by alexandru on 7/6/16.
  */
-package jlg.jade.test.asterix.cat048;
+package jlg.jade.test.asterix.cat048.item130;
 
-import jlg.jade.asterix.cat048.Cat048Item130Subfield6;
+import jlg.jade.asterix.cat048.item130.Cat048Item130Subfield6;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 
