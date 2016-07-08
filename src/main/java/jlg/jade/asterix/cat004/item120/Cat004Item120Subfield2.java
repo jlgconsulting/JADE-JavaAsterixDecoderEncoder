@@ -31,7 +31,7 @@ public class Cat004Item120Subfield2 extends FixedLengthAsterixData {
                 bits[4];
         appendItemDebugMsg("Table Id", this.getTableId());
 
-        this.severityClass = bits[3] * 2 * 3 +
+        this.severityClass = bits[3] * 2 * 2 +
                 bits[2] * 2 +
                 bits[1];
         appendItemDebugMsg("Severity Class", this.severityClass);
