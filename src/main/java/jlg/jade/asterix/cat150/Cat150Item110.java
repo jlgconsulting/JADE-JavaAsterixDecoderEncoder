@@ -33,6 +33,7 @@ public class Cat150Item110 extends FixedLengthAsterixData {
         final int HLD_BIT_POSITION = 6;
         this.holdFlag = bs.get(HLD_BIT_POSITION);
 
+        //if all rvsm bits are 0 => UNKNOWN RVSM
         final int RVQ_BIT_POS = 5;
         if (bs.get(RVQ_BIT_POS)) {
             this.rvsmStatus = Cat150Item110RvsmStatus.EQUIPPED;

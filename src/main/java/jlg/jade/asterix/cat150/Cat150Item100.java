@@ -43,6 +43,14 @@ public class Cat150Item100 extends FixedLengthAsterixData {
         appendItemDebugMsg("OAT", this.oatFlag);
         appendItemDebugMsg("CPL", this.cplFlag);
         appendItemDebugMsg("SPN", this.spnFlag);
+
+        if (!this.gatFlag && !this.oatFlag) {
+            appendWarningMessage("GAT and OAT flags are both 0 (false). Unknown flight type.");
+        }
+
+        if (!this.cplFlag && !this.spnFlag) {
+            appendWarningMessage("CPL and SPN flags are both 0 (false). Unknown plan type");
+        }
     }
 
     @Override
