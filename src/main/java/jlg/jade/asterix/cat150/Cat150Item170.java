@@ -9,7 +9,7 @@ package jlg.jade.asterix.cat150;
  * Planned flight level over route point
  * Unit of measure: FL (100ft)
  */
-public class Cat150Item170 extends AsterixCat150RoutePointFlightLevelData {
+public class Cat150Item170 extends Cat150RoutePointFlightLevelData {
     @Override
     protected String setDisplayName() {
         return "Cat150Item170 - Route Points, FL";

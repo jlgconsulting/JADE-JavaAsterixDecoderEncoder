@@ -65,7 +65,7 @@ public class Cat034RecordTest extends MandatoryFspecAsterixTests<Cat034Record> {
         assertEquals("Item not decoded correctly - 010", 52, cat034Record.getItem010().getSac());
         assertEquals("Item not decoded correctly - 010", 83, cat034Record.getItem010().getSic());
         assertEquals("Item not decoded correctly - 000", 2,
-                     cat034Record.getItem000().getMessageType());
+                     cat034Record.getItem000().getMessageType().getValue());
 
     }
 

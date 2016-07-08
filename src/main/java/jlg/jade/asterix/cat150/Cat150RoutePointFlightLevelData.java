@@ -14,10 +14,10 @@ import java.util.List;
  * Base class that is used for the implementation of route point FL information, like
  * Item170 and Item171
  */
-public abstract class AsterixCat150RoutePointFlightLevelData extends RepeatableAsterixData {
+public abstract class Cat150RoutePointFlightLevelData extends RepeatableAsterixData {
     private List<Cat150RoutePointFlightLevel> routePoints;
 
-    protected AsterixCat150RoutePointFlightLevelData() {
+    protected Cat150RoutePointFlightLevelData() {
         this.routePoints = new ArrayList<>();
     }
 

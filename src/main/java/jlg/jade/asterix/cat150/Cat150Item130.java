@@ -25,7 +25,12 @@ public class Cat150Item130 extends FixedLengthAsterixData {
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
         String cflString = new String(input, offset, this.sizeInBytes);
-        this.clearedFLightLevel = Integer.parseInt(cflString);
+        try {
+            this.clearedFLightLevel = Integer.parseInt(cflString);
+        } catch (NumberFormatException e) {
+            appendErrorMessage("CFL is not a number. " + cflString);
+            return;
+        }
         appendItemDebugMsg("Cleared Flight Level", this.clearedFLightLevel);
     }
 

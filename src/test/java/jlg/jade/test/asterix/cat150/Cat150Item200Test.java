@@ -21,7 +21,7 @@ public class Cat150Item200Test {
         cat150Item200.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Size is not correct", 11, cat150Item200.getSizeInBytes());
+        assertEquals("Size is not correct", input.length, cat150Item200.getSizeInBytes());
     }
 
     @Test
