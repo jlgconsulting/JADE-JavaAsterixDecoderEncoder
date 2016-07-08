@@ -21,7 +21,7 @@ public class Cat048Item220Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
-    public void the_decode_method_should_correctly_decode_data(){
+    public void the_decode_method_should_correctly_decode_data() {
         // arrange
         byte[] input = {64, 7, 77};
         int offset = 0;
@@ -31,6 +31,7 @@ public class Cat048Item220Test extends MandatoryFixedLengthAsterixTests<Cat048It
         item220.decode(input, offset, input.length);
 
         // assert
-        assertEquals("Item not decoded correctly - Aircraft Address", 4196173, item220.getAircraftAddress());
+        assertEquals("Item not decoded correctly - Aircraft Address", 4196173,
+                     item220.getAircraftAddress());
     }
 }

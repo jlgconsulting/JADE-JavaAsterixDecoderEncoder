@@ -10,7 +10,7 @@ public class IA5Decoder {
     public static String decodeFromSixBytes(byte[] input, int offset) {
         // create string buffer with all the 6 bytes including leading zeros
         StringBuffer sb = new StringBuffer();
-        for (int i = offset; i < offset+6; i++){
+        for (int i = offset; i < offset + 6; i++) {
             String temp = Integer.toBinaryString(input[i]);
             String zeroPadded = ("00000000" + temp).substring(temp.length());
             sb.append(zeroPadded);
@@ -19,8 +19,8 @@ public class IA5Decoder {
         // parse the buffer and retrieve each 6 bits to convert from IA5 to ASCII
         int[] chars = new int[8];
         StringBuffer identificationBuffer = new StringBuffer();
-        for(int i = 0; i < 8; i++){
-            chars[i] = Integer.parseInt(sb.substring(i*6, i*6+6), 2);
+        for (int i = 0; i < 8; i++) {
+            chars[i] = Integer.parseInt(sb.substring(i * 6, i * 6 + 6), 2);
             identificationBuffer.append((char) convertIA5toASCII(chars[i]));
         }
         return identificationBuffer.toString().trim();
@@ -40,18 +40,18 @@ public class IA5Decoder {
         final char ASC_SPACE = ' ';
         final char ASC_ERROR = '?';
 
-        if(characterCode == IA5_SPACE){
+        if (characterCode == IA5_SPACE) {
             characterCode = ASC_SPACE;
             return characterCode;
         }
 
-        if(IA5_DIGIT <= characterCode && characterCode < IA5_DIGIT+10) {
+        if (IA5_DIGIT <= characterCode && characterCode < IA5_DIGIT + 10) {
             // character is a digit
             characterCode = (ASC_DIGIT + (characterCode - IA5_DIGIT));
             return characterCode;
         }
 
-        if(IA5_ALPHA <= characterCode && characterCode < IA5_ALPHA+26){
+        if (IA5_ALPHA <= characterCode && characterCode < IA5_ALPHA + 26) {
             // character is a letter
             characterCode = (ASC_ALPHA + (characterCode - IA5_ALPHA));
             return characterCode;

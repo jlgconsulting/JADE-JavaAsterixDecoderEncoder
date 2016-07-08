@@ -21,7 +21,7 @@ public class Cat048Item240Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
-    public void the_decode_method_should_correctly_decode_data(){
+    public void the_decode_method_should_correctly_decode_data() {
         // arrange
         byte[] input = {57, 5, 52, (byte) 203, 8, 32};
         int offset = 0;
@@ -31,6 +31,7 @@ public class Cat048Item240Test extends MandatoryFixedLengthAsterixTests<Cat048It
         item240.decode(input, offset, input.length);
 
         // assert
-        assertEquals("Item not decoded correctly - Aircraft Identification", "NPT420", item240.getAircraftIdentification());
+        assertEquals("Item not decoded correctly - Aircraft Identification", "NPT420",
+                     item240.getAircraftIdentification());
     }
 }
