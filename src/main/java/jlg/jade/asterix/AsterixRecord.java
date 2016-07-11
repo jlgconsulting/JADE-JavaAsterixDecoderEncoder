@@ -32,21 +32,26 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
         switch (category) {
             case 4: {
                 this.cat004Record = new Cat004Record();
+                break;
             }
             case 34: {
                 this.cat034Record = new Cat034Record();
+                break;
             }
             case 48: {
                 break;
             }
             case 62: {
                 this.cat062Record = new Cat062Record();
+                break;
             }
             case 65: {
                 this.cat065Record = new Cat065Record();
+                break;
             }
             case 150: {
                 this.cat150Record = new Cat150Record();
+                break;
             }
             default:
                 throw new NotImplementedException();

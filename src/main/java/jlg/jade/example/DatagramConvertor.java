@@ -10,6 +10,7 @@ import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.counters.Cat004ItemCounter;
 import jlg.jade.asterix.counters.Cat062ItemCounter;
 import jlg.jade.asterix.counters.Cat065ItemCounter;
+import jlg.jade.asterix.counters.Cat150ItemCounter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -39,6 +40,7 @@ class DatagramConvertor implements Runnable {
         Cat062ItemCounter cat062ItemCounter = new Cat062ItemCounter();
         Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
         Cat004ItemCounter cat004ItemCounter = new Cat004ItemCounter();
+        Cat150ItemCounter cat150ItemCounter = new Cat150ItemCounter();
 
 
         System.out.println("Start Datagram Convertor");
@@ -55,9 +57,13 @@ class DatagramConvertor implements Runnable {
         if (allowedCategories.contains("4")) {
             categoriesToDecode.add(4);
         }
+        if(allowedCategories.contains("150")){
+            categoriesToDecode.add(150);
+        }
         AsterixDecoder asterixDecoder = new AsterixDecoder(categoriesToDecode);
 
         long startTime = System.currentTimeMillis();
+        int index = 0;
         while (true) {
             try {
                 byte[] rawData = rawQueue.take();
@@ -77,16 +83,28 @@ class DatagramConvertor implements Runnable {
                             cat062ItemCounter.increment(adb);
                             cat065ItemCounter.increment(adb);
                             cat004ItemCounter.increment(adb);
-                            if (allowedCategories.contains("62")) {
-                                logger.debug(cat062ItemCounter.getDebugString());
-                            }
-                            if (allowedCategories.contains("65")) {
-                                logger.debug(cat065ItemCounter.getDebugString());
-                            }
-                            if (allowedCategories.contains("4")) {
-                                logger.debug(cat004ItemCounter.getDebugString());
+                            cat150ItemCounter.increment(adb);
+
+                            //item counters are printed every 100 data blocks
+                            if(index % 100 == 0) {
+                                if (allowedCategories.contains("62")) {
+                                    logger.debug(cat062ItemCounter.getDebugString());
+                                }
+                                if (allowedCategories.contains("65")) {
+                                    logger.debug(cat065ItemCounter.getDebugString());
+                                }
+                                if (allowedCategories.contains("4")) {
+                                    logger.debug(cat004ItemCounter.getDebugString());
+                                }
+                                if (allowedCategories.contains("4")) {
+                                    logger.debug(cat004ItemCounter.getDebugString());
+                                }
+                                if (allowedCategories.contains("150")) {
+                                    logger.debug(cat150ItemCounter.getDebugString());
+                                }
                             }
                         }
+                        index++;
                     }
                     System.out.println("Processed " +
                             numberOfQueueItems + " datagrams/packets (" +
