@@ -117,8 +117,123 @@ public class Cat150RecordTest extends MandatoryFspecAsterixTests<Cat150Record> {
                 cat150Record.getItem120().getTypeOfAircraft());
         assertEquals("Item not decoded correctly - 120", "H",
                 cat150Record.getItem120().getWakeTurbulence());
-        assertEquals("Item not decoded correctly -130", 400,
+        assertEquals("Item not decoded correctly - 130", 400,
                 cat150Record.getItem130().getClearedFLightLevel());
 
+        assertEquals("Item not decoded correctly - 140", 8,
+                cat150Record.getItem140().getRoutePoints().size());
+        assertItem140RoutePoint(cat150Record, 0, 1, "MEGIK");
+        assertItem140RoutePoint(cat150Record, 1, 1, "XZW99");
+        assertItem140RoutePoint(cat150Record, 2, 1, "PATAK");
+        assertItem140RoutePoint(cat150Record, 3, 1, "LALES");
+        assertItem140RoutePoint(cat150Record, 4, 1, "4853N01738E");
+        assertItem140RoutePoint(cat150Record, 5, 1, "BABUS");
+        assertItem140RoutePoint(cat150Record, 6, 1, "SOPGA");
+        assertItem140RoutePoint(cat150Record, 7, 1, "RAPET");
+
+        assertEquals("Item not decoded correctly - 150", 8,
+                cat150Record.getItem150().getRoutePoints().size());
+        assertItem150RoutePoint(cat150Record, 0, 203, -12429);
+        assertItem150RoutePoint(cat150Record, 1, -1050, 25717);
+        assertItem150RoutePoint(cat150Record, 2, -31762, -6788);
+        assertItem150RoutePoint(cat150Record, 3, -27602, -27437);
+        assertItem150RoutePoint(cat150Record, 4, -16029, -6629);
+        assertItem150RoutePoint(cat150Record, 5, 19182, -16832);
+        assertItem150RoutePoint(cat150Record, 6, -12496, 7273);
+        assertItem150RoutePoint(cat150Record, 7, 26128, -11358);
+
+        assertEquals("Item not decoded correctly - 160", 8,
+                cat150Record.getItem160().getRoutePoints().size());
+        assertItem160RoutePoint(cat150Record, 0, 2, 13);
+        assertItem160RoutePoint(cat150Record, 1, 2, 29);
+        assertItem160RoutePoint(cat150Record, 2, 2, 30);
+        assertItem160RoutePoint(cat150Record, 3, 2, 39);
+        assertItem160RoutePoint(cat150Record, 4, 2, 40);
+        assertItem160RoutePoint(cat150Record, 5, 2, 42);
+        assertItem160RoutePoint(cat150Record, 6, 3, 7);
+        assertItem160RoutePoint(cat150Record, 7, 3, 9);
+
+        assertEquals("Item not decoded correctly - 170", 8,
+                cat150Record.getItem170().getRoutePoints().size());
+        assertItem170RoutePoint(cat150Record, 0, 400);
+        assertItem170RoutePoint(cat150Record, 1, 400);
+        assertItem170RoutePoint(cat150Record, 2, 400);
+        assertItem170RoutePoint(cat150Record, 3, 400);
+        assertItem170RoutePoint(cat150Record, 4, 400);
+        assertItem170RoutePoint(cat150Record, 5, 400);
+        assertItem170RoutePoint(cat150Record, 6, 400);
+        assertItem170RoutePoint(cat150Record, 7, 400);
+
+        assertEquals("Item not decoded correctly - 210", 7797,
+                cat150Record.getItem210().getCorrelatedTrackNb());
+
+        assertEquals("Item not decoded correctly - 171", 8,
+                cat150Record.getItem171().getRoutePoints().size());
+        assertItem171RoutePoint(cat150Record, 0, 400);
+        assertItem171RoutePoint(cat150Record, 1, 400);
+        assertItem171RoutePoint(cat150Record, 2, 400);
+        assertItem171RoutePoint(cat150Record, 3, 400);
+        assertItem171RoutePoint(cat150Record, 4, 400);
+        assertItem171RoutePoint(cat150Record, 5, 400);
+        assertItem171RoutePoint(cat150Record, 6, 400);
+        assertItem171RoutePoint(cat150Record, 7, 400);
+    }
+
+    @Override
+    public void the_decode_method_should_increment_offset_after_data_decoding() {
+        //arrange
+        int offset = 0;
+        Cat150Record cat150Record = new Cat150Record();
+
+        //act
+        int result = cat150Record.decode(SAMPLE_INPUT, offset, SAMPLE_INPUT.length);
+
+        //assert
+        assertEquals("Offset not incremented after data decoding", SAMPLE_INPUT.length, result);
+    }
+
+    private void assertItem140RoutePoint(Cat150Record cat150Record,
+                                         int index,
+                                         int expectedType,
+                                         String expectedDescription) {
+        assertEquals("Item not decoded correctly - 140 Route Point ", expectedType,
+                cat150Record.getItem140().getRoutePoints().get(index).getType());
+        assertEquals("Item not decoded correctly - 140 Route Point", expectedDescription,
+                cat150Record.getItem140().getRoutePoints().get(index).getDescription());
+    }
+
+    private void assertItem150RoutePoint(Cat150Record cat150Record,
+                                         int index,
+                                         int expectedX,
+                                         int expectedY) {
+        assertEquals("Item not decoded correctly - 150 Route Point ", expectedX,
+                cat150Record.getItem150().getRoutePoints().get(index).getX());
+        assertEquals("Item not decoded correctly - 150 Route Point", expectedY,
+                cat150Record.getItem150().getRoutePoints().get(index).getY());
+    }
+
+
+    private void assertItem160RoutePoint(Cat150Record cat150Record,
+                                         int index,
+                                         int expectedHours,
+                                         int expectedMinutes) {
+        assertEquals("Item not decoded correctly - 160 Route Point ", expectedHours,
+                cat150Record.getItem160().getRoutePoints().get(index).getHours());
+        assertEquals("Item not decoded correctly - 160 Route Point", expectedMinutes,
+                cat150Record.getItem160().getRoutePoints().get(index).getMinutes());
+    }
+
+    private void assertItem170RoutePoint(Cat150Record cat150Record,
+                                         int index,
+                                         int expectedFL) {
+        assertEquals("Item not decoded correctly - 170 Route Point ", expectedFL,
+                cat150Record.getItem170().getRoutePoints().get(index).getFlightLevel());
+    }
+
+    private void assertItem171RoutePoint(Cat150Record cat150Record,
+                                         int index,
+                                         int requestedFL) {
+        assertEquals("Item not decoded correctly - 171 Route Point ", requestedFL,
+                cat150Record.getItem171().getRoutePoints().get(index).getFlightLevel());
     }
 }
