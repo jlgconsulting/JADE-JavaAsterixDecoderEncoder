@@ -12,7 +12,7 @@ import jlg.jade.common.TwoComplementDecoder;
  * Height of a target as measured by a 3D radar. The height shall
  * use mean sea level as the zero reference level.
  */
-public class Cat048Item110 extends FixedLengthAsterixData{
+public class Cat048Item110 extends FixedLengthAsterixData {
     private int measuredHeight3DRadar;
 
     @Override

@@ -21,7 +21,7 @@ public class Cat048Item110Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
-    public void the_decode_method_should_correctly_decode_data(){
+    public void the_decode_method_should_correctly_decode_data() {
         // arrange
         byte[] input = {43, (byte) 244};
         int offset = 0;
@@ -31,6 +31,7 @@ public class Cat048Item110Test extends MandatoryFixedLengthAsterixTests<Cat048It
         item110.decode(input, offset, input.length);
 
         // assert
-        assertEquals("Item not decoded correctly - 3DRadarMeasuredHeight", 11252, item110.getMeasuredHeight3DRadar());
+        assertEquals("Item not decoded correctly - 3DRadarMeasuredHeight", 11252,
+                     item110.getMeasuredHeight3DRadar());
     }
 }
