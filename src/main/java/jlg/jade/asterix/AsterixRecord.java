@@ -10,6 +10,7 @@ import jlg.jade.asterix.cat004.Cat004Record;
 import jlg.jade.asterix.cat034.Cat034Record;
 import jlg.jade.asterix.cat062.Cat062Record;
 import jlg.jade.asterix.cat065.Cat065Record;
+import jlg.jade.asterix.cat150.Cat150Record;
 import jlg.jade.common.DebugMessageSource;
 import jlg.jade.common.Decodable;
 import jlg.jade.common.Encodable;
@@ -24,6 +25,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     private Cat065Record cat065Record;
     private Cat004Record cat004Record;
     private Cat034Record cat034Record;
+    private Cat150Record cat150Record;
 
     public AsterixRecord(int category) {
         this.category = category;
@@ -44,7 +46,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 this.cat065Record = new Cat065Record();
             }
             case 150: {
-                break;
+                this.cat150Record = new Cat150Record();
             }
             default:
                 throw new NotImplementedException();
@@ -78,7 +80,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 return this.cat065Record.decode(input, offset, inputLength);
             }
             case 150: {
-                break;
+                return this.cat150Record.decode(input, offset, inputLength);
             }
             default:
                 throw new NotImplementedException();
@@ -117,6 +119,11 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
         return cat004Record;
     }
 
-    public Cat034Record getCat034Record() { return cat034Record;
+    public Cat034Record getCat034Record() {
+        return cat034Record;
+    }
+
+    public Cat150Record getCat150Record() {
+        return cat150Record;
     }
 }
