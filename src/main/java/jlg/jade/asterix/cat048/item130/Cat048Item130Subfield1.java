@@ -10,11 +10,11 @@ import jlg.jade.common.UnsignedNumericDecoder;
 import static jlg.jade.common.Constants.SSR_PLOT_RUNLENGTH_TO_DEGREES;
 
 /**
- * Cat048Item130Subfield1 - SSR Plot Runlength
- * SSR plot runlength, expressed as a positive binary value.
+ * Cat048Item130Subfield1 - SSR Plot Run Length
+ * SSR plot run length, expressed as a positive binary value.
  */
-public class Cat048Item130Subfield1 extends FixedLengthAsterixData{
-    private int SSRPlotRunlength;
+public class Cat048Item130Subfield1 extends FixedLengthAsterixData {
+    private int SSRPlotRunLength;
 
     @Override
     protected int setSizeInBytes() {
@@ -23,22 +23,21 @@ public class Cat048Item130Subfield1 extends FixedLengthAsterixData{
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.SSRPlotRunlength = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
+        this.SSRPlotRunLength = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
 
-        appendItemDebugMsg("SSR Plot Runlength (dg)", this.getSSRPlotRunlength());
+        appendItemDebugMsg("SSR Plot Run Length (dg)", this.getSSRPlotRunLength());
     }
 
     @Override
     protected String setDisplayName() {
-        return "Cat048Item130Subfield1 - SSR Plot Runlength";
+        return "Cat048Item130Subfield1 - SSR Plot Run Length";
     }
 
     /**
-     * @return
-     * SSR plot runlength, expressed as a positive binary value
+     * @return SSR plot run length, expressed as a positive binary value
      * LSB = 360/2^13 dg = 0.044 dg; so the total range covered is therefore from 0 to 11.21 dg.
      */
-    public double getSSRPlotRunlength() {
-        return this.SSRPlotRunlength * SSR_PLOT_RUNLENGTH_TO_DEGREES;
+    public double getSSRPlotRunLength() {
+        return this.SSRPlotRunLength * SSR_PLOT_RUNLENGTH_TO_DEGREES;
     }
 }

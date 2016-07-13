@@ -10,11 +10,11 @@ import jlg.jade.common.UnsignedNumericDecoder;
 import static jlg.jade.common.Constants.SSR_PLOT_RUNLENGTH_TO_DEGREES;
 
 /**
- * Cat048Item130Subfield4 - Primary Plot Runlength
+ * Cat048Item130Subfield4 - Primary Plot Run Length
  * Primary Plot Runlength, expressed as positive binary value
  */
-public class Cat048Item130Subfield4 extends FixedLengthAsterixData{
-    private long plotRunlength;
+public class Cat048Item130Subfield4 extends FixedLengthAsterixData {
+    private long plotRunLength;
 
     @Override
     protected int setSizeInBytes() {
@@ -23,17 +23,17 @@ public class Cat048Item130Subfield4 extends FixedLengthAsterixData{
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.plotRunlength = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
+        this.plotRunLength = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
 
-        appendItemDebugMsg("Primary Plot Runlength", this.getPlotRunlengthDegrees());
+        appendItemDebugMsg("Primary Plot Run Length", this.getPlotRunlengthDegrees());
     }
 
     @Override
     protected String setDisplayName() {
-        return "Cat048Item130Subfield4 - Primary Plot Runlength";
+        return "Cat048Item130Subfield4 - Primary Plot Run Length";
     }
 
     public double getPlotRunlengthDegrees() {
-        return this.plotRunlength * SSR_PLOT_RUNLENGTH_TO_DEGREES;
+        return this.plotRunLength * SSR_PLOT_RUNLENGTH_TO_DEGREES;
     }
 }

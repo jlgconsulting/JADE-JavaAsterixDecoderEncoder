@@ -37,14 +37,107 @@ public class Cat048Item020 extends VariableLengthAsterixData {
         // parse extent if present
         if (this.getSizeInBytes() > 1) {
 
-            BitSet extentBits = BitSet.valueOf(new byte[]{input[offset + 1]});
+            BitSet firstExtentBits = BitSet.valueOf(new byte[]{input[offset + 1]});
 
-            decodeFoeFriValue(extentBits);
-            decodeMiValue(extentBits);
-            decodeMeValue(extentBits);
-            decodeXppValue(extentBits);
-            decodeTstValue(extentBits);
+            decodeFoeFriValue(firstExtentBits);
+            decodeMiValue(firstExtentBits);
+            decodeMeValue(firstExtentBits);
+            decodeXppValue(firstExtentBits);
+            decodeTstValue(firstExtentBits);
         }
+    }
+
+    @Override
+    protected String setDisplayName() {
+        return "Cat048Item020 - Target Report Descriptor";
+    }
+
+    /**
+     * @return = 000 No detection
+     * = 001 Single PSR detection
+     * = 010 Single SSR detection
+     * = 011 SSR + PSR detection
+     * = 100 Single ModeS All-Call
+     * = 101 Single ModeS Roll-Call
+     * = 110 ModeS All-Call + PSR
+     * = 111 ModeS Roll-Call +PSR
+     */
+    public int getTypValue() {
+        return typValue;
+    }
+
+    /**
+     * @return = 0 Report from RDP Chain 1
+     * = 1 Report from RDP Chain 2
+     */
+    public int getReportFromRDPValue() {
+        return reportFromRDPValue;
+    }
+
+    /**
+     * @return = 0 Actual target report
+     * = 1 Simulated target report
+     */
+    public int getSimulatedTargetReportValue() {
+        return simulatedTargetReportValue;
+    }
+
+    /**
+     * @return = 0 Absence of SPI
+     * = 1 Special Position Identification
+     */
+    public int getSpecialPosIdentificationValue() {
+        return specialPosIdentificationValue;
+    }
+
+    /**
+     * @return = 0 Report from aircraft transponder
+     * = 1 Report from field monitor (fixed transponder)
+     */
+    public int getRabValue() {
+        return rabValue;
+    }
+
+    /**
+     * @return = 00 No Mode 4 interrogation
+     * = 01 Friendly target
+     * = 10 Unknown target
+     * = 11 No reply
+     */
+    public int getFoeFriValue() {
+        return foeFriValue;
+    }
+
+    /**
+     * @return = 0 No military identification
+     * = 1 Military identification
+     */
+    public int getMilitaryIdentificationValue() {
+        return militaryIdentificationValue;
+    }
+
+    /**
+     * @return = 0 No military emergency
+     * = 1 Military emergency
+     */
+    public int getMilitaryEmergencyValue() {
+        return militaryEmergencyValue;
+    }
+
+    /**
+     * @return = 0 No X-Pulse present
+     * = 1 X-Pulse present
+     */
+    public int getxPulsePresentValue() {
+        return xPulsePresentValue;
+    }
+
+    /**
+     * @return = 0 Real target report
+     * = 1 Test target report
+     */
+    public int getTestTargetValue() {
+        return testTargetValue;
     }
 
     private void decodeFoeFriValue(BitSet extentBits) {
@@ -178,98 +271,5 @@ public class Cat048Item020 extends VariableLengthAsterixData {
         this.typValue = typBit2Value * 4 + typBit1Value * 2 + typBit0Value;
         appendItemDebugMsg("TYP (bits)", typBit2Value + "" + typBit1Value + "" + typBit0Value);
         appendItemDebugMsg("TYP (decimal)", this.typValue);
-    }
-
-    @Override
-    protected String setDisplayName() {
-        return "Cat048Item020 - Target Report Descriptor";
-    }
-
-    /**
-     * @return = 000 No detection
-     * = 001 Single PSR detection
-     * = 010 Single SSR detection
-     * = 011 SSR + PSR detection
-     * = 100 Single ModeS All-Call
-     * = 101 Single ModeS Roll-Call
-     * = 110 ModeS All-Call + PSR
-     * = 111 ModeS Roll-Call +PSR
-     */
-    public int getTypValue() {
-        return typValue;
-    }
-
-    /**
-     * @return = 0 Report from RDP Chain 1
-     * = 1 Report from RDP Chain 2
-     */
-    public int getReportFromRDPValue() {
-        return reportFromRDPValue;
-    }
-
-    /**
-     * @return = 0 Actual target report
-     * = 1 Simulated target report
-     */
-    public int getSimulatedTargetReportValue() {
-        return simulatedTargetReportValue;
-    }
-
-    /**
-     * @return = 0 Absence of SPI
-     * = 1 Special Position Identification
-     */
-    public int getSpecialPosIdentificationValue() {
-        return specialPosIdentificationValue;
-    }
-
-    /**
-     * @return = 0 Report from aircraft transponder
-     * = 1 Report from field monitor (fixed transponder)
-     */
-    public int getRabValue() {
-        return rabValue;
-    }
-
-    /**
-     * @return = 00 No Mode 4 interrogation
-     * = 01 Friendly target
-     * = 10 Unknown target
-     * = 11 No reply
-     */
-    public int getFoeFriValue() {
-        return foeFriValue;
-    }
-
-    /**
-     * @return = 0 No military identification
-     * = 1 Military identification
-     */
-    public int getMilitaryIdentificationValue() {
-        return militaryIdentificationValue;
-    }
-
-    /**
-     * @return = 0 No military emergency
-     * = 1 Military emergency
-     */
-    public int getMilitaryEmergencyValue() {
-        return militaryEmergencyValue;
-    }
-
-    /**
-     * @return = 0 No X-Pulse present
-     * = 1 X-Pulse present
-     */
-    public int getxPulsePresentValue() {
-        return xPulsePresentValue;
-    }
-
-    /**
-     * @return = 0 Real target report
-     * = 1 Test target report
-     */
-    public int getTestTargetValue() {
-        return testTargetValue;
     }
 }

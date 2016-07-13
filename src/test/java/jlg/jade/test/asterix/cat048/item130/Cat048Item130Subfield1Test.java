@@ -36,6 +36,6 @@ public class Cat048Item130Subfield1Test extends MandatoryFixedLengthAsterixTests
         item130Subfield1.decode(input, offset, input.length);
 
         // assert
-        assertEquals("Item not decoded correctly - SSR Plot Runlength (dg)", expected, item130Subfield1.getSSRPlotRunlength(), 0.01);
+        assertEquals("Item not decoded correctly - SSR Plot Runlength (dg)", expected, item130Subfield1.getSSRPlotRunLength(), 0.01);
     }
 }
