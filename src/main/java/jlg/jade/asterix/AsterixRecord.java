@@ -16,6 +16,9 @@ import jlg.jade.common.Decodable;
 import jlg.jade.common.Encodable;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.AbstractMap;
+import java.util.HashMap;
+
 /**
  * Represents a single Asterix message of a given category.
  */
@@ -27,8 +30,19 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     private Cat034Record cat034Record;
     private Cat150Record cat150Record;
 
+    /**
+     * This field is used by 3rd party applications using this library. It helps to
+     * add more informaiton on the ASTERIX record, that can simplify the logic in
+     * their own apps.
+     *
+     * @implNote No ASTERIX decoded field shall be inserted here. This will be empty. Only users can
+     * add info on this list after the decoding has been done.
+     */
+    private AbstractMap<String, Object> additionalInfo;
+
     public AsterixRecord(int category) {
         this.category = category;
+        this.additionalInfo = new HashMap<>();
         switch (category) {
             case 4: {
                 this.cat004Record = new Cat004Record();
@@ -130,5 +144,12 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
 
     public Cat150Record getCat150Record() {
         return cat150Record;
+    }
+
+    /**
+     * Dictionary of key-value pairs for extending the information of the ASTERIX record
+     */
+    public AbstractMap<String, Object> getAdditionalInfo() {
+        return this.additionalInfo;
     }
 }
