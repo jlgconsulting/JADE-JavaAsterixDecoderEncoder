@@ -1,7 +1,7 @@
 /**
  * Created by alexandru on 7/21/16.
  */
-package jlg.jade.asterix;
+package jlg.jade.asterix.cat048;
 
 public enum TCASVersion {
     VERSION_604,

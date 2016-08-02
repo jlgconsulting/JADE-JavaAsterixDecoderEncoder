@@ -16,7 +16,18 @@ import java.util.BitSet;
  */
 public class Cat048Item260 extends FixedLengthAsterixData {
     private int threatTypeIndicator;            // TTI
+    private int multiThreatIndicator;           // MTI / MTE
 
+    private int ARABit41;
+    private int ARABit42;
+    private int ARABit43;
+    private int ARABit44;
+    private int ARABit45;
+    private int ARABit46;
+    private int ARABit47;
+    private int ARABit48;
+    private int ARABit49;
+    private int ARABit50;
     @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.SEVEN_BYTES.getValue();
@@ -44,6 +55,90 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         this.threatTypeIndicator = TTIBit1Value * 2 + TTIBit0Value;
 
         appendItemDebugMsg("TTI", this.threatTypeIndicator);
+
+        // ARA - bits 41-50
+        final int ARA_BIT41_INDEX = 15;
+        final int ARA_BIT42_INDEX = 14;
+        final int ARA_BIT43_INDEX = 13;
+        final int ARA_BIT44_INDEX = 12;
+        final int ARA_BIT45_INDEX = 11;
+        final int ARA_BIT46_INDEX = 10;
+        final int ARA_BIT47_INDEX = 9;
+        final int ARA_BIT48_INDEX = 8;
+        final int ARA_BIT49_INDEX = 23;
+        final int ARA_BIT50_INDEX = 22;
+
+        if (bs.get(ARA_BIT41_INDEX)) {
+            this.ARABit41 = 1;
+        }
+
+        appendItemDebugMsg("ARABit41", this.ARABit41);
+
+        if (bs.get(ARA_BIT42_INDEX)) {
+            this.ARABit42 = 1;
+        }
+
+        appendItemDebugMsg("ARABit42", this.ARABit42);
+
+        if (bs.get(ARA_BIT43_INDEX)) {
+            this.ARABit43 = 1;
+        }
+
+        appendItemDebugMsg("ARABit43", this.ARABit43);
+
+        if (bs.get(ARA_BIT44_INDEX)) {
+            this.ARABit44 = 1;
+        }
+
+        appendItemDebugMsg("ARABit44", this.ARABit44);
+
+        if (bs.get(ARA_BIT45_INDEX)) {
+            this.ARABit45 = 1;
+        }
+
+        appendItemDebugMsg("ARABit45", this.ARABit45);
+
+        if (bs.get(ARA_BIT46_INDEX)) {
+            this.ARABit46 = 1;
+        }
+
+        appendItemDebugMsg("ARABit46", this.ARABit46);
+
+        if (bs.get(ARA_BIT47_INDEX)) {
+            this.ARABit47 = 1;
+        }
+
+        appendItemDebugMsg("ARABit47", this.ARABit47);
+
+        if (bs.get(ARA_BIT48_INDEX)) {
+            this.ARABit48 = 1;
+        }
+
+        appendItemDebugMsg("ARABit49", this.ARABit49);
+
+
+        appendItemDebugMsg("ARABit48", this.ARABit48);
+
+        if (bs.get(ARA_BIT49_INDEX)) {
+            this.ARABit49 = 1;
+        }
+
+        appendItemDebugMsg("ARABit49", this.ARABit49);
+
+        if(bs.get(ARA_BIT50_INDEX)) {
+            this.ARABit50 = 1;
+        }
+
+        appendItemDebugMsg("ARABit50", this.ARABit50);
+
+        // MTI / MTE
+        final int MTI_BIT_INDEX = 28;
+
+        if(bs.get(MTI_BIT_INDEX)) {
+            this.multiThreatIndicator = 1;
+        }
+
+        appendItemDebugMsg("MTI", this.multiThreatIndicator);
     }
 
     @Override
@@ -53,5 +148,49 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
     public int getThreatTypeIndicator() {
         return threatTypeIndicator;
+    }
+
+    public int getARABit41() {
+        return ARABit41;
+    }
+
+    public int getARABit42() {
+        return ARABit42;
+    }
+
+    public int getARABit43() {
+        return ARABit43;
+    }
+
+    public int getARABit44() {
+        return ARABit44;
+    }
+
+    public int getARABit45() {
+        return ARABit45;
+    }
+
+    public int getARABit46() {
+        return ARABit46;
+    }
+
+    public int getARABit47() {
+        return ARABit47;
+    }
+
+    public int getARABit48() {
+        return ARABit48;
+    }
+
+    public int getARABit49() {
+        return ARABit49;
+    }
+
+    public int getARABit50() {
+        return ARABit50;
+    }
+
+    public int getMultiThreatIndicator() {
+        return multiThreatIndicator;
     }
 }

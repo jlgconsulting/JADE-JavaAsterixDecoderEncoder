@@ -3,7 +3,7 @@
  */
 package jlg.jade.test.asterix.cat048.item120;
 
-import jlg.jade.asterix.cat048.Cat048Item120;
+import jlg.jade.asterix.cat048.item120.Cat048Item120;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
 
 import static org.junit.Assert.assertEquals;

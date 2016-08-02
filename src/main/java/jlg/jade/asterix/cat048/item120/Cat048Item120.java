@@ -1,12 +1,10 @@
 /**
  * Created by alexandru on 7/11/16.
  */
-package jlg.jade.asterix.cat048;
+package jlg.jade.asterix.cat048.item120;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FspecAsterixData;
-import jlg.jade.asterix.cat048.item120.Cat048Item120Subfield1;
-import jlg.jade.asterix.cat048.item120.Cat048Item120Subfield2;
 
 /**
  * Cat048Item120 - Radial Doppler Speed

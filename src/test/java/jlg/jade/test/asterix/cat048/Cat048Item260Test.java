@@ -33,4 +33,18 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         // assert
         assertEquals("Item not decoded correctly - TTI", 0, item260.getThreatTypeIndicator());
     }
+
+    @Test
+    public void the_decode_method_should_correctly_decode_ara_bits() {
+        // arrange
+        byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
+        int offset = 0;
+        Cat048Item260 item260 = new Cat048Item260();
+
+        // act
+        item260.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("Item not decoded correctly - ARA Bit41", 1, item260.getARABit41());
+    }
 }
