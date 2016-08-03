@@ -13,7 +13,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 @Component
-public class RawQueue{
+class RawQueue{
     private final BlockingQueue<DatagramPacket> rawQueue;
 
     public RawQueue(){

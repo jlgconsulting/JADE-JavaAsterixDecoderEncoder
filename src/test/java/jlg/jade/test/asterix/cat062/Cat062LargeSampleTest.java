@@ -9,7 +9,7 @@ package jlg.jade.test.asterix.cat062;
 import jlg.finalframe.FinalFrameReader;
 import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.AsterixRecord;
-import jlg.jade.example.AsterixDecoder;
+import jlg.jade.asterix.AsterixDecoder;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Description;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InterruptedIOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.BitSet;

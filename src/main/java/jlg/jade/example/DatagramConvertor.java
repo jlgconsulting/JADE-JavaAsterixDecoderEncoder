@@ -7,10 +7,8 @@
 package jlg.jade.example;
 
 import jlg.jade.asterix.AsterixDataBlock;
-import jlg.jade.asterix.counters.Cat004ItemCounter;
-import jlg.jade.asterix.counters.Cat062ItemCounter;
-import jlg.jade.asterix.counters.Cat065ItemCounter;
-import jlg.jade.asterix.counters.Cat150ItemCounter;
+import jlg.jade.asterix.AsterixDecoder;
+import jlg.jade.asterix.counters.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -37,10 +35,7 @@ class DatagramConvertor implements Runnable {
     @Override
     public void run() {
         //initialise item counters
-        Cat062ItemCounter cat062ItemCounter = new Cat062ItemCounter();
-        Cat065ItemCounter cat065ItemCounter = new Cat065ItemCounter();
-        Cat004ItemCounter cat004ItemCounter = new Cat004ItemCounter();
-        Cat150ItemCounter cat150ItemCounter = new Cat150ItemCounter();
+        DefaultDecodingReport asterixDecodingReport = new DefaultDecodingReport();
 
 
         System.out.println("Start Datagram Convertor");
@@ -80,28 +75,11 @@ class DatagramConvertor implements Runnable {
                     if (isLogEnabled) {
                         for (AsterixDataBlock adb : dataBlocks) {
                             logger.debug(adb.getDebugString());
-                            cat062ItemCounter.increment(adb);
-                            cat065ItemCounter.increment(adb);
-                            cat004ItemCounter.increment(adb);
-                            cat150ItemCounter.increment(adb);
+                            asterixDecodingReport.update(adb);
 
                             //item counters are printed every 100 data blocks
                             if(index % 100 == 0) {
-                                if (allowedCategories.contains("62")) {
-                                    logger.debug(cat062ItemCounter.getDebugString());
-                                }
-                                if (allowedCategories.contains("65")) {
-                                    logger.debug(cat065ItemCounter.getDebugString());
-                                }
-                                if (allowedCategories.contains("4")) {
-                                    logger.debug(cat004ItemCounter.getDebugString());
-                                }
-                                if (allowedCategories.contains("4")) {
-                                    logger.debug(cat004ItemCounter.getDebugString());
-                                }
-                                if (allowedCategories.contains("150")) {
-                                    logger.debug(cat150ItemCounter.getDebugString());
-                                }
+                                logger.debug(asterixDecodingReport.toDebugString());
                             }
                         }
                         index++;

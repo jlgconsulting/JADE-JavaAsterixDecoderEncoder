@@ -4,9 +4,7 @@
 * check the license terms for this product to see under what
 * conditions you can use or modify this source code.
 */
-package jlg.jade.example;
-
-import jlg.jade.asterix.AsterixDataBlock;
+package jlg.jade.asterix;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,11 +39,33 @@ public class AsterixDecoder {
     }
 
     public AsterixDecoder(int... categoriesToDecode) {
-        allowedCategories = new HashMap<>();
-        nbOfDataBlocks = new HashMap<>();
+        this();
         for (int category : categoriesToDecode) {
             allowedCategories.put(category, true);
             nbOfDataBlocks.put(category, 0);
+        }
+    }
+
+
+    public AsterixDecoder(String categoriesToDecode) {
+        this();
+        if (categoriesToDecode.contains("4")) {
+            allowedCategories.put(4, true);
+        }
+        if (categoriesToDecode.contains("34")) {
+            allowedCategories.put(34, true);
+        }
+        if (categoriesToDecode.contains("48")) {
+            allowedCategories.put(48, true);
+        }
+        if (categoriesToDecode.contains("62")) {
+            allowedCategories.put(62, true);
+        }
+        if (categoriesToDecode.contains("65")) {
+            allowedCategories.put(65, true);
+        }
+        if (categoriesToDecode.contains("150")) {
+            allowedCategories.put(150, true);
         }
     }
 
