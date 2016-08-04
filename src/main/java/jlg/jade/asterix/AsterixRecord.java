@@ -23,6 +23,7 @@ import java.util.HashMap;
  * Represents a single Asterix message of a given category.
  */
 public class AsterixRecord extends DebugMessageSource implements Decodable, Encodable {
+    private String sacSicCode;
     private final int category;
     private Cat062Record cat062Record;
     private Cat065Record cat065Record;
@@ -84,22 +85,36 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     public int decode(byte[] input, int offset, int inputLength) {
         switch (category) {
             case 4: {
-                return this.cat004Record.decode(input, offset, inputLength);
+                int newOffset = this.cat004Record.decode(input, offset, inputLength);
+                this.sacSicCode = cat004Record.getItem010().getSac() + "/" + cat004Record
+                        .getItem010().getSic();
+                return newOffset;
             }
             case 34: {
-                return this.cat034Record.decode(input, offset, inputLength);
+                int newOffset = this.cat034Record.decode(input, offset, inputLength);
+                this.sacSicCode = cat034Record.getItem010().getSac() + "/" + cat034Record
+                        .getItem010().getSic();
+                return newOffset;
             }
             case 48: {
                 break;
             }
             case 62: {
-                return this.cat062Record.decode(input, offset, inputLength);
+                int newOffset = this.cat062Record.decode(input, offset, inputLength);
+                this.sacSicCode = cat062Record.getItem010().getSac() + "/" + cat062Record
+                        .getItem010().getSic();
+                return newOffset;
             }
             case 65: {
-                return this.cat065Record.decode(input, offset, inputLength);
+                int newOffset = this.cat065Record.decode(input, offset, inputLength);
+                this.sacSicCode = cat065Record.getItem010().getSac() + "/" + cat065Record
+                        .getItem010().getSic();
+                return newOffset;
             }
             case 150: {
-                return this.cat150Record.decode(input, offset, inputLength);
+                int newOffset = this.cat150Record.decode(input, offset, inputLength);
+                this.sacSicCode = "NA";
+                return newOffset;
             }
             default:
                 throw new NotImplementedException();
@@ -151,5 +166,15 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
      */
     public AbstractMap<String, Object> getAdditionalInfo() {
         return this.additionalInfo;
+    }
+
+    /**
+     * The SAC/SIC code of the Asterix Record. Cat150 message will always have NA as a value, since
+     * this information is not present.
+     *
+     * @return
+     */
+    public String getSacSicCode() {
+        return sacSicCode;
     }
 }
