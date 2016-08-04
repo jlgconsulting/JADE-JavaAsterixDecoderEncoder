@@ -6,7 +6,10 @@ package jlg.jade.asterix.cat048;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
+import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Cat048Item260 - ACAS Resolution Advisory Report
@@ -16,7 +19,11 @@ import java.util.BitSet;
  */
 public class Cat048Item260 extends FixedLengthAsterixData {
     private int threatTypeIndicator;            // TTI
+    private int TIDModeSAddress;                // TID ModeS Address
     private int multiThreatIndicator;           // MTI / MTE
+    private int raTerminated;                   // RAT
+
+    private List<String> RAComplementList = new ArrayList<>();         // RAC
 
     private int ARABit41;
     private int ARABit42;
@@ -28,6 +35,10 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int ARABit48;
     private int ARABit49;
     private int ARABit50;
+    private int TIDAltitude;
+    private int TIDRange;
+    private int TIDBearing;
+
     @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.SEVEN_BYTES.getValue();
@@ -38,8 +49,8 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         BitSet bs = BitSet.valueOf(input);
 
         // TTI
-        final int TTI_BIT1_INDEX = 62;
-        final int TTI_BIT0_INDEX = 61;
+        final int TTI_BIT1_INDEX = 27;
+        final int TTI_BIT0_INDEX = 26;
 
         int TTIBit1Value = 0;
         int TTIBit0Value = 0;
@@ -55,6 +66,33 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         this.threatTypeIndicator = TTIBit1Value * 2 + TTIBit0Value;
 
         appendItemDebugMsg("TTI", this.threatTypeIndicator);
+
+        // when TTI = 1 then TID should contain a ModeS Address
+
+        if (this.threatTypeIndicator == 1) {
+
+            // create a String Builder to store the binary representation of the last 4 bytes for item260
+            StringBuilder sb = new StringBuilder();
+            for (int i = 3; i <= 6; i++) {
+                // for each of the last 4 bytes in the input append the zero padded representation to the string builder
+                String byteBinaryRepresentation = Integer.toBinaryString(input[i]);
+                String zeroPaddedBinaryRepresentation = ("00000000" + byteBinaryRepresentation)
+                        .substring(byteBinaryRepresentation.length());
+
+                sb.append(zeroPaddedBinaryRepresentation);
+            }
+
+            // extract from the string builder the 24 bits
+            String TIDModeSAddressRepresentation = sb.toString().substring(7, 30);
+
+            // parse the extracted 24 bits binary represented string to get the ModeS Address
+            this.TIDModeSAddress = Integer.parseInt(TIDModeSAddressRepresentation, 2);
+
+            appendItemDebugMsg("TID ModeS Address", this.TIDModeSAddress);
+
+        }
+
+        // when TTI = 2 then TID should contain altitude, range and bearing
 
         // ARA - bits 41-50
         final int ARA_BIT41_INDEX = 15;
@@ -125,7 +163,7 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("ARABit49", this.ARABit49);
 
-        if(bs.get(ARA_BIT50_INDEX)) {
+        if (bs.get(ARA_BIT50_INDEX)) {
             this.ARABit50 = 1;
         }
 
@@ -134,11 +172,48 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         // MTI / MTE
         final int MTI_BIT_INDEX = 28;
 
-        if(bs.get(MTI_BIT_INDEX)) {
+        if (bs.get(MTI_BIT_INDEX)) {
             this.multiThreatIndicator = 1;
         }
 
         appendItemDebugMsg("MTI", this.multiThreatIndicator);
+
+        // RAT
+        final int RAT_BIT_INDEX = 29;
+
+        if (bs.get(RAT_BIT_INDEX)) {
+            this.raTerminated = 1;
+        }
+
+        appendItemDebugMsg("RAT", this.raTerminated);
+
+        // RAC
+        final int RAC_BIT1_INDEX = 17;
+        final int RAC_BIT2_INDEX = 16;
+        final int RAC_BIT3_INDEX = 31;
+        final int RAC_BIT4_INDEX = 30;
+
+        if (bs.get(RAC_BIT1_INDEX)) {
+            this.RAComplementList.add("Do not pass below");
+        }
+
+        if (bs.get(RAC_BIT2_INDEX)) {
+            this.RAComplementList.add("Do not pass above");
+        }
+
+        if (bs.get(RAC_BIT3_INDEX)) {
+            this.RAComplementList.add("Do not turn left");
+        }
+
+        if (bs.get(RAC_BIT4_INDEX)) {
+            this.RAComplementList.add("Do not turn right");
+        }
+
+        if (!RAComplementList.isEmpty()) {
+            String RAComplementListRepresentation = String.join(",", RAComplementList.stream()
+                    .map(s -> s.toString()).collect(Collectors.toList()));
+            appendItemDebugMsg("RA complements list", RAComplementListRepresentation);
+        }
     }
 
     @Override
@@ -192,5 +267,32 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
     public int getMultiThreatIndicator() {
         return multiThreatIndicator;
+    }
+
+    public int getRaTerminated() {
+        return raTerminated;
+    }
+
+    public List<String> getRAComplementList() {
+        return RAComplementList;
+    }
+
+    /**
+     * @return Returns the ModeS Address contained in the Threat Identity Data when Threat Type Indicator is 1
+     */
+    public int getTIDModeSAddress() {
+        return TIDModeSAddress;
+    }
+
+    public int getTIDAltitude() {
+        return TIDAltitude;
+    }
+
+    public int getTIDRange() {
+        return TIDRange;
+    }
+
+    public int getTIDBearing() {
+        return TIDBearing;
     }
 }

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ARACalculator {
-    private static List<String> araList = new ArrayList<>();
+    private List<String> araList = new ArrayList<>();
 
-    public static List<String> getARAList(Cat048Item260 item260, TCASVersion version) {
+    public List<String> getARAList(Cat048Item260 item260, TCASVersion version) {
         switch (version) {
             case VERSION_604:
                 generateV604ARAList(item260);
@@ -22,7 +22,7 @@ public class ARACalculator {
         return araList;
     }
 
-    private static void generateV604ARAList(Cat048Item260 item260) {
+    private void generateV604ARAList(Cat048Item260 item260) {
 
         if (item260.getARABit41() == 1) {
             araList.add("Climb");
@@ -65,7 +65,7 @@ public class ARACalculator {
         }
     }
 
-    private static void generateV70ARAList(Cat048Item260 item260) {
+    private void generateV70ARAList(Cat048Item260 item260) {
 
         if (item260.getARABit41() == 1) {
 
@@ -139,8 +139,7 @@ public class ARACalculator {
 
             if (item260.getARABit47() == 1) {
                 araList.add("RA is a sense reversal");
-            }
-            else {
+            } else {
                 araList.add("RA is not a sense reversal");
             }
 
