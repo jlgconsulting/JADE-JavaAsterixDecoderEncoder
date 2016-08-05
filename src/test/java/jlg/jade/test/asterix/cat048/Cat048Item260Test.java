@@ -101,7 +101,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
     @Test
     public void the_decode_method_should_correctly_decode_threat_identity_data_altitude_range_and_bearing() {
         // arrange
-        byte[] input = {48, (byte) 128, 0, 5, 0, 29, 52};
+        byte[] input = {48, (byte) 128, 0, 8, 0, 29, 52};
         int offset = 0;
         Cat048Item260 item260 = new Cat048Item260();
 

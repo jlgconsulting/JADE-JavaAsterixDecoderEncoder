@@ -5,6 +5,7 @@ package jlg.jade.asterix.cat048;
 
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
+import jlg.jade.common.ModeCCode;
 
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -39,6 +40,36 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int TIDRange;
     private int TIDBearing;
 
+    // TIDAltitude ModeC bits
+    private int modeCAltitudeCodeBitA1 = 0;
+    private int modeCAltitudeCodeBitA2 = 0;
+    private int modeCAltitudeCodeBitA4 = 0;
+    private int modeCAltitudeCodeBitB1 = 0;
+    private int modeCAltitudeCodeBitB2 = 0;
+    private int modeCAltitudeCodeBitB4 = 0;
+    private int modeCAltitudeCodeBitC1 = 0;
+    private int modeCAltitudeCodeBitC2 = 0;
+    private int modeCAltitudeCodeBitC4 = 0;
+
+    // TID Altitude ModeC bit D1 is never used according to ICAO documentation
+    private int modeCAltitudeCodeBitD1 = 0;
+    private int modeCAltitudeCodeBitD2 = 0;
+    private int modeCAltitudeCodeBitD4 = 0;
+
+    // TID Altitude ModeC indexes in order
+    private final int BIT_C1_INDEX = 25;
+    private final int BIT_A1_INDEX = 24;
+    private final int BIT_C2_INDEX = 39;
+    private final int BIT_A2_INDEX = 38;
+    private final int BIT_C4_INDEX = 37;
+    private final int BIT_A4_INDEX = 36;
+    private final int BIT_B1_INDEX = 34;
+    private final int BIT_B2_INDEX = 32;
+    private final int BIT_D2_INDEX = 47;
+    private final int BIT_B4_INDEX = 46;
+    private final int BIT_D4_INDEX = 45;
+
+
     @Override
     protected int setSizeInBytes() {
         return AsterixItemLength.SEVEN_BYTES.getValue();
@@ -68,7 +99,6 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         appendItemDebugMsg("TTI", this.threatTypeIndicator);
 
         // when TTI = 1 then TID should contain a ModeS Address
-
         if (this.threatTypeIndicator == 1) {
 
             // create a String Builder to store the binary representation of the last 4 bytes for item260
@@ -93,6 +123,86 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         }
 
         // when TTI = 2 then TID should contain altitude, range and bearing
+        if (this.threatTypeIndicator == 2) {
+            // altitude
+            // set individual Gray Code bits
+            // Mode C altitude code of threat. Bit ordering is
+            // C1 A1 C2 A2 C4 A4 0 B1 D1 B2 D2 B4 D4
+
+            if (bs.get(BIT_C1_INDEX)) {
+                modeCAltitudeCodeBitC1 = 1;
+            }
+
+            if (bs.get(BIT_A1_INDEX)) {
+                modeCAltitudeCodeBitA1 = 1;
+            }
+
+            if (bs.get(BIT_C2_INDEX)) {
+                modeCAltitudeCodeBitC2 = 1;
+            }
+
+            if (bs.get(BIT_A2_INDEX)) {
+                modeCAltitudeCodeBitA2 = 1;
+            }
+
+            if (bs.get(BIT_C4_INDEX)) {
+                modeCAltitudeCodeBitC4 = 1;
+            }
+
+            if (bs.get(BIT_A4_INDEX)) {
+                modeCAltitudeCodeBitA4 = 1;
+            }
+
+            if (bs.get(BIT_B1_INDEX)) {
+                modeCAltitudeCodeBitB1 = 1;
+            }
+
+            // bit D1 is never used so we don't have an index and we do not check it
+
+            if (bs.get(BIT_B2_INDEX)) {
+                modeCAltitudeCodeBitB2 = 1;
+            }
+
+            if (bs.get(BIT_D2_INDEX)) {
+                modeCAltitudeCodeBitD2 = 1;
+            }
+
+            if (bs.get(BIT_B4_INDEX)) {
+                modeCAltitudeCodeBitB4 = 1;
+            }
+
+            if (bs.get(BIT_D4_INDEX)) {
+                modeCAltitudeCodeBitD4 = 1;
+            }
+
+            // build 2 Strings representing the GrayCode 500ft and 100ft increments
+
+            // 500ft increments are stored in bits D2 D4 A1 A2 A4 B1 B2 B4
+            StringBuilder fiveHundredIncrementsBuilder = new StringBuilder();
+            fiveHundredIncrementsBuilder.append(modeCAltitudeCodeBitD2)
+                    .append(modeCAltitudeCodeBitD4).append(modeCAltitudeCodeBitA1)
+                    .append(modeCAltitudeCodeBitA2).append(modeCAltitudeCodeBitA4)
+                    .append(modeCAltitudeCodeBitB1).append(modeCAltitudeCodeBitB2)
+                    .append(modeCAltitudeCodeBitB4);
+
+            int fiveHundredIncrementsGrayCode = Integer.parseInt(fiveHundredIncrementsBuilder.toString(), 2);
+
+            // 100ft increments are stored in bits C1 C2 C4
+            StringBuilder oneHundredIncrementsBuilder = new StringBuilder();
+            oneHundredIncrementsBuilder.append(modeCAltitudeCodeBitC1)
+                    .append(modeCAltitudeCodeBitC2).append(modeCAltitudeCodeBitC4);
+
+            int oneHundredIncrementsGrayCode = Integer.parseInt(oneHundredIncrementsBuilder.toString(), 2);
+
+            // pass the 2 variables to the ModeC Gray Code to feet calculator
+            this.TIDAltitude = ModeCCode.grayCodeToFeet(fiveHundredIncrementsGrayCode, oneHundredIncrementsGrayCode);
+
+            appendItemDebugMsg("TID Altitude", this.TIDAltitude);
+
+            // range
+
+            // bearing
+        }
 
         // ARA - bits 41-50
         final int ARA_BIT41_INDEX = 15;
