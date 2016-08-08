@@ -20,6 +20,11 @@ public class Cat048Item230 extends FixedLengthAsterixData {
     private int modeSSpecificServiceCapability;     // MSSC
     private int altitudeReportingCapability;        // ARC
     private int aircraftIdentificationCapability;   // AIC
+    private int BDS10Bit16;
+    private int BDS10Bit37;
+    private int BDS10Bit38;
+    private int BDS10Bit39;
+    private int BDS10Bit40;
 
     @Override
     protected int setSizeInBytes() {
@@ -80,6 +85,44 @@ public class Cat048Item230 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("AIC (Aircraft identification capability)",
                            this.aircraftIdentificationCapability);
+
+        // BDS Register 1,0 bits 16 / 37-40
+        final int BDS10_BIT16_INDEX = 4;
+        final int BDS10_BIT37_INDEX = 3;
+        final int BDS10_BIT38_INDEX = 2;
+        final int BDS10_BIT39_INDEX = 1;
+        final int BDS10_BIT40_INDEX = 0;
+
+        if (secondByteBits.get(BDS10_BIT16_INDEX)) {
+            this.BDS10Bit16 = 1;
+        }
+
+        appendItemDebugMsg("BDS 1,0 bit 16", this.BDS10Bit16);
+
+        if (secondByteBits.get(BDS10_BIT37_INDEX)) {
+            this.BDS10Bit37 = 1;
+        }
+
+        appendItemDebugMsg("BDS 1,0 bit 37", this.BDS10Bit37);
+
+        if (secondByteBits.get(BDS10_BIT38_INDEX)) {
+            this.BDS10Bit38 = 1;
+        }
+
+        appendItemDebugMsg("BDS 1,0 bit 38", this.BDS10Bit38);
+
+        if (secondByteBits.get(BDS10_BIT39_INDEX)) {
+            this.BDS10Bit39 = 1;
+        }
+
+        appendItemDebugMsg("BDS 1,0 bit 39", this.BDS10Bit39);
+
+        if (secondByteBits.get(BDS10_BIT40_INDEX)) {
+            this.BDS10Bit40 = 1;
+        }
+
+        appendItemDebugMsg("BDS 1,0 bit 40", this.BDS10Bit40);
+
     }
 
     @Override
@@ -201,5 +244,25 @@ public class Cat048Item230 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("STAT (Flight Status)", this.flightStatus);
 
+    }
+
+    public int getBDS10Bit16() {
+        return BDS10Bit16;
+    }
+
+    public int getBDS10Bit37() {
+        return BDS10Bit37;
+    }
+
+    public int getBDS10Bit38() {
+        return BDS10Bit38;
+    }
+
+    public int getBDS10Bit39() {
+        return BDS10Bit39;
+    }
+
+    public int getBDS10Bit40() {
+        return BDS10Bit40;
     }
 }

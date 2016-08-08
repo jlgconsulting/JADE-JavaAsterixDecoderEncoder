@@ -80,4 +80,22 @@ public class Cat048Item230Test extends MandatoryFixedLengthAsterixTests<Cat048It
         // assert
         assertEquals("Item not decoded correctly - STAT", expected, item230.getFlightStatus());
     }
+
+    @Test
+    public void the_decode_method_should_correctly_decode_bds_10_register_bits() {
+        // arrange
+        byte[] input = {32, (byte) 255};
+        int offset = 0;
+        Cat048Item230 item230 = new Cat048Item230();
+
+        // act
+        item230.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 16", 1, item230.getBDS10Bit16());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 37", 1, item230.getBDS10Bit37());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 38", 1, item230.getBDS10Bit38());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 39", 1, item230.getBDS10Bit39());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 40", 1, item230.getBDS10Bit40());
+    }
 }

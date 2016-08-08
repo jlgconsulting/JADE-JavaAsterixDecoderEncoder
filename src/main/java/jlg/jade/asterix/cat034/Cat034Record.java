@@ -25,7 +25,7 @@ public class Cat034Record extends FspecAsterixData {
     private Cat034Item120 item120;
     private Cat034Item090 item090;
     private ReservedAsterixField reservedExpansionField;
-    private ReservedAsterixField specialPurposeField;
+    private ReservedAsterixField reservedSpecialPurposeField;
 
 
     public Cat034Record() {
@@ -118,14 +118,14 @@ public class Cat034Record extends FspecAsterixData {
         }
 
         if(fspecDataAtIndex(FSPEC.I034_SP)){
-            this.specialPurposeField = this.reservedFieldFactory.createSpField();
-            offset = specialPurposeField.decode(input, offset, length);
-            appendDebugMsg(this.specialPurposeField.getDebugString());
+            this.reservedSpecialPurposeField = this.reservedFieldFactory.createSpField();
+            offset = reservedSpecialPurposeField.decode(input, offset, length);
+            appendDebugMsg(this.reservedSpecialPurposeField.getDebugString());
         }
 
         appendDebugMsg("*** End of Category 034 Record ***");
         appendNewLine();
-        return  offset;
+        return offset;
     }
 
     @Override
@@ -185,8 +185,8 @@ public class Cat034Record extends FspecAsterixData {
         return reservedExpansionField;
     }
 
-    public ReservedAsterixField getSpecialPurposeField() {
-        return specialPurposeField;
+    public ReservedAsterixField getReservedSpecialPurposeField() {
+        return reservedSpecialPurposeField;
     }
 
     private static class FSPEC{

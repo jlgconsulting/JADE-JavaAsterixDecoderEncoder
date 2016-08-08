@@ -188,9 +188,9 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             appendItemCounterMsg("RE", this.itemRePresent, this.itemReInvalid);
         }
 
-        if (record.getSpecialPurposeField() != null) {
+        if (record.getReservedSpecialPurposeField() != null) {
             this.itemSpPresent += 1;
-            if (!record.getSpecialPurposeField().isValid()) {
+            if (!record.getReservedSpecialPurposeField().isValid()) {
                 this.itemSpInvalid += 1;
             }
             appendItemCounterMsg("SP", this.itemSpPresent, this.itemSpInvalid);

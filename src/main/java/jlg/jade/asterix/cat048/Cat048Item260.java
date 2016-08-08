@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
  * threat identity data.
  */
 public class Cat048Item260 extends FixedLengthAsterixData {
+    private TCASVersion determinedTCASVersion = TCASVersion.VERSION_604;
     private int threatTypeIndicator;            // TTI
     private int TIDModeSAddress;                // TID ModeS Address
     private int multiThreatIndicator;           // MTI / MTE
@@ -36,10 +37,11 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int ARABit48;
     private int ARABit49;
     private int ARABit50;
+    private String auralCode;
     private int TIDAltitude;
     private int TIDRange;
-    private int TIDBearing;
 
+    private int TIDBearing;
     // TIDAltitude ModeC bits
     private int modeCAltitudeCodeBitA1 = 0;
     private int modeCAltitudeCodeBitA2 = 0;
@@ -49,13 +51,13 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int modeCAltitudeCodeBitB4 = 0;
     private int modeCAltitudeCodeBitC1 = 0;
     private int modeCAltitudeCodeBitC2 = 0;
-    private int modeCAltitudeCodeBitC4 = 0;
 
+    private int modeCAltitudeCodeBitC4 = 0;
     // TID Altitude ModeC bit D1 is never used according to ICAO documentation
     private int modeCAltitudeCodeBitD1 = 0;
     private int modeCAltitudeCodeBitD2 = 0;
-    private int modeCAltitudeCodeBitD4 = 0;
 
+    private int modeCAltitudeCodeBitD4 = 0;
     // TID Altitude ModeC indexes in order
     private final int BIT_C1_INDEX = 25;
     private final int BIT_A1_INDEX = 24;
@@ -67,7 +69,60 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private final int BIT_B2_INDEX = 32;
     private final int BIT_D2_INDEX = 47;
     private final int BIT_B4_INDEX = 46;
+
     private final int BIT_D4_INDEX = 45;
+    // TID Range bits
+    private int tidRangeBit1Value = 0;
+    private int tidRangeBit2Value = 0;
+    private int tidRangeBit3Value = 0;
+    private int tidRangeBit4Value = 0;
+    private int tidRangeBit5Value = 0;
+    private int tidRangeBit6Value = 0;
+
+    private int tidRangeBit7Value = 0;
+    // TID Range indexes in bit set
+    private final int BIT_TID_RANGE1_INDEX = 44;
+    private final int BIT_TID_RANGE2_INDEX = 43;
+    private final int BIT_TID_RANGE3_INDEX = 42;
+    private final int BIT_TID_RANGE4_INDEX = 41;
+    private final int BIT_TID_RANGE5_INDEX = 40;
+    private final int BIT_TID_RANGE6_INDEX = 55;
+
+    private final int BIT_TID_RANGE7_INDEX = 54;
+    // TID Bearing
+    private int tidBearingBit1Value = 0;
+    private int tidBearingBit2Value = 0;
+    private int tidBearingBit3Value = 0;
+    private int tidBearingBit4Value = 0;
+    private int tidBearingBit5Value = 0;
+
+    private int tidBearingBit6Value = 0;
+    // TID Bearing indexes in bit set
+    private final int BIT_TID_BEARING1_INDEX = 53;
+    private final int BIT_TID_BEARING2_INDEX = 52;
+    private final int BIT_TID_BEARING3_INDEX = 51;
+    private final int BIT_TID_BEARING4_INDEX = 50;
+    private final int BIT_TID_BEARING5_INDEX = 49;
+    private final int BIT_TID_BEARING6_INDEX = 48;
+
+    public Cat048Item260() {
+    }
+
+    /**
+     * This constructor is used for passing the value of the BDS Register 1,0 bit 39 ( bit71 in the
+     * BDS 1,0 Data Link Capability Report for
+     * Guidance Material for Mode S-Specific Protocol Application Avionics / Table A-7 )
+     * TODO: Further inquiries are needed to differentiate between TCAS 7.0 and 7.1
+     * @param bdsRegister10Bit39
+     */
+    public Cat048Item260(int bdsRegister10Bit39) {
+        if(bdsRegister10Bit39 == 1) {
+            this.determinedTCASVersion = TCASVersion.VERSION_70;
+        }
+        else {
+            this.determinedTCASVersion = TCASVersion.VERSION_604;
+        }
+    }
 
 
     @Override
@@ -185,23 +240,93 @@ public class Cat048Item260 extends FixedLengthAsterixData {
                     .append(modeCAltitudeCodeBitB1).append(modeCAltitudeCodeBitB2)
                     .append(modeCAltitudeCodeBitB4);
 
-            int fiveHundredIncrementsGrayCode = Integer.parseInt(fiveHundredIncrementsBuilder.toString(), 2);
+            int fiveHundredIncrementsGrayCode = Integer
+                    .parseInt(fiveHundredIncrementsBuilder.toString(), 2);
 
             // 100ft increments are stored in bits C1 C2 C4
             StringBuilder oneHundredIncrementsBuilder = new StringBuilder();
             oneHundredIncrementsBuilder.append(modeCAltitudeCodeBitC1)
                     .append(modeCAltitudeCodeBitC2).append(modeCAltitudeCodeBitC4);
 
-            int oneHundredIncrementsGrayCode = Integer.parseInt(oneHundredIncrementsBuilder.toString(), 2);
+            int oneHundredIncrementsGrayCode = Integer
+                    .parseInt(oneHundredIncrementsBuilder.toString(), 2);
 
             // pass the 2 variables to the ModeC Gray Code to feet calculator
-            this.TIDAltitude = ModeCCode.grayCodeToFeet(fiveHundredIncrementsGrayCode, oneHundredIncrementsGrayCode);
+            this.TIDAltitude = ModeCCode
+                    .grayCodeToFeet(fiveHundredIncrementsGrayCode, oneHundredIncrementsGrayCode);
 
             appendItemDebugMsg("TID Altitude", this.TIDAltitude);
 
             // range
+            if (bs.get(BIT_TID_RANGE1_INDEX)) {
+                tidRangeBit1Value = 1;
+            }
+
+            if (bs.get(BIT_TID_RANGE2_INDEX)) {
+                tidRangeBit2Value = 1;
+            }
+
+            if (bs.get(BIT_TID_RANGE3_INDEX)) {
+                tidRangeBit3Value = 1;
+            }
+
+            if (bs.get(BIT_TID_RANGE4_INDEX)) {
+                tidRangeBit4Value = 1;
+            }
+
+            if (bs.get(BIT_TID_RANGE5_INDEX)) {
+                tidRangeBit5Value = 1;
+            }
+
+            if (bs.get(BIT_TID_RANGE6_INDEX)) {
+                tidRangeBit6Value = 1;
+            }
+
+            if (bs.get(BIT_TID_RANGE7_INDEX)) {
+                tidRangeBit7Value = 1;
+            }
+
+            StringBuilder tidRangeBinaryRepresentation = new StringBuilder();
+            tidRangeBinaryRepresentation.append(tidRangeBit1Value).append(tidRangeBit2Value)
+                    .append(tidRangeBit3Value).append(tidRangeBit4Value).append(tidRangeBit5Value)
+                    .append(tidRangeBit6Value).append(tidRangeBit7Value);
+
+            this.TIDRange = Integer.parseInt(tidRangeBinaryRepresentation.toString(), 2);
+
+            appendItemDebugMsg("TID Range", this.TIDRange);
 
             // bearing
+            if (bs.get(BIT_TID_BEARING1_INDEX)) {
+                tidBearingBit1Value = 1;
+            }
+
+            if (bs.get(BIT_TID_BEARING2_INDEX)) {
+                tidBearingBit2Value = 1;
+            }
+
+            if (bs.get(BIT_TID_BEARING3_INDEX)) {
+                tidBearingBit3Value = 1;
+            }
+
+            if (bs.get(BIT_TID_BEARING4_INDEX)) {
+                tidBearingBit4Value = 1;
+            }
+
+            if (bs.get(BIT_TID_BEARING5_INDEX)) {
+                tidBearingBit5Value = 1;
+            }
+
+            if (bs.get(BIT_TID_BEARING6_INDEX)) {
+                tidBearingBit6Value = 1;
+            }
+
+            StringBuilder tidBearingBinaryRepresentation = new StringBuilder();
+            tidBearingBinaryRepresentation.append(tidBearingBit1Value).append(tidBearingBit2Value)
+                    .append(tidBearingBit3Value).append(tidBearingBit4Value).append(tidBearingBit5Value).append(tidBearingBit6Value);
+
+            this.TIDBearing = Integer.parseInt(tidBearingBinaryRepresentation.toString(), 2);
+
+            appendItemDebugMsg("TID Bearing", this.TIDBearing);
         }
 
         // ARA - bits 41-50
@@ -285,6 +410,13 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         if (bs.get(MTI_BIT_INDEX)) {
             this.multiThreatIndicator = 1;
         }
+
+        // Aural
+
+        AuralCalculator auralCalculator = new AuralCalculator();
+        this.auralCode = auralCalculator.determineAuralCode(this, this.determinedTCASVersion);
+
+        appendItemDebugMsg("Aural code", this.auralCode);
 
         appendItemDebugMsg("MTI", this.multiThreatIndicator);
 
@@ -404,5 +536,9 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
     public int getTIDBearing() {
         return TIDBearing;
+    }
+
+    public String getAuralCode() {
+        return auralCode;
     }
 }
