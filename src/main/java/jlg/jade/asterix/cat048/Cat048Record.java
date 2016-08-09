@@ -37,6 +37,7 @@ public class Cat048Record extends FspecAsterixData {
     private Cat048Item050 item050;
     private Cat048Item065 item065;
     private Cat048Item060 item060;
+
     private ReservedAsterixField reservedSpecialPurposeField;
     private ReservedAsterixField reservedExpansionField;
 
@@ -237,6 +238,7 @@ public class Cat048Record extends FspecAsterixData {
 
         // first octet
         public final static int I048_010 = 7;
+
         public final static int I048_140 = 6;
         public final static int I048_020 = 5;
         public final static int I048_040 = 4;
@@ -245,8 +247,8 @@ public class Cat048Record extends FspecAsterixData {
         public final static int I048_130 = 1;
         // second octet
         public final static int I048_220 = 15;
-
         public final static int I048_240 = 14;
+
         public final static int I048_250 = 13;
         public final static int I048_161 = 12;
         public final static int I048_042 = 11;
@@ -254,8 +256,8 @@ public class Cat048Record extends FspecAsterixData {
         public final static int I048_170 = 9;
         // third octet
         public final static int I048_210 = 23;
-
         public final static int I048_030 = 22;
+
         public final static int I048_080 = 21;
         public final static int I048_100 = 20;
         public final static int I048_110 = 19;
@@ -263,15 +265,14 @@ public class Cat048Record extends FspecAsterixData {
         public final static int I048_230 = 17;
         // fourth octet
         public final static int I048_260 = 31;
-
         public final static int I048_055 = 30;
+
         public final static int I048_050 = 29;
         public final static int I048_065 = 28;
         public final static int I048_060 = 27;
         public final static int I048_SP = 26;
         public final static int I048_RE = 25;
     }
-
     public Cat048Item010 getItem010() {
         return item010;
     }
@@ -374,5 +375,13 @@ public class Cat048Record extends FspecAsterixData {
 
     public Cat048Item060 getItem060() {
         return item060;
+    }
+
+    public ReservedAsterixField getReservedSpecialPurposeField() {
+        return reservedSpecialPurposeField;
+    }
+
+    public ReservedAsterixField getReservedExpansionField() {
+        return reservedExpansionField;
     }
 }

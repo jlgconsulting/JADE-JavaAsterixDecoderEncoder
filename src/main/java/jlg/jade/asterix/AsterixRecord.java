@@ -8,6 +8,7 @@ package jlg.jade.asterix;
 
 import jlg.jade.asterix.cat004.Cat004Record;
 import jlg.jade.asterix.cat034.Cat034Record;
+import jlg.jade.asterix.cat048.Cat048Record;
 import jlg.jade.asterix.cat062.Cat062Record;
 import jlg.jade.asterix.cat065.Cat065Record;
 import jlg.jade.asterix.cat150.Cat150Record;
@@ -29,8 +30,8 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     private Cat065Record cat065Record;
     private Cat004Record cat004Record;
     private Cat034Record cat034Record;
+    private Cat048Record cat048Record;
     private Cat150Record cat150Record;
-
     /**
      * This field is used by 3rd party applications using this library. It helps to
      * add more informaiton on the ASTERIX record, that can simplify the logic in
@@ -54,6 +55,7 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 break;
             }
             case 48: {
+                this.cat048Record = new Cat048Record();
                 break;
             }
             case 62: {
@@ -97,7 +99,10 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
                 return newOffset;
             }
             case 48: {
-                break;
+                int newOffset = this.cat048Record.decode(input, offset, inputLength);
+                this.sacSicCode = cat048Record.getItem010().getSac() + "/" + cat048Record
+                        .getItem010().getSic();
+                return newOffset;
             }
             case 62: {
                 int newOffset = this.cat062Record.decode(input, offset, inputLength);
@@ -119,8 +124,6 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
             default:
                 throw new NotImplementedException();
         }
-
-        return offset;
     }
 
     /**
@@ -156,6 +159,8 @@ public class AsterixRecord extends DebugMessageSource implements Decodable, Enco
     public Cat034Record getCat034Record() {
         return cat034Record;
     }
+
+    public Cat048Record getCat048Record() { return cat048Record; }
 
     public Cat150Record getCat150Record() {
         return cat150Record;

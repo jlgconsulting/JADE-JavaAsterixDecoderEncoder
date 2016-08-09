@@ -13,6 +13,8 @@ public interface AsterixDecodingReport {
 
     Cat034ItemCounter getCat034ItemCounter();
 
+    Cat048ItemCounter getCat048ItemCounter();
+
     Cat062ItemCounter getCat062ItemCounter();
 
     Cat065ItemCounter getCat065ItemCounter();

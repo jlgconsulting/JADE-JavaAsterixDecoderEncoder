@@ -76,6 +76,9 @@ public class DefaultDecodingReport implements AsterixDecodingReport {
     }
 
     @Override
+    public Cat048ItemCounter getCat048ItemCounter() { return cat048ItemCounter; }
+
+    @Override
     public Cat062ItemCounter getCat062ItemCounter() {
         return cat062ItemCounter;
     }

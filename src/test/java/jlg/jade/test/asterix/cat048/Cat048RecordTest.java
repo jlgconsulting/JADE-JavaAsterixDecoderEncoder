@@ -193,7 +193,7 @@ public class Cat048RecordTest extends MandatoryFspecAsterixTests<Cat048Record> {
         assertEquals("Item not decoded correctly - Item260 - ACAS RA Report -- MTI", 0,
                      cat048Record.getItem260().getMultiThreatIndicator());
 
-        assertEquals("Item not decoded correctly - Item260 - ACAS RA Report -- Aural", "MVS",
+        assertEquals("Item not decoded correctly - Item260 - ACAS RA Report -- Aural", "CCC, or CXC-CXC, or IC-IC, or CCN-CCN",
                      cat048Record.getItem260().getAuralCode());
 
 
