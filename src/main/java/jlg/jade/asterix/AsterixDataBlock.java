@@ -53,6 +53,12 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
                 case 34: {
                     appendNewLine();
                     appendDebugMsg(record.getCat034Record().getDebugString());
+                    break;
+                }
+                case 48: {
+                    appendNewLine();
+                    appendDebugMsg(record.getCat048Record().getDebugString());
+                    break;
                 }
                 case 62: {
                     appendNewLine();

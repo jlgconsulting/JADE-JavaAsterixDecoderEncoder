@@ -92,6 +92,42 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
+    @Parameters({"128, 0, Climb", "64, 0, Don’t descend", "32, 0, Don’t descend faster than 500 fpm"})
+    public void the_decode_method_should_correctly_decode_ra_message_list_for_v604(int secondInputByte, int thirdInputByte, String expectedMessage) {
+        // arrange
+        byte[] input = {48, (byte) secondInputByte, (byte) thirdInputByte, 0, 0, 0, 0};
+        int offset = 0;
+        int BDSRegister10Bit39 = 0;
+        Cat048Item260 item260 = new Cat048Item260(BDSRegister10Bit39);
+        List<String> expectedAraList = new ArrayList<>(Arrays.asList(expectedMessage));
+
+        // act
+        item260.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("ARA message lists don't match", expectedAraList, item260.getARAList());
+    }
+
+    @Test
+    public void the_decode_method_should_correctly_decode_ra_message_list_for_v70() {
+        // arrange
+        byte[] input = {48, (byte) 192, 0, 0, 0, 0, 0};
+        int offset = 0;
+        int BDSRegister10Bit39 = 1;
+        Cat048Item260 item260 = new Cat048Item260(BDSRegister10Bit39);
+        List<String> expectedAraList = new ArrayList<>(
+                Arrays.asList("RA is corrective", "Upward sense RA has been generated",
+                              "RA is not increased rate", "RA is not a sense reversal",
+                              "RA is not altitude crossing", "RA is vertical speed limit"));
+
+        // act
+        item260.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("ARA message lists don't match", expectedAraList, item260.getARAList());
+    }
+
+    @Test
     public void the_decode_method_should_correctly_decode_rac_list() {
         // arrange
         byte[] input = {48, (byte) 128, 3, 0, 0, 0, 0};

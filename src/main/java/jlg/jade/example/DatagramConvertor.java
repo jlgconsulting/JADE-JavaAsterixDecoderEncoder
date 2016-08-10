@@ -55,6 +55,13 @@ class DatagramConvertor implements Runnable {
         if(allowedCategories.contains("150")){
             categoriesToDecode.add(150);
         }
+        if(allowedCategories.contains("48")){
+            categoriesToDecode.add(48);
+        }
+        if(allowedCategories.contains("34")){
+            categoriesToDecode.add(34);
+        }
+
         AsterixDecoder asterixDecoder = new AsterixDecoder(categoriesToDecode);
 
         long startTime = System.currentTimeMillis();

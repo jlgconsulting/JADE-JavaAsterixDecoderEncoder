@@ -11,7 +11,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-class JadeApplication {
+public class JadeApplication {
 
     public static void main(String[] args) {
         System.out.println("Java Asterix Decoder Encoder");

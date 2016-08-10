@@ -38,6 +38,7 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int ARABit49;
     private int ARABit50;
     private String auralCode;
+    private List<String> ARAList = new ArrayList<>();
     private int TIDAltitude;
     private int TIDRange;
     private int TIDBearing;
@@ -413,6 +414,8 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             this.multiThreatIndicator = 1;
         }
 
+        appendItemDebugMsg("MTI", this.multiThreatIndicator);
+
         // Aural
 
         AuralCalculator auralCalculator = new AuralCalculator();
@@ -420,7 +423,16 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("Aural code", this.auralCode);
 
-        appendItemDebugMsg("MTI", this.multiThreatIndicator);
+        // ARA List
+        ARACalculator araCalculator = new ARACalculator();
+        this.ARAList.addAll(araCalculator.getARAList(this, this.determinedTCASVersion));
+
+        if (!ARAList.isEmpty()) {
+            String ARAListRepresentation = String
+                    .join(",", ARAList.stream().map(s -> s.toString()).collect(
+                            Collectors.toList()));
+            appendItemDebugMsg("ARA list", ARAListRepresentation);
+        }
 
         // RAT
         final int RAT_BIT_INDEX = 29;
@@ -542,5 +554,9 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
     public String getAuralCode() {
         return auralCode;
+    }
+
+    public List<String> getARAList() {
+        return ARAList;
     }
 }
