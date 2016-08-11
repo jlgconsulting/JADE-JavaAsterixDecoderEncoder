@@ -73,7 +73,8 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         item260.decode(input, offset, input.length);
 
         // assert
-        assertEquals("Item not decoded correctly - Aural", "CCC, or CXC-CXC, or IC-IC, or CCN-CCN", item260.getAuralCode());
+        assertEquals("Item not decoded correctly - Aural", "CCC, or CXC-CXC, or IC-IC, or CCN-CCN",
+                     item260.getAuralCode());
     }
 
     @Test
@@ -93,7 +94,8 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
 
     @Test
     @Parameters({"128, 0, Climb", "64, 0, Don’t descend", "32, 0, Don’t descend faster than 500 fpm"})
-    public void the_decode_method_should_correctly_decode_ra_message_list_for_v604(int secondInputByte, int thirdInputByte, String expectedMessage) {
+    public void the_decode_method_should_correctly_decode_ra_message_list_for_v604(
+            int secondInputByte, int thirdInputByte, String expectedMessage) {
         // arrange
         byte[] input = {48, (byte) secondInputByte, (byte) thirdInputByte, 0, 0, 0, 0};
         int offset = 0;
@@ -145,7 +147,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
-    @Parameters({"5, 0, 29, 52, 4196173", "197, 97, 95, 152, 5789670"})
+    @Parameters({"5, 0, 29, 52, 4196173", "197, 97, 95, 152, 5789670", "5, 50, 166, 112, 5024156"})
     public void the_decode_method_should_correctly_decode_threat_identity_data_as_mode_s_address(
             int fourthInputByte, int fifthInputByte, int sixtInputByte, int seventhInputByte,
             int expected) {
@@ -165,9 +167,15 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
-    public void the_decode_method_should_correctly_decode_threat_identity_data_altitude_range_and_bearing() {
+    @Parameters({"8, 145, 10, 188, 5000, 42, 60",
+                 "8, 132, 66, 219, 2000, 11, 27",
+                 "8, 133, 64, 192, 1500, 3, 0",
+                 "10, 4, 65, 76, 2200, 5, 12"})
+    public void the_decode_method_should_correctly_decode_threat_identity_data_altitude_range_and_bearing(
+            int firstTIDByte, int secondTIDByte, int thirdTIDByte, int fourthTIDByte,
+            int expectedAltitude, int expectedRange, int expectedBearing) {
         // arrange
-        byte[] input = {48, (byte) 128, 0, 8, (byte) 145, 10, (byte) 188};
+        byte[] input = {48, (byte) 128, 0, (byte) firstTIDByte, (byte) secondTIDByte, (byte) thirdTIDByte, (byte) fourthTIDByte};
         int offset = 0;
         Cat048Item260 item260 = new Cat048Item260();
 
@@ -177,11 +185,11 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         // assert
         assertEquals("Item not decoded correctly - Threat Type Indicator ", 2,
                      item260.getThreatTypeIndicator());
-        assertEquals("Item not decoded correctly - Threat Identity Data Altitude", 5000,
+        assertEquals("Item not decoded correctly - Threat Identity Data Altitude", expectedAltitude,
                      item260.getTIDAltitude());
-        assertEquals("Item not decoded correctly - Threat Identity Data Range", 42,
+        assertEquals("Item not decoded correctly - Threat Identity Data Range", expectedRange,
                      item260.getTIDRange());
-        assertEquals("Item not decoded correctly - Threat Identity Data Bearing", 60,
+        assertEquals("Item not decoded correctly - Threat Identity Data Bearing", expectedBearing,
                      item260.getTIDBearing());
     }
 
