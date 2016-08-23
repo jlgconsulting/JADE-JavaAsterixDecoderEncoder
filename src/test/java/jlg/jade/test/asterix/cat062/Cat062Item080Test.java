@@ -201,4 +201,27 @@ public class Cat062Item080Test {
         assertEquals("SIM not decoded correctly", expectedSim, item.getSimValue());
     }
 
+    @Test
+    @Parameters({"1, 0, 0", "1, 64, 1"})
+    public void the_decode_method_should_correctly_decode_tse_info(int firstOctet, int secondOctet, int expectedTse) {
+
+        /**
+         * @implNote We assume only the first two octets are present to simplify. The first octet is 1, in order
+         * to continue to read the first extent
+         * 64 = 0100 0000 => TSE present
+         * 0   = 0000 0000 => TSE absent ( default value )
+         */
+
+        // arrange
+        byte[] input = {(byte) firstOctet, (byte) secondOctet};
+        int offset = 0;
+        Cat062Item080 item = new Cat062Item080();
+
+        // act
+        item.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("TSE not decoded correctly", expectedTse, item.getTseValue());
+    }
+
 }

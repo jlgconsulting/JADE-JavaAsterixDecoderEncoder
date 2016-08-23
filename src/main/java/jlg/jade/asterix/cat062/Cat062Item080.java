@@ -24,6 +24,7 @@ public class Cat062Item080 extends VariableLengthAsterixData {
     private int monValue;
     private int fpcValue;
     private int simValue;
+    private int tseValue;
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
@@ -42,6 +43,7 @@ public class Cat062Item080 extends VariableLengthAsterixData {
 
             decodeFpcValue(octetBits);
             decodeSimValue(octetBits);
+            decodeTseValue(octetBits);
         }
 
         /**
@@ -131,6 +133,16 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return simValue;
     }
 
+    /**
+     * Get track signal end
+     * @return
+     * 0 - default value
+     * 1 - last message transmitted to the user for the track
+     */
+    public int getTseValue() {
+        return tseValue;
+    }
+
     private void decodeCfnValue(BitSet fixedPartBits) {
         final int CFN_BIT_INDEX = 1;
         if (fixedPartBits.get(CFN_BIT_INDEX)) {
@@ -210,5 +222,15 @@ public class Cat062Item080 extends VariableLengthAsterixData {
             this.simValue = 0;
         }
         appendItemDebugMsg("SIM (0=Actual track,1=Simulated track)", this.fpcValue);
+    }
+
+    private void decodeTseValue(BitSet firstExtentBits) {
+        final int TSE_BIT_INDEX = 6;
+        if(firstExtentBits.get(TSE_BIT_INDEX)) {
+            this.tseValue = 1;
+        } else {
+            this.tseValue = 0;
+        }
+        appendItemDebugMsg("TSE (0=Default value, 1=Last message transmitted to the user for the track)", this.tseValue);
     }
 }
