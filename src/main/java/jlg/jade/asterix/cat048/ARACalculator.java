@@ -67,7 +67,7 @@ public class ARACalculator {
 
     private void generateV70ARAList(Cat048Item260 item260) {
 
-        if (item260.getARABit41() == 1) {
+        if (item260.getARABit41() == 1 && item260.getMultiThreatIndicator() == 0) {
 
             if (item260.getARABit42() == 1) {
                 araList.add("RA is corrective");
@@ -105,7 +105,9 @@ public class ARACalculator {
                 araList.add("RA is vertical speed limit");
             }
 
-        } else if (item260.getMultiThreatIndicator() == 1) {
+        }
+
+        if (item260.getMultiThreatIndicator() == 1) {
 
             if (item260.getARABit42() == 1) {
                 araList.add("RA requires a correction in the upward sense");

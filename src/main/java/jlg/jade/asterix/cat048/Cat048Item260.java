@@ -428,9 +428,9 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         this.ARAList.addAll(araCalculator.getARAList(this, this.determinedTCASVersion));
 
         if (!ARAList.isEmpty()) {
-            String ARAListRepresentation = String
-                    .join(",", ARAList.stream().map(s -> s.toString()).collect(
-                            Collectors.toList()));
+            String ARAListRepresentation = String.join(",", ARAList.stream()
+                    .map(s -> s.toString())
+                    .collect(Collectors.toList()));
             appendItemDebugMsg("ARA list", ARAListRepresentation);
         }
 

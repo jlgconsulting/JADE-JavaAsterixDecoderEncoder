@@ -3,7 +3,9 @@
  */
 package jlg.jade.asterix.cat048;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class AuralCalculator {
 
@@ -95,19 +97,16 @@ public class AuralCalculator {
     }
 
     static class Aurals604Dictionary {
+        private static final Map<String, String> AURAL_V604_DICTIONARY = createVersion604Dictionary();
 
-        public static Aurals604Dictionary instance = null;
-
-        static HashMap<String, String> Auralv604RepresentationToCodeDictionary = new HashMap<String, String>();
-
-        public static HashMap<String, String> getAuralv604RepresentationToCodeDictionary() {
-            if (instance == null) {
-                instance = new Aurals604Dictionary();
-            }
-            return Auralv604RepresentationToCodeDictionary;
+        public static Map<String, String> getAuralv604RepresentationToCodeDictionary() {
+            return AURAL_V604_DICTIONARY;
         }
 
-        private Aurals604Dictionary() {
+        private static Map<String, String> createVersion604Dictionary() {
+
+            HashMap<String, String> Auralv604RepresentationToCodeDictionary = new HashMap<>();
+
             // preventive aural is always 'MVS-MVS' in v604
             // adding corrective aural values
             Auralv604RepresentationToCodeDictionary.put("00000000000", "No RA");
@@ -138,24 +137,24 @@ public class AuralCalculator {
             Auralv604RepresentationToCodeDictionary.put("10100000000", "RD-RD");
             Auralv604RepresentationToCodeDictionary
                     .put("11000000000", "CCC, or CXC-CXC, or IC-IC, or CCN-CCN");
+
+            return Collections.unmodifiableMap(Auralv604RepresentationToCodeDictionary);
         }
 
     }
 
     static class Aurals70Dictionary {
 
-        public static Aurals70Dictionary instance = null;
+        static Map<String, String> AURAL_V70_DICTIONARY = createVersion70Dictionary();
 
-        static HashMap<String, String> Auralv70RepresentationToCodeDictionary = new HashMap<String, String>();
-
-        public static HashMap<String, String> getAuralv70RepresentationToCodeDictionary() {
-            if (instance == null) {
-                instance = new Aurals70Dictionary();
-            }
-            return Auralv70RepresentationToCodeDictionary;
+        public static Map<String, String> getAuralv70RepresentationToCodeDictionary() {
+            return AURAL_V70_DICTIONARY;
         }
 
-        private Aurals70Dictionary() {
+        private static Map<String, String> createVersion70Dictionary() {
+
+            HashMap<String, String> Auralv70RepresentationToCodeDictionary = new HashMap<>();
+
             Auralv70RepresentationToCodeDictionary.put("00000000", "no RA");
             Auralv70RepresentationToCodeDictionary.put("01000000", "MVS");
             Auralv70RepresentationToCodeDictionary.put("01000001", "MVSM");
@@ -200,6 +199,8 @@ public class AuralCalculator {
             Auralv70RepresentationToCodeDictionary.put("11110111", "DDN-DDN");
             Auralv70RepresentationToCodeDictionary.put("11111001", "ID-ID");
             Auralv70RepresentationToCodeDictionary.put("11111011", "ID-ID");
+
+            return Collections.unmodifiableMap(Auralv70RepresentationToCodeDictionary);
         }
 
     }
