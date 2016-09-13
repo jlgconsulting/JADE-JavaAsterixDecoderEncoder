@@ -19,15 +19,17 @@ import java.util.stream.Collectors;
  * threat identity data.
  */
 public class Cat048Item260 extends FixedLengthAsterixData {
-    private TCASVersion determinedTCASVersion = TCASVersion.VERSION_604;
+    private TCASVersions determinedTCASVersion;
+
+    private Cat048Item230 item230;
     private int threatTypeIndicator;            // TTI
     private int TIDModeSAddress;                // TID ModeS Address
     private int multiThreatIndicator;           // MTI / MTE
     private int raTerminated;                   // RAT
-
     private List<String> RAComplementList = new ArrayList<>();         // RAC
 
     private int ARABit41;
+
     private int ARABit42;
     private int ARABit43;
     private int ARABit44;
@@ -42,26 +44,19 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int TIDAltitude;
     private int TIDRange;
     private int TIDBearing;
+    private TCASStates TCASState;
+    private TCASFormats TCASFormat;
+    private TCASCapabilities TCASCapability;
+    private TCASThreatTypes TCASThreatType;
+    private TCASThreatTypeIndicators TCASThreatTypeIndicator = TCASThreatTypeIndicators.NO_IDENTITY;
 
     public Cat048Item260() {
     }
 
-    /**
-     * This constructor is used for passing the value of the BDS Register 1,0 bit 39 ( bit71 in the
-     * BDS 1,0 Data Link Capability Report for
-     * Guidance Material for Mode S-Specific Protocol Application Avionics / Table A-7 )
-     * TODO: Further inquiries are needed to differentiate between TCAS 7.0 and 7.1
-     *
-     * @param bdsRegister10Bit39
-     */
-    public Cat048Item260(int bdsRegister10Bit39) {
-        if (bdsRegister10Bit39 == 1) {
-            this.determinedTCASVersion = TCASVersion.VERSION_70;
-        } else {
-            this.determinedTCASVersion = TCASVersion.VERSION_604;
-        }
+    public Cat048Item260(Cat048Item230 item230) {
+        this.item230 = item230;
+        this.determinedTCASVersion = item230.getDeterminedTCASVersion();
     }
-
 
     @Override
     protected int setSizeInBytes() {
@@ -96,6 +91,9 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         // when TTI = 1 then TID should contain a ModeS Address
         if (this.threatTypeIndicator == 1) {
 
+            // set Threat Type Indicator value for logic message
+            this.TCASThreatTypeIndicator = TCASThreatTypeIndicators.MODE_S;
+
             // create a String Builder to store the binary representation of the last 4 bytes for item260
             StringBuilder sb = new StringBuilder();
             for (int i = 3; i <= 6; i++) {
@@ -119,6 +117,10 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
         // when TTI = 2 then TID should contain altitude, range and bearing
         if (this.threatTypeIndicator == 2) {
+
+            // set Threat Type Indicator for logic message
+            this.TCASThreatTypeIndicator = TCASThreatTypeIndicators.ARB_DATA;
+
             // TIDAltitude ModeC bits
             int modeCAltitudeCodeBitA1 = 0;
             int modeCAltitudeCodeBitA2 = 0;
@@ -419,13 +421,13 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         // Aural
 
         AuralCalculator auralCalculator = new AuralCalculator();
-        this.auralCode = auralCalculator.determineAuralCode(this, this.determinedTCASVersion);
+        this.auralCode = auralCalculator.determineAuralCode(this);
 
         appendItemDebugMsg("Aural code", this.auralCode);
 
         // ARA List
         ARACalculator araCalculator = new ARACalculator();
-        this.ARAList.addAll(araCalculator.getARAList(this, this.determinedTCASVersion));
+        this.ARAList.addAll(araCalculator.getARAList(this));
 
         if (!ARAList.isEmpty()) {
             String ARAListRepresentation = String.join(",", ARAList.stream()
@@ -450,19 +452,19 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         final int RAC_BIT4_INDEX = 30;
 
         if (bs.get(RAC_BIT1_INDEX)) {
-            this.RAComplementList.add("Do not pass below");
+            this.RAComplementList.add("DNB");
         }
 
         if (bs.get(RAC_BIT2_INDEX)) {
-            this.RAComplementList.add("Do not pass above");
+            this.RAComplementList.add("DNA");
         }
 
         if (bs.get(RAC_BIT3_INDEX)) {
-            this.RAComplementList.add("Do not turn left");
+            this.RAComplementList.add("DNL");
         }
 
         if (bs.get(RAC_BIT4_INDEX)) {
-            this.RAComplementList.add("Do not turn right");
+            this.RAComplementList.add("DNR");
         }
 
         if (!RAComplementList.isEmpty()) {
@@ -470,7 +472,45 @@ public class Cat048Item260 extends FixedLengthAsterixData {
                     .map(s -> s.toString()).collect(Collectors.toList()));
             appendItemDebugMsg("RA complements list", RAComplementListRepresentation);
         }
+
+        // TCAS format : decoding is taken from the old DAQ
+        // "if the intruder identification subfield is zero
+        // and the termination bit not set then
+        // the format is TSO C119A"
+        if (this.raTerminated == 0 && input[offset + 4] == 0 && input[offset + 5] == 0 && input[offset + 6] == 0) {
+            this.TCASFormat = TCASFormat.TSO_C119A;
+        } else {
+            this.TCASFormat = TCASFormat.DO_185A;
+        }
+
+        if (this.TCASFormat == TCASFormat.DO_185A) {
+            // determine values for DO_185A format
+            // state
+            if (this.getRaTerminated() == 1) {
+                this.TCASState = TCASStates.Terminated;
+            } else {
+                this.TCASState = TCASStates.OnGoing;
+            }
+
+            // capability
+            if (item230.getBDS10Bit39() == 0) {
+                this.TCASCapability = TCASCapabilities.TA_Only;
+            } else {
+                this.TCASCapability = TCASCapabilities.TA_AND_RA;
+            }
+
+            // threat type
+            if(this.multiThreatIndicator == 1) {
+                this.TCASThreatType = TCASThreatTypes.MULTI;
+            } else {
+                this.TCASThreatType = TCASThreatTypes.SINGLE;
+            }
+
+        }
+
+
     }
+
 
     @Override
     protected String setDisplayName() {
@@ -558,5 +598,29 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
     public List<String> getARAList() {
         return ARAList;
+    }
+
+    public TCASStates getTCASState() {
+        return TCASState;
+    }
+
+    public TCASFormats getTCASFormat() {
+        return TCASFormat;
+    }
+
+    public TCASCapabilities getTCASCapability() {
+        return TCASCapability;
+    }
+
+    public TCASVersions getDeterminedTCASVersion() {
+        return determinedTCASVersion;
+    }
+
+    public TCASThreatTypes getTCASThreatType() {
+        return TCASThreatType;
+    }
+
+    public TCASThreatTypeIndicators getTCASThreatTypeIndicator() {
+        return TCASThreatTypeIndicator;
     }
 }

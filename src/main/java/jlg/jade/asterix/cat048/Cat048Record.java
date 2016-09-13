@@ -185,7 +185,7 @@ public class Cat048Record extends FspecAsterixData {
         }
 
         if (fspecDataAtIndex(FSPEC.I048_260)) {
-            this.item260 = new Cat048Item260();
+            this.item260 = new Cat048Item260(item230);
             offset = item260.decode(input, offset, length);
             appendDebugMsg(item260.getDebugString());
         }

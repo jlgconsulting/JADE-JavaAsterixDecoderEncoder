@@ -4,12 +4,14 @@
 package jlg.jade.test.asterix.cat048;
 
 import jlg.jade.asterix.cat048.ARACalculator;
+import jlg.jade.asterix.cat048.Cat048Item230;
 import jlg.jade.asterix.cat048.Cat048Item260;
-import jlg.jade.asterix.cat048.TCASVersion;
+import jlg.jade.asterix.cat048.TCASVersions;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,13 +30,15 @@ public class ARACalculatorTest {
         // arrange
         byte[] input = {48, (byte) secondInputByte, (byte) thirdInputByte, 0, 0, 0, 0};
         int offset = 0;
-        Cat048Item260 item260 = new Cat048Item260();
+        Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedAraList = new ArrayList<>(Arrays.asList(expectedAraMessage));
 
         // act
         item260.decode(input, offset, input.length);
         ARACalculator araCalculator = new ARACalculator();
-        List<String> araList = araCalculator.getARAList(item260, TCASVersion.VERSION_604);
+        List<String> araList = araCalculator.getARAList(item260);
 
         // assert
         assertTrue("ARA List does not match expected", expectedAraList.equals(araList));
@@ -45,16 +49,18 @@ public class ARACalculatorTest {
         // arrange
         byte[] input = {48, (byte) 192, 0, 0, 0, 0, 0};
         int offset = 0;
-        Cat048Item260 item260 = new Cat048Item260();
+        Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedAraList = new ArrayList<>(
-                Arrays.asList("RA is corrective", "Upward sense RA has been generated",
-                              "RA is not increased rate", "RA is not a sense reversal",
-                              "RA is not altitude crossing", "RA is vertical speed limit"));
+                Arrays.asList("CORRECTIVE", "UP",
+                              "RATE0", "REVERSAL0",
+                              "CROSSING0", "SPEED"));
 
         // act
         item260.decode(input, offset, input.length);
         ARACalculator araCalculator = new ARACalculator();
-        List<String> araList = araCalculator.getARAList(item260, TCASVersion.VERSION_70);
+        List<String> araList = araCalculator.getARAList(item260);
 
         // assert
         assertTrue("ARA List does not match expected", expectedAraList.equals(araList));

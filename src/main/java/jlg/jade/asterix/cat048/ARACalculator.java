@@ -9,8 +9,8 @@ import java.util.List;
 public class ARACalculator {
     private List<String> araList = new ArrayList<>();
 
-    public List<String> getARAList(Cat048Item260 item260, TCASVersion version) {
-        switch (version) {
+    public List<String> getARAList(Cat048Item260 item260) {
+        switch (item260.getDeterminedTCASVersion()) {
             case VERSION_604:
                 generateV604ARAList(item260);
                 break;
@@ -70,39 +70,39 @@ public class ARACalculator {
         if (item260.getARABit41() == 1 && item260.getMultiThreatIndicator() == 0) {
 
             if (item260.getARABit42() == 1) {
-                araList.add("RA is corrective");
+                araList.add("CORRECTIVE");
             } else {
-                araList.add("RA is preventive");
+                araList.add("PREVENTIVE");
             }
 
             if (item260.getARABit43() == 1) {
-                araList.add("Downward sense RA has been generated");
+                araList.add("DOWN");
             } else {
-                araList.add("Upward sense RA has been generated");
+                araList.add("UP");
             }
 
             if (item260.getARABit44() == 1) {
-                araList.add("RA is increased rate");
+                araList.add("RATE1");
             } else {
-                araList.add("RA is not increased rate");
+                araList.add("RATE0");
             }
 
             if (item260.getARABit45() == 1) {
-                araList.add("RA is a sense reversal");
+                araList.add("REVERSAL1");
             } else {
-                araList.add("RA is not a sense reversal");
+                araList.add("REVERSAL0");
             }
 
             if (item260.getARABit46() == 1) {
-                araList.add("RA is altitude crossing");
+                araList.add("CROSSING1");
             } else {
-                araList.add("RA is not altitude crossing");
+                araList.add("CROSSING0");
             }
 
             if (item260.getARABit47() == 1) {
-                araList.add("RA is positive");
+                araList.add("POSITIVE");
             } else {
-                araList.add("RA is vertical speed limit");
+                araList.add("SPEED");
             }
 
         }
@@ -110,39 +110,39 @@ public class ARACalculator {
         if (item260.getMultiThreatIndicator() == 1) {
 
             if (item260.getARABit42() == 1) {
-                araList.add("RA requires a correction in the upward sense");
+                araList.add("CORR1");
             } else {
-                araList.add("RA does not require a correction in the upward sense ");
+                araList.add("CORR0 ");
             }
 
             if (item260.getARABit43() == 1) {
-                araList.add("RA requires a positive climb");
+                araList.add("CLIMB1");
             } else {
-                araList.add("RA does not require a positive climb");
+                araList.add("CLIMB0");
             }
 
             if (item260.getARABit44() == 1) {
-                araList.add("RA requires a correction in the downward sense");
+                araList.add("DOWN1");
             } else {
-                araList.add("RA does not require a correction in the downward sense");
+                araList.add("DOWN0");
             }
 
             if (item260.getARABit45() == 1) {
-                araList.add("RA requires a positive descend");
+                araList.add("DESCEND1");
             } else {
-                araList.add("RA does not require a positive descend");
+                araList.add("DESCEND0");
             }
 
             if (item260.getARABit46() == 1) {
-                araList.add("RA requires a crossing");
+                araList.add("RCROSSING1");
             } else {
-                araList.add("RA does not require a crossing");
+                araList.add("RCROSSING0");
             }
 
             if (item260.getARABit47() == 1) {
-                araList.add("RA is a sense reversal");
+                araList.add("RREVERSAL1");
             } else {
-                araList.add("RA is not a sense reversal");
+                araList.add("RREVERSAL0");
             }
 
         }

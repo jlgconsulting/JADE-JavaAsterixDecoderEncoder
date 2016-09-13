@@ -16,14 +16,13 @@ public class AuralCalculator {
      * This method determines the aural code
      *
      * @param input   represents the item260 bits
-     * @param version represents the TCAS version
      * @return the aural code
      */
-    public String determineAuralCode(Cat048Item260 input, TCASVersion version) {
+    public String determineAuralCode(Cat048Item260 input) {
 
-        determineAuralBinaryRepresentation(input, version);
+        determineAuralBinaryRepresentation(input);
 
-        switch (version) {
+        switch (input.getDeterminedTCASVersion()) {
             case VERSION_604:
                 auralCode = getVersion604AuralCode(input);
                 break;
@@ -50,7 +49,7 @@ public class AuralCalculator {
         return version70AuralCode;
     }
 
-    private void determineAuralBinaryRepresentation(Cat048Item260 item260, TCASVersion version) {
+    private void determineAuralBinaryRepresentation(Cat048Item260 item260) {
         // calculate String representation of the binary value
         // represented by the bits ARA41 .. ARA47 of Cat048 Item260 for v7.0/v7.1
         // or bits ARA41 .. ARA50 for v6.04
@@ -64,7 +63,7 @@ public class AuralCalculator {
 
         // append extra bits ( ARA48, ARA49, ARA50 ) for v6.04
 
-        if (version == TCASVersion.VERSION_604) {
+        if (item260.getDeterminedTCASVersion() == TCASVersions.VERSION_604) {
             sb.append(item260.getARABit48()).append(item260.getARABit49())
                     .append(item260.getARABit50());
         }

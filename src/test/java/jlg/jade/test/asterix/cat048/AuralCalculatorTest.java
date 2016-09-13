@@ -4,12 +4,14 @@
 package jlg.jade.test.asterix.cat048;
 
 import jlg.jade.asterix.cat048.AuralCalculator;
-import jlg.jade.asterix.cat048.TCASVersion;
+import jlg.jade.asterix.cat048.Cat048Item230;
 import jlg.jade.asterix.cat048.Cat048Item260;
+import jlg.jade.asterix.cat048.TCASVersions;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -22,11 +24,13 @@ public class AuralCalculatorTest {
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         AuralCalculator auralCalculator = new AuralCalculator();
-        Cat048Item260 item260 = new Cat048Item260();
+        Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
         item260.decode(input, offset, input.length);
-        String auralCode = auralCalculator.determineAuralCode(item260, TCASVersion.VERSION_604);
+        String auralCode = auralCalculator.determineAuralCode(item260);
 
         // assert
         assertEquals("Aural code is incorrect!", "CCC, or CXC-CXC, or IC-IC, or CCN-CCN",
@@ -41,11 +45,13 @@ public class AuralCalculatorTest {
         byte[] input = {48, (byte) secondInputByte, 0, 0, 0, 0, 0};
         int offset = 0;
         AuralCalculator auralCalculator = new AuralCalculator();
-        Cat048Item260 item260 = new Cat048Item260();
+        Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
         item260.decode(input, offset, input.length);
-        String auralCode = auralCalculator.determineAuralCode(item260, TCASVersion.VERSION_70);
+        String auralCode = auralCalculator.determineAuralCode(item260);
 
         // assert
         assertEquals("Aural code is incorrect", expectedAural, auralCode);
@@ -58,11 +64,13 @@ public class AuralCalculatorTest {
         byte[] input = {48, (byte) secondInputByte, 0, 0, 0, 0, 0};
         int offset = 0;
         AuralCalculator auralCalculator = new AuralCalculator();
-        Cat048Item260 item260 = new Cat048Item260();
+        Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_71);
+        Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
         item260.decode(input, offset, input.length);
-        String auralCode = auralCalculator.determineAuralCode(item260, TCASVersion.VERSION_71);
+        String auralCode = auralCalculator.determineAuralCode(item260);
 
         // assert
         assertEquals("Aural code is incorrect", expectedAural, auralCode);
