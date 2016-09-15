@@ -26,6 +26,7 @@ public class Cat048Item230 extends FixedLengthAsterixData {
     private int BDS10Bit39;
     private int BDS10Bit40;
     private TCASVersions determinedTCASVersion;
+    private int determinedCapability;
 
     @Override
     protected int setSizeInBytes() {
@@ -144,6 +145,13 @@ public class Cat048Item230 extends FixedLengthAsterixData {
                 break;
             }
 
+        appendItemDebugMsg("TCAS version", this.determinedTCASVersion);
+
+        // according to DAQ implementation capability is determined using Hybrid and CAP bits
+        this.determinedCapability = this.BDS10Bit40 * 2 + this.BDS10Bit39;
+
+        appendItemDebugMsg("TCAS Capability", this.determinedCapability);
+
     }
 
     @Override
@@ -214,6 +222,34 @@ public class Cat048Item230 extends FixedLengthAsterixData {
         return aircraftIdentificationCapability;
     }
 
+    public int getBDS10Bit16() {
+        return BDS10Bit16;
+    }
+
+    public int getBDS10Bit37() {
+        return BDS10Bit37;
+    }
+
+    public int getBDS10Bit38() {
+        return BDS10Bit38;
+    }
+
+    public int getBDS10Bit39() {
+        return BDS10Bit39;
+    }
+
+    public int getBDS10Bit40() {
+        return BDS10Bit40;
+    }
+
+    public TCASVersions getDeterminedTCASVersion() {
+        return determinedTCASVersion;
+    }
+
+    public int getDeterminedCapability() {
+        return determinedCapability;
+    }
+
     private void decodeCOM(BitSet firstByteBits) {
         final int COM_BIT0_INDEX = 5;
         final int COM_BIT1_INDEX = 6;
@@ -265,29 +301,5 @@ public class Cat048Item230 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("STAT (Flight Status)", this.flightStatus);
 
-    }
-
-    public int getBDS10Bit16() {
-        return BDS10Bit16;
-    }
-
-    public int getBDS10Bit37() {
-        return BDS10Bit37;
-    }
-
-    public int getBDS10Bit38() {
-        return BDS10Bit38;
-    }
-
-    public int getBDS10Bit39() {
-        return BDS10Bit39;
-    }
-
-    public int getBDS10Bit40() {
-        return BDS10Bit40;
-    }
-
-    public TCASVersions getDeterminedTCASVersion() {
-        return determinedTCASVersion;
     }
 }

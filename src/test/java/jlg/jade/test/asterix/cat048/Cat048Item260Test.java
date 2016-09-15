@@ -266,4 +266,46 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         assertEquals("Item not decoded correctly - TCAS Threat Type", TCASThreatTypes.SINGLE, item260.getTCASThreatType());
         assertEquals("Item not decoded correctly - TCAS Threat Type Indicator", TCASThreatTypeIndicators.ARB_DATA, item260.getTCASThreatTypeIndicator());
     }
+
+    @Test
+    public void the_decode_method_should_correctly_decode_tcas_valid_ara_rac_state() {
+        // arrange
+        byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
+        int offset = 0;
+        Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getBDS10Bit39()).thenReturn(1);
+        Cat048Item260 item260 = new Cat048Item260(item230);
+
+        // act
+        item260.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("Item not decoded correctly - TCAS State", TCASStates.ValidARA_RAC, item260.getTCASState());
+        assertEquals("Item not decoded correctly - TCAS Format", TCASFormats.TSO_C119A, item260.getTCASFormat());
+        assertEquals("Item not decoded correctly - TCAS Threat Type", TCASThreatTypes.SINGLE, item260.getTCASThreatType());
+
+    }
+
+    @Test
+    public void the_decode_method_should_correctly_decode_tcas_values_for_mode_s_intruder() {
+        // arrange
+        byte[] inputItem230 = {13, (byte) 174};
+        byte[] inputItem260 = {8, 49, 70, (byte) 196, 0, 32, (byte) 253};
+        int offset = 0;
+        Cat048Item230 item230 = new Cat048Item230();
+
+        // act
+        item230.decode(inputItem230, offset, inputItem230.length);
+        Cat048Item260 item260 = new Cat048Item260(item230);
+        item260.decode(inputItem260, offset, inputItem260.length);
+
+        // assert
+        assertEquals("Item not decoded correctly - TCAS State", TCASStates.OnGoing, item260.getTCASState());
+        assertEquals("Item not decoded correctly - TCAS Format", TCASFormats.DO_185A, item260.getTCASFormat());
+        assertEquals("Item not decoded correctly - TCAS Version", TCASVersions.FUTURE_VERSION, item230.getDeterminedTCASVersion());
+        assertEquals("Item not decoded correctly - TCAS Threat Type", TCASThreatTypes.SINGLE, item260.getTCASThreatType());
+        assertEquals("Item not decoded correctly - TCAS Capability", TCASCapabilities.TA_AND_RA, item260.getTCASCapability());
+
+    }
 }

@@ -29,7 +29,6 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private List<String> RAComplementList = new ArrayList<>();         // RAC
 
     private int ARABit41;
-
     private int ARABit42;
     private int ARABit43;
     private int ARABit44;
@@ -39,6 +38,10 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int ARABit48;
     private int ARABit49;
     private int ARABit50;
+    private int RACBit55;
+    private int RACBit56;
+    private int RACBit57;
+    private int RACBit58;
     private String auralCode;
     private List<String> ARAList = new ArrayList<>();
     private int TIDAltitude;
@@ -70,17 +73,14 @@ public class Cat048Item260 extends FixedLengthAsterixData {
                         input[offset + 4], input[offset + 5], input[offset + 6]});
 
         // TTI
-        final int TTI_BIT1_INDEX = 27;
-        final int TTI_BIT0_INDEX = 26;
-
         int TTIBit1Value = 0;
         int TTIBit0Value = 0;
 
-        if (bs.get(TTI_BIT1_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.TTI_BIT1_INDEX.getValue())) {
             TTIBit1Value = 1;
         }
 
-        if (bs.get(TTI_BIT0_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.TTI_BIT0_INDEX.getValue())) {
             TTIBit0Value = 1;
         }
 
@@ -136,19 +136,6 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             int modeCAltitudeCodeBitD2 = 0;
             int modeCAltitudeCodeBitD4 = 0;
 
-            // TID Altitude ModeC indexes in order
-            final int BIT_C1_INDEX = 25;
-            final int BIT_A1_INDEX = 24;
-            final int BIT_C2_INDEX = 39;
-            final int BIT_A2_INDEX = 38;
-            final int BIT_C4_INDEX = 37;
-            final int BIT_A4_INDEX = 36;
-            final int BIT_B1_INDEX = 34;
-            final int BIT_B2_INDEX = 32;
-            final int BIT_D2_INDEX = 47;
-            final int BIT_B4_INDEX = 46;
-            final int BIT_D4_INDEX = 45;
-
             // TID Range bits
             int tidRangeBit1Value = 0;
             int tidRangeBit2Value = 0;
@@ -158,15 +145,6 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             int tidRangeBit6Value = 0;
             int tidRangeBit7Value = 0;
 
-            // TID Range indexes in bit set
-            final int BIT_TID_RANGE1_INDEX = 44;
-            final int BIT_TID_RANGE2_INDEX = 43;
-            final int BIT_TID_RANGE3_INDEX = 42;
-            final int BIT_TID_RANGE4_INDEX = 41;
-            final int BIT_TID_RANGE5_INDEX = 40;
-            final int BIT_TID_RANGE6_INDEX = 55;
-            final int BIT_TID_RANGE7_INDEX = 54;
-
             // TID Bearing
             int tidBearingBit1Value = 0;
             int tidBearingBit2Value = 0;
@@ -175,62 +153,54 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             int tidBearingBit5Value = 0;
             int tidBearingBit6Value = 0;
 
-            // TID Bearing indexes in bit set
-            final int BIT_TID_BEARING1_INDEX = 53;
-            final int BIT_TID_BEARING2_INDEX = 52;
-            final int BIT_TID_BEARING3_INDEX = 51;
-            final int BIT_TID_BEARING4_INDEX = 50;
-            final int BIT_TID_BEARING5_INDEX = 49;
-            final int BIT_TID_BEARING6_INDEX = 48;
-
             // altitude
             // set individual Gray Code bits
             // Mode C altitude code of threat. Bit ordering is
             // C1 A1 C2 A2 C4 A4 0 B1 D1 B2 D2 B4 D4
 
-            if (bs.get(BIT_C1_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_C1_INDEX.getValue())) {
                 modeCAltitudeCodeBitC1 = 1;
             }
 
-            if (bs.get(BIT_A1_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_A1_INDEX.getValue())) {
                 modeCAltitudeCodeBitA1 = 1;
             }
 
-            if (bs.get(BIT_C2_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_C2_INDEX.getValue())) {
                 modeCAltitudeCodeBitC2 = 1;
             }
 
-            if (bs.get(BIT_A2_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_A2_INDEX.getValue())) {
                 modeCAltitudeCodeBitA2 = 1;
             }
 
-            if (bs.get(BIT_C4_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_C4_INDEX.getValue())) {
                 modeCAltitudeCodeBitC4 = 1;
             }
 
-            if (bs.get(BIT_A4_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_A4_INDEX.getValue())) {
                 modeCAltitudeCodeBitA4 = 1;
             }
 
-            if (bs.get(BIT_B1_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_B1_INDEX.getValue())) {
                 modeCAltitudeCodeBitB1 = 1;
             }
 
             // bit D1 is never used so we don't have an index and we do not check it
 
-            if (bs.get(BIT_B2_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_B2_INDEX.getValue())) {
                 modeCAltitudeCodeBitB2 = 1;
             }
 
-            if (bs.get(BIT_D2_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_D2_INDEX.getValue())) {
                 modeCAltitudeCodeBitD2 = 1;
             }
 
-            if (bs.get(BIT_B4_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_B4_INDEX.getValue())) {
                 modeCAltitudeCodeBitB4 = 1;
             }
 
-            if (bs.get(BIT_D4_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_D4_INDEX.getValue())) {
                 modeCAltitudeCodeBitD4 = 1;
             }
 
@@ -262,31 +232,31 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             appendItemDebugMsg("TID Altitude", this.TIDAltitude);
 
             // range
-            if (bs.get(BIT_TID_RANGE1_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE1_INDEX.getValue())) {
                 tidRangeBit1Value = 1;
             }
 
-            if (bs.get(BIT_TID_RANGE2_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE2_INDEX.getValue())) {
                 tidRangeBit2Value = 1;
             }
 
-            if (bs.get(BIT_TID_RANGE3_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE3_INDEX.getValue())) {
                 tidRangeBit3Value = 1;
             }
 
-            if (bs.get(BIT_TID_RANGE4_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE4_INDEX.getValue())) {
                 tidRangeBit4Value = 1;
             }
 
-            if (bs.get(BIT_TID_RANGE5_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE5_INDEX.getValue())) {
                 tidRangeBit5Value = 1;
             }
 
-            if (bs.get(BIT_TID_RANGE6_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE6_INDEX.getValue())) {
                 tidRangeBit6Value = 1;
             }
 
-            if (bs.get(BIT_TID_RANGE7_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_RANGE7_INDEX.getValue())) {
                 tidRangeBit7Value = 1;
             }
 
@@ -300,27 +270,27 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             appendItemDebugMsg("TID Range", this.TIDRange);
 
             // bearing
-            if (bs.get(BIT_TID_BEARING1_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_BEARING1_INDEX.getValue())) {
                 tidBearingBit1Value = 1;
             }
 
-            if (bs.get(BIT_TID_BEARING2_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_BEARING2_INDEX.getValue())) {
                 tidBearingBit2Value = 1;
             }
 
-            if (bs.get(BIT_TID_BEARING3_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_BEARING3_INDEX.getValue())) {
                 tidBearingBit3Value = 1;
             }
 
-            if (bs.get(BIT_TID_BEARING4_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_BEARING4_INDEX.getValue())) {
                 tidBearingBit4Value = 1;
             }
 
-            if (bs.get(BIT_TID_BEARING5_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_BEARING5_INDEX.getValue())) {
                 tidBearingBit5Value = 1;
             }
 
-            if (bs.get(BIT_TID_BEARING6_INDEX)) {
+            if (bs.get(Cat048Item260BitSetIndexes.BIT_TID_BEARING6_INDEX.getValue())) {
                 tidBearingBit6Value = 1;
             }
 
@@ -334,85 +304,68 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             appendItemDebugMsg("TID Bearing", this.TIDBearing);
         }
 
-        // ARA - bits 41-50
-        final int ARA_BIT41_INDEX = 15;
-        final int ARA_BIT42_INDEX = 14;
-        final int ARA_BIT43_INDEX = 13;
-        final int ARA_BIT44_INDEX = 12;
-        final int ARA_BIT45_INDEX = 11;
-        final int ARA_BIT46_INDEX = 10;
-        final int ARA_BIT47_INDEX = 9;
-        final int ARA_BIT48_INDEX = 8;
-        final int ARA_BIT49_INDEX = 23;
-        final int ARA_BIT50_INDEX = 22;
-
-        if (bs.get(ARA_BIT41_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT41_INDEX.getValue())) {
             this.ARABit41 = 1;
         }
 
         appendItemDebugMsg("ARABit41", this.ARABit41);
 
-        if (bs.get(ARA_BIT42_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT42_INDEX.getValue())) {
             this.ARABit42 = 1;
         }
 
         appendItemDebugMsg("ARABit42", this.ARABit42);
 
-        if (bs.get(ARA_BIT43_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT43_INDEX.getValue())) {
             this.ARABit43 = 1;
         }
 
         appendItemDebugMsg("ARABit43", this.ARABit43);
 
-        if (bs.get(ARA_BIT44_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT44_INDEX.getValue())) {
             this.ARABit44 = 1;
         }
 
         appendItemDebugMsg("ARABit44", this.ARABit44);
 
-        if (bs.get(ARA_BIT45_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT45_INDEX.getValue())) {
             this.ARABit45 = 1;
         }
 
         appendItemDebugMsg("ARABit45", this.ARABit45);
 
-        if (bs.get(ARA_BIT46_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT46_INDEX.getValue())) {
             this.ARABit46 = 1;
         }
 
         appendItemDebugMsg("ARABit46", this.ARABit46);
 
-        if (bs.get(ARA_BIT47_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT47_INDEX.getValue())) {
             this.ARABit47 = 1;
         }
 
         appendItemDebugMsg("ARABit47", this.ARABit47);
 
-        if (bs.get(ARA_BIT48_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT48_INDEX.getValue())) {
             this.ARABit48 = 1;
         }
 
-        appendItemDebugMsg("ARABit49", this.ARABit49);
-
-
         appendItemDebugMsg("ARABit48", this.ARABit48);
 
-        if (bs.get(ARA_BIT49_INDEX)) {
+
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT49_INDEX.getValue())) {
             this.ARABit49 = 1;
         }
 
         appendItemDebugMsg("ARABit49", this.ARABit49);
 
-        if (bs.get(ARA_BIT50_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.ARA_BIT50_INDEX.getValue())) {
             this.ARABit50 = 1;
         }
 
         appendItemDebugMsg("ARABit50", this.ARABit50);
 
-        // MTI / MTE
-        final int MTI_BIT_INDEX = 28;
-
-        if (bs.get(MTI_BIT_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.MTI_BIT_INDEX.getValue())) {
             this.multiThreatIndicator = 1;
         }
 
@@ -436,34 +389,29 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             appendItemDebugMsg("ARA list", ARAListRepresentation);
         }
 
-        // RAT
-        final int RAT_BIT_INDEX = 29;
-
-        if (bs.get(RAT_BIT_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.RAT_BIT_INDEX.getValue())) {
             this.raTerminated = 1;
         }
 
         appendItemDebugMsg("RAT", this.raTerminated);
 
-        // RAC
-        final int RAC_BIT1_INDEX = 17;
-        final int RAC_BIT2_INDEX = 16;
-        final int RAC_BIT3_INDEX = 31;
-        final int RAC_BIT4_INDEX = 30;
-
-        if (bs.get(RAC_BIT1_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.RAC_BIT1_INDEX.getValue())) {
+            this.RACBit55 = 1;
             this.RAComplementList.add("DNB");
         }
 
-        if (bs.get(RAC_BIT2_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.RAC_BIT2_INDEX.getValue())) {
+            this.RACBit56 = 1;
             this.RAComplementList.add("DNA");
         }
 
-        if (bs.get(RAC_BIT3_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.RAC_BIT3_INDEX.getValue())) {
+            this.RACBit57 = 1;
             this.RAComplementList.add("DNL");
         }
 
-        if (bs.get(RAC_BIT4_INDEX)) {
+        if (bs.get(Cat048Item260BitSetIndexes.RAC_BIT4_INDEX.getValue())) {
+            this.RACBit58 = 1;
             this.RAComplementList.add("DNR");
         }
 
@@ -483,6 +431,8 @@ public class Cat048Item260 extends FixedLengthAsterixData {
             this.TCASFormat = TCASFormat.DO_185A;
         }
 
+        appendItemDebugMsg("TCAS Format", this.TCASFormat);
+
         if (this.TCASFormat == TCASFormat.DO_185A) {
             // determine values for DO_185A format
             // state
@@ -499,23 +449,54 @@ public class Cat048Item260 extends FixedLengthAsterixData {
                 this.TCASCapability = TCASCapabilities.TA_AND_RA;
             }
 
-            // threat type
-            if(this.multiThreatIndicator == 1) {
-                this.TCASThreatType = TCASThreatTypes.MULTI;
+            appendItemDebugMsg("TCAS Capability", this.TCASCapability);
+
+        } else {
+            // determine values for TSO_C119A
+            // state
+            if (checkEmptyFields()) {
+                this.TCASState = TCASStates.EmptyFields;
             } else {
-                this.TCASThreatType = TCASThreatTypes.SINGLE;
+                this.TCASState = TCASStates.ValidARA_RAC;
             }
 
+            appendItemDebugMsg("TCAS State", this.TCASState);
+
+            // capability
+            switch(item230.getDeterminedCapability()) {
+                case 0:
+                    this.TCASCapability = TCASCapabilities.NO_CAPABILTY;
+                    break;
+                case 1:
+                    this.TCASCapability = TCASCapabilities.VERTICAL_RA;
+                    break;
+                case 2:
+                    this.TCASCapability = TCASCapabilities.VERTICAL_HORIZONTAL_RA;
+                    break;
+                case 3:
+                    this.TCASCapability = TCASCapabilities.NotAssigned;
+                    break;
+            }
+
+            appendItemDebugMsg("TCAS Capability", this.TCASCapability);
         }
 
+        // threat type
+        if (this.multiThreatIndicator == 1) {
+            this.TCASThreatType = TCASThreatTypes.MULTI;
+        } else {
+            this.TCASThreatType = TCASThreatTypes.SINGLE;
+        }
+
+        appendItemDebugMsg("TCAS Threat Type", this.TCASThreatType);
 
     }
-
 
     @Override
     protected String setDisplayName() {
         return "Cat048Item260 - ACAS Resolution Advisory Report";
     }
+
 
     public int getThreatTypeIndicator() {
         return threatTypeIndicator;
@@ -622,5 +603,14 @@ public class Cat048Item260 extends FixedLengthAsterixData {
 
     public TCASThreatTypeIndicators getTCASThreatTypeIndicator() {
         return TCASThreatTypeIndicator;
+    }
+
+    // returns true if all ARA and RAC bits are empty
+    private boolean checkEmptyFields() {
+        return (this.ARABit41 == 0 && this.ARABit42 == 0 && this.ARABit43 == 0
+                && this.ARABit44 == 0 && this.ARABit45 == 0 && this.ARABit46 == 0
+                && this.ARABit47 == 0 && this.ARABit48 == 0 && this.ARABit49 == 0
+                && this.ARABit50 == 0 && this.RACBit55 == 0 && this.RACBit56 == 0
+                && this.RACBit57 == 0 && this.RACBit58 == 0);
     }
 }
