@@ -4,8 +4,8 @@
 package jlg.jade.asterix.cat048;
 
 public enum TCASVersions {
-    VERSION_604,
-    VERSION_70,
-    VERSION_71,
-    FUTURE_VERSION
+    Version604,
+    Version70,
+    Version71,
+    FutureVers
 }

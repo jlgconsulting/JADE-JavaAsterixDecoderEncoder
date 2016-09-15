@@ -11,10 +11,10 @@ public class ARACalculator {
 
     public List<String> getARAList(Cat048Item260 item260) {
         switch (item260.getDeterminedTCASVersion()) {
-            case VERSION_604:
+            case Version604:
                 generateV604ARAList(item260);
                 break;
-            case VERSION_70:
+            case Version70:
                 generateV70ARAList(item260);
                 break;
         }

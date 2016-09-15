@@ -132,16 +132,16 @@ public class Cat048Item230 extends FixedLengthAsterixData {
         int TCASVersionBitValue = this.BDS10Bit37 * 2 + this.BDS10Bit38;
         switch(TCASVersionBitValue) {
             case 0:
-                this.determinedTCASVersion = TCASVersions.VERSION_604;
+                this.determinedTCASVersion = TCASVersions.Version604;
                 break;
             case 1:
-                this.determinedTCASVersion = TCASVersions.VERSION_70;
+                this.determinedTCASVersion = TCASVersions.Version70;
                 break;
             case 2:
-                this.determinedTCASVersion = TCASVersions.VERSION_71;
+                this.determinedTCASVersion = TCASVersions.Version71;
                 break;
             default:
-                this.determinedTCASVersion = TCASVersions.FUTURE_VERSION;
+                this.determinedTCASVersion = TCASVersions.FutureVers;
                 break;
             }
 

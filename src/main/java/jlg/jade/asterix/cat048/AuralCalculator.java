@@ -23,13 +23,13 @@ public class AuralCalculator {
         determineAuralBinaryRepresentation(input);
 
         switch (input.getDeterminedTCASVersion()) {
-            case VERSION_604:
+            case Version604:
                 auralCode = getVersion604AuralCode(input);
                 break;
-            case VERSION_70:
+            case Version70:
                 auralCode = getVersion70AuralCode(input);
                 break;
-            case VERSION_71:
+            case Version71:
                 auralCode = getVersion71AuralCode(input);
                 break;
         }
@@ -63,7 +63,7 @@ public class AuralCalculator {
 
         // append extra bits ( ARA48, ARA49, ARA50 ) for v6.04
 
-        if (item260.getDeterminedTCASVersion() == TCASVersions.VERSION_604) {
+        if (item260.getDeterminedTCASVersion() == TCASVersions.Version604) {
             sb.append(item260.getARABit48()).append(item260.getARABit49())
                     .append(item260.getARABit50());
         }

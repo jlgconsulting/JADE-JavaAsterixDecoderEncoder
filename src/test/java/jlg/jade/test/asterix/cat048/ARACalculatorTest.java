@@ -31,7 +31,7 @@ public class ARACalculatorTest {
         byte[] input = {48, (byte) secondInputByte, (byte) thirdInputByte, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedAraList = new ArrayList<>(Arrays.asList(expectedAraMessage));
 
@@ -50,7 +50,7 @@ public class ARACalculatorTest {
         byte[] input = {48, (byte) 192, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedAraList = new ArrayList<>(
                 Arrays.asList("CORRECTIVE", "UP",

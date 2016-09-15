@@ -25,7 +25,7 @@ public class AuralCalculatorTest {
         int offset = 0;
         AuralCalculator auralCalculator = new AuralCalculator();
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -46,7 +46,7 @@ public class AuralCalculatorTest {
         int offset = 0;
         AuralCalculator auralCalculator = new AuralCalculator();
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -65,7 +65,7 @@ public class AuralCalculatorTest {
         int offset = 0;
         AuralCalculator auralCalculator = new AuralCalculator();
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_71);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version71);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act

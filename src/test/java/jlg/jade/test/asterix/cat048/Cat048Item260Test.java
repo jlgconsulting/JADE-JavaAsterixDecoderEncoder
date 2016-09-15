@@ -37,7 +37,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -53,7 +53,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -73,7 +73,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -89,7 +89,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -106,7 +106,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -124,7 +124,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) secondInputByte, (byte) thirdInputByte, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedAraList = new ArrayList<>(Arrays.asList(expectedMessage));
 
@@ -141,7 +141,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 192, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedAraList = new ArrayList<>(
                 Arrays.asList("CORRECTIVE", "UP",
@@ -161,7 +161,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 3, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Cat048Item260 item260 = new Cat048Item260(item230);
         List<String> expectedRAComplements = new ArrayList<>(
                 Arrays.asList("DNB", "DNA"));
@@ -184,7 +184,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
                 (byte) sixtInputByte, (byte) seventhInputByte};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
         // act
@@ -208,7 +208,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, (byte) firstTIDByte, (byte) secondTIDByte, (byte) thirdTIDByte, (byte) fourthTIDByte};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Mockito.when(item230.getBDS10Bit39()).thenReturn(0);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
@@ -234,7 +234,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, (byte) firstTIDAByte, (byte) secondTIDAByte, (byte) thirdTIDAByte, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Mockito.when(item230.getBDS10Bit39()).thenReturn(0);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
@@ -252,7 +252,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 194, 0, 8, (byte) 132, 66, (byte) 219};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_70);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version70);
         Mockito.when(item230.getBDS10Bit39()).thenReturn(1);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
@@ -273,7 +273,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         byte[] input = {48, (byte) 128, 0, 0, 0, 0, 0};
         int offset = 0;
         Cat048Item230 item230 = Mockito.mock(Cat048Item230.class);
-        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.VERSION_604);
+        Mockito.when(item230.getDeterminedTCASVersion()).thenReturn(TCASVersions.Version604);
         Mockito.when(item230.getBDS10Bit39()).thenReturn(1);
         Cat048Item260 item260 = new Cat048Item260(item230);
 
@@ -303,7 +303,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
         // assert
         assertEquals("Item not decoded correctly - TCAS State", TCASStates.OnGoing, item260.getTCASState());
         assertEquals("Item not decoded correctly - TCAS Format", TCASFormats.DO_185A, item260.getTCASFormat());
-        assertEquals("Item not decoded correctly - TCAS Version", TCASVersions.FUTURE_VERSION, item230.getDeterminedTCASVersion());
+        assertEquals("Item not decoded correctly - TCAS Version", TCASVersions.FutureVers, item230.getDeterminedTCASVersion());
         assertEquals("Item not decoded correctly - TCAS Threat Type", TCASThreatTypes.SINGLE, item260.getTCASThreatType());
         assertEquals("Item not decoded correctly - TCAS Capability", TCASCapabilities.TA_AND_RA, item260.getTCASCapability());
 
