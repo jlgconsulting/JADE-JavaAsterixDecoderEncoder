@@ -4,13 +4,9 @@
 package jlg.jade.test.asterix.cat048;
 
 import jlg.jade.asterix.AsterixItemLength;
-import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.asterix.cat048.Cat048Record;
 import jlg.jade.test.utils.MandatoryFspecAsterixTests;
-import jlg.jade.test.utils.TestHelper;
 import org.junit.Test;
-
-import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -199,20 +195,5 @@ public class Cat048RecordTest extends MandatoryFspecAsterixTests<Cat048Record> {
 
         assertEquals("Item not decoded correctly - Item260 - ACAS RA Report -- Aural", "CCC, or CXC-CXC, or IC-IC, or CCN-CCN",
                      cat048Record.getItem260().getAuralCode());
-
-
-    }
-
-    @Test
-    public void the_decode_method_should_correctly_decode_acas_related_data() {
-        // arrange
-        List<AsterixRecord> cat048Records = TestHelper
-                .extractAsterixRecordsFromFile("NATS_CAT048_119bytes_TCAS.ff");
-
-        AsterixRecord record = cat048Records.get(1);
-
-        // act
-
-        // assert
     }
 }
