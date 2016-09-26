@@ -117,7 +117,7 @@ public class Cat048Item260Test extends MandatoryFixedLengthAsterixTests<Cat048It
     }
 
     @Test
-    @Parameters({"128, 0, Climb", "64, 0, Don’t descend", "32, 0, Don’t descend faster than 500 fpm"})
+    @Parameters({"128, 0, CLIMB", "64, 0, DND1", "32, 0, DND2"})
     public void the_decode_method_should_correctly_decode_ra_message_list_for_v604(
             int secondInputByte, int thirdInputByte, String expectedMessage) {
         // arrange

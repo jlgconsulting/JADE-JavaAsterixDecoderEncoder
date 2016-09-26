@@ -25,43 +25,43 @@ public class ARACalculator {
     private void generateV604ARAList(Cat048Item260 item260) {
 
         if (item260.getARABit41() == 1) {
-            araList.add("Climb");
+            araList.add("CLIMB");
         }
 
         if (item260.getARABit42() == 1) {
-            araList.add("Don’t descend");
+            araList.add("DND1");
         }
 
         if (item260.getARABit43() == 1) {
-            araList.add("Don’t descend faster than 500 fpm");
+            araList.add("DND2");
         }
 
         if (item260.getARABit44() == 1) {
-            araList.add("Don’t descend faster than 1000 fpm");
+            araList.add("DND3");
         }
 
         if (item260.getARABit45() == 1) {
-            araList.add("Don’t descend faster than 2000 fpm");
+            araList.add("DND4");
         }
 
         if (item260.getARABit46() == 1) {
-            araList.add("Descend");
+            araList.add("DESCEND");
         }
 
         if (item260.getARABit47() == 1) {
-            araList.add("Don’t climb");
+            araList.add("DNC1");
         }
 
         if (item260.getARABit48() == 1) {
-            araList.add("Don’t climb faster than 500 fpm");
+            araList.add("DNC2");
         }
 
         if (item260.getARABit49() == 1) {
-            araList.add("Don’t climb faster than 1000 fpm");
+            araList.add("DNC3");
         }
 
         if (item260.getARABit50() == 1) {
-            araList.add("Don’t climb faster than 2000 fpm");
+            araList.add("DNC4");
         }
     }
 

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 public class ARACalculatorTest {
 
     @Test
-    @Parameters({"128, 0, Climb", "64, 0, Don’t descend", "32, 0, Don’t descend faster than 500 fpm"})
+    @Parameters({"128, 0, CLIMB", "64, 0, DND1", "32, 0, DND2"})
     public void the_ara_calculator_should_correctly_calculate_v604_ara_list(int secondInputByte,
                                                                             int thirdInputByte,
                                                                             String expectedAraMessage) {
