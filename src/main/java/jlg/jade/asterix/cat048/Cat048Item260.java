@@ -7,9 +7,7 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.ModeCCode;
 
-import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.List;
 
 /**
  * Cat048Item260 - ACAS Resolution Advisory Report
@@ -19,7 +17,6 @@ import java.util.List;
  */
 public class Cat048Item260 extends FixedLengthAsterixData {
 
-    private Cat048Item230 item230;
     private int threatTypeIndicator;            // TTI
     private int TIDModeSAddress;                // TID ModeS Address
     private int multiThreatIndicator;           // MTI / MTE
@@ -36,12 +33,9 @@ public class Cat048Item260 extends FixedLengthAsterixData {
     private int ARABit50;
 
     private int RACBit55;
-
     private int RACBit56;
     private int RACBit57;
     private int RACBit58;
-    private String auralCode;
-    private List<String> ARAList = new ArrayList<>();
     private int TIDAltitude;
     private int TIDRange;
     private int TIDBearing;
@@ -346,6 +340,32 @@ public class Cat048Item260 extends FixedLengthAsterixData {
         }
 
         appendItemDebugMsg("ARABit50", this.ARABit50);
+
+        // RAC bits
+
+        if(bs.get(Cat048Item260BitSetIndexes.RAC_BIT1_INDEX.getValue())) {
+            this.RACBit55 = 1;
+        }
+
+        appendItemDebugMsg("RACBit55", this.RACBit55);
+
+        if(bs.get(Cat048Item260BitSetIndexes.RAC_BIT2_INDEX.getValue())) {
+            this.RACBit56 = 1;
+        }
+
+        appendItemDebugMsg("RACBit56", this.RACBit56);
+
+        if(bs.get(Cat048Item260BitSetIndexes.RAC_BIT3_INDEX.getValue())) {
+            this.RACBit57 = 1;
+        }
+
+        appendItemDebugMsg("RACBit57", this.RACBit57);
+
+        if(bs.get(Cat048Item260BitSetIndexes.RAC_BIT4_INDEX.getValue())) {
+            this.RACBit58 = 1;
+        }
+
+        appendItemDebugMsg("RACBit58", this.RACBit58);
 
         if (bs.get(Cat048Item260BitSetIndexes.MTI_BIT_INDEX.getValue())) {
             this.multiThreatIndicator = 1;
