@@ -25,3 +25,36 @@ Examples:
 1. With data stream from file -> java -jar ./jade-<version>.jar file <true|false> <path to file> <categories separated by comma>
 2. With data stream from UDP Unicast -> java -jar ./jade-<version>.jar udp <true|false> <port> <categories separated by comma> 
 3. java -jar ./jade-0.9.3 file true D:\Data\data_sample.rec 62,65
+
+### Show me some code
+
+```java
+
+// in this example, we want to decode categories 62, 65
+AsterixDecoder asterixDecoder = new AsterixDecoder(62,65);
+
+// asterix data is represented as byte array
+byte[] asterixRawBlock = rawQueue.take();
+
+// decode the byte array and obtain the asterix data blocks
+List<AsterixDataBlock> dataBlocks = asterixDecoder.decode(
+    asterixRawBlock,
+    0,
+    asterixRawBlock.length
+);
+
+// process data blocks and extract individual records
+for (AsterixDataBlock asterixDataBlock : dataBlocks) {
+    List<AsterixRecord> asterixRecords = asterixDataBlock.getRecords();
+    
+    for (AsterixRecord record : asterixRecords) {
+        // get category of record
+        int cat = record.getCategory();
+        if(cat == 62){
+            // after we know the category, we can access the specific record info
+            Cat062Record cat062Record = record.getCat062Record();
+            int trackNb = cat062Record.getItem040().getTrackNb();
+        }
+    }
+}
+```
