@@ -25,7 +25,6 @@ public class Cat048Item230 extends FixedLengthAsterixData {
     private int BDS10Bit38;
     private int BDS10Bit39;
     private int BDS10Bit40;
-    private TCASVersions determinedTCASVersion;
     private int determinedCapability;
 
     @Override
@@ -125,28 +124,6 @@ public class Cat048Item230 extends FixedLengthAsterixData {
 
         appendItemDebugMsg("BDS 1,0 bit 40", this.BDS10Bit40);
 
-        // determine TCAS version
-        // according to the old implementation of DAQ the TCAS version is given by
-        // the BDS Register 1,0 bits 71 and 70 ( equivalent to Asterix Cat048Item230
-        // BDS Register 1,0 Bit 37 and BDS Register 1,0 Bit38
-        int TCASVersionBitValue = this.BDS10Bit37 * 2 + this.BDS10Bit38;
-        switch(TCASVersionBitValue) {
-            case 0:
-                this.determinedTCASVersion = TCASVersions.Version604;
-                break;
-            case 1:
-                this.determinedTCASVersion = TCASVersions.Version70;
-                break;
-            case 2:
-                this.determinedTCASVersion = TCASVersions.Version71;
-                break;
-            default:
-                this.determinedTCASVersion = TCASVersions.FutureVers;
-                break;
-            }
-
-        appendItemDebugMsg("TCAS version", this.determinedTCASVersion);
-
         // according to DAQ implementation capability is determined using Hybrid and CAP bits
         this.determinedCapability = this.BDS10Bit40 * 2 + this.BDS10Bit39;
 
@@ -240,10 +217,6 @@ public class Cat048Item230 extends FixedLengthAsterixData {
 
     public int getBDS10Bit40() {
         return BDS10Bit40;
-    }
-
-    public TCASVersions getDeterminedTCASVersion() {
-        return determinedTCASVersion;
     }
 
     public int getDeterminedCapability() {
