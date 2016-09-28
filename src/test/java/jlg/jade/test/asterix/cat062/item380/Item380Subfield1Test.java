@@ -6,7 +6,7 @@
 */
 package jlg.jade.test.asterix.cat062.item380;
 
-import jlg.jade.asterix.cat062.item380.Item380Subfield1;
+import jlg.jade.asterix.cat062.item380.Cat062Item380Subfield1;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +17,7 @@ public class Item380Subfield1Test {
     @Test
     public void should_have_length_of_3_bytes(){
         //arrange
-        Item380Subfield1 subfield = new Item380Subfield1();
+        Cat062Item380Subfield1 subfield = new Cat062Item380Subfield1();
 
         //assert
         assertEquals("Subfield length is not valid", 3, subfield.getSizeInBytes());
@@ -28,7 +28,7 @@ public class Item380Subfield1Test {
         //arrange
         byte[] input = {75, (byte) 170, 104};
         int offset = 0;
-        Item380Subfield1 subfield = new Item380Subfield1();
+        Cat062Item380Subfield1 subfield = new Cat062Item380Subfield1();
 
 
         //act
@@ -44,7 +44,7 @@ public class Item380Subfield1Test {
         //arrange
         byte[] input = {75, (byte) 170, 104};
         int offset = 0;
-        Item380Subfield1 subfield = new Item380Subfield1();
+        Cat062Item380Subfield1 subfield = new Cat062Item380Subfield1();
 
 
         //act
@@ -61,7 +61,7 @@ public class Item380Subfield1Test {
         //arrange
         byte[] input = {75, (byte) 170, 104};
         int offset = 0;
-        Item380Subfield1 subfield = new Item380Subfield1();
+        Cat062Item380Subfield1 subfield = new Cat062Item380Subfield1();
 
 
         //act

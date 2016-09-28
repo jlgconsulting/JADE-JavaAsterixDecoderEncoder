@@ -16,12 +16,12 @@ import jlg.jade.asterix.FspecAsterixData;
  * track. These data are not used for ADS-B.
  */
 public class Cat062Item340 extends FspecAsterixData {
-    private Item340Subfield1 subfield1;
-    private Item340Subfield2 subfield2;
-    private Item340Subfield3 subfield3;
-    private Item340Subfield4 subfield4;
-    private Item340Subfield5 subfield5;
-    private Item340Subfield6 subfield6;
+    private Cat062Item340Subfield1 subfield1;
+    private Cat062Item340Subfield2 subfield2;
+    private Cat062Item340Subfield3 subfield3;
+    private Cat062Item340Subfield4 subfield4;
+    private Cat062Item340Subfield5 subfield5;
+    private Cat062Item340Subfield6 subfield6;
 
     @Override
     protected int setMaxFspecSizeInBytes() {
@@ -31,37 +31,37 @@ public class Cat062Item340 extends FspecAsterixData {
     @Override
     protected int decodeFromByteArray(byte[] input, int offset, int length) {
         if (fspecDataAtIndex(Fspec.SUBFIELD_1)) {
-            subfield1 = new Item340Subfield1();
+            subfield1 = new Cat062Item340Subfield1();
             offset = subfield1.decode(input, offset, length);
             appendDebugMsg(subfield1.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_2)) {
-            subfield2 = new Item340Subfield2();
+            subfield2 = new Cat062Item340Subfield2();
             offset = subfield2.decode(input, offset, length);
             appendDebugMsg(subfield2.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_3)) {
-            subfield3 = new Item340Subfield3();
+            subfield3 = new Cat062Item340Subfield3();
             offset = subfield3.decode(input, offset, length);
             appendDebugMsg(subfield3.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_4)) {
-            subfield4 = new Item340Subfield4();
+            subfield4 = new Cat062Item340Subfield4();
             offset = subfield4.decode(input, offset, length);
             appendDebugMsg(subfield4.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_5)) {
-            subfield5 = new Item340Subfield5();
+            subfield5 = new Cat062Item340Subfield5();
             offset = subfield5.decode(input, offset, length);
             appendDebugMsg(subfield5.getDebugString());
         }
 
         if (fspecDataAtIndex(Fspec.SUBFIELD_6)) {
-            subfield6 = new Item340Subfield6();
+            subfield6 = new Cat062Item340Subfield6();
             offset = subfield6.decode(input, offset, length);
             appendNewLine();
             appendDebugMsg(subfield6.getDebugString());
@@ -70,27 +70,27 @@ public class Cat062Item340 extends FspecAsterixData {
         return offset;
     }
 
-    public Item340Subfield1 getSubfield1() {
+    public Cat062Item340Subfield1 getSubfield1() {
         return subfield1;
     }
 
-    public Item340Subfield2 getSubfield2() {
+    public Cat062Item340Subfield2 getSubfield2() {
         return subfield2;
     }
 
-    public Item340Subfield3 getSubfield3() {
+    public Cat062Item340Subfield3 getSubfield3() {
         return subfield3;
     }
 
-    public Item340Subfield4 getSubfield4() {
+    public Cat062Item340Subfield4 getSubfield4() {
         return subfield4;
     }
 
-    public Item340Subfield5 getSubfield5() {
+    public Cat062Item340Subfield5 getSubfield5() {
         return subfield5;
     }
 
-    public Item340Subfield6 getSubfield6() {
+    public Cat062Item340Subfield6 getSubfield6() {
         return subfield6;
     }
 
