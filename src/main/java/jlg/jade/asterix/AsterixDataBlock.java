@@ -39,7 +39,7 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
      */
     public int decode(byte[] input, int offset, int length) {
         while (offset < length) {
-            AsterixRecord record = new AsterixRecordBase(category);
+            AsterixRecord record = new StandardAsterixRecord(category);
 
             offset = record.decode(input, offset, length);
 

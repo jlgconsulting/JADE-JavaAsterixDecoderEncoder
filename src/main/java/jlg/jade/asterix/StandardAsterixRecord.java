@@ -21,7 +21,7 @@ import java.util.HashMap;
 /**
  * Represents a single Asterix message of a given category.
  */
-public class AsterixRecordBase extends DebugMessageSource implements AsterixRecord {
+public class StandardAsterixRecord extends DebugMessageSource implements AsterixRecord {
     private String sacSicCode;
     private final int category;
     private Cat062Record cat062Record;
@@ -40,7 +40,7 @@ public class AsterixRecordBase extends DebugMessageSource implements AsterixReco
      */
     private AbstractMap<String, Object> additionalInfo;
 
-    public AsterixRecordBase(int category) {
+    public StandardAsterixRecord(int category) {
         this.category = category;
         this.additionalInfo = new HashMap<>();
         switch (category) {
