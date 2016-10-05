@@ -10,13 +10,14 @@ package jlg.jade.common;
  * A class that provides basic debug information that can be used by the child classes in logging
  * scenarios
  */
-public abstract class DebugMessageSource {
+public abstract class DebugMessageSource implements Loggable {
     private final StringBuilder debugStringBuilder;
 
     protected DebugMessageSource() {
         this.debugStringBuilder = new StringBuilder();
     }
 
+    @Override
     public String getDebugString() {
         return debugStringBuilder.toString();
     }

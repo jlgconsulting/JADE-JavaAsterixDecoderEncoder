@@ -5,6 +5,7 @@ package jlg.jade.test.asterix.counters;
 
 import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.AsterixRecord;
+import jlg.jade.asterix.AsterixRecordBase;
 import jlg.jade.asterix.cat034.Cat034Item000;
 import jlg.jade.asterix.cat034.Cat034Item010;
 import jlg.jade.asterix.cat034.Cat034Item030;
@@ -29,7 +30,7 @@ public class Cat034ItemCounterTest {
         AsterixDataBlock adbMock = Mockito.mock(AsterixDataBlock.class);
 
         List<AsterixRecord> asterixRecordList = new ArrayList<>();
-        AsterixRecord asterixRecordOne = Mockito.mock(AsterixRecord.class);
+        AsterixRecord asterixRecordOne = Mockito.mock(AsterixRecordBase.class);
 
         asterixRecordList.add(asterixRecordOne);
 
@@ -43,7 +44,7 @@ public class Cat034ItemCounterTest {
         // mock the asterixRecordOne getCat034Record() to return our cat 034 record mock
         when(asterixRecordOne.getCat034Record()).thenReturn(cat034RecordMock);
 
-        // mock the Asterix data block getRecords() method to return the list with our AsterixRecord
+        // mock the Asterix data block getRecords() method to return the list with our AsterixRecordBase
         when(adbMock.getRecords()).thenReturn(asterixRecordList);
 
         counter.increment(adbMock);
