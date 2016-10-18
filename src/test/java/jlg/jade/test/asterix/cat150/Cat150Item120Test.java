@@ -9,6 +9,7 @@ import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class Cat150Item120Test extends MandatoryFixedLengthAsterixTests<Cat150Item120> {
     @Override
@@ -37,6 +38,20 @@ public class Cat150Item120Test extends MandatoryFixedLengthAsterixTests<Cat150It
         assertEquals("Item not decoded correctly - aircraft type", "CDEF",
                 cat150Item120.getTypeOfAircraft());
         assertEquals("Item not decoded correctly", "A", cat150Item120.getWakeTurbulence());
+    }
+
+    @Test
+    public void when_wake_turbulence_is_zero_the_decode_method_should() {
+        //arrange
+        byte[] input = {48, 48, 65, 51, 56, 56, 0};
+        int offset = 0;
+        Cat150Item120 cat150Item120 = new Cat150Item120();
+
+        //act
+        cat150Item120.decode(input, offset, input.length);
+
+        //assert
+        assertNull("Item not decoded correctly", cat150Item120.getWakeTurbulence());
     }
 
     /**

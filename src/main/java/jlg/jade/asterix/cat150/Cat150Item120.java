@@ -25,7 +25,9 @@ public class Cat150Item120 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         this.numberOfAircraft = Integer.parseInt(new String(input, offset, 2));
         this.typeOfAircraft = new String(input, offset + 2, 4);
-        this.wakeTurbulence = new String(input, offset + 6, 1);
+        if(input[offset+6] != 0) {
+            this.wakeTurbulence = new String(input, offset + 6, 1);
+        }
 
         appendItemDebugMsg("Nb. of aircraft", this.numberOfAircraft);
         appendItemDebugMsg("Type of aircraft", this.typeOfAircraft);
