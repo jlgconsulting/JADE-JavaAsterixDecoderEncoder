@@ -169,7 +169,7 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
 
         if (record.getItem220() != null) {
             this.item220Present += 1;
-            if (!record.getItem200().isValid()) {
+            if (!record.getItem220().isValid()) {
                 this.item220Invalid += 1;
             }
             appendItemCounterMsg("Item 220 - Aircraft Address", this.item220Present,

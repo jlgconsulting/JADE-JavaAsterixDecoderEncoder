@@ -5,7 +5,7 @@
 
     <groupId>jlg-consulting</groupId>
     <artifactId>jade</artifactId>
-    <version>0.9.14</version>
+    <version>0.9.15</version>
     <packaging>jar</packaging>
 
     <name>jade</name>
