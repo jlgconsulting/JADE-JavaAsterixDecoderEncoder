@@ -213,7 +213,7 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem070().isValid()) {
                 this.item070Invalid += 1;
             }
-            appendItemCounterMsg("Item 070 - Service identification [M]", item070Present, item070Invalid);
+            appendItemCounterMsg("Item 070 - Time Of Track", item070Present, item070Invalid);
         }
 
         if (record.getItem105() != null) {
