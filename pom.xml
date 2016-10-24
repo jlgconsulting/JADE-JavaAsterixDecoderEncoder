@@ -5,12 +5,12 @@
 
     <groupId>jlg-consulting</groupId>
     <artifactId>jade</artifactId>
-    <version>0.9.16</version>
+    <version>0.9.17</version>
     <packaging>jar</packaging>
 
     <name>jade</name>
     <description>
-        JADE (Java Asterix Decoder Encoder) is a concise API for encoding and decoding ASTERIX messages.
+        JADE (Java Asterix Decoder Encoder) is a concise Java API for encoding and decoding ASTERIX messages.
     </description>
 
     <parent>

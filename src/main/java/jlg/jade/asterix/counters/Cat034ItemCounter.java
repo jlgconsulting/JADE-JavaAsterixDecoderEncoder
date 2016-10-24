@@ -9,7 +9,6 @@ import jlg.jade.asterix.cat034.Cat034Record;
 import jlg.jade.common.DebugMessageSource;
 
 public class Cat034ItemCounter extends DebugMessageSource implements AsterixItemCounter {
-
     private int nbRecords;
     private int nbOfInvalidRecords;
 
@@ -62,23 +61,16 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
      * @param record represents a new Asterix record
      */
     private void increment(Cat034Record record) {
-        clearDebugMsg();
-        appendNewLine();
-        appendItemCounterMsg("Asterix Category 034 Counters", "Nb. decoded", "Nb. invalid");
-
         this.nbRecords++;
         if (!record.isValid()) {
             this.nbOfInvalidRecords++;
         }
-        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
 
         if (record.getItem010() != null) {
             this.item010Present += 1;
             if (!record.getItem010().isValid()) {
                 this.item010Invalid += 1;
             }
-            appendItemCounterMsg("Item 010 - Data Source Identifier", this.item010Present,
-                                 this.item010Invalid);
         }
 
         if (record.getItem000() != null) {
@@ -86,8 +78,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem000().isValid()) {
                 this.item000Invalid += 1;
             }
-            appendItemCounterMsg("Item 000 - Message Type", this.item000Present,
-                                 this.item000Invalid);
         }
 
         if (record.getItem030() != null) {
@@ -95,8 +85,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem030().isValid()) {
                 this.item030Invalid += 1;
             }
-            appendItemCounterMsg("Item 030 - Time of Day", this.item030Present,
-                                 this.item030Invalid);
         }
 
         if (record.getItem020() != null) {
@@ -104,8 +92,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem020().isValid()) {
                 this.item020Invalid += 1;
             }
-            appendItemCounterMsg("Item 020 - Sector Number", this.item020Present,
-                                 this.item020Invalid);
         }
 
         if (record.getItem041() != null) {
@@ -113,8 +99,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem041().isValid()) {
                 this.item041Invalid += 1;
             }
-            appendItemCounterMsg("Item 041 - Antenna Rotation Speed", this.item041Present,
-                                 this.item041Invalid);
         }
 
         if (record.getItem050() != null) {
@@ -122,8 +106,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem050().isValid()) {
                 this.item050Invalid += 1;
             }
-            appendItemCounterMsg("Item 050 - System Configuration and Status", this.item050Present,
-                                 this.item050Invalid);
         }
 
         if (record.getItem060() != null) {
@@ -131,8 +113,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem060().isValid()) {
                 this.item060Invalid += 1;
             }
-            appendItemCounterMsg("Item 060 - System Processing Mode", this.item060Present,
-                                 this.item060Invalid);
         }
 
         if (record.getItem070() != null) {
@@ -140,8 +120,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem070().isValid()) {
                 this.item070Invalid += 1;
             }
-            appendItemCounterMsg("Item 070 - Message Count Values", this.item070Present,
-                                 this.item070Invalid);
         }
 
         if (record.getItem100() != null) {
@@ -149,8 +127,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem100().isValid()) {
                 this.item100Invalid += 1;
             }
-            appendItemCounterMsg("Item 100 - Generic Polar Window", this.item100Present,
-                                 this.item100Invalid);
         }
 
         if (record.getItem110() != null) {
@@ -158,8 +134,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem110().isValid()) {
                 this.item110Invalid += 1;
             }
-            appendItemCounterMsg("Item 110 - Data Filter", this.item110Present,
-                                 this.item110Invalid);
         }
 
         if (record.getItem120() != null) {
@@ -167,8 +141,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem120().isValid()) {
                 this.item120Invalid += 1;
             }
-            appendItemCounterMsg("Item 120 - 3D-Position Of Data Source", this.item120Present,
-                                 this.item120Invalid);
         }
 
         if (record.getItem090() != null) {
@@ -176,8 +148,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem090().isValid()) {
                 this.item090Invalid += 1;
             }
-            appendItemCounterMsg("Item 090 - Collimation Error", this.item090Present,
-                                 this.item090Invalid);
         }
 
         if (record.getReservedExpansionField() != null) {
@@ -185,7 +155,6 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getReservedExpansionField().isValid()) {
                 this.itemReInvalid += 1;
             }
-            appendItemCounterMsg("RE", this.itemRePresent, this.itemReInvalid);
         }
 
         if (record.getReservedSpecialPurposeField() != null) {
@@ -193,9 +162,9 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getReservedSpecialPurposeField().isValid()) {
                 this.itemSpInvalid += 1;
             }
-            appendItemCounterMsg("SP", this.itemSpPresent, this.itemSpInvalid);
         }
 
+        createPrintMsg();
     }
 
     public int getItem010Present() {
@@ -308,5 +277,39 @@ public class Cat034ItemCounter extends DebugMessageSource implements AsterixItem
 
     public int getItemSpInvalid() {
         return itemSpInvalid;
+    }
+
+    private void createPrintMsg() {
+        clearDebugMsg();
+        appendNewLine();
+        appendItemCounterMsg("Asterix Category 034 Counters", "Nb. decoded", "Nb. invalid");
+        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
+        appendItemCounterMsg("Item 010 - Data Source Identifier", this.item010Present,
+                             this.item010Invalid);
+        appendItemCounterMsg("Item 000 - Message Type", this.item000Present,
+                             this.item000Invalid);
+        appendItemCounterMsg("Item 030 - Time of Day", this.item030Present,
+                             this.item030Invalid);
+        appendItemCounterMsg("Item 020 - Sector Number", this.item020Present,
+                             this.item020Invalid);
+        appendItemCounterMsg("Item 041 - Antenna Rotation Speed", this.item041Present,
+                             this.item041Invalid);
+        appendItemCounterMsg("Item 050 - System Configuration and Status", this.item050Present,
+                             this.item050Invalid);
+        appendItemCounterMsg("Item 060 - System Processing Mode", this.item060Present,
+                             this.item060Invalid);
+        appendItemCounterMsg("Item 070 - Message Count Values", this.item070Present,
+                             this.item070Invalid);
+        appendItemCounterMsg("Item 100 - Generic Polar Window", this.item100Present,
+                             this.item100Invalid);
+        appendItemCounterMsg("Item 110 - Data Filter", this.item110Present,
+                             this.item110Invalid);
+        appendItemCounterMsg("Item 120 - 3D-Position Of Data Source", this.item120Present,
+                             this.item120Invalid);
+        appendItemCounterMsg("Item 090 - Collimation Error", this.item090Present,
+                             this.item090Invalid);
+        appendItemCounterMsg("RE", this.itemRePresent, this.itemReInvalid);
+        appendItemCounterMsg("SP", this.itemSpPresent, this.itemSpInvalid);
+
     }
 }

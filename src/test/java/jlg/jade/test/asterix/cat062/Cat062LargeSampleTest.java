@@ -8,12 +8,11 @@ package jlg.jade.test.asterix.cat062;
 
 import jlg.finalframe.FinalFrameReader;
 import jlg.jade.asterix.AsterixDataBlock;
-import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.asterix.AsterixDecoder;
+import jlg.jade.asterix.AsterixRecord;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.context.annotation.Description;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -62,7 +61,7 @@ public class Cat062LargeSampleTest {
 
 
     @Test
-    @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
+    @Ignore("[Ignored] Can only be executed if an Asterix sender is feeding the decoder")
     public void
     when_upd_unicast_is_used_as_input_and_datagram_is_large_should_decode_cat062_messages_from_larger_sample() throws
             IOException {
@@ -105,8 +104,8 @@ public class Cat062LargeSampleTest {
         //assertEquals(expectedBytes, receivedBytes);
     }
 
-    @Test()
-    @Ignore("Can only be executed if an Asterix sender is feeding the decoder")
+    @Test
+    @Ignore("[Ignored] Can only be executed if an Asterix sender is feeding the decoder")
     public void when_upd_unicast_is_used_as_input_should_decode_cat062_messages_from_larger_sample() throws
             IOException {
         //arrange
@@ -146,8 +145,7 @@ public class Cat062LargeSampleTest {
     }
 
     @Test
-    @Description("Used only for printing byte information that can help with developing the tool")
-    @Ignore
+    @Ignore("[Ignored] Used only for printing byte information that can help with developing the tool")
     public void with_one_packet_should_print_bytes() throws IOException {
         try (InputStream is = TestHelper.getFileInputStreamFromResource("final_frame_062_one_packet_sample2.FF")) {
             FinalFrameReader ffReader = new FinalFrameReader();

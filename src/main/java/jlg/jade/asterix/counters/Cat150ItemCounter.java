@@ -137,26 +137,16 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
      * @param record a new Asterix record
      */
     private void increment(Cat150Record record) {
-        clearDebugMsg();
-        appendNewLine();
-        appendNewLine();
-        appendItemCounterMsg("Asterix Category 150 Counters", "Nb. decoded", "Nb. invalid");
-
         this.nbRecords = this.getNbRecords() + 1;
         if (!record.isValid()) {
             this.nbOfInvalidRecords = this.getNbOfInvalidRecords() + 1;
         }
-        appendItemCounterMsg("Number of records", getNbRecords(), getNbOfInvalidRecords());
 
         if (record.getItem010() != null) {
             this.item010Present = this.item010Present + 1;
             if (!record.getItem010().isValid()) {
                 this.item010Invalid = this.item010Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 010 - Destination ID",
-                    item010Present,
-                    item010Invalid);
         }
 
         //counters for item 020
@@ -165,10 +155,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem020().isValid()) {
                 this.item020Invalid = this.item020Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 020 - Source ID",
-                    item020Present,
-                    item020Invalid);
         }
 
         //counters for item 030
@@ -177,10 +163,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem030().isValid()) {
                 this.item030Invalid = this.item030Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 030 - MessageType",
-                    item030Present,
-                    item030Invalid);
 
             switch (record.getItem030().getMessageType()) {
                 case FLIGHT_PLAN_CREATION:
@@ -214,15 +196,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
                     break;
                 }
             }
-            appendItemCounterMsg("  CREATION", this.nbPlanCreationMsg, 0);
-            appendItemCounterMsg("  MODIFICATION", this.nbPlanModificationMsg, 0);
-            appendItemCounterMsg("  REPETITION", this.nbPlanRepetitionMsg, 0);
-            appendItemCounterMsg("  MANUAL DELETION", this.nbAutoPlanDeletionMsg, 0);
-            appendItemCounterMsg("  AUTO DELETION", this.nbAutoPlanDeletionMsg, 0);
-            appendItemCounterMsg("  CORRELATION", this.nbCorrelationMsg, 0);
-            appendItemCounterMsg("  DE-CORRELATION", this.nbDecorrelationMsg, 0);
-            appendItemCounterMsg("  START LOOP", this.nbStartLoopMsg, 0);
-            appendItemCounterMsg("  END LOOP", this.nbEndLoopMsg, 0);
         }
 
 
@@ -232,10 +205,7 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem040().isValid()) {
                 this.item040Invalid = this.item040Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 040 - Plan Number",
-                    item040Present,
-                    item040Invalid);
+
         }
 
         //counters for item 050
@@ -244,10 +214,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem050().isValid()) {
                 this.item050Invalid = this.item050Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 050 - Callsign",
-                    item050Present,
-                    item050Invalid);
         }
 
         //counters for item 060
@@ -256,10 +222,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem060().isValid()) {
                 this.item060Invalid = this.item060Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 060 - Present Mode-A",
-                    item060Present,
-                    item060Invalid);
         }
 
         //counters for item 070
@@ -268,10 +230,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem070().isValid()) {
                 this.item070Invalid = this.item070Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 070 - Next Mode-A",
-                    item070Present,
-                    item070Invalid);
         }
 
         //counters for item 080
@@ -280,10 +238,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem080().isValid()) {
                 this.item080Invalid = this.item080Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 080 - Departure",
-                    item080Present,
-                    item080Invalid);
         }
 
         //counters for item 090
@@ -292,10 +246,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem090().isValid()) {
                 this.item090Invalid = this.item090Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 090 - Destination",
-                    item090Present,
-                    item090Invalid);
         }
 
         //counters for item 100
@@ -304,10 +254,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem100().isValid()) {
                 this.item100Invalid = this.item100Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 100 - Flight Type Flags",
-                    item100Present,
-                    item100Invalid);
 
             if (record.getItem100().getGatFlag()) {
                 nbGatMsg++;
@@ -315,13 +261,9 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (record.getItem100().getOatFlag()) {
                 nbOatMsg++;
             }
-            if (record.getItem100().getGatFlag() == false && record.getItem100().getOatFlag() ==
-                    false) {
+            if (!record.getItem100().getGatFlag() && !record.getItem100().getOatFlag()) {
                 nbUnknownTrafficMsg++;
             }
-            appendItemCounterMsg("  GAT", this.nbGatMsg, 0);
-            appendItemCounterMsg("  OAT", this.nbOatMsg, 0);
-            appendItemCounterMsg("  UNKNOWN", this.nbUnknownTrafficMsg, 0);
         }
 
         //counters for item 110
@@ -330,10 +272,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem110().isValid()) {
                 this.item110Invalid = this.item110Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 110 - Flight Status Flags",
-                    item110Present,
-                    item110Invalid);
             switch (record.getItem110().getRvsmStatus()) {
                 case UNKNOWN:
                     this.nbRvsmUnknownMsg++;
@@ -348,10 +286,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
                     this.nbRvsmExemptedMsg++;
                     break;
             }
-            appendItemCounterMsg("  EQUIPPED", this.nbRvsmEquippedMsg, 0);
-            appendItemCounterMsg("  CAPABLE", this.nbRvsmCapableMsg, 0);
-            appendItemCounterMsg("  EXEMPTED", this.nbRvsmExemptedMsg, 0);
-            appendItemCounterMsg("  UNKNOWN", this.nbRvsmUnknownMsg, 0);
         }
 
         //counters for item 120
@@ -360,10 +294,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem120().isValid()) {
                 this.item120Invalid = this.item120Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 120 - Aircraft Type & Wake Turbulence",
-                    item120Present,
-                    item120Invalid);
         }
 
         //counters for item 130
@@ -372,10 +302,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem130().isValid()) {
                 this.item130Invalid = this.item130Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 130 - Cleared Flight Level (CFL)",
-                    item130Present,
-                    item130Invalid);
         }
 
         //counters for item 140
@@ -384,10 +310,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem140().isValid()) {
                 this.item140Invalid = this.item140Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 140 - Route Points, Description",
-                    item140Present,
-                    item140Invalid);
         }
 
         //counters for item 150
@@ -396,10 +318,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem150().isValid()) {
                 this.item150Invalid = this.item150Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 150 - Route Points, Coordinates",
-                    item150Present,
-                    item150Invalid);
         }
 
         //counters for item 160
@@ -408,10 +326,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem160().isValid()) {
                 this.item160Invalid = this.item160Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 160 - Route Points, Time",
-                    item160Present,
-                    item160Invalid);
         }
 
         //counters for item 170
@@ -420,10 +334,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem170().isValid()) {
                 this.item170Invalid = this.item170Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 170 - Route Points, Flight Level",
-                    item170Present,
-                    item170Invalid);
         }
 
         //counters for item 180
@@ -432,10 +342,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem180().isValid()) {
                 this.item180Invalid = this.item180Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 180 - Route Points, Speed",
-                    item180Present,
-                    item180Invalid);
         }
 
         //counters for item 190
@@ -444,10 +350,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem190().isValid()) {
                 this.item190Invalid = this.item190Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 190 - Controller ID",
-                    item190Present,
-                    item190Invalid);
         }
 
         //counters for item 200
@@ -456,10 +358,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem200().isValid()) {
                 this.item200Invalid = this.item200Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 200 - Field 18",
-                    item200Present,
-                    item200Invalid);
         }
 
         //counters for item 210
@@ -468,10 +366,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem210().isValid()) {
                 this.item210Invalid = this.item210Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 210 - Correlated Track Number",
-                    item210Present,
-                    item210Invalid);
         }
 
         //counters for item 171
@@ -480,10 +374,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem171().isValid()) {
                 this.item171Invalid = this.item171Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 171 - Route Points, RFL",
-                    item171Present,
-                    item171Invalid);
         }
 
         //counters for item 151
@@ -492,10 +382,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem151().isValid()) {
                 this.item151Invalid = this.item151Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 151 - Route Points, Geographic Pos",
-                    item151Present,
-                    item151Invalid);
         }
 
         //counters for item 220
@@ -504,10 +390,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem220().isValid()) {
                 this.item220Invalid = this.item220Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 220 - Maximum Plan Count",
-                    item220Present,
-                    item220Invalid);
         }
 
         //counters for item 230
@@ -516,10 +398,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem230().isValid()) {
                 this.item230Invalid = this.item230Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 230 - Number of Plans",
-                    item230Present,
-                    item230Invalid);
         }
 
         //counters for item 240
@@ -528,10 +406,6 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem240().isValid()) {
                 this.item240Invalid = this.item240Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 240 - Newly Correlated Plans",
-                    item240Present,
-                    item240Invalid);
         }
 
         //counters for item 250
@@ -540,11 +414,9 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem250().isValid()) {
                 this.item250Invalid = this.item250Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 250 - Newly De-correlated Plans",
-                    item250Present,
-                    item250Invalid);
         }
+
+        createPrintMsg();
     }
 
     public int getNbRecords() {
@@ -845,5 +717,138 @@ public class Cat150ItemCounter extends DebugMessageSource implements AsterixItem
 
     public int getNbUnknownPlanMsg() {
         return nbUnknownPlanMsg;
+    }
+
+    private void createPrintMsg() {
+        clearDebugMsg();
+        appendNewLine();
+        appendNewLine();
+        appendItemCounterMsg("Asterix Category 150 Counters", "Nb. decoded", "Nb. invalid");
+        appendItemCounterMsg("Number of records", getNbRecords(), getNbOfInvalidRecords());
+        appendItemCounterMsg(
+                "Item 010 - Destination ID",
+                item010Present,
+                item010Invalid);
+        appendItemCounterMsg(
+                "Item 020 - Source ID",
+                item020Present,
+                item020Invalid);
+        appendItemCounterMsg(
+                "Item 030 - MessageType",
+                item030Present,
+                item030Invalid);
+        appendItemCounterMsg("  CREATION", this.nbPlanCreationMsg, 0);
+        appendItemCounterMsg("  MODIFICATION", this.nbPlanModificationMsg, 0);
+        appendItemCounterMsg("  REPETITION", this.nbPlanRepetitionMsg, 0);
+        appendItemCounterMsg("  MANUAL DELETION", this.nbAutoPlanDeletionMsg, 0);
+        appendItemCounterMsg("  AUTO DELETION", this.nbAutoPlanDeletionMsg, 0);
+        appendItemCounterMsg("  CORRELATION", this.nbCorrelationMsg, 0);
+        appendItemCounterMsg("  DE-CORRELATION", this.nbDecorrelationMsg, 0);
+        appendItemCounterMsg("  START LOOP", this.nbStartLoopMsg, 0);
+        appendItemCounterMsg("  END LOOP", this.nbEndLoopMsg, 0);
+        appendItemCounterMsg(
+                "Item 040 - Plan Number",
+                item040Present,
+                item040Invalid);
+        appendItemCounterMsg(
+                "Item 050 - Callsign",
+                item050Present,
+                item050Invalid);
+        appendItemCounterMsg(
+                "Item 060 - Present Mode-A",
+                item060Present,
+                item060Invalid);
+        appendItemCounterMsg(
+                "Item 070 - Next Mode-A",
+                item070Present,
+                item070Invalid);
+        appendItemCounterMsg(
+                "Item 080 - Departure",
+                item080Present,
+                item080Invalid);
+        appendItemCounterMsg(
+                "Item 090 - Destination",
+                item090Present,
+                item090Invalid);
+        appendItemCounterMsg(
+                "Item 100 - Flight Type Flags",
+                item100Present,
+                item100Invalid);
+        appendItemCounterMsg("  GAT", this.nbGatMsg, 0);
+        appendItemCounterMsg("  OAT", this.nbOatMsg, 0);
+        appendItemCounterMsg("  UNKNOWN", this.nbUnknownTrafficMsg, 0);
+
+        appendItemCounterMsg(
+                "Item 110 - Flight Status Flags",
+                item110Present,
+                item110Invalid);
+        appendItemCounterMsg("  EQUIPPED", this.nbRvsmEquippedMsg, 0);
+        appendItemCounterMsg("  CAPABLE", this.nbRvsmCapableMsg, 0);
+        appendItemCounterMsg("  EXEMPTED", this.nbRvsmExemptedMsg, 0);
+        appendItemCounterMsg("  UNKNOWN", this.nbRvsmUnknownMsg, 0);
+        appendItemCounterMsg(
+                "Item 120 - Aircraft Type & Wake Turbulence",
+                item120Present,
+                item120Invalid);
+        appendItemCounterMsg(
+                "Item 130 - Cleared Flight Level (CFL)",
+                item130Present,
+                item130Invalid);
+        appendItemCounterMsg(
+                "Item 140 - Route Points, Description",
+                item140Present,
+                item140Invalid);
+        appendItemCounterMsg(
+                "Item 150 - Route Points, Coordinates",
+                item150Present,
+                item150Invalid);
+        appendItemCounterMsg(
+                "Item 160 - Route Points, Time",
+                item160Present,
+                item160Invalid);
+        appendItemCounterMsg(
+                "Item 170 - Route Points, Flight Level",
+                item170Present,
+                item170Invalid);
+        appendItemCounterMsg(
+                "Item 180 - Route Points, Speed",
+                item180Present,
+                item180Invalid);
+        appendItemCounterMsg(
+                "Item 190 - Controller ID",
+                item190Present,
+                item190Invalid);
+        appendItemCounterMsg(
+                "Item 200 - Field 18",
+                item200Present,
+                item200Invalid);
+        appendItemCounterMsg(
+                "Item 210 - Correlated Track Number",
+                item210Present,
+                item210Invalid);
+        appendItemCounterMsg(
+                "Item 171 - Route Points, RFL",
+                item171Present,
+                item171Invalid);
+        appendItemCounterMsg(
+                "Item 151 - Route Points, Geographic Pos",
+                item151Present,
+                item151Invalid);
+        appendItemCounterMsg(
+                "Item 220 - Maximum Plan Count",
+                item220Present,
+                item220Invalid);
+        appendItemCounterMsg(
+                "Item 230 - Number of Plans",
+                item230Present,
+                item230Invalid);
+        appendItemCounterMsg(
+                "Item 240 - Newly Correlated Plans",
+                item240Present,
+                item240Invalid);
+        appendItemCounterMsg(
+                "Item 250 - Newly De-correlated Plans",
+                item250Present,
+                item250Invalid);
     }
 }

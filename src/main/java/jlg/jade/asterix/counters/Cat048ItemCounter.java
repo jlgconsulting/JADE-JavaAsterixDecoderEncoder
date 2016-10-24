@@ -10,7 +10,6 @@ import jlg.jade.asterix.cat048.Cat048Record;
 import jlg.jade.common.DebugMessageSource;
 
 public class Cat048ItemCounter extends DebugMessageSource implements AsterixItemCounter {
-
     private int nbRecords;
     private int nbOfInvalidRecords;
 
@@ -94,23 +93,16 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
      * @param record represents a new Asterix record
      */
     public void increment(Cat048Record record) {
-        clearDebugMsg();
-        appendNewLine();
-        appendItemCounterMsg("Asterix Category 048 Counters", "Nb. decoded", "Nb. invalid");
-
         this.nbRecords++;
         if (!record.isValid()) {
             this.nbOfInvalidRecords++;
         }
-        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
 
         if (record.getItem010() != null) {
             this.item010Present += 1;
             if (!record.getItem010().isValid()) {
                 this.item010Invalid += 1;
             }
-            appendItemCounterMsg("Item 010 - Data Source Identifier", this.item010Present,
-                                 this.item010Invalid);
         }
 
         if (record.getItem140() != null) {
@@ -118,8 +110,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem140().isValid()) {
                 this.item140Invalid += 1;
             }
-            appendItemCounterMsg("Item 140 - Time-of-Day", this.item140Present,
-                                 this.item140Invalid);
         }
 
         if (record.getItem020() != null) {
@@ -127,8 +117,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem020().isValid()) {
                 this.item020Invalid += 1;
             }
-            appendItemCounterMsg("Item 020 - Target Report Descriptor", this.item020Present,
-                                 this.item020Invalid);
         }
 
         if (record.getItem040() != null) {
@@ -136,8 +124,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem040().isValid()) {
                 this.item040Invalid += 1;
             }
-            appendItemCounterMsg("Item 040 - Measured Position in Slant Polar Coordinates",
-                                 this.item040Present, this.item040Invalid);
         }
 
         if (record.getItem070() != null) {
@@ -145,8 +131,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem070().isValid()) {
                 this.item070Invalid += 1;
             }
-            appendItemCounterMsg("Item 070 - Mode-3/A Code in Octal Representation",
-                                 this.item070Present, this.item070Invalid);
         }
 
         if (record.getItem090() != null) {
@@ -154,8 +138,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem090().isValid()) {
                 this.item090Invalid += 1;
             }
-            appendItemCounterMsg("Item 090 - Flight Level in Binary Representation",
-                                 this.item090Present, this.item090Invalid);
         }
 
         if (record.getItem130() != null) {
@@ -163,8 +145,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem130().isValid()) {
                 this.item130Invalid += 1;
             }
-            appendItemCounterMsg("Item 130 - Radar Plot Characteristics", this.item130Present,
-                                 this.item130Invalid);
         }
 
         if (record.getItem220() != null) {
@@ -172,8 +152,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem220().isValid()) {
                 this.item220Invalid += 1;
             }
-            appendItemCounterMsg("Item 220 - Aircraft Address", this.item220Present,
-                                 this.item220Invalid);
         }
 
         if (record.getItem240() != null) {
@@ -181,8 +159,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem240().isValid()) {
                 this.item240Invalid += 1;
             }
-            appendItemCounterMsg("Item 240 - Aircraft Identification", this.item240Present,
-                                 this.item240Invalid);
         }
 
         if (record.getItem250() != null) {
@@ -190,8 +166,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem250().isValid()) {
                 this.item250Invalid += 1;
             }
-            appendItemCounterMsg("Item 250 - Mode S MB Data", this.item250Present,
-                                 this.item250Invalid);
         }
 
         if (record.getItem161() != null) {
@@ -199,8 +173,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem161().isValid()) {
                 this.item161Invalid += 1;
             }
-            appendItemCounterMsg("Item 161 - Track Number", this.item161Present,
-                                 this.item161Invalid);
         }
 
         if (record.getItem042() != null) {
@@ -208,8 +180,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem042().isValid()) {
                 this.item042Invalid += 1;
             }
-            appendItemCounterMsg("Item 042 - Calculated Position in Cartesian Coordinates",
-                                 this.item042Present, this.item042Invalid);
         }
 
         if (record.getItem200() != null) {
@@ -217,8 +187,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem200().isValid()) {
                 this.item200Invalid += 1;
             }
-            appendItemCounterMsg("Item 200 - Calculated Track Velocity in Polar Representation",
-                                 this.item200Present, this.item200Invalid);
         }
 
         if (record.getItem170() != null) {
@@ -226,8 +194,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem170().isValid()) {
                 this.item170Invalid += 1;
             }
-            appendItemCounterMsg("Item 170 - Track Status", this.item170Present,
-                                 this.item170Invalid);
         }
 
         if (record.getItem210() != null) {
@@ -235,8 +201,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem210().isValid()) {
                 this.item210Invalid += 1;
             }
-            appendItemCounterMsg("Item 210 - Track Quality", this.item210Present,
-                                 this.item210Invalid);
         }
 
         if (record.getItem030() != null) {
@@ -244,8 +208,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem030().isValid()) {
                 this.item030Invalid += 1;
             }
-            appendItemCounterMsg("Item 030 - Warning/Error Conditions", this.item030Present,
-                                 this.item030Invalid);
         }
 
         if (record.getItem080() != null) {
@@ -253,8 +215,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem080().isValid()) {
                 this.item080Invalid += 1;
             }
-            appendItemCounterMsg("Item 080 - Mode-3/A Code Confidence Indicator",
-                                 this.item080Present, this.item080Invalid);
         }
 
         if (record.getItem100() != null) {
@@ -262,8 +222,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem100().isValid()) {
                 this.item100Invalid += 1;
             }
-            appendItemCounterMsg("Item 100 - Mode-C Code and Confidence Indicator",
-                                 this.item100Present, this.item100Invalid);
         }
 
         if (record.getItem110() != null) {
@@ -271,8 +229,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem110().isValid()) {
                 this.item110Invalid += 1;
             }
-            appendItemCounterMsg("Item 110 - Height Measured by 3D Radar", this.item110Present,
-                                 this.item110Invalid);
         }
 
         if (record.getItem120() != null) {
@@ -280,8 +236,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem120().isValid()) {
                 this.item120Invalid += 1;
             }
-            appendItemCounterMsg("Item 120 - Radial Doppler Speed", this.item120Present,
-                                 this.item120Invalid);
         }
 
         if (record.getItem230() != null) {
@@ -289,8 +243,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem230().isValid()) {
                 this.item230Invalid += 1;
             }
-            appendItemCounterMsg("Item 230 - Communications / ACAS Capability and Flight Status",
-                                 this.item230Present, this.item230Invalid);
         }
 
         if (record.getItem260() != null) {
@@ -298,8 +250,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem260().isValid()) {
                 this.item260Invalid += 1;
             }
-            appendItemCounterMsg("Item 260 - ACAS Resolution Advisory Report", this.item260Present,
-                                 this.item260Invalid);
         }
 
         if (record.getItem055() != null) {
@@ -307,8 +257,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem055().isValid()) {
                 this.item055Invalid += 1;
             }
-            appendItemCounterMsg("Item 055 - Mode-1 Code in Octal Representation",
-                                 this.item055Present, this.item055Invalid);
         }
 
         if (record.getItem050() != null) {
@@ -316,8 +264,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem050().isValid()) {
                 this.item050Invalid += 1;
             }
-            appendItemCounterMsg("Item 050 - Mode-2 Code in Octal Representation",
-                                 this.item050Present, this.item050Invalid);
         }
 
         if (record.getItem065() != null) {
@@ -325,8 +271,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem065().isValid()) {
                 this.item065Invalid += 1;
             }
-            appendItemCounterMsg("Item 065 - Mode-1 Code Confidence Indicator", this.item065Present,
-                                 this.item065Invalid);
         }
 
         if (record.getItem060() != null) {
@@ -334,8 +278,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem060().isValid()) {
                 this.item060Invalid += 1;
             }
-            appendItemCounterMsg("Item 060 - Mode-2 Code Confidence Indicator", this.item060Present,
-                                 this.item060Invalid);
         }
 
         if (record.getReservedSpecialPurposeField() != null) {
@@ -343,7 +285,6 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getReservedSpecialPurposeField().isValid()) {
                 this.item0SpInvalid += 1;
             }
-            appendItemCounterMsg("SP", this.itemSpPresent, this.item0SpInvalid);
         }
 
         if (record.getReservedExpansionField() != null) {
@@ -351,10 +292,11 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getReservedExpansionField().isValid()) {
                 this.item0ReInvalid += 1;
             }
-            appendItemCounterMsg("RE", this.itemRePresent, this.item0ReInvalid);
         }
 
+        createPrintMsg();
     }
+
 
     public int getItem010Present() {
         return item010Present;
@@ -578,5 +520,66 @@ public class Cat048ItemCounter extends DebugMessageSource implements AsterixItem
 
     public int getItem0ReInvalid() {
         return item0ReInvalid;
+    }
+
+    private void createPrintMsg() {
+        clearDebugMsg();
+        appendNewLine();
+        appendItemCounterMsg("Asterix Category 048 Counters", "Nb. decoded", "Nb. invalid");
+        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
+        appendItemCounterMsg("Item 010 - Data Source Identifier", this.item010Present,
+                             this.item010Invalid);
+        appendItemCounterMsg("Item 140 - Time of Day", this.item140Present,
+                             this.item140Invalid);
+        appendItemCounterMsg("Item 020 - Target Report Descriptor", this.item020Present,
+                             this.item020Invalid);
+        appendItemCounterMsg("Item 040 - Measured Position in Slant Polar Coordinates",
+                             this.item040Present, this.item040Invalid);
+        appendItemCounterMsg("Item 070 - Mode-3/A Code in Octal Representation",
+                             this.item070Present, this.item070Invalid);
+        appendItemCounterMsg("Item 090 - Flight Level in Binary Representation",
+                             this.item090Present, this.item090Invalid);
+        appendItemCounterMsg("Item 130 - Radar Plot Characteristics", this.item130Present,
+                             this.item130Invalid);
+        appendItemCounterMsg("Item 220 - Aircraft Address", this.item220Present,
+                             this.item220Invalid);
+        appendItemCounterMsg("Item 240 - Aircraft Identification", this.item240Present,
+                             this.item240Invalid);
+        appendItemCounterMsg("Item 250 - Mode S MB Data", this.item250Present,
+                             this.item250Invalid);
+        appendItemCounterMsg("Item 161 - Track Number", this.item161Present,
+                             this.item161Invalid);
+        appendItemCounterMsg("Item 042 - Calculated Position in Cartesian Coordinates",
+                             this.item042Present, this.item042Invalid);
+        appendItemCounterMsg("Item 200 - Calculated Track Velocity in Polar Representation",
+                             this.item200Present, this.item200Invalid);
+        appendItemCounterMsg("Item 170 - Track Status", this.item170Present,
+                             this.item170Invalid);
+        appendItemCounterMsg("Item 210 - Track Quality", this.item210Present,
+                             this.item210Invalid);
+        appendItemCounterMsg("Item 030 - Warning/Error Conditions", this.item030Present,
+                             this.item030Invalid);
+        appendItemCounterMsg("Item 080 - Mode-3/A Code Confidence Indicator",
+                             this.item080Present, this.item080Invalid);
+        appendItemCounterMsg("Item 100 - Mode-C Code and Confidence Indicator",
+                             this.item100Present, this.item100Invalid);
+        appendItemCounterMsg("Item 110 - Height Measured by 3D Radar", this.item110Present,
+                             this.item110Invalid);
+        appendItemCounterMsg("Item 120 - Radial Doppler Speed", this.item120Present,
+                             this.item120Invalid);
+        appendItemCounterMsg("Item 230 - Communications / ACAS Capability and Flight Status",
+                             this.item230Present, this.item230Invalid);
+        appendItemCounterMsg("Item 260 - ACAS Resolution Advisory Report", this.item260Present,
+                             this.item260Invalid);
+        appendItemCounterMsg("Item 055 - Mode-1 Code in Octal Representation",
+                             this.item055Present, this.item055Invalid);
+        appendItemCounterMsg("Item 050 - Mode-2 Code in Octal Representation",
+                             this.item050Present, this.item050Invalid);
+        appendItemCounterMsg("Item 065 - Mode-1 Code Confidence Indicator", this.item065Present,
+                             this.item065Invalid);
+        appendItemCounterMsg("Item 060 - Mode-2 Code Confidence Indicator", this.item060Present,
+                             this.item060Invalid);
+        appendItemCounterMsg("SP", this.itemSpPresent, this.item0SpInvalid);
+        appendItemCounterMsg("RE", this.itemRePresent, this.item0ReInvalid);
     }
 }
