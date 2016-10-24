@@ -182,22 +182,16 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
      * @param record a new Asterix record
      */
     private void increment(Cat062Record record) {
-        clearDebugMsg();
-        appendNewLine();
-        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded","Nb. invalid");
-
         this.nbRecords++;
-        if(!record.isValid()){
+        if (!record.isValid()) {
             this.nbOfInvalidRecords++;
         }
-        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
 
         if (record.getItem010() != null) {
             this.item010Present += 1;
             if (!record.getItem010().isValid()) {
                 this.item010Invalid += 1;
             }
-            appendItemCounterMsg("Item 010 - Data source identifier [M]", item010Present, item010Invalid);
         }
 
         if (record.getItem015() != null) {
@@ -205,7 +199,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem015().isValid()) {
                 this.item015Invalid += 1;
             }
-            appendItemCounterMsg("Item 015 - Data Service identification", item015Present, item015Invalid);
         }
 
         if (record.getItem070() != null) {
@@ -213,7 +206,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem070().isValid()) {
                 this.item070Invalid += 1;
             }
-            appendItemCounterMsg("Item 070 - Time Of Track", item070Present, item070Invalid);
         }
 
         if (record.getItem105() != null) {
@@ -221,7 +213,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem105().isValid()) {
                 this.item105Invalid += 1;
             }
-            appendItemCounterMsg("Item 105 - Track position (WSG 84)", item105Present, item105Invalid);
         }
 
         if (record.getItem100() != null) {
@@ -229,14 +220,13 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem100().isValid()) {
                 this.item100Invalid += 1;
             }
-            appendItemCounterMsg("Item 100 - Track position (cartesian)", item100Present, item100Invalid);
         }
+
         if (record.getItem185() != null) {
             this.item185Present += 1;
             if (!record.getItem185().isValid()) {
                 this.item185Invalid += 1;
             }
-            appendItemCounterMsg("Item 185 - Track velocity (vx, vy)", item185Present, item185Invalid);
         }
 
         if (record.getItem210() != null) {
@@ -244,7 +234,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem210().isValid()) {
                 this.item210Invalid += 1;
             }
-            appendItemCounterMsg("Item 210 - Acceleration (cartesian)", item210Present, item210Invalid);
         }
 
         if (record.getItem060() != null) {
@@ -252,7 +241,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem060().isValid()) {
                 this.item060Invalid += 1;
             }
-            appendItemCounterMsg("Item 060 - Mode 3/A", item060Present, item060Invalid);
         }
 
         if (record.getItem245() != null) {
@@ -260,7 +248,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem245().isValid()) {
                 this.item245Invalid += 1;
             }
-            appendItemCounterMsg("Item 245 - Target identification", item245Present, item245Invalid);
         }
 
         addCountersForItem380(record);
@@ -270,7 +257,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem040().isValid()) {
                 this.item040Invalid += 1;
             }
-            appendItemCounterMsg("Item 040 - Track number [M]", item040Present, item040Invalid);
         }
 
         if (record.getItem080() != null) {
@@ -278,7 +264,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem080().isValid()) {
                 this.item080Invalid += 1;
             }
-            appendItemCounterMsg("Item 080 - Track status [M]", item080Present, item080Invalid);
         }
 
         if (record.getItem290() != null) {
@@ -286,7 +271,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem290().isValid()) {
                 this.item290Invalid += 1;
             }
-            appendItemCounterMsg("Item 290 - Track update ages", item290Present, item290Invalid);
         }
 
         if (record.getItem200() != null) {
@@ -294,7 +278,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem200().isValid()) {
                 this.item200Invalid += 1;
             }
-            appendItemCounterMsg("Item 200 - Mode of movement", item200Present, item200Invalid);
         }
 
         if (record.getItem295() != null) {
@@ -302,7 +285,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem295().isValid()) {
                 this.item295Invalid += 1;
             }
-            appendItemCounterMsg("Item 295 - Track data ages", item295Present, item295Invalid);
         }
 
         if (record.getItem136() != null) {
@@ -310,7 +292,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem136().isValid()) {
                 this.item136Invalid += 1;
             }
-            appendItemCounterMsg("Item 136 - Measured Flight Level", item136Present, item136Invalid);
         }
 
         if (record.getItem130() != null) {
@@ -318,7 +299,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem130().isValid()) {
                 this.item130Invalid += 1;
             }
-            appendItemCounterMsg("Item 130 - Geometric altitude", item130Present, item130Invalid);
         }
 
         if (record.getItem135() != null) {
@@ -326,7 +306,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem135().isValid()) {
                 this.item135Invalid += 1;
             }
-            appendItemCounterMsg("Item 135 - Barometric altitude", item135Present, item135Invalid);
         }
 
         if (record.getItem220() != null) {
@@ -334,18 +313,16 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem220().isValid()) {
                 this.item220Invalid += 1;
             }
-            appendItemCounterMsg("Item 220 - ROCD", item220Present, item220Invalid);
 
             if (record.getItem220().getRocd() < 0) {
                 this.item220Negative += 1;
-            } else if (record.getItem220().getRocd() > 0) {
+            }
+            else if (record.getItem220().getRocd() > 0) {
                 this.item220Positive += 1;
-            } else {
+            }
+            else {
                 this.item220Zero += 1;
             }
-            appendItemCounterMsg("  Negative", item220Negative, item220Invalid);
-            appendItemCounterMsg("  Zero", item220Zero, item220Invalid);
-            appendItemCounterMsg("  Positive", item220Positive, item220Invalid);
         }
 
         addCountersForItem390(record);
@@ -355,7 +332,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem270().isValid()) {
                 this.item270Invalid += 1;
             }
-            appendItemCounterMsg("Item 270 - Target size and orientation", item270Present, item270Invalid);
         }
 
         if (record.getItem300() != null) {
@@ -363,7 +339,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem300().isValid()) {
                 this.item300Invalid += 1;
             }
-            appendItemCounterMsg("Item 300 - Vehicle fleet identification", item300Present, item300Invalid);
         }
 
         if (record.getItem110() != null) {
@@ -371,7 +346,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem110().isValid()) {
                 this.item110Invalid += 1;
             }
-            appendItemCounterMsg("Item 110 - Mode 5", item110Present, item110Invalid);
         }
 
         if (record.getItem120() != null) {
@@ -379,7 +353,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem120().isValid()) {
                 this.item120Invalid += 1;
             }
-            appendItemCounterMsg("Item 120 - Mode 2", item120Present, item120Invalid);
         }
 
         if (record.getItem510() != null) {
@@ -387,7 +360,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem510().isValid()) {
                 this.item510Invalid += 1;
             }
-            appendItemCounterMsg("Item 510 - Composed track nb", item510Present, item510Invalid);
         }
 
         if (record.getItem500() != null) {
@@ -395,7 +367,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem500().isValid()) {
                 this.item500Invalid += 1;
             }
-            appendItemCounterMsg("Item 500 - Estimated accuracies", item500Present, item500Invalid);
         }
 
         if (record.getItem340() != null) {
@@ -403,7 +374,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem340().isValid()) {
                 this.item340Invalid += 1;
             }
-            appendItemCounterMsg("Item 340 - Measured information", item340Present, item340Invalid);
         }
 
         if (record.getReservedExpansionField() != null) {
@@ -411,7 +381,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getReservedExpansionField().isValid()) {
                 this.itemReInvalid += 1;
             }
-            appendItemCounterMsg("RE", itemRePresent, itemReInvalid);
         }
 
         if (record.getSpecialPurposeField() != null) {
@@ -419,9 +388,9 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getSpecialPurposeField().isValid()) {
                 this.itemSpInvalid += 1;
             }
-            appendItemCounterMsg("SP", itemSpPresent, itemSpInvalid);
         }
 
+        createPrintMsg();
     }
 
     public int getItem010Present() {
@@ -970,7 +939,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem390().isValid()) {
                 this.item390Invalid += 1;
             }
-            appendItemCounterMsg("Item 390 - Flight plan data", item390Present, item390Invalid);
 
             //subfields
             if (record.getItem390().getSubfield2() != null) {
@@ -978,8 +946,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield2().isValid()) {
                     this.item390Subfield2Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 2 - Callsign", item390Subfield2Present,
-                        item390Subfield2Invalid);
             }
 
             if (record.getItem390().getSubfield4() != null) {
@@ -987,53 +953,48 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield4().isValid()) {
                     this.item390Subfield4Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 4 - Flight category", item390Subfield4Present,
-                        item390Subfield4Invalid);
 
                 //traffic
                 if (record.getItem390().getSubfield4().getTrafficType() == 0) {
                     item390Subfield4TrafficUnk += 1;
-                } else if (record.getItem390().getSubfield4().getTrafficType() == 1) {
+                }
+                else if (record.getItem390().getSubfield4().getTrafficType() == 1) {
                     item390Subfield4TrafficGat += 1;
-                } else if (record.getItem390().getSubfield4().getTrafficType() == 2) {
+                }
+                else if (record.getItem390().getSubfield4().getTrafficType() == 2) {
                     item390Subfield4TrafficOat += 1;
-                } else {
+                }
+                else {
                     item390Subfield4TrafficNa += 1;
                 }
-                appendItemCounterMsg("    Traffic type Unknown", item390Subfield4TrafficUnk, "");
-                appendItemCounterMsg("    Traffic type GAT", item390Subfield4TrafficGat, "");
-                appendItemCounterMsg("    Traffic type OAT", item390Subfield4TrafficOat, "");
-                appendItemCounterMsg("    Traffic type NA", item390Subfield4TrafficNa, "");
 
                 //rules
                 if (record.getItem390().getSubfield4().getFlightRules() == 0) {
                     item390Subfield4RulesIfr += 1;
-                } else if (record.getItem390().getSubfield4().getFlightRules() == 1) {
+                }
+                else if (record.getItem390().getSubfield4().getFlightRules() == 1) {
                     item390Subfield4RulesVfr += 1;
-                } else if (record.getItem390().getSubfield4().getFlightRules() == 2) {
+                }
+                else if (record.getItem390().getSubfield4().getFlightRules() == 2) {
                     item390Subfield4RulesNa += 1;
-                } else {
+                }
+                else {
                     item390Subfield4RulesCtrlVfr += 1;
                 }
-                appendItemCounterMsg("    Rules IFR", item390Subfield4RulesIfr, "");
-                appendItemCounterMsg("    Rules VFR", item390Subfield4RulesVfr, "");
-                appendItemCounterMsg("    Rules CtrlVFR", item390Subfield4RulesCtrlVfr, "");
-                appendItemCounterMsg("    Rules NA", item390Subfield4RulesNa, "");
 
                 //rvsm
                 if (record.getItem390().getSubfield4().getRvsm() == 0) {
                     item390Subfield4RvsmUnk += 1;
-                } else if (record.getItem390().getSubfield4().getRvsm() == 1) {
+                }
+                else if (record.getItem390().getSubfield4().getRvsm() == 1) {
                     item390Subfield4RvsmApproved += 1;
-                } else if (record.getItem390().getSubfield4().getRvsm() == 2) {
+                }
+                else if (record.getItem390().getSubfield4().getRvsm() == 2) {
                     item390Subfield4RvsmExempt += 1;
-                } else {
+                }
+                else {
                     item390Subfield4RvsmNotApproved += 1;
                 }
-                appendItemCounterMsg("    RVSM Unknwn", item390Subfield4RvsmUnk, "");
-                appendItemCounterMsg("    RVSM Approved", item390Subfield4RvsmApproved, "");
-                appendItemCounterMsg("    RVSM Exempt", item390Subfield4RvsmExempt, "");
-                appendItemCounterMsg("    RVSM Not Approved", item390Subfield4RvsmNotApproved, "");
             }
 
             if (record.getItem390().getSubfield5() != null) {
@@ -1041,8 +1002,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield5().isValid()) {
                     this.item390Subfield5Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 5 - Type of aircraft", item390Subfield5Present,
-                        item390Subfield5Invalid);
             }
 
             if (record.getItem390().getSubfield6() != null) {
@@ -1050,8 +1009,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield6().isValid()) {
                     this.item390Subfield6Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 6 - Wake Turbulence Category", item390Subfield6Present,
-                        item390Subfield6Invalid);
 
                 switch (record.getItem390().getSubfield6().getWakeTurbulenceCategory()) {
                     case "L":
@@ -1067,10 +1024,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                         this.item390Subfield6J += 1;
                         break;
                 }
-                appendItemCounterMsg("    Light", item390Subfield6L, "");
-                appendItemCounterMsg("    Medium", item390Subfield6M, "");
-                appendItemCounterMsg("    Heavy", item390Subfield6H, "");
-                appendItemCounterMsg("    Super", item390Subfield6J, "");
             }
 
             if (record.getItem390().getSubfield7() != null) {
@@ -1078,8 +1031,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield7().isValid()) {
                     this.item390Subfield7Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 7 - Departure", item390Subfield7Present,
-                        item390Subfield7Invalid);
             }
 
             if (record.getItem390().getSubfield8() != null) {
@@ -1087,8 +1038,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield8().isValid()) {
                     this.item390Subfield8Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 8 - Destination", item390Subfield8Present,
-                        item390Subfield8Invalid);
             }
 
             if (record.getItem390().getSubfield9() != null) {
@@ -1096,8 +1045,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield9().isValid()) {
                     this.item390Subfield9Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 9 - Runway Designation", item390Subfield9Present,
-                        item390Subfield9Invalid);
             }
 
             if (record.getItem390().getSubfield10() != null) {
@@ -1105,8 +1052,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield10().isValid()) {
                     this.item390Subfield10Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 10 - Current CFL", item390Subfield10Present,
-                        item390Subfield10Invalid);
             }
 
             if (record.getItem390().getSubfield11() != null) {
@@ -1114,8 +1059,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield11().isValid()) {
                     this.item390Subfield11Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 11 - Current Control Position", item390Subfield11Present,
-                        item390Subfield11Invalid);
             }
 
             if (record.getItem390().getSubfield12() != null) {
@@ -1123,8 +1066,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield12().isValid()) {
                     this.item390Subfield12Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 12 - Time of departure / arrival", item390Subfield12Present,
-                        item390Subfield12Invalid);
             }
 
             if (record.getItem390().getSubfield13() != null) {
@@ -1132,8 +1073,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield13().isValid()) {
                     this.item390Subfield13Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 13 - Aircraft stand", item390Subfield13Present,
-                        item390Subfield13Invalid);
             }
 
             if (record.getItem390().getSubfield14() != null) {
@@ -1141,8 +1080,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield14().isValid()) {
                     this.item390Subfield14Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 14 - Stand Status", item390Subfield14Present,
-                        item390Subfield14Invalid);
             }
 
             if (record.getItem390().getSubfield15() != null) {
@@ -1150,8 +1087,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield15().isValid()) {
                     this.item390Subfield15Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 15 - SID", item390Subfield15Present,
-                        item390Subfield15Invalid);
             }
 
             if (record.getItem390().getSubfield16() != null) {
@@ -1159,8 +1094,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem390().getSubfield16().isValid()) {
                     this.item390Subfield16Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 16 - STAR", item390Subfield16Present,
-                        item390Subfield16Invalid);
             }
         }
     }
@@ -1171,15 +1104,13 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem380().isValid()) {
                 this.item380Invalid += 1;
             }
-            appendItemCounterMsg("Item 380 - Aircraft derivd data", item380Present, item380Invalid);
+
             //subfield info
             if (record.getItem380().getSubfield1() != null) {
                 this.item380Subfield1Present += 1;
                 if (!record.getItem380().getSubfield1().isValid()) {
                     this.item380Subfield1Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 1 - Target identification", item380Subfield1Present,
-                        item380Subfield1Invalid);
             }
 
             if (record.getItem380().getSubfield3() != null) {
@@ -1187,8 +1118,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield3().isValid()) {
                     this.item380Subfield3Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 3 - Magnetic heading", item380Subfield3Present,
-                        item380Subfield3Invalid);
             }
 
             if (record.getItem380().getSubfield4() != null) {
@@ -1196,9 +1125,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield4().isValid()) {
                     this.item380Subfield4Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 4 - Indicated airspeed / Mach no [Compat only]",
-                        item380Subfield4Present,
-                        item380Subfield4Invalid);
             }
 
             if (record.getItem380().getSubfield5() != null) {
@@ -1206,8 +1132,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield5().isValid()) {
                     this.item380Subfield5Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 5 - True airspeed", item380Subfield5Present,
-                        item380Subfield5Invalid);
             }
 
             if (record.getItem380().getSubfield6() != null) {
@@ -1215,8 +1139,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield6().isValid()) {
                     this.item380Subfield6Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 6 - Selected altitude", item380Subfield6Present,
-                        item380Subfield6Invalid);
             }
 
             if (record.getItem380().getSubfield7() != null) {
@@ -1224,8 +1146,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield7().isValid()) {
                     this.item380Subfield7Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 7 - Final state selected altitude", item380Subfield7Present,
-                        item380Subfield7Invalid);
             }
 
             if (record.getItem380().getSubfield12() != null) {
@@ -1233,8 +1153,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield12().isValid()) {
                     this.item380Subfield12Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 12 - ACAS Report", item380Subfield12Present,
-                        item380Subfield12Invalid);
             }
 
             if (record.getItem380().getSubfield15() != null) {
@@ -1242,8 +1160,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield15().isValid()) {
                     this.item380Subfield15Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 15 - Roll angle", item380Subfield15Present,
-                        item380Subfield15Invalid);
             }
 
             if (record.getItem380().getSubfield17() != null) {
@@ -1251,8 +1167,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield17().isValid()) {
                     this.item380Subfield17Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 17 - Track angle", item380Subfield17Present,
-                        item380Subfield17Invalid);
             }
 
             if (record.getItem380().getSubfield18() != null) {
@@ -1260,8 +1174,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield18().isValid()) {
                     this.item380Subfield18Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 18 - Ground speed", item380Subfield18Present,
-                        item380Subfield18Invalid);
             }
 
             if (record.getItem380().getSubfield20() != null) {
@@ -1269,8 +1181,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield20().isValid()) {
                     this.item380Subfield20Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 20 - Meteo data", item380Subfield20Present,
-                        item380Subfield20Invalid);
             }
 
             if (record.getItem380().getSubfield21() != null) {
@@ -1278,8 +1188,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield21().isValid()) {
                     this.item380Subfield21Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 21 - Emmiter category", item380Subfield21Present,
-                        item380Subfield21Invalid);
             }
 
             if (record.getItem380().getSubfield26() != null) {
@@ -1287,8 +1195,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield26().isValid()) {
                     this.item380Subfield26Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 26 - Indicated airspeed", item380Subfield26Present,
-                        item380Subfield26Invalid);
             }
 
             if (record.getItem380().getSubfield27() != null) {
@@ -1296,8 +1202,6 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield27().isValid()) {
                     this.item380Subfield27Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 27 - Mach nb", item380Subfield27Present,
-                        item380Subfield27Invalid);
             }
 
             if (record.getItem380().getSubfield28() != null) {
@@ -1305,9 +1209,128 @@ public class Cat062ItemCounter extends DebugMessageSource implements AsterixItem
                 if (!record.getItem380().getSubfield28().isValid()) {
                     this.item380Subfield28Invalid += 1;
                 }
-                appendItemCounterMsg("  Subfield 28 - Barometric pressure setting", item380Subfield28Present,
-                        item380Subfield28Invalid);
             }
         }
+    }
+
+    private void createPrintMsg() {
+        clearDebugMsg();
+        appendNewLine();
+        appendItemCounterMsg("Asterix Category 062 Counters", "Nb. decoded", "Nb. invalid");
+
+        appendItemCounterMsg("Number of records", nbRecords, nbOfInvalidRecords);
+        appendItemCounterMsg("Item 010 - Data source identifier [M]", item010Present, item010Invalid);
+        appendItemCounterMsg("Item 015 - Data Service identification", item015Present, item015Invalid);
+        appendItemCounterMsg("Item 070 - Time Of Track", item070Present, item070Invalid);
+        appendItemCounterMsg("Item 105 - Track position (WSG 84)", item105Present, item105Invalid);
+        appendItemCounterMsg("Item 100 - Track position (cartesian)", item100Present, item100Invalid);
+        appendItemCounterMsg("Item 185 - Track velocity (vx, vy)", item185Present, item185Invalid);
+        appendItemCounterMsg("Item 210 - Acceleration (cartesian)", item210Present, item210Invalid);
+        appendItemCounterMsg("Item 060 - Mode 3/A", item060Present, item060Invalid);
+        appendItemCounterMsg("Item 245 - Target identification", item245Present, item245Invalid);
+
+        //380
+        appendItemCounterMsg("Item 380 - Aircraft derived data", item380Present, item380Invalid);
+        appendItemCounterMsg("  Subfield 1 - Target identification", item380Subfield1Present,
+                             item380Subfield1Invalid);
+        appendItemCounterMsg("  Subfield 3 - Magnetic heading", item380Subfield3Present,
+                             item380Subfield3Invalid);
+        appendItemCounterMsg("  Subfield 4 - Indicated airspeed / Mach no [Compatibility only]",
+                             item380Subfield4Present,
+                             item380Subfield4Invalid);
+        appendItemCounterMsg("  Subfield 5 - True airspeed", item380Subfield5Present,
+                             item380Subfield5Invalid);
+        appendItemCounterMsg("  Subfield 6 - Selected altitude", item380Subfield6Present,
+                             item380Subfield6Invalid);
+        appendItemCounterMsg("  Subfield 7 - Final state selected altitude", item380Subfield7Present,
+                             item380Subfield7Invalid);
+        appendItemCounterMsg("  Subfield 12 - ACAS Report", item380Subfield12Present,
+                             item380Subfield12Invalid);
+        appendItemCounterMsg("  Subfield 15 - Roll angle", item380Subfield15Present,
+                             item380Subfield15Invalid);
+        appendItemCounterMsg("  Subfield 17 - Track angle", item380Subfield17Present,
+                             item380Subfield17Invalid);
+        appendItemCounterMsg("  Subfield 18 - Ground speed", item380Subfield18Present,
+                             item380Subfield18Invalid);
+        appendItemCounterMsg("  Subfield 20 - Meteo data", item380Subfield20Present,
+                             item380Subfield20Invalid);
+        appendItemCounterMsg("  Subfield 21 - Emitter category", item380Subfield21Present,
+                             item380Subfield21Invalid);
+        appendItemCounterMsg("  Subfield 26 - Indicated airspeed", item380Subfield26Present,
+                             item380Subfield26Invalid);
+        appendItemCounterMsg("  Subfield 27 - Mach nb", item380Subfield27Present,
+                             item380Subfield27Invalid);
+        appendItemCounterMsg("  Subfield 28 - Barometric pressure setting", item380Subfield28Present,
+                             item380Subfield28Invalid);
+
+        appendItemCounterMsg("Item 040 - Track number [M]", item040Present, item040Invalid);
+        appendItemCounterMsg("Item 080 - Track status [M]", item080Present, item080Invalid);
+        appendItemCounterMsg("Item 290 - Track update ages", item290Present, item290Invalid);
+        appendItemCounterMsg("Item 200 - Mode of movement", item200Present, item200Invalid);
+        appendItemCounterMsg("Item 295 - Track data ages", item295Present, item295Invalid);
+        appendItemCounterMsg("Item 136 - Measured Flight Level", item136Present, item136Invalid);
+        appendItemCounterMsg("Item 130 - Geometric altitude", item130Present, item130Invalid);
+        appendItemCounterMsg("Item 135 - Barometric altitude", item135Present, item135Invalid);
+        appendItemCounterMsg("Item 220 - ROCD", item220Present, item220Invalid);
+        appendItemCounterMsg("  Negative", item220Negative, item220Invalid);
+        appendItemCounterMsg("  Zero", item220Zero, item220Invalid);
+        appendItemCounterMsg("  Positive", item220Positive, item220Invalid);
+
+        //390
+        appendItemCounterMsg("Item 390 - Flight plan data", item390Present, item390Invalid);
+        appendItemCounterMsg("  Subfield 2 - Callsign", item390Subfield2Present,
+                             item390Subfield2Invalid);
+        appendItemCounterMsg("  Subfield 4 - Flight category", item390Subfield4Present,
+                             item390Subfield4Invalid);
+        appendItemCounterMsg("    Traffic type Unknown", item390Subfield4TrafficUnk, "");
+        appendItemCounterMsg("    Traffic type GAT", item390Subfield4TrafficGat, "");
+        appendItemCounterMsg("    Traffic type OAT", item390Subfield4TrafficOat, "");
+        appendItemCounterMsg("    Traffic type NA", item390Subfield4TrafficNa, "");
+        appendItemCounterMsg("    Rules IFR", item390Subfield4RulesIfr, "");
+        appendItemCounterMsg("    Rules VFR", item390Subfield4RulesVfr, "");
+        appendItemCounterMsg("    Rules CtrlVFR", item390Subfield4RulesCtrlVfr, "");
+        appendItemCounterMsg("    Rules NA", item390Subfield4RulesNa, "");
+        appendItemCounterMsg("    RVSM Unknown", item390Subfield4RvsmUnk, "");
+        appendItemCounterMsg("    RVSM Approved", item390Subfield4RvsmApproved, "");
+        appendItemCounterMsg("    RVSM Exempt", item390Subfield4RvsmExempt, "");
+        appendItemCounterMsg("    RVSM Not Approved", item390Subfield4RvsmNotApproved, "");
+        appendItemCounterMsg("  Subfield 5 - Type of aircraft", item390Subfield5Present,
+                             item390Subfield5Invalid);
+        appendItemCounterMsg("  Subfield 6 - Wake Turbulence Category", item390Subfield6Present,
+                             item390Subfield6Invalid);
+        appendItemCounterMsg("    Light", item390Subfield6L, "");
+        appendItemCounterMsg("    Medium", item390Subfield6M, "");
+        appendItemCounterMsg("    Heavy", item390Subfield6H, "");
+        appendItemCounterMsg("    Super", item390Subfield6J, "");
+        appendItemCounterMsg("  Subfield 7 - Departure", item390Subfield7Present,
+                             item390Subfield7Invalid);
+        appendItemCounterMsg("  Subfield 8 - Destination", item390Subfield8Present,
+                             item390Subfield8Invalid);
+        appendItemCounterMsg("  Subfield 9 - Runway Designation", item390Subfield9Present,
+                             item390Subfield9Invalid);
+        appendItemCounterMsg("  Subfield 10 - Current CFL", item390Subfield10Present,
+                             item390Subfield10Invalid);
+        appendItemCounterMsg("  Subfield 11 - Current Control Position", item390Subfield11Present,
+                             item390Subfield11Invalid);
+        appendItemCounterMsg("  Subfield 12 - Time of departure / arrival", item390Subfield12Present,
+                             item390Subfield12Invalid);
+        appendItemCounterMsg("  Subfield 13 - Aircraft stand", item390Subfield13Present,
+                             item390Subfield13Invalid);
+        appendItemCounterMsg("  Subfield 14 - Stand Status", item390Subfield14Present,
+                             item390Subfield14Invalid);
+        appendItemCounterMsg("  Subfield 15 - SID", item390Subfield15Present,
+                             item390Subfield15Invalid);
+        appendItemCounterMsg("  Subfield 16 - STAR", item390Subfield16Present,
+                             item390Subfield16Invalid);
+
+        appendItemCounterMsg("Item 270 - Target size and orientation", item270Present, item270Invalid);
+        appendItemCounterMsg("Item 300 - Vehicle fleet identification", item300Present, item300Invalid);
+        appendItemCounterMsg("Item 110 - Mode 5", item110Present, item110Invalid);
+        appendItemCounterMsg("Item 120 - Mode 2", item120Present, item120Invalid);
+        appendItemCounterMsg("Item 510 - Composed track nb", item510Present, item510Invalid);
+        appendItemCounterMsg("Item 500 - Estimated accuracies", item500Present, item500Invalid);
+        appendItemCounterMsg("Item 340 - Measured information", item340Present, item340Invalid);
+        appendItemCounterMsg("RE", itemRePresent, itemReInvalid);
+        appendItemCounterMsg("SP", itemSpPresent, itemSpInvalid);
     }
 }
