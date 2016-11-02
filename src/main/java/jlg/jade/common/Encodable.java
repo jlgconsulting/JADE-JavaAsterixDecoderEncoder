@@ -20,7 +20,7 @@ public interface Encodable {
      * @return The Asterix encoded representation of the Asterix item (byte array)
      * @throws AsterixEncodingException if the item can not be encoded
      */
-    default byte[] encode() throws AsterixEncodingException {
+    default byte[] encode() {
         //TODO: Remove default impl after we finish with all the items
         throw new NotImplementedException();
     }

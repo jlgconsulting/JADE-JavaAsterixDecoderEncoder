@@ -10,7 +10,10 @@ import jlg.jade.asterix.cat062.Cat062Item015;
 import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Cat062Item015Test {
 
@@ -61,5 +64,24 @@ public class Cat062Item015Test {
 
         //assert
         assertEquals("Current index not incremented correctly", offset+1, result);
+    }
+
+    /*
+    ENCODE
+     */
+
+    @Test
+    public void the_encode_method_should_correctly_encode_data(){
+        //arrange
+        int serviceIdentification = 200;
+        Cat062Item015 asterixItem = new Cat062Item015();
+        asterixItem.setServiceIdentification(serviceIdentification);
+
+        //act
+        byte[] result = asterixItem.encode();
+
+        //assert
+        byte[] expected = {(byte) 200};
+        assertTrue(Arrays.equals(result, expected));
     }
 }

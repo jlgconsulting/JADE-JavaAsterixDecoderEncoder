@@ -9,6 +9,8 @@ package jlg.jade.asterix.cat062;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
+import java.nio.ByteBuffer;
+
 /**
  * Cat 062 Item 015 - Service Identification - Optional
  * Identification of the service provided to one or more users
@@ -21,6 +23,16 @@ public class Cat062Item015 extends FixedLengthAsterixData {
         this.serviceIdentification = Byte.toUnsignedInt(input[offset]);
 
         appendItemDebugMsg("Service identification:", this.serviceIdentification);
+    }
+
+    @Override
+    public byte[] encode() {
+        byte[] serviceIdAsByteArray = ByteBuffer.allocate(1).put((byte) this.serviceIdentification).array();
+
+        byte[] encodedItem = new byte[this.sizeInBytes];
+        System.arraycopy(serviceIdAsByteArray, 0, encodedItem, 0, 1);
+
+        return encodedItem;
     }
 
     @Override
@@ -40,5 +52,9 @@ public class Cat062Item015 extends FixedLengthAsterixData {
 
     public int getServiceIdentification() {
         return this.serviceIdentification;
+    }
+
+    public void setServiceIdentification(int serviceIdentification) {
+        this.serviceIdentification = serviceIdentification;
     }
 }
