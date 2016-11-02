@@ -77,9 +77,9 @@ public class Cat062Item135 extends FixedLengthAsterixData {
     @Override
     protected boolean validate() {
         int minAllowedValue = -60;  // 4 * -15FL
-        int maxAllowdValue = 6000;  // 4 * 1500FL
+        int maxAllowedValue = 6000;  // 4 * 1500FL
 
-        if (barometricAltitude >= minAllowedValue && barometricAltitude <= maxAllowdValue) {
+        if (barometricAltitude >= minAllowedValue && barometricAltitude <= maxAllowedValue) {
             return true;
         }
         appendDebugMsg("Barometric altitude is invalid. Must be between -60 and 6000.");

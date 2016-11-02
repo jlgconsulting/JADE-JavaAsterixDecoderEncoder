@@ -10,6 +10,8 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.TwoComplementDecoder;
 
+import java.nio.ByteBuffer;
+
 /**
  * Cat 062 Item 136 - Measured Flight Level (MFL)
  * Last valid and credible flight level used to update the track, in
@@ -30,6 +32,15 @@ public class Cat062Item136 extends FixedLengthAsterixData {
         this.measuredFLightLevel = TwoComplementDecoder.decodeFromTwoBytes(input, offset);
         appendItemDebugMsg("Measured Flight Level (0.25FL)", this.measuredFLightLevel);
         appendItemDebugMsg("Measured Flight Level (FL)", getMeasuredFlightLevelInFL());
+    }
+
+    @Override
+    public byte[] encode() {
+        byte[] encodedItem = ByteBuffer.allocate(2)
+                                       .putShort((short) this.measuredFLightLevel)
+                                       .array();
+
+        return encodedItem;
     }
 
     @Override
@@ -54,6 +65,10 @@ public class Cat062Item136 extends FixedLengthAsterixData {
      */
     public int getMeasuredFlightLevel() {
         return measuredFLightLevel;
+    }
+
+    public void setMeasuredFLightLevel(int measuredFLightLevel) {
+        this.measuredFLightLevel = measuredFLightLevel;
     }
 
     /**

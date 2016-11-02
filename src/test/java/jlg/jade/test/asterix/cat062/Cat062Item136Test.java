@@ -13,7 +13,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class Cat062Item136Test extends MandatoryFixedLengthAsterixTests<Cat062Item136> {
@@ -44,7 +47,8 @@ public class Cat062Item136Test extends MandatoryFixedLengthAsterixTests<Cat062It
 
     @Test
     @Parameters({"0,0,0", "0,4,1"})
-    public void the_get_measured_fl_in_fl_should_correclty_convert_asterix_mfl_to_actual_fl(int firstOctet, int
+    public void the_get_measured_fl_in_fl_should_correclty_convert_asterix_mfl_to_actual_fl(
+            int firstOctet, int
             secondOctet, int expected) {
         //arrange
         byte[] input = {(byte) firstOctet, (byte) secondOctet};
@@ -77,5 +81,39 @@ public class Cat062Item136Test extends MandatoryFixedLengthAsterixTests<Cat062It
 
         //assert
         assertEquals("Validation of MFL invalid", expected, item136.isValid());
+    }
+
+    /*
+    ENCODE TEST
+     */
+
+    @Test
+    public void when_altitude_is_negative_the_encode_method_should_correctly_encode_data(){
+        //arrange
+        int mfl = -255;
+        Cat062Item136 cat062Item136 = new Cat062Item136();
+        cat062Item136.setMeasuredFLightLevel(mfl);
+
+        //act
+        byte[] result = cat062Item136.encode();
+
+        //assert
+        byte[] expected = {(byte) 255, 1};
+        assertTrue(Arrays.equals(expected, result));
+    }
+
+    @Test
+    public void when_altitude_is_positive_the_encode_method_should_correctly_encode_data(){
+        //arrange
+        int mfl = 1480;
+        Cat062Item136 cat062Item136 = new Cat062Item136();
+        cat062Item136.setMeasuredFLightLevel(mfl);
+
+        //act
+        byte[] result = cat062Item136.encode();
+
+        //assert
+        byte[] expected = {(byte) 5, (byte) 200};
+        assertTrue(Arrays.equals(expected, result));
     }
 }
