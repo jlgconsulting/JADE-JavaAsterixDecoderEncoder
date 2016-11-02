@@ -8,12 +8,13 @@ package jlg.jade.asterix;
 
 import jlg.jade.common.AsterixDecodingException;
 import jlg.jade.common.Decodable;
+import jlg.jade.common.Encodable;
 
 /**
  * Generic definition of an Asterix data item with a fixed length. All fixed length items will derive from this
  * base class;
  */
-public abstract class FixedLengthAsterixData extends AsterixItem implements Decodable {
+public abstract class FixedLengthAsterixData extends AsterixItem implements Decodable, Encodable {
 
     protected FixedLengthAsterixData() {
         this.sizeInBytes = setSizeInBytes();

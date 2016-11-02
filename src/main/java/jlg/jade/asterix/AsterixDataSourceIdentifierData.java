@@ -6,6 +6,8 @@
 */
 package jlg.jade.asterix;
 
+import java.nio.ByteBuffer;
+
 /**
  * Data Source Identifier - Mandatory
  * Identification of the system sending the data (SAC-SIC)
@@ -25,8 +27,16 @@ public abstract class AsterixDataSourceIdentifierData extends FixedLengthAsterix
         return this.sac;
     }
 
+    public void setSac(int sac) {
+        this.sac = sac;
+    }
+
     public int getSic() {
         return this.sic;
+    }
+
+    public void setSic(int sic) {
+        this.sic = sic;
     }
 
     @Override
@@ -39,7 +49,25 @@ public abstract class AsterixDataSourceIdentifierData extends FixedLengthAsterix
     }
 
     @Override
+    public byte[] encode() {
+        byte[] sacAsByteArray = ByteBuffer.allocate(1).put((byte) sac).array();
+        byte[] sicAsByteArray = ByteBuffer.allocate(1).put((byte) sic).array();
+
+        byte[] encodedItem = new byte[this.setSizeInBytes()];
+        System.arraycopy(sacAsByteArray, 0, encodedItem, 0, 1);
+        System.arraycopy(sicAsByteArray, 0, encodedItem, 1, 1);
+
+        return encodedItem;
+    }
+
+    @Override
     protected boolean validate() {
+        if (this.sac > 255 || this.sac < 0) {
+            return false;
+        }
+        if (this.sic > 255 || this.sic < 0) {
+            return false;
+        }
         return true;
     }
 

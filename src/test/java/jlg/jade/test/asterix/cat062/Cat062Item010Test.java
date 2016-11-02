@@ -12,13 +12,16 @@ import jlg.jade.asterix.cat062.Cat062Item010;
 import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class Cat062Item010Test {
 
     @Test
-    public void should_have_length_of_2_bytes(){
+    public void should_have_length_of_2_bytes() {
         //arrange
         Cat062Item010 item = new Cat062Item010();
 
@@ -53,7 +56,6 @@ public class Cat062Item010Test {
 
     }
 
-
     @Test
     public void the_decode_method_should_increase_offset_after_decoding() {
         //arrange
@@ -67,5 +69,26 @@ public class Cat062Item010Test {
         //assert
         int expectedCurrentIndex = offset + AsterixItemLength.TWO_BYTES.getValue();
         assertEquals("Current index not incremented correctly", expectedCurrentIndex, result);
+    }
+
+    /*
+    ENCODE
+     */
+
+    @Test
+    public void the_encode_method_should_correctly_encode_data() {
+        //arrange
+        int sac = 70;
+        int sic = 16;
+        Cat062Item010 cat062Item010 = new Cat062Item010();
+        cat062Item010.setSac(sac);
+        cat062Item010.setSic(sic);
+
+        //act
+        byte[] result = cat062Item010.encode();
+
+        //assert
+        byte[] expected = {70, 16};
+        assertTrue(Arrays.equals(result, expected));
     }
 }
