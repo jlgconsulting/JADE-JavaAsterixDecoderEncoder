@@ -10,6 +10,7 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.UnsignedNumericDecoder;
 
+import java.nio.ByteBuffer;
 import java.util.BitSet;
 
 /**
@@ -42,7 +43,7 @@ public class Cat062Item135 extends FixedLengthAsterixData {
          * - We need to substract 128 if MSB is 1 (QNH)
          * - We need to generate two complment if bit[6] = 1 (sign)
          */
-        int firstOctetValueForCalculation = UnsignedNumericDecoder.decodeFromOneByte(input,offset);
+        int firstOctetValueForCalculation = UnsignedNumericDecoder.decodeFromOneByte(input, offset);
         if (qnhCorrectionApplied) {
             firstOctetValueForCalculation = (byte) (input[offset] - 128);
         }
@@ -57,6 +58,20 @@ public class Cat062Item135 extends FixedLengthAsterixData {
         this.barometricAltitude = firstOctetValueForCalculation * 256 + Byte.toUnsignedInt(input[offset + 1]);
         appendItemDebugMsg("Barometric altitude", barometricAltitude);
         appendItemDebugMsg("Barometric altitude (ft)", getBarometricAltitudeFeet());
+    }
+
+    @Override
+    public byte[] encode() {
+        int qnhAndAltitudeValue = this.barometricAltitude;
+        if (this.isQnhCorrectionApplied()) {
+            qnhAndAltitudeValue += Math.pow(2, 15);
+        }
+
+        byte[] encodedItem = ByteBuffer.allocate(this.sizeInBytes)
+                                       .putShort((short) qnhAndAltitudeValue)
+                                       .array();
+
+        return encodedItem;
     }
 
     @Override
@@ -86,11 +101,19 @@ public class Cat062Item135 extends FixedLengthAsterixData {
         return qnhCorrectionApplied;
     }
 
+    public void setQnhCorrectionApplied(boolean qnhCorrectionApplied) {
+        this.qnhCorrectionApplied = qnhCorrectionApplied;
+    }
+
     /**
      * @return The barometric altitude, expressed in 1/4FL (25 ft)
      */
     public int getBarometricAltitude() {
         return barometricAltitude;
+    }
+
+    public void setBarometricAltitude(int barometricAltitude) {
+        this.barometricAltitude = barometricAltitude;
     }
 
     /**
@@ -102,5 +125,4 @@ public class Cat062Item135 extends FixedLengthAsterixData {
          */
         return barometricAltitude * 25;
     }
-
 }
