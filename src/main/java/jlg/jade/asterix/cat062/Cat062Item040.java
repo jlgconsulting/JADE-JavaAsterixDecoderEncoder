@@ -9,6 +9,8 @@ package jlg.jade.asterix.cat062;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
+import java.nio.ByteBuffer;
+
 /**
  * Cat 062 Item 040 - Track number - Mandatory
  * Unique identification of a track
@@ -18,11 +20,19 @@ public class Cat062Item040 extends FixedLengthAsterixData {
 
     @Override
     protected void decodeFromByteArray(byte[] input, int offset) {
-        this.trackNb =
-                Byte.toUnsignedInt(input[offset]) * 256 +
+        this.trackNb = Byte.toUnsignedInt(input[offset]) * 256 +
                 Byte.toUnsignedInt(input[offset + 1]);
 
         appendItemDebugMsg("Track number", trackNb);
+    }
+
+    @Override
+    public byte[] encode() {
+        byte[] trackNbAsByteArray = ByteBuffer.allocate(2)
+                                              .putShort((short) this.trackNb)
+                                              .array();
+
+        return trackNbAsByteArray;
     }
 
     @Override
@@ -42,5 +52,9 @@ public class Cat062Item040 extends FixedLengthAsterixData {
 
     public int getTrackNb() {
         return trackNb;
+    }
+
+    public void setTrackNb(int trackNb) {
+        this.trackNb = trackNb;
     }
 }

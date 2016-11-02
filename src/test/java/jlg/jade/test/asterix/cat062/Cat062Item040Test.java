@@ -10,13 +10,15 @@ import jlg.jade.asterix.cat062.Cat062Item040;
 import jlg.jade.common.AsterixDecodingException;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class Cat062Item040Test {
 
     @Test
-    public void should_have_length_of_2_bytes(){
+    public void should_have_length_of_2_bytes() {
         //arrange
         Cat062Item040 item = new Cat062Item040();
 
@@ -25,7 +27,7 @@ public class Cat062Item040Test {
     }
 
     @Test(expected = AsterixDecodingException.AvailableLengthExceeded.class)
-    public void the_decode_method_when_remaining_input_data_less_than_2_bytes_should_throw(){
+    public void the_decode_method_when_remaining_input_data_less_than_2_bytes_should_throw() {
         //arrange
         byte[] input = {5, (byte) 193};
         int offset = 1;
@@ -36,7 +38,7 @@ public class Cat062Item040Test {
     }
 
     @Test
-    public void the_decode_method_should_decode_data_correctly(){
+    public void the_decode_method_should_decode_data_correctly() {
         //arrange
         byte[] input = {5, (byte) 193};
         int offset = 0;
@@ -47,11 +49,11 @@ public class Cat062Item040Test {
 
         //assert
         assertEquals("Track number not decoded correctly", 1473, item.getTrackNb());
-        assertTrue(item .isValid());
+        assertTrue(item.isValid());
     }
 
     @Test
-    public void the_decode_method_should_increase_offset_after_decoding_the_data(){
+    public void the_decode_method_should_increase_offset_after_decoding_the_data() {
         //arrange
         byte[] input = {5, (byte) 193};
         int offset = 0;
@@ -61,6 +63,25 @@ public class Cat062Item040Test {
         int result = item.decode(input, offset, input.length);
 
         //assert
-        assertEquals("Offset not incremented after decoding data", offset+item.getSizeInBytes(), result);
+        assertEquals("Offset not incremented after decoding data", offset + item.getSizeInBytes(), result);
+    }
+
+    /*
+    ENCODE
+     */
+
+    @Test
+    public void the_encode_method_should_correctly_encode_data() {
+        //arrange
+        int trackNb = 1473;
+        Cat062Item040 cat062Item040 = new Cat062Item040();
+        cat062Item040.setTrackNb(trackNb);
+
+        //act
+        byte[] result = cat062Item040.encode();
+
+        //assert
+        byte[] expected = {5, (byte) 193};
+        assertTrue(Arrays.equals(expected, result));
     }
 }
