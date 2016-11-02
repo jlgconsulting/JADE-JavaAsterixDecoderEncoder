@@ -73,6 +73,7 @@ public class Cat150Item030 extends FixedLengthAsterixData {
                 break;
             }
         }
+        this.appendItemDebugMsg("Message Type", this.messageType);
     }
 
     @Override
