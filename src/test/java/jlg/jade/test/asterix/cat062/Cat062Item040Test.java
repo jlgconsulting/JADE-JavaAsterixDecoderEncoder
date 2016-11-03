@@ -71,7 +71,7 @@ public class Cat062Item040Test {
      */
 
     @Test
-    public void the_encode_method_should_correctly_encode_data() {
+    public void the_encode_method_should_produce_correct_byte_array() {
         //arrange
         int trackNb = 1473;
         Cat062Item040 cat062Item040 = new Cat062Item040();

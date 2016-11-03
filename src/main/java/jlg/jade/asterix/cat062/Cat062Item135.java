@@ -62,16 +62,20 @@ public class Cat062Item135 extends FixedLengthAsterixData {
 
     @Override
     public byte[] encode() {
+        /*
+        To facilitate the encoding we need to calculate the actual value of this field on 2 bytes.
+        So, if the first bit is 1, we need to add 2^15 to the barometric altitude value
+         */
         int qnhAndAltitudeValue = this.barometricAltitude;
         if (this.isQnhCorrectionApplied()) {
             qnhAndAltitudeValue += Math.pow(2, 15);
         }
 
-        byte[] encodedItem = ByteBuffer.allocate(this.sizeInBytes)
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
                                        .putShort((short) qnhAndAltitudeValue)
                                        .array();
 
-        return encodedItem;
+        return itemAsByteArray;
     }
 
     @Override

@@ -28,11 +28,11 @@ public class Cat062Item040 extends FixedLengthAsterixData {
 
     @Override
     public byte[] encode() {
-        byte[] trackNbAsByteArray = ByteBuffer.allocate(2)
+        byte[] itemAsByteArray = ByteBuffer.allocate(2)
                                               .putShort((short) this.trackNb)
                                               .array();
 
-        return trackNbAsByteArray;
+        return itemAsByteArray;
     }
 
     @Override

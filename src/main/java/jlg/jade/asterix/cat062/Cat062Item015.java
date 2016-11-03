@@ -27,12 +27,9 @@ public class Cat062Item015 extends FixedLengthAsterixData {
 
     @Override
     public byte[] encode() {
-        byte[] serviceIdAsByteArray = ByteBuffer.allocate(1).put((byte) this.serviceIdentification).array();
+        byte[] itemAsByteArray = ByteBuffer.allocate(1).put((byte) this.serviceIdentification).array();
 
-        byte[] encodedItem = new byte[this.sizeInBytes];
-        System.arraycopy(serviceIdAsByteArray, 0, encodedItem, 0, 1);
-
-        return encodedItem;
+        return itemAsByteArray;
     }
 
     @Override

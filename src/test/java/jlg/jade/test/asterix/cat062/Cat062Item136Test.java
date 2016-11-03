@@ -88,7 +88,7 @@ public class Cat062Item136Test extends MandatoryFixedLengthAsterixTests<Cat062It
      */
 
     @Test
-    public void when_altitude_is_negative_the_encode_method_should_correctly_encode_data(){
+    public void when_altitude_is_negative_the_encode_method_should_produce_correct_byte_array(){
         //arrange
         int mfl = -255;
         Cat062Item136 cat062Item136 = new Cat062Item136();
@@ -103,7 +103,7 @@ public class Cat062Item136Test extends MandatoryFixedLengthAsterixTests<Cat062It
     }
 
     @Test
-    public void when_altitude_is_positive_the_encode_method_should_correctly_encode_data(){
+    public void when_altitude_is_positive_the_encode_method_should_produce_correct_byte_array(){
         //arrange
         int mfl = 1480;
         Cat062Item136 cat062Item136 = new Cat062Item136();

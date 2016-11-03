@@ -36,11 +36,11 @@ public class Cat062Item136 extends FixedLengthAsterixData {
 
     @Override
     public byte[] encode() {
-        byte[] encodedItem = ByteBuffer.allocate(2)
+        byte[] itemAsByteArray = ByteBuffer.allocate(2)
                                        .putShort((short) this.measuredFLightLevel)
                                        .array();
 
-        return encodedItem;
+        return itemAsByteArray;
     }
 
     @Override

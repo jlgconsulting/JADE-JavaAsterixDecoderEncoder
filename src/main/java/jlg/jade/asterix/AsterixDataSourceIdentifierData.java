@@ -50,14 +50,12 @@ public abstract class AsterixDataSourceIdentifierData extends FixedLengthAsterix
 
     @Override
     public byte[] encode() {
-        byte[] sacAsByteArray = ByteBuffer.allocate(1).put((byte) sac).array();
-        byte[] sicAsByteArray = ByteBuffer.allocate(1).put((byte) sic).array();
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                .put((byte) sac)
+                .put((byte) sic)
+                .array();
 
-        byte[] encodedItem = new byte[this.setSizeInBytes()];
-        System.arraycopy(sacAsByteArray, 0, encodedItem, 0, 1);
-        System.arraycopy(sicAsByteArray, 0, encodedItem, 1, 1);
-
-        return encodedItem;
+        return itemAsByteArray;
     }
 
     @Override

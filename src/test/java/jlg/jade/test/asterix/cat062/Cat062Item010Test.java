@@ -76,7 +76,7 @@ public class Cat062Item010Test {
      */
 
     @Test
-    public void the_encode_method_should_correctly_encode_data() {
+    public void the_encode_method_should_produce_correct_byte_array() {
         //arrange
         int sac = 70;
         int sic = 16;

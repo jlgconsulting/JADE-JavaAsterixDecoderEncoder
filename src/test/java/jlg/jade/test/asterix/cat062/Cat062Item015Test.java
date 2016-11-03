@@ -71,7 +71,7 @@ public class Cat062Item015Test {
      */
 
     @Test
-    public void the_encode_method_should_correctly_encode_data(){
+    public void the_encode_method_should_produce_correct_byte_array(){
         //arrange
         int serviceIdentification = 200;
         Cat062Item015 asterixItem = new Cat062Item015();
