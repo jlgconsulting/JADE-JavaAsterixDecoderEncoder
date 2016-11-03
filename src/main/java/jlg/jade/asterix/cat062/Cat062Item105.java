@@ -84,6 +84,11 @@ public class Cat062Item105 extends FixedLengthAsterixData {
         return latitudeWsg84;
     }
 
+    /**
+     * Set the latitude component of the position
+     * Unit of measure is 180 / 2^25 degrees
+     * @param latitudeWsg84
+     */
     public void setLatitudeWsg84(int latitudeWsg84) {
         this.latitudeWsg84 = latitudeWsg84;
     }
@@ -92,6 +97,11 @@ public class Cat062Item105 extends FixedLengthAsterixData {
         return longitudeWsg84;
     }
 
+    /**
+     * Set the longitude component of the position
+     * Unit of measure is 180 / 2^25 degrees
+     * @param longitudeWsg84
+     */
     public void setLongitudeWsg84(int longitudeWsg84) {
         this.longitudeWsg84 = longitudeWsg84;
     }

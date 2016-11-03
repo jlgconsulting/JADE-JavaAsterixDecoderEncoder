@@ -165,6 +165,7 @@ public class Cat062Item105Test {
         //assert
         byte[] expected = {0, (byte) 146, 96, (byte) 221, 0, 45, (byte) 149, 81};
         assertTrue("Cat062Item105 not encoded correctly", Arrays.equals(expected, result));
+        assertEquals(cat062Item105.getSizeInBytes(), result.length);
     }
 
 }

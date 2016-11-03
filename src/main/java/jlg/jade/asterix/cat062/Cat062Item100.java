@@ -9,6 +9,8 @@ package jlg.jade.asterix.cat062;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
+import java.nio.ByteBuffer;
+
 /**
  * Cat 062 Item 100 - Calculated Track Position (Cartesian) - Optional
  * Calculated position in Cartesian co-ordinates with a resolution of
@@ -24,15 +26,37 @@ public class Cat062Item100 extends FixedLengthAsterixData {
 
         this.x =
                 input[offset] * 256 * 256 +
-                Byte.toUnsignedInt(input[offset + 1]) * 256 +
-                Byte.toUnsignedInt(input[offset + 2]);
+                        Byte.toUnsignedInt(input[offset + 1]) * 256 +
+                        Byte.toUnsignedInt(input[offset + 2]);
         this.y =
                 input[offset + 3] * 256 * 256 +
-                Byte.toUnsignedInt(input[offset + 4]) * 256 +
-                Byte.toUnsignedInt(input[offset + 5]);
+                        Byte.toUnsignedInt(input[offset + 4]) * 256 +
+                        Byte.toUnsignedInt(input[offset + 5]);
 
-        appendItemDebugMsg("X",this.x);
+        appendItemDebugMsg("X", this.x);
         appendItemDebugMsg("Y", this.y);
+    }
+
+    @Override
+    public byte[] encode() {
+        byte[] xAsByteArray = ByteBuffer.allocate(4).putInt(this.x).array();
+        byte[] yAsByteArray = ByteBuffer.allocate(4).putInt(this.y).array();
+
+        int xOffset = 0;
+        int yOffset = 3;
+        int sizeOfCartesianComponentByteArray = 3;
+        byte[] itemAsByteArray = new byte[this.sizeInBytes];
+
+        /*
+        When we copy the array, we need to skip the first bit in the x and y components. This must
+        be done because the components are represented on 3 bytes, not on 4 (as normal int values)
+         */
+        int sourceOffset = 1;
+
+        System.arraycopy(xAsByteArray, sourceOffset, itemAsByteArray, xOffset, sizeOfCartesianComponentByteArray);
+        System.arraycopy(yAsByteArray, sourceOffset, itemAsByteArray, yOffset, sizeOfCartesianComponentByteArray);
+
+        return itemAsByteArray;
     }
 
     @Override
@@ -59,9 +83,29 @@ public class Cat062Item100 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the x component of the cartesian position.
+     * Unit of measure is 0.5 meters
+     *
+     * @param x
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    /**
      * The Y cartesian position expressed in 0.5 meters
      */
     public int getY() {
         return y;
+    }
+
+    /**
+     * Set the y component of the cartesian position.
+     * Unit of measure is 0.5 meters
+     *
+     * @param y
+     */
+    public void setY(int y) {
+        this.y = y;
     }
 }
