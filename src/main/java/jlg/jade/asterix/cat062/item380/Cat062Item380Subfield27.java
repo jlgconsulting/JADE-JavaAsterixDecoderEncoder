@@ -10,6 +10,8 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.Constants;
 
+import java.nio.ByteBuffer;
+
 /**
  * Item 380 Subfield 27 - Mach Number
  * Unit of measure: 0.008 Mach Number
@@ -32,6 +34,14 @@ public class Cat062Item380Subfield27 extends FixedLengthAsterixData {
     }
 
     @Override
+    public byte[] encode() {
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                .putShort((short) this.machNumber)
+                .array();
+        return itemAsByteArray;
+    }
+
+    @Override
     protected boolean validate(){
         if(machNumber >= 0 && machNumber <= 4096){
             return true;
@@ -50,6 +60,15 @@ public class Cat062Item380Subfield27 extends FixedLengthAsterixData {
      */
     public int getMachNumber() {
         return machNumber;
+    }
+
+    /**
+     * Set the mach number (speed in mach).
+     * Unit of measure: 0.008 Mach
+     * @param machNumber
+     */
+    public void setMachNumber(int machNumber) {
+        this.machNumber = machNumber;
     }
 
     /**

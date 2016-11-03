@@ -13,7 +13,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class Cat062Item380Subfield27Test extends MandatoryFixedLengthAsterixTests<Cat062Item380Subfield27> {
@@ -73,5 +76,25 @@ public class Cat062Item380Subfield27Test extends MandatoryFixedLengthAsterixTest
 
         //assert
         assertEquals(expected, subfield.isValid());
+    }
+
+    /*
+    Encoding Tests
+     */
+
+    @Test
+    public void the_encode_method_should_produce_correct_byte_array() {
+        //arrange
+        int speed = 98;
+        Cat062Item380Subfield27 cat062Item380Subfield27 = new Cat062Item380Subfield27();
+        cat062Item380Subfield27.setMachNumber(speed);
+
+        //act
+        byte[] result = cat062Item380Subfield27.encode();
+
+        //assert
+        byte[] expected = {0, 98};
+        assertTrue("Item 380 - mach number not encoded correctly", Arrays.equals(expected, result));
+        assertEquals(cat062Item380Subfield27.getSizeInBytes(), result.length);
     }
 }

@@ -13,7 +13,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class Cat062Item380Subfield26Test extends MandatoryFixedLengthAsterixTests<Cat062Item380Subfield26> {
@@ -59,5 +62,25 @@ public class Cat062Item380Subfield26Test extends MandatoryFixedLengthAsterixTest
 
         //assert
         assertEquals(expected, subfield.isValid());
+    }
+
+    /*
+    Encoding test
+     */
+
+    @Test
+    public void the_encode_method_should_produce_correct_byte_array() {
+        //arrange
+        int speed = 264;
+        Cat062Item380Subfield26 cat062Item380Subfield26 = new Cat062Item380Subfield26();
+        cat062Item380Subfield26.setIndicatedAirSpeed(speed);
+
+        //act
+        byte[] result = cat062Item380Subfield26.encode();
+
+        //assert
+        byte[] expected = {1, 8};
+        assertTrue("Item380 - IAS not decoded correctly", Arrays.equals(expected, result));
+        assertEquals(cat062Item380Subfield26.getSizeInBytes(), result.length);
     }
 }
