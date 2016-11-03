@@ -10,6 +10,8 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.Constants;
 
+import java.nio.ByteBuffer;
+
 /**
  * Item 380 Subfield #3 - Magnetic Heading
  * Unit of measure: 360° / 2^16 (0.0055 degrees)
@@ -33,6 +35,15 @@ public class Cat062Item380Subfield3 extends FixedLengthAsterixData {
     }
 
     @Override
+    public byte[] encode() {
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                .putShort((short) this.magneticHeading)
+                .array();
+
+        return itemAsByteArray;
+    }
+
+    @Override
     protected boolean validate() {
         return true;
     }
@@ -47,6 +58,15 @@ public class Cat062Item380Subfield3 extends FixedLengthAsterixData {
      */
     public int getMagneticHeading() {
         return magneticHeading;
+    }
+
+    /**
+     * Set the magnetic heading.
+     * Unit of measure is 0.0055 degrees
+     * @param magneticHeading
+     */
+    public void setMagneticHeading(int magneticHeading) {
+        this.magneticHeading = magneticHeading;
     }
 
     /**
