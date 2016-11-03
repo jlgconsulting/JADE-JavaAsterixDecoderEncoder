@@ -12,6 +12,8 @@ import jlg.jade.common.Constants;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class Cat062Item105Test {
@@ -77,7 +79,9 @@ public class Cat062Item105Test {
         //arrange
         int latitudeOutsideRange = (int) (91 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange);
-        byte[] input = {invalidLatArray[0], invalidLatArray[1], invalidLatArray[2], invalidLatArray[3], 0, 45, (byte) 149, 81};
+        byte[] input = {invalidLatArray[0], invalidLatArray[1], invalidLatArray[2], invalidLatArray[3], 0, 45,
+                        (byte) 149, 81
+        };
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
 
@@ -93,7 +97,9 @@ public class Cat062Item105Test {
         //arrange
         int latitudeOutsideRange = (int) (-91 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLatArray = TestHelper.fromIntToByteArray(latitudeOutsideRange);
-        byte[] input = {invalidLatArray[0], invalidLatArray[1], invalidLatArray[2], invalidLatArray[3], 0, 45, (byte) 149, 81};
+        byte[] input = {invalidLatArray[0], invalidLatArray[1], invalidLatArray[2], invalidLatArray[3], 0, 45,
+                        (byte) 149, 81
+        };
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
 
@@ -109,7 +115,9 @@ public class Cat062Item105Test {
         //arrange
         int lonOutsideRange = (int) (181 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange);
-        byte[] input = {0, (byte) 146, 96, (byte) 221, invalidLonArray[0],invalidLonArray[1],invalidLonArray[2],invalidLonArray[3]};
+        byte[] input = {0, (byte) 146, 96, (byte) 221, invalidLonArray[0], invalidLonArray[1], invalidLonArray[2],
+                        invalidLonArray[3]
+        };
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
 
@@ -125,7 +133,9 @@ public class Cat062Item105Test {
         //arrange
         int lonOutsideRange = (int) (-181 / Constants.LAT_LONG_WGS_PRECISION_CAT062);
         byte[] invalidLonArray = TestHelper.fromIntToByteArray(lonOutsideRange);
-        byte[] input = {0, (byte) 146, 96, (byte) 221, invalidLonArray[0],invalidLonArray[1],invalidLonArray[2],invalidLonArray[3]};
+        byte[] input = {0, (byte) 146, 96, (byte) 221, invalidLonArray[0], invalidLonArray[1], invalidLonArray[2],
+                        invalidLonArray[3]
+        };
         int offset = 0;
         Cat062Item105 item = new Cat062Item105();
 
@@ -134,6 +144,27 @@ public class Cat062Item105Test {
 
         //assert
         assertFalse(item.isValid());
+    }
+
+    /*
+    Encoding
+     */
+
+    @Test
+    public void the_encode_method_should_correctly_encode_data() {
+        //arrange
+        int latitude = 9593053;
+        int longitude = 2987345;
+        Cat062Item105 cat062Item105 = new Cat062Item105();
+        cat062Item105.setLatitudeWsg84(latitude);
+        cat062Item105.setLongitudeWsg84(longitude);
+
+        //act
+        byte[] result = cat062Item105.encode();
+
+        //assert
+        byte[] expected = {0, (byte) 146, 96, (byte) 221, 0, 45, (byte) 149, 81};
+        assertTrue("Cat062Item105 not encoded correctly", Arrays.equals(expected, result));
     }
 
 }

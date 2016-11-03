@@ -9,6 +9,8 @@ package jlg.jade.asterix.cat062;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
+import java.nio.ByteBuffer;
+
 import static jlg.jade.common.Constants.LAT_LONG_WGS_PRECISION_CAT062;
 
 /**
@@ -24,13 +26,13 @@ public class Cat062Item105 extends FixedLengthAsterixData {
         //MSB must be interpreted as signed, so we do not covert it to unsigned value
 
         this.latitudeWsg84 =
-                        input[offset] * 256 * 256 * 256 +
+                input[offset] * 256 * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 1]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 2]) * 256 +
                         Byte.toUnsignedInt(input[offset + 3]);
 
         this.longitudeWsg84 =
-                        input[offset+4] * 256 * 256 * 256 +
+                input[offset + 4] * 256 * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 5]) * 256 * 256 +
                         Byte.toUnsignedInt(input[offset + 6]) * 256 +
                         Byte.toUnsignedInt(input[offset + 7]);
@@ -42,13 +44,26 @@ public class Cat062Item105 extends FixedLengthAsterixData {
     }
 
     @Override
+    public byte[] encode() {
+        int offsetOfLat = 0;
+        int offsetOfLon = 4;
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                                           .putInt(offsetOfLat, this.latitudeWsg84)
+                                           .putInt(offsetOfLon, this.longitudeWsg84)
+                                           .array();
+        return itemAsByteArray;
+    }
+
+    @Override
     protected boolean validate() {
-        if(getLatitudeDecimalWsg84() < -90 || getLatitudeDecimalWsg84() > 90){
-            appendDebugMsg("Item is not valid. Latitude is not within -90,90 range. Latitude: " + getLatitudeDecimalWsg84());
+        if (getLatitudeDecimalWsg84() < -90 || getLatitudeDecimalWsg84() > 90) {
+            appendDebugMsg(
+                    "Item is not valid. Latitude is not within -90,90 range. Latitude: " + getLatitudeDecimalWsg84());
             return false;
         }
-        if(getLongitudeDecimalWsg84() < -180 || getLongitudeDecimalWsg84() > 180){
-            appendDebugMsg("Item is not valid. Longitude is not within -180,180 range. Longitude: " + getLongitudeWsg84());
+        if (getLongitudeDecimalWsg84() < -180 || getLongitudeDecimalWsg84() > 180) {
+            appendDebugMsg(
+                    "Item is not valid. Longitude is not within -180,180 range. Longitude: " + getLongitudeWsg84());
             return false;
         }
 
@@ -69,21 +84,29 @@ public class Cat062Item105 extends FixedLengthAsterixData {
         return latitudeWsg84;
     }
 
+    public void setLatitudeWsg84(int latitudeWsg84) {
+        this.latitudeWsg84 = latitudeWsg84;
+    }
+
     public int getLongitudeWsg84() {
         return longitudeWsg84;
+    }
+
+    public void setLongitudeWsg84(int longitudeWsg84) {
+        this.longitudeWsg84 = longitudeWsg84;
     }
 
     /**
      * Calculates the decimal value of the WSG84 latitude from the Asterix unit of measure
      */
-    public double getLatitudeDecimalWsg84(){
+    public double getLatitudeDecimalWsg84() {
         return this.latitudeWsg84 * LAT_LONG_WGS_PRECISION_CAT062;
     }
 
     /**
      * Calculates the decimal value of the WSG84 longitude from the Asterix unit of measure
      */
-    public double getLongitudeDecimalWsg84(){
+    public double getLongitudeDecimalWsg84() {
         return this.longitudeWsg84 * LAT_LONG_WGS_PRECISION_CAT062;
     }
 }
