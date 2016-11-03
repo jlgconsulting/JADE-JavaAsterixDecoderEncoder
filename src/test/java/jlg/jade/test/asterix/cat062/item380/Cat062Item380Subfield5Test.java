@@ -13,7 +13,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class Cat062Item380Subfield5Test {
@@ -55,8 +58,8 @@ public class Cat062Item380Subfield5Test {
     }
 
     @Test
-    @Parameters({"0,0,true","7,254,true","7,255,false"})
-    public void the_validate_method_should_be_implemented_correctly(int firstOctet, int secondOctet, boolean expected){
+    @Parameters({"0,0,true", "7,254,true", "7,255,false"})
+    public void the_validate_method_should_be_implemented_correctly(int firstOctet, int secondOctet, boolean expected) {
         /**
          * 0 ≤ True Air Speed ≤ 2046 knots
          */
@@ -72,4 +75,25 @@ public class Cat062Item380Subfield5Test {
         //assert
         assertEquals("True air speed validation failed", expected, subfield.isValid());
     }
+
+    /*
+    Encoding Test
+     */
+
+    @Test
+    public void the_encode_method_should_produce_correct_byte_array() {
+        //arrange
+        int speed = 64;
+        Cat062Item380Subfield5 cat062Item380Subfield5 = new Cat062Item380Subfield5();
+        cat062Item380Subfield5.setTrueAirSpeedKn(speed);
+
+        //act
+        byte[] result = cat062Item380Subfield5.encode();
+
+        //assert
+        byte[] expected = {0, 64};
+        assertTrue("Item 380 - true air speed not encoded correctly", Arrays.equals(expected, result));
+        assertEquals(cat062Item380Subfield5.getSizeInBytes(), result.length);
+    }
+
 }

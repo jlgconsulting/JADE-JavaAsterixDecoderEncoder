@@ -11,6 +11,8 @@ import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.Constants;
 import jlg.jade.common.TwoComplementDecoder;
 
+import java.nio.ByteBuffer;
+
 /**
  * Item 380 Subfield 18 - Ground Speed
  * Ground Speed in two's complement form referenced to WGS84
@@ -32,6 +34,14 @@ public class Cat062Item380Subfield18 extends FixedLengthAsterixData {
     }
 
     @Override
+    public byte[] encode() {
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                .putShort((short) this.groundSpeed)
+                .array();
+        return itemAsByteArray;
+    }
+
+    @Override
     protected boolean validate(){
         double groundSpeedInNmPerSecond = groundSpeed * Constants.FROM_ASTERIX_GROUND_SPEED_TO_KNOTS * Constants.FROM_KNOT_TO_NM_PER_SECOND;
         if(groundSpeedInNmPerSecond >= -2 && groundSpeedInNmPerSecond <= 2){
@@ -50,6 +60,14 @@ public class Cat062Item380Subfield18 extends FixedLengthAsterixData {
 
     public int getGroundSpeed() {
         return groundSpeed;
+    }
+
+    /**
+     * Set the ground speed. Unit of measure: NM/s
+     * @param groundSpeed
+     */
+    public void setGroundSpeed(int groundSpeed) {
+        this.groundSpeed = groundSpeed;
     }
 
     /**
