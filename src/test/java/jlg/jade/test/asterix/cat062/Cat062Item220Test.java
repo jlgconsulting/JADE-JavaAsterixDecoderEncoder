@@ -13,7 +13,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class Cat062Item220Test extends MandatoryFixedLengthAsterixTests<Cat062Item220> {
@@ -44,4 +47,25 @@ public class Cat062Item220Test extends MandatoryFixedLengthAsterixTests<Cat062It
         //assert
         assertEquals("ROCD not decoded correctly", expected, item220.getRocd());
     }
+
+    /*
+    Encoding test
+     */
+
+    @Test
+    public void the_encode_method_should_produce_correct_byte_array() {
+        //arrange
+        int rocd = -151;
+        Cat062Item220 cat062Item220 = new Cat062Item220();
+        cat062Item220.setRocd(rocd);
+
+        //act
+        byte[] result = cat062Item220.encode();
+
+        //assert
+        byte[] expected = {(byte) 255, 105};
+        assertTrue("Cat062 Item220 is not encoded correctly", Arrays.equals(expected, result));
+        assertEquals(cat062Item220.getSizeInBytes(), result.length);
+    }
+
 }

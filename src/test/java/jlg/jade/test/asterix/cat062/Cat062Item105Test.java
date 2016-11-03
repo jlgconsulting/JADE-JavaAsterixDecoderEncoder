@@ -151,7 +151,7 @@ public class Cat062Item105Test {
      */
 
     @Test
-    public void the_encode_method_should_correctly_encode_data() {
+    public void the_encode_method_should_produce_correct_byte_array() {
         //arrange
         int latitude = 9593053;
         int longitude = 2987345;

@@ -10,6 +10,8 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.TwoComplementDecoder;
 
+import java.nio.ByteBuffer;
+
 /**
  * Cat 062 Item220 - ROCD - Opt
  * Calculated rate of Climb/Descent of an aircraft in two’s
@@ -32,11 +34,29 @@ public class Cat062Item220 extends FixedLengthAsterixData {
         appendItemDebugMsg("ROCD", this.rocd);
     }
 
+    @Override
+    public byte[] encode() {
+        byte[] itemAsByteArray = ByteBuffer.allocate(2).putShort((short) this.rocd).array();
+
+        return itemAsByteArray;
+    }
+
     /**
      * @return The rate of climb/descent for the aircraft expressed in 6.25 ft / min
      */
     public int getRocd() {
         return rocd;
+    }
+
+    /**
+     * Set the rate of climb and descent. A positive value means that the aircraft
+     * is climbing. A negative one means that the aircraft is descending.
+     * Unit of measure: 6.25 ft/min
+     *
+     * @param rocd
+     */
+    public void setRocd(int rocd) {
+        this.rocd = rocd;
     }
 
     @Override
