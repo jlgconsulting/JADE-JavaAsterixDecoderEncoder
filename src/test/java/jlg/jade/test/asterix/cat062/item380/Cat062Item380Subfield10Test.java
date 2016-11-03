@@ -49,4 +49,22 @@ public class Cat062Item380Subfield10Test {
         //assert
         assertTrue(subfield.isValid());
     }
+
+    @Test
+    public void the_decode_method_should_correctly_decode_bds_register_10_bits() {
+        // arrange
+        byte[] input = {23, (byte) 255};
+        int offset = 0;
+        Cat062Item380Subfield10 subfield10 = new Cat062Item380Subfield10();
+
+        // act
+        subfield10.decode(input, offset, input.length);
+
+        // assert
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 16", 1, subfield10.getBDS10Bit16());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 37", 1, subfield10.getBDS10Bit37());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 38", 1, subfield10.getBDS10Bit38());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 39", 1, subfield10.getBDS10Bit39());
+        assertEquals("Item not decoded correctly - BDS 1,0 bit 40", 1, subfield10.getBDS10Bit40());
+    }
 }
