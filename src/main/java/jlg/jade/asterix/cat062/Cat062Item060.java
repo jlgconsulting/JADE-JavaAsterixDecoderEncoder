@@ -10,6 +10,7 @@ import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 import jlg.jade.common.ModeACode;
 
+import java.nio.ByteBuffer;
 import java.util.BitSet;
 
 /**
@@ -33,24 +34,39 @@ public class Cat062Item060 extends FixedLengthAsterixData {
          */
         final int CHANGE_BIT = 5;
         int firstOctetValueForModeA;
-        if(firstOctetBits.get(CHANGE_BIT)){
+        if (firstOctetBits.get(CHANGE_BIT)) {
             this.modeAChange = true;
             //assume bit 5 is 0 => we subtract 32 (2 pow 5) from octet value (as if bit 5 was 0)
             firstOctetValueForModeA = Byte.toUnsignedInt(input[offset]) - 32;
         }
-        else{
+        else {
             this.modeAChange = false;
             firstOctetValueForModeA = Byte.toUnsignedInt(input[offset]);
         }
 
         this.modeADecimal =
-                firstOctetValueForModeA*256 +
-                Byte.toUnsignedInt(input[offset+1]);
+                firstOctetValueForModeA * 256 +
+                        Byte.toUnsignedInt(input[offset + 1]);
 
 
         appendItemDebugMsg("Mode A changed", this.modeAChange);
         appendItemDebugMsg("Mode A value (decimal)", this.modeADecimal);
         appendItemDebugMsg("Mode A value (octal)", this.getModeAOctal());
+    }
+
+    @Override
+    public byte[] encode() {
+        int decimalValueToDecode = this.modeADecimal;
+        if(this.modeAChange){
+            //but 14 represents if mode a has changed => if true we need to add 2^13 to our result
+            decimalValueToDecode += Math.pow(2, 13);
+        }
+
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                .putShort((short) decimalValueToDecode)
+                .array();
+
+        return itemAsByteArray;
     }
 
     @Override
@@ -76,10 +92,28 @@ public class Cat062Item060 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set if the Mode A code has changed
+     *
+     * @param modeAChange
+     */
+    public void setModeAChange(boolean modeAChange) {
+        this.modeAChange = modeAChange;
+    }
+
+    /**
      * @return The value of Mode 3A in decimal format
      */
     public int getModeADecimal() {
         return modeADecimal;
+    }
+
+    /**
+     * Set the mode A code in decimal notation. Value needs to be between 0-4095
+     *
+     * @param modeADecimal
+     */
+    public void setModeADecimal(int modeADecimal) {
+        this.modeADecimal = modeADecimal;
     }
 
     public String getModeAOctal() {
