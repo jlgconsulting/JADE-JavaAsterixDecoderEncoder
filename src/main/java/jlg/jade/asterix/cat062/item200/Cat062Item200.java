@@ -9,6 +9,7 @@ package jlg.jade.asterix.cat062.item200;
 import jlg.jade.asterix.AsterixItemLength;
 import jlg.jade.asterix.FixedLengthAsterixData;
 
+import java.nio.ByteBuffer;
 import java.util.BitSet;
 
 /**
@@ -27,9 +28,11 @@ public class Cat062Item200 extends FixedLengthAsterixData {
     private int transversalAcceleration;
 
     public Cat062Item200() {
-        verticalRate = 3;
-        longitudinalAcceleration = 3;
-        transversalAcceleration = 3;
+        final int UNDETERMINED_VALUE = 3;
+
+        verticalRate = UNDETERMINED_VALUE;
+        longitudinalAcceleration = UNDETERMINED_VALUE;
+        transversalAcceleration = UNDETERMINED_VALUE;
     }
 
     @Override
@@ -60,11 +63,42 @@ public class Cat062Item200 extends FixedLengthAsterixData {
         appendItemDebugMsg("Transversal acceleration", transversalAcceleration);
     }
 
+    @Override
+    public byte[] encode() {
+        /*
+        We need to calculate the corresponding byte values for all the components of this item. Then, we can sum them
+        up to get the item byte value, which can be represented as a byte array of one element. The byte value of
+        the components depends upn their position in the item octet representation.
+         */
+        byte asfAsByteValue = 0;
+        if (this.hasAltitudeDiscrepency()) {
+            asfAsByteValue = 2;
+        }
+        byte verticalRateAsByteValue = getVerticalRateAsComponentByteValue();
+        byte longitudinalAccelerationAsByteValue = getLongitudinalAccelerationAsComponentByteValue();
+        byte transversalAccelerationAsByteValue = getTransversalAccelerationAsComponentByteValue();
+
+        byte itemAsByteValue = (byte) (asfAsByteValue +
+                        verticalRateAsByteValue +
+                        longitudinalAccelerationAsByteValue +
+                        transversalAccelerationAsByteValue);
+
+        byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
+                .put(itemAsByteValue)
+                .array();
+
+        return itemAsByteArray;
+    }
+
     /**
      * @return True, if aircraft has a calculated altitude discrepency, false othervise
      */
     public boolean hasAltitudeDiscrepency() {
         return altitudeDiscrepencyFlag;
+    }
+
+    public void setAltitudeDiscrepencyFlag(boolean altitudeDiscrepencyFlag) {
+        this.altitudeDiscrepencyFlag = altitudeDiscrepencyFlag;
     }
 
     /**
@@ -79,6 +113,19 @@ public class Cat062Item200 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the vertical rate. Allowed values are:
+     * - level = 0
+     * - climb = 1
+     * - descend = 2
+     * - undetermined = 3
+     *
+     * @param verticalRate
+     */
+    public void setVerticalRate(int verticalRate) {
+        this.verticalRate = verticalRate;
+    }
+
+    /**
      * @return The longitudinal acceleration for the aircraft (ground speed)
      * - constant = 0
      * - increasing speed = 1
@@ -87,6 +134,19 @@ public class Cat062Item200 extends FixedLengthAsterixData {
      */
     public int getLongitudinalAcceleration() {
         return longitudinalAcceleration;
+    }
+
+    /**
+     * Set the longitudinal acceleration
+     * - constant = 0
+     * - increasing speed = 1
+     * - decreasing speed = 2
+     * - undetermined =3
+     *
+     * @param longitudinalAcceleration
+     */
+    public void setLongitudinalAcceleration(int longitudinalAcceleration) {
+        this.longitudinalAcceleration = longitudinalAcceleration;
     }
 
     /**
@@ -100,6 +160,18 @@ public class Cat062Item200 extends FixedLengthAsterixData {
         return transversalAcceleration;
     }
 
+    /**
+     * Set the transversal acceleraiton
+     * - constant course = 0
+     * - tigth turn = 1
+     * - left turn = 2
+     * - undetermined = 3
+     *
+     * @param transversalAcceleration
+     */
+    public void setTransversalAcceleration(int transversalAcceleration) {
+        this.transversalAcceleration = transversalAcceleration;
+    }
 
     private int parseVerticalRate(BitSet bs) {
         final int BIT_INDEX_MIN = 2;
@@ -144,5 +216,87 @@ public class Cat062Item200 extends FixedLengthAsterixData {
             return ModeOfMovementTransversalAcceleration.LeftTurn.getValue();
         }
         return ModeOfMovementTransversalAcceleration.Undetermined.getValue();
+    }
+
+
+    private byte getTransversalAccelerationAsComponentByteValue() {
+        byte transversalAccelerationAsByteValue = 0;
+        switch (this.transversalAcceleration){
+            case 0: {
+                break;
+            }
+            case 1: {
+                transversalAccelerationAsByteValue = 64;
+                break;
+            }
+            case 2: {
+                transversalAccelerationAsByteValue = (byte) 128;
+                break;
+            }
+            case 3: {
+                transversalAccelerationAsByteValue = (byte) 192;
+                break;
+            }
+            default: {
+                throw new RuntimeException("Encoding failed because transversal acc was invalid." +
+                        this.getClass().getName() + ". Transversal acc: " + this.transversalAcceleration);
+            }
+        }
+
+        return transversalAccelerationAsByteValue;
+    }
+
+    private byte getLongitudinalAccelerationAsComponentByteValue() {
+        byte longitudinalAccelerationAsByteValue = 0;
+        switch (this.longitudinalAcceleration) {
+            case 0: {
+                break;
+            }
+            case 1: {
+                longitudinalAccelerationAsByteValue = 16;
+                break;
+            }
+            case 2: {
+                longitudinalAccelerationAsByteValue = 32;
+                break;
+            }
+            case 3: {
+                longitudinalAccelerationAsByteValue = 48;
+                break;
+            }
+            default: {
+                throw new RuntimeException("Encoding failed because longitudinal acc was invalid." +
+                        this.getClass().getName() + ". Long acc: " + this.longitudinalAcceleration);
+            }
+        }
+
+        return longitudinalAccelerationAsByteValue;
+    }
+
+    private byte getVerticalRateAsComponentByteValue() {
+        byte verticalRateAsByteValue = 0;
+        switch (this.verticalRate){
+            case 0:{
+                break;
+            }
+            case 1:{
+                verticalRateAsByteValue = 4;
+                break;
+            }
+            case 2:{
+                verticalRateAsByteValue = 8;
+                break;
+            }
+            case 3:{
+                verticalRateAsByteValue = 12;
+                break;
+            }
+            default:{
+                throw new RuntimeException("Encoding failed because vertical rate value was invalid." +
+                        this.getClass().getName() + ". Vertical rate: " + this.verticalRate);
+            }
+        }
+
+        return verticalRateAsByteValue;
     }
 }

@@ -13,7 +13,10 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class Cat062Item200Test extends MandatoryFixedLengthAsterixTests<Cat062Item200> {
@@ -89,5 +92,80 @@ public class Cat062Item200Test extends MandatoryFixedLengthAsterixTests<Cat062It
                 .getTransversalAcceleration());
     }
 
+    /*
+    Encoding tests
+     */
 
+    @Test
+    @Parameters({"false,0", "true,2"})
+    public void the_encode_method_should_correctly_encode_adf(boolean adfValue, int expected) {
+        //arrange
+        Cat062Item200 cat062Item200 = new Cat062Item200();
+        cat062Item200.setAltitudeDiscrepencyFlag(adfValue);
+        cat062Item200.setLongitudinalAcceleration(0);
+        cat062Item200.setTransversalAcceleration(0);
+        cat062Item200.setVerticalRate(0);
+
+        //act
+        byte[] result = cat062Item200.encode();
+
+        //assert
+        byte[] expectedByteArray = {(byte) expected};
+        assertTrue("Mode of movement not encoded correctly", Arrays.equals(expectedByteArray, result));
+        assertEquals(cat062Item200.getSizeInBytes(), result.length);
+    }
+
+    @Test
+    @Parameters({"0,0", "1,4", "2,8", "3,12"})
+    public void the_encode_method_should_correctly_encode_vertical_rate(int verticalRateValue, int expected){
+        //arrange
+        Cat062Item200 cat062Item200 = new Cat062Item200();
+        cat062Item200.setVerticalRate(verticalRateValue);
+        cat062Item200.setTransversalAcceleration(0);
+        cat062Item200.setLongitudinalAcceleration(0);
+
+        //act
+        byte[] result = cat062Item200.encode();
+
+        //assert
+        byte[] expectedByteArray = {(byte) expected};
+        assertTrue("Mode of movement not encoded correctly", Arrays.equals(expectedByteArray, result));
+        assertEquals(cat062Item200.getSizeInBytes(), result.length);
+    }
+
+    @Test
+    @Parameters({"0,0", "1,16", "2,32", "3,48"})
+    public void the_encode_method_should_correctly_encode_longitudinal_acceleration(int longAccValue, int expected) {
+        //arrange
+        Cat062Item200 cat062Item200 = new Cat062Item200();
+        cat062Item200.setLongitudinalAcceleration(longAccValue);
+        cat062Item200.setVerticalRate(0);
+        cat062Item200.setTransversalAcceleration(0);
+
+        //act
+        byte[] result = cat062Item200.encode();
+
+        //assert
+        byte[] expectedByteArray = {(byte) expected};
+        assertTrue("Mode of movement not encoded correctly", Arrays.equals(expectedByteArray, result));
+        assertEquals(cat062Item200.getSizeInBytes(), result.length);
+    }
+
+    @Test
+    @Parameters({"0,0", "1,64", "2,128", "3,192"})
+    public void the_encode_method_should_correctly_encode_transversal_acceleration(int transversalAcc, int expected){
+        //arrange
+        Cat062Item200 cat062Item200 = new Cat062Item200();
+        cat062Item200.setTransversalAcceleration(transversalAcc);
+        cat062Item200.setLongitudinalAcceleration(0);
+        cat062Item200.setVerticalRate(0);
+
+        //act
+        byte[] result = cat062Item200.encode();
+
+        //assert
+        byte[] expectedByteArray = {(byte) expected};
+        assertTrue("Mode of movement not encoded correctly", Arrays.equals(expectedByteArray, result));
+        assertEquals(cat062Item200.getSizeInBytes(), result.length);
+    }
 }
