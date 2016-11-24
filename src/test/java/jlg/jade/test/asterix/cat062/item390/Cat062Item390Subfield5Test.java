@@ -10,7 +10,10 @@ import jlg.jade.asterix.cat062.item390.Cat062Item390Subfield5;
 import jlg.jade.test.utils.MandatoryFixedLengthAsterixTests;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Cat062Item390Subfield5Test extends MandatoryFixedLengthAsterixTests<Cat062Item390Subfield5> {
     @Override
@@ -35,5 +38,21 @@ public class Cat062Item390Subfield5Test extends MandatoryFixedLengthAsterixTests
 
         //assert
         assertEquals("Item390 #5 nod decoded correctly", "A388", cat062Item390Subfield5.getTypeOfAircraft());
+    }
+
+    @Test
+    public void the_encode_method_should_produce_correct_byte_array(){
+        //arrange
+        String aircraftType = "A388";
+        Cat062Item390Subfield5 cat062Item390Subfield5 = new Cat062Item390Subfield5();
+        cat062Item390Subfield5.setTypeOfAircraft(aircraftType);
+
+        //act
+        byte[] result = cat062Item390Subfield5.encode();
+
+        //assert
+        byte[] expected = {65, 51, 56, 56};
+        assertTrue("Cat062Item390Subfield5 not encoded correctly", Arrays.equals(expected, result));
+        assertEquals(cat062Item390Subfield5.getSizeInBytes(), result.length);
     }
 }

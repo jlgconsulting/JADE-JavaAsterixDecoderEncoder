@@ -35,11 +35,30 @@ public class Cat062Item390Subfield5 extends FixedLengthAsterixData {
         }
     }
 
+    @Override
+    public byte[] encode() {
+        if(this.typeOfAircraft.length() > this.sizeInBytes){
+            throw new RuntimeException("Invalid type of aircraft. Length exceeded. Value: " + this.typeOfAircraft);
+        }
+
+        byte[] itemAsByteArray = this.typeOfAircraft.getBytes();
+
+        return itemAsByteArray;
+    }
+
     /**
      * @return The type of the aircraft, as a String
      */
     public String getTypeOfAircraft() {
         return typeOfAircraft;
+    }
+
+    /**
+     * Set the type of aircraft. Maximum 4 characters.
+     * @param typeOfAircraft
+     */
+    public void setTypeOfAircraft(String typeOfAircraft) {
+        this.typeOfAircraft = typeOfAircraft;
     }
 
     @Override
