@@ -188,6 +188,9 @@ public class Cat150Record extends FspecAsterixData {
             appendDebugMsg(this.item251.getDebugString());
         }
 
+        appendDebugMsg("*** End of Category 150 Record ***");
+        appendNewLine();
+
         return offset;
     }
 
