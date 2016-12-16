@@ -19,7 +19,6 @@ import java.util.concurrent.BlockingQueue;
 class DatagramConvertor implements Runnable {
     private final BlockingQueue<byte[]> rawQueue;
     private boolean isLogEnabled = false;
-    private final Log logger;
     private int numberOfQueueItems;
     private int numberOfReceivedBytes;
     private int numberOfReceivedBytesFinalFrame;
@@ -27,7 +26,6 @@ class DatagramConvertor implements Runnable {
 
     DatagramConvertor(BlockingQueue<byte[]> rawQueue, String[] args) {
         this.rawQueue = rawQueue;
-        this.logger = LogFactory.getLog("jlg.jade");
         this.isLogEnabled = Boolean.parseBoolean(args[1]);
         this.allowedCategories = args[3];
     }
@@ -39,7 +37,6 @@ class DatagramConvertor implements Runnable {
 
 
         System.out.println("Start Datagram Convertor");
-        logger.debug("Start Datagram Convertor");
 
         //init asterix decoder
         List<Integer> categoriesToDecode = new ArrayList<>();
@@ -81,12 +78,10 @@ class DatagramConvertor implements Runnable {
                     numberOfReceivedBytesFinalFrame += rawData.length + 12;
                     if (isLogEnabled) {
                         for (AsterixDataBlock adb : dataBlocks) {
-                            logger.debug(adb.getDebugString());
                             asterixDecodingReport.update(adb);
 
                             //item counters are printed every 100 data blocks
                             if(index % 100 == 0) {
-                                logger.debug(asterixDecodingReport.toDebugString());
                             }
                         }
                         index++;

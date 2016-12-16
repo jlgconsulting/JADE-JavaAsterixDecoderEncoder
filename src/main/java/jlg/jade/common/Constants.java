@@ -7,7 +7,6 @@
 package jlg.jade.common;
 
 public class Constants {
-    public static final String LOGGER_NAME = "jlg.jade.logger";
     public static final int BYTE_TO_BITS = 8;
     public static final double LAT_LONG_WGS_PRECISION_CAT062 = 0.000005364;             //180 divided by 2^25
     public static final double LAT_LONG_WGS_PRECISION_CAT034_CAT048 = 0.00002145767;   //180 divided by 2^23
