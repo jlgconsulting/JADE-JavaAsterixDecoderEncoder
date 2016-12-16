@@ -56,9 +56,23 @@ public class Cat062Item210 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the acceleration on X axis expressed in 0.25 m/s^2
+     */
+    public void setAccelerationX(int accelerationX) {
+        this.accelerationX = accelerationX;
+    }
+
+    /**
      * Returns the acceleration on X axis expressed in 0.25 m/s^2
      */
     public int getAccelerationX() {
         return accelerationX;
+    }
+
+    /**
+     * Set the acceleration on X axis expressed in 0.25 m/s^2
+     */
+    public void setAccelerationY(int accelerationY) {
+        this.accelerationY = accelerationY;
     }
 }

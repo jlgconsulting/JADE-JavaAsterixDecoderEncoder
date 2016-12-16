@@ -67,6 +67,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return cfnValue;
     }
 
+    public void setCfnValue(int cfnValue) {
+        this.cfnValue = cfnValue;
+    }
+
     /**
      * Get the source of calculated altitude for I062/130
      * @return
@@ -83,6 +87,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return srcValue;
     }
 
+    public void setSrcValue(int srcValue) {
+        this.srcValue = srcValue;
+    }
+
     /**
      * Get the most reliable height value
      * @return
@@ -91,6 +99,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
      */
     public int getMrhValue() {
         return mrhValue;
+    }
+
+    public void setMrhValue(int mrhValue) {
+        this.mrhValue = mrhValue;
     }
 
     /**
@@ -103,6 +115,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return spiValue;
     }
 
+    public void setSpiValue(int spiValue) {
+        this.spiValue = spiValue;
+    }
+
     /**
      * Get the sensor value
      * @return
@@ -111,6 +127,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
      */
     public int getMonValue() {
         return monValue;
+    }
+
+    public void setMonValue(int monValue) {
+        this.monValue = monValue;
     }
 
     /**
@@ -123,6 +143,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return fpcValue;
     }
 
+    public void setFpcValue(int fpcValue) {
+        this.fpcValue = fpcValue;
+    }
+
     /**
      * Get track simulation value
      * @return
@@ -133,6 +157,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
         return simValue;
     }
 
+    public void setSimValue(int simValue) {
+        this.simValue = simValue;
+    }
+
     /**
      * Get track signal end
      * @return
@@ -141,6 +169,10 @@ public class Cat062Item080 extends VariableLengthAsterixData {
      */
     public int getTseValue() {
         return tseValue;
+    }
+
+    public void setTseValue(int tseValue) {
+        this.tseValue = tseValue;
     }
 
     private void decodeCfnValue(BitSet fixedPartBits) {

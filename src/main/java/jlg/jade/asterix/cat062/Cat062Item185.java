@@ -69,9 +69,23 @@ public class Cat062Item185 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the track velocity on x axis in 0.25 m/s
+     */
+    public void setVx(int vx) {
+        this.vx = vx;
+    }
+
+    /**
      * Gets the track velocity on y axis in 0.25 m/s
      */
     public int getVy() {
         return vy;
+    }
+
+    /**
+     * Set the track velocity on y axis in 0.25 m/s
+     */
+    public void setVy(int vy) {
+        this.vy = vy;
     }
 }

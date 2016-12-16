@@ -51,6 +51,10 @@ public class Cat062Item380Subfield1 extends FixedLengthAsterixData {
         return targetAddress;
     }
 
+    public void setTargetAddress(String targetAddress) {
+        this.targetAddress = targetAddress;
+    }
+
     /**
      * @return The target address in hex format (Mode S code). This format is used in operational
      * HMI apps.

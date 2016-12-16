@@ -116,6 +116,9 @@ public class Cat062Item135 extends FixedLengthAsterixData {
         return barometricAltitude;
     }
 
+    /**
+     *Set the barometric altitude, expressed in 1/4FL (25 ft)
+     */
     public void setBarometricAltitude(int barometricAltitude) {
         this.barometricAltitude = barometricAltitude;
     }

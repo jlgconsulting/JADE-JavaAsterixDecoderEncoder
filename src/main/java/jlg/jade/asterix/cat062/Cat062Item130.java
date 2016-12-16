@@ -63,6 +63,13 @@ public class Cat062Item130 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the geometric altitude, expressed as 6.25 ft units
+     */
+    public void setGeometricAltitude(int geometricAltitude) {
+        this.geometricAltitude = geometricAltitude;
+    }
+
+    /**
      * @return The geometric altitude, expressed in feet.
      */
     public double getGeometricAltitudeFeet() {

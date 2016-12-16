@@ -67,6 +67,9 @@ public class Cat062Item136 extends FixedLengthAsterixData {
         return measuredFLightLevel;
     }
 
+    /**
+     *Set the measured flight level, expressed as 0.25 FL units
+     */
     public void setMeasuredFLightLevel(int measuredFLightLevel) {
         this.measuredFLightLevel = measuredFLightLevel;
     }

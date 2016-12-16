@@ -48,6 +48,10 @@ public class Cat062Item380Subfield23 extends FixedLengthAsterixData {
         return "Cat062Item380Subfield23 - Geometric Altitude";
     }
 
+    /**
+     * Set the geometric altitude, expressed as 6.25 ft
+     * @return
+     */
     public int getGeometricAltitude() {
         return geometricAltitude;
     }
