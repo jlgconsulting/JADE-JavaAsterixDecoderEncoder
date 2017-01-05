@@ -7,6 +7,7 @@
 package jlg.jade.asterix;
 
 import jlg.jade.common.Decodable;
+import jlg.jade.common.Encodable;
 import jlg.jade.common.UnsignedNumericDecoder;
 
 import java.util.Hashtable;
@@ -18,7 +19,7 @@ import java.util.Map;
  * - skips the item
  * For custom implementations, you need to derive from this class ad oerride the decode method
  */
-public class ReservedAsterixField extends AsterixItem implements Decodable {
+public class ReservedAsterixField extends AsterixItem implements Decodable, Encodable {
     private final Map<String, String> values;
 
     public ReservedAsterixField() {
