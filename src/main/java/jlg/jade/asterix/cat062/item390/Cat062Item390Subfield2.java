@@ -30,7 +30,7 @@ public class Cat062Item390Subfield2 extends FixedLengthAsterixData {
     protected void decodeFromByteArray(byte[] input, int offset) {
         try {
             /**
-             * @implNote Callsign encoded on 7 characters, but can have less. We need to
+             * @implNote CallSign encoded on 7 characters, but can have less. We need to
              * trim whitespaces at the end if need be.
              */
             this.callsign = new String(input, offset, 7, "UTF-8").replace(" ", "");
@@ -45,6 +45,10 @@ public class Cat062Item390Subfield2 extends FixedLengthAsterixData {
      */
     public String getCallsign() {
         return callsign;
+    }
+
+    public void setCallsign(String callsign) {
+        this.callsign = callsign;
     }
 
     @Override
