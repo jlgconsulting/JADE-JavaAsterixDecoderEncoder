@@ -57,6 +57,10 @@ public abstract class AsterixTimeData extends FixedLengthAsterixData {
         return this.time;
     }
 
+    public void setTime(int time) {
+        this.time = time;
+    }
+
     public int getHours() {
         return this.time / 128 / 3600;
     }

@@ -157,72 +157,144 @@ public class Cat062Item390 extends FspecAsterixData {
         return subfield1;
     }
 
+    public void setSubfield1(Cat062Item390Subfield1 subfield1) {
+        this.subfield1 = subfield1;
+    }
+
     public Cat062Item390Subfield2 getSubfield2() {
         return subfield2;
+    }
+
+    public void setSubfield2(Cat062Item390Subfield2 subfield2) {
+        this.subfield2 = subfield2;
     }
 
     public Cat062Item390Subfield3 getSubfield3() {
         return subfield3;
     }
 
+    public void setSubfield3(Cat062Item390Subfield3 subfield3) {
+        this.subfield3 = subfield3;
+    }
+
     public Cat062Item390Subfield4 getSubfield4() {
         return subfield4;
+    }
+
+    public void setSubfield4(Cat062Item390Subfield4 subfield4) {
+        this.subfield4 = subfield4;
     }
 
     public Cat062Item390Subfield5 getSubfield5() {
         return subfield5;
     }
 
+    public void setSubfield5(Cat062Item390Subfield5 subfield5) {
+        this.subfield5 = subfield5;
+    }
+
     public Cat062Item390Subfield6 getSubfield6() {
         return subfield6;
+    }
+
+    public void setSubfield6(Cat062Item390Subfield6 subfield6) {
+        this.subfield6 = subfield6;
     }
 
     public Cat062Item390Subfield7 getSubfield7() {
         return subfield7;
     }
 
+    public void setSubfield7(Cat062Item390Subfield7 subfield7) {
+        this.subfield7 = subfield7;
+    }
+
     public Cat062Item390Subfield8 getSubfield8() {
         return subfield8;
+    }
+
+    public void setSubfield8(Cat062Item390Subfield8 subfield8) {
+        this.subfield8 = subfield8;
     }
 
     public Cat062Item390Subfield9 getSubfield9() {
         return subfield9;
     }
 
+    public void setSubfield9(Cat062Item390Subfield9 subfield9) {
+        this.subfield9 = subfield9;
+    }
+
     public Cat062Item390Subfield10 getSubfield10() {
         return subfield10;
+    }
+
+    public void setSubfield10(Cat062Item390Subfield10 subfield10) {
+        this.subfield10 = subfield10;
     }
 
     public Cat062Item390Subfield11 getSubfield11() {
         return subfield11;
     }
 
+    public void setSubfield11(Cat062Item390Subfield11 subfield11) {
+        this.subfield11 = subfield11;
+    }
+
     public Cat062Item390Subfield12 getSubfield12() {
         return subfield12;
+    }
+
+    public void setSubfield12(Cat062Item390Subfield12 subfield12) {
+        this.subfield12 = subfield12;
     }
 
     public Cat062Item390Subfield13 getSubfield13() {
         return subfield13;
     }
 
+    public void setSubfield13(Cat062Item390Subfield13 subfield13) {
+        this.subfield13 = subfield13;
+    }
+
     public Cat062Item390Subfield14 getSubfield14() {
         return subfield14;
+    }
+
+    public void setSubfield14(Cat062Item390Subfield14 subfield14) {
+        this.subfield14 = subfield14;
     }
 
     public Cat062Item390Subfield15 getSubfield15() {
         return subfield15;
     }
 
+    public void setSubfield15(Cat062Item390Subfield15 subfield15) {
+        this.subfield15 = subfield15;
+    }
+
     public Cat062Item390Subfield16 getSubfield16() {
         return subfield16;
+    }
+
+    public void setSubfield16(Cat062Item390Subfield16 subfield16) {
+        this.subfield16 = subfield16;
     }
 
     public Cat062Item390Subfield17 getSubfield17() {
         return subfield17;
     }
 
+    public void setSubfield17(Cat062Item390Subfield17 subfield17) {
+        this.subfield17 = subfield17;
+    }
+
     public Cat062Item390Subfield18 getSubfield18() {
         return subfield18;
+    }
+
+    public void setSubfield18(Cat062Item390Subfield18 subfield18) {
+        this.subfield18 = subfield18;
     }
 
     @Override
