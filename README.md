@@ -58,3 +58,49 @@ for (AsterixDataBlock asterixDataBlock : dataBlocks) {
     }
 }
 ```
+
+## How to implement a custom Reserved Field
+
+In order to implement a custom reserved AsterixField, you first need to create
+a new class and inherit ReservedAsterixField. Then, you have to add implementations
+for the encode and decode methods, like in the example bellow.
+
+```java
+public class SomeCustomReservedFiled extends ReservedAsterixField {
+    @Override
+    public int decode(byte[] input, int offset, int inputLength) {
+        //TODO: add custom logic
+    }
+
+    @Override
+    public byte[] encode() {
+        //TODO: add custom logic
+    }
+}
+
+```
+
+Then, you need to create a custom factory for the new custom fields.
+
+```java
+public class SomeCustomAsterixFieldFactory implements ReservedFieldFactory {
+    @Override
+    public ReservedAsterixField createSpField() {
+        //The SP field will contain the new custom field
+        return new SomeCustomReservedFiled();
+    }
+
+    @Override
+    public ReservedAsterixField createReField() {
+        //We leave the default implementation
+        return new ReservedAsterixField();
+    }
+}
+```
+
+Finally, we have to attach the custom factory to our Cat062Record.
+
+```java
+ReservedFieldFactory customFieldFactory = new SomeCustomAsterixFieldFactory();
+Cat062Record cat062Record = new Cat062Record(customFieldFactory);
+```
