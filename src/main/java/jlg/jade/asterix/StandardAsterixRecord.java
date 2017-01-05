@@ -149,8 +149,18 @@ public class StandardAsterixRecord extends DebugMessageSource implements Asterix
     }
 
     @Override
+    public void setCat062Record(Cat062Record cat062Record) {
+        this.cat062Record = cat062Record;
+    }
+
+    @Override
     public Cat065Record getCat065Record() {
         return cat065Record;
+    }
+
+    @Override
+    public void setCat065Record(Cat065Record cat065Record) {
+        this.cat065Record = cat065Record;
     }
 
     @Override
@@ -159,16 +169,36 @@ public class StandardAsterixRecord extends DebugMessageSource implements Asterix
     }
 
     @Override
+    public void setCat004Record(Cat004Record cat004Record) {
+        this.cat004Record = cat004Record;
+    }
+
+    @Override
     public Cat034Record getCat034Record() {
         return cat034Record;
+    }
+
+    @Override
+    public void setCat034Record(Cat034Record cat034Record) {
+        this.cat034Record = cat034Record;
     }
 
     @Override
     public Cat048Record getCat048Record() { return cat048Record; }
 
     @Override
+    public void setCat048Record(Cat048Record cat048Record) {
+        this.cat048Record = cat048Record;
+    }
+
+    @Override
     public Cat150Record getCat150Record() {
         return cat150Record;
+    }
+
+    @Override
+    public void setCat150Record(Cat150Record cat150Record) {
+        this.cat150Record = cat150Record;
     }
 
     /**

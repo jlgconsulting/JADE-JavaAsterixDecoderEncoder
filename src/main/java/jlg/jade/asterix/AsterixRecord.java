@@ -34,4 +34,16 @@ public interface AsterixRecord extends Decodable, Encodable {
     AbstractMap<String, Object> getAdditionalInfo();
     
     String getSacSicCode();
+
+    void setCat004Record(Cat004Record record);
+
+    void setCat062Record(Cat062Record record);
+
+    void setCat065Record(Cat065Record record);
+
+    void setCat048Record(Cat048Record record);
+
+    void setCat034Record(Cat034Record record);
+
+    void setCat150Record(Cat150Record record);
 }
