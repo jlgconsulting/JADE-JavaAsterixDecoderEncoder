@@ -328,116 +328,232 @@ public class Cat062Record extends FspecAsterixData {
         return item010;
     }
 
+    public void setItem010(Cat062Item010 item010) {
+        this.item010 = item010;
+    }
+
     public Cat062Item015 getItem015() {
         return item015;
+    }
+
+    public void setItem015(Cat062Item015 item015) {
+        this.item015 = item015;
     }
 
     public Cat062Item070 getItem070() {
         return item070;
     }
 
+    public void setItem070(Cat062Item070 item070) {
+        this.item070 = item070;
+    }
+
     public Cat062Item105 getItem105() {
         return item105;
+    }
+
+    public void setItem105(Cat062Item105 item105) {
+        this.item105 = item105;
     }
 
     public Cat062Item100 getItem100() {
         return item100;
     }
 
+    public void setItem100(Cat062Item100 item100) {
+        this.item100 = item100;
+    }
+
     public Cat062Item185 getItem185() {
         return item185;
+    }
+
+    public void setItem185(Cat062Item185 item185) {
+        this.item185 = item185;
     }
 
     public Cat062Item210 getItem210() {
         return item210;
     }
 
+    public void setItem210(Cat062Item210 item210) {
+        this.item210 = item210;
+    }
+
     public Cat062Item060 getItem060() {
         return item060;
+    }
+
+    public void setItem060(Cat062Item060 item060) {
+        this.item060 = item060;
     }
 
     public Cat062Item245 getItem245() {
         return item245;
     }
 
+    public void setItem245(Cat062Item245 item245) {
+        this.item245 = item245;
+    }
+
     public Cat062Item380 getItem380() {
         return item380;
+    }
+
+    public void setItem380(Cat062Item380 item380) {
+        this.item380 = item380;
     }
 
     public Cat062Item040 getItem040() {
         return item040;
     }
 
+    public void setItem040(Cat062Item040 item040) {
+        this.item040 = item040;
+    }
+
     public Cat062Item080 getItem080() {
         return item080;
+    }
+
+    public void setItem080(Cat062Item080 item080) {
+        this.item080 = item080;
     }
 
     public Cat062Item290 getItem290() {
         return item290;
     }
 
+    public void setItem290(Cat062Item290 item290) {
+        this.item290 = item290;
+    }
+
     public Cat062Item200 getItem200() {
         return item200;
+    }
+
+    public void setItem200(Cat062Item200 item200) {
+        this.item200 = item200;
     }
 
     public Cat062Item295 getItem295() {
         return item295;
     }
 
+    public void setItem295(Cat062Item295 item295) {
+        this.item295 = item295;
+    }
+
     public Cat062Item136 getItem136() {
         return item136;
+    }
+
+    public void setItem136(Cat062Item136 item136) {
+        this.item136 = item136;
     }
 
     public Cat062Item130 getItem130() {
         return item130;
     }
 
+    public void setItem130(Cat062Item130 item130) {
+        this.item130 = item130;
+    }
+
     public Cat062Item135 getItem135() {
         return item135;
+    }
+
+    public void setItem135(Cat062Item135 item135) {
+        this.item135 = item135;
     }
 
     public Cat062Item220 getItem220() {
         return item220;
     }
 
+    public void setItem220(Cat062Item220 item220) {
+        this.item220 = item220;
+    }
+
     public Cat062Item390 getItem390() {
         return item390;
+    }
+
+    public void setItem390(Cat062Item390 item390) {
+        this.item390 = item390;
     }
 
     public Cat062Item270 getItem270() {
         return item270;
     }
 
+    public void setItem270(Cat062Item270 item270) {
+        this.item270 = item270;
+    }
+
     public Cat062Item300 getItem300() {
         return item300;
+    }
+
+    public void setItem300(Cat062Item300 item300) {
+        this.item300 = item300;
     }
 
     public Cat062Item110 getItem110() {
         return item110;
     }
 
+    public void setItem110(Cat062Item110 item110) {
+        this.item110 = item110;
+    }
+
     public Cat062Item120 getItem120() {
         return item120;
+    }
+
+    public void setItem120(Cat062Item120 item120) {
+        this.item120 = item120;
     }
 
     public Cat062Item510 getItem510() {
         return item510;
     }
 
+    public void setItem510(Cat062Item510 item510) {
+        this.item510 = item510;
+    }
+
     public Cat062Item500 getItem500() {
         return item500;
+    }
+
+    public void setItem500(Cat062Item500 item500) {
+        this.item500 = item500;
     }
 
     public Cat062Item340 getItem340() {
         return item340;
     }
 
+    public void setItem340(Cat062Item340 item340) {
+        this.item340 = item340;
+    }
+
     public ReservedAsterixField getReservedExpansionField() {
         return reservedExpansionField;
     }
 
+    public void setReservedExpansionField(ReservedAsterixField reservedExpansionField) {
+        this.reservedExpansionField = reservedExpansionField;
+    }
+
     public ReservedAsterixField getSpecialPurposeField() {
         return specialPurposeField;
+    }
+
+    public void setSpecialPurposeField(ReservedAsterixField specialPurposeField) {
+        this.specialPurposeField = specialPurposeField;
     }
 
     private static class Fspec {
