@@ -7,7 +7,6 @@ import jlg.finalframe.FinalFrameReader;
 import jlg.jade.asterix.AsterixDataBlock;
 import jlg.jade.asterix.AsterixDecoder;
 import jlg.jade.asterix.AsterixRecord;
-import jlg.jade.asterix.DefaultReservedFieldFactory;
 import jlg.jade.test.utils.TestHelper;
 import org.junit.Test;
 
@@ -59,7 +58,7 @@ public class AsterixDecoderTest {
     @Test(expected = IllegalArgumentException.class)
     public void attachCustomReservedFieldFactory_should_throw_if_custom_reserved_field_factory_argument_is_null(){
         AsterixDecoder decoder = new AsterixDecoder(62);
-        decoder.attachCustomReservedFieldFactory(62, new DefaultReservedFieldFactory());
+        decoder.attachCustomReservedFieldFactory(62, null);
 
     }
 }
