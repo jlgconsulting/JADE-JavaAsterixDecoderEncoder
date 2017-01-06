@@ -13,6 +13,7 @@ import jlg.jade.asterix.cat062.Cat062Record;
 import jlg.jade.asterix.cat065.Cat065Record;
 import jlg.jade.asterix.cat150.Cat150Record;
 import jlg.jade.common.DebugMessageSource;
+import org.springframework.util.Assert;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.AbstractMap;
@@ -32,7 +33,7 @@ public class StandardAsterixRecord extends DebugMessageSource implements Asterix
     private Cat150Record cat150Record;
     /**
      * This field is used by 3rd party applications using this library. It helps to
-     * add more informaiton on the ASTERIX record, that can simplify the logic in
+     * add more information on the ASTERIX record, that can simplify the logic in
      * their own apps.
      *
      * @implNote No ASTERIX decoded field shall be inserted here. This will be empty. Only users can
@@ -40,6 +41,10 @@ public class StandardAsterixRecord extends DebugMessageSource implements Asterix
      */
     private AbstractMap<String, Object> additionalInfo;
 
+    /**
+     * Create an Asterix Record without any SP,RE fields
+     * @param category
+     */
     public StandardAsterixRecord(int category) {
         this.category = category;
         this.additionalInfo = new HashMap<>();
@@ -74,12 +79,53 @@ public class StandardAsterixRecord extends DebugMessageSource implements Asterix
     }
 
     /**
+     * Create an Asterix Record where the SP or RE fields need to have a custom decoding/encoding
+     * implementation
+     * @param category
+     */
+    public StandardAsterixRecord(int category, ReservedFieldFactory customReservedFieldFactory) {
+        Assert.notNull(customReservedFieldFactory); //Use other constructor if no custom factory is needed
+
+        this.category = category;
+        this.additionalInfo = new HashMap<>();
+        switch (category) {
+            case 4: {
+                this.cat004Record = new Cat004Record(customReservedFieldFactory);
+                break;
+            }
+            case 34: {
+                this.cat034Record = new Cat034Record(customReservedFieldFactory);
+                break;
+            }
+            case 48: {
+                this.cat048Record = new Cat048Record(customReservedFieldFactory);
+                break;
+            }
+            case 62: {
+                this.cat062Record = new Cat062Record(customReservedFieldFactory);
+                break;
+            }
+            case 65: {
+                this.cat065Record = new Cat065Record(customReservedFieldFactory);
+                break;
+            }
+            case 150: {
+                //Cat150 does not have SP and RE fields, so we do not need to pass in additional arguments
+                this.cat150Record = new Cat150Record();
+                break;
+            }
+            default:
+                throw new NotImplementedException();
+        }
+    }
+
+    /**
      * Decodes the raw data to Asterix data block, containing zero or more Asterix
      * records
      *
      * @param input       The raw data
      * @param offset      The start offset in the raw data, at which reading should begin
-     * @param inputLength The ammount of data that nees to be read from the input
+     * @param inputLength The amount of data that needs to be read from the input
      * @return The new offset in the raw data
      */
     @Override

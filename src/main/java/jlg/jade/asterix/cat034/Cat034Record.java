@@ -32,6 +32,10 @@ public class Cat034Record extends FspecAsterixData {
         this.reservedFieldFactory = new DefaultReservedFieldFactory();
     }
 
+    public Cat034Record(ReservedFieldFactory customReservedFieldFactory) {
+        this.reservedFieldFactory = customReservedFieldFactory;
+    }
+
     @Override
     protected int setMaxFspecSizeInBytes() {
         return AsterixItemLength.TWO_BYTES.getValue();

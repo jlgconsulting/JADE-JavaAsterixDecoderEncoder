@@ -8,6 +8,7 @@ package jlg.jade.asterix;
 
 import jlg.jade.common.DebugMessageSource;
 import jlg.jade.common.Decodable;
+import org.springframework.util.Assert;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
@@ -22,10 +23,30 @@ import java.util.List;
 public class AsterixDataBlock extends DebugMessageSource implements Decodable {
     private final int category;
     private final List<AsterixRecord> records;
+    private ReservedFieldFactory customReservedFieldFactory;
 
+    /**
+     * Create an Asterix data block for the specified category
+     * @param category
+     */
     public AsterixDataBlock(int category) {
         this.category = category;
         this.records = new ArrayList<>();
+        this.customReservedFieldFactory = null;
+    }
+
+    /**
+     * Create an Asterix data block for the specified category with a custom factory
+     * implementation for SP,RE fields.
+     * @param category
+     * @param reservedFieldFactory The custom reserved field factory
+     */
+    public AsterixDataBlock(int category, ReservedFieldFactory reservedFieldFactory) {
+        Assert.notNull(reservedFieldFactory);
+
+        this.category = category;
+        this.records = new ArrayList<>();
+        this.customReservedFieldFactory = reservedFieldFactory;
     }
 
     /**
@@ -39,7 +60,7 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
      */
     public int decode(byte[] input, int offset, int length) {
         while (offset < length) {
-            AsterixRecord record = new StandardAsterixRecord(category);
+            AsterixRecord record = buildAsterixRecord(category, customReservedFieldFactory);
 
             offset = record.decode(input, offset, length);
 
@@ -85,6 +106,7 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
         return offset;
     }
 
+
     /**
      * Encodes the current Asterix data block into a byte array, that can be then sent over the
      * network
@@ -107,5 +129,22 @@ public class AsterixDataBlock extends DebugMessageSource implements Decodable {
 
     public List<AsterixRecord> getRecords() {
         return records;
+    }
+
+    /**
+     * Build an Asterix record, by calling the appropriate constructor.
+     *
+     * @param category
+     * @param customReservedFieldFactory
+     * @return
+     */
+    private AsterixRecord buildAsterixRecord(int category, ReservedFieldFactory customReservedFieldFactory) {
+        AsterixRecord record;
+        if (customReservedFieldFactory == null) {
+            record = new StandardAsterixRecord(category);
+        } else {
+            record = new StandardAsterixRecord(category, customReservedFieldFactory);
+        }
+        return record;
     }
 }

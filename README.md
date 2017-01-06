@@ -59,7 +59,10 @@ for (AsterixDataBlock asterixDataBlock : dataBlocks) {
 }
 ```
 
-## How to implement a custom Reserved Field
+## How to implement a custom Reserved Field (SP,RE) for an Asterix Category
+
+In order to keep this library flexible, custom implementations for RE and SP fields can be
+attached to the Asterix Decoder object in your own code.
 
 In order to implement a custom reserved AsterixField, you first need to create
 a new class and inherit ReservedAsterixField. Then, you have to add implementations
@@ -98,9 +101,14 @@ public class SomeCustomAsterixFieldFactory implements ReservedFieldFactory {
 }
 ```
 
-Finally, we have to attach the custom factory to our Cat062Record.
+Finally, we have to attach the custom factory to the Asterix Decoder using the attachCustomReservedFieldFactory method.
+The custom factory shall be attached to a given category. This way, different factories can be assigned
+to various categories.
 
 ```java
-ReservedFieldFactory customFieldFactory = new SomeCustomAsterixFieldFactory();
-Cat062Record cat062Record = new Cat062Record(customFieldFactory);
+AsterixDecoder decoder = new AsterixDecoder(62);
+decoder.attachCustomReservedFieldFactory(62, new SomeCustomAsterixFieldFactory());
+...
+List<AsterixDataBlock> dataBlocks = asterixDecoder.decode(...);
+
 ```

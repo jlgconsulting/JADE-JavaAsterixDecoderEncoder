@@ -45,6 +45,10 @@ public class Cat048Record extends FspecAsterixData {
         this.reservedFieldFactory = new DefaultReservedFieldFactory();
     }
 
+    public Cat048Record(ReservedFieldFactory customReservedFieldFactory) {
+        this.reservedFieldFactory = customReservedFieldFactory;
+    }
+
     @Override
     protected String setDisplayName() {
         return "*** Category 048 Record ***";

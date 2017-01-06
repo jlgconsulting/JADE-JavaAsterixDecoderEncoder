@@ -6,6 +6,8 @@
 */
 package jlg.jade.asterix;
 
+import org.springframework.util.Assert;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.List;
 public class AsterixDecoder {
     private final HashMap<Integer, Boolean> allowedCategories;
     private final HashMap<Integer, Integer> nbOfDataBlocks;
+    private final HashMap<Integer, ReservedFieldFactory> customReservedFieldFactories;
 
     private AsterixDecoder() {
         allowedCategories = new HashMap<>();
@@ -36,6 +39,8 @@ public class AsterixDecoder {
         nbOfDataBlocks.put(62, 0);
         nbOfDataBlocks.put(65, 0);
         nbOfDataBlocks.put(150, 0);
+
+        customReservedFieldFactories = new HashMap<>();
     }
 
     public AsterixDecoder(int... categoriesToDecode) {
@@ -70,8 +75,9 @@ public class AsterixDecoder {
     }
 
     public AsterixDecoder(List<Integer> categoriesToDecode) {
-        allowedCategories = new HashMap<>();
-        nbOfDataBlocks = new HashMap<>();
+        this();
+        allowedCategories.clear();
+        nbOfDataBlocks.clear();
         for (int category : categoriesToDecode) {
             allowedCategories.put(category, true);
             nbOfDataBlocks.put(category, 0);
@@ -97,7 +103,11 @@ public class AsterixDecoder {
 
             Boolean shouldDecodeCategory = allowedCategories.get(dataBlockCategory);
             if (shouldDecodeCategory != null && shouldDecodeCategory) {
-                AsterixDataBlock dataBlock = new AsterixDataBlock(dataBlockCategory);
+
+                AsterixDataBlock dataBlock = buildAsterixDataBlock(
+                        dataBlockCategory,
+                        getCustomReservedFieldFactory(dataBlockCategory)
+                );
 
                 inputIndex += 3;
 
@@ -135,5 +145,44 @@ public class AsterixDecoder {
 
     public HashMap<Integer, Integer> getNbOfDataBlocks() {
         return nbOfDataBlocks;
+    }
+
+    /**
+     * Attach a custom reserved field implementation (decoding,encoding of SP,RE) for a given
+     * Asterix category. If there is a factory associated with the category, the old
+     * entry shall be replaced with the new one.
+     *
+     * @param category
+     * @param reservedFieldFactory
+     */
+    public void attachCustomReservedFieldFactory(int category,
+                                                 ReservedFieldFactory reservedFieldFactory) {
+        Assert.notNull(reservedFieldFactory);
+        this.customReservedFieldFactories.put(category, reservedFieldFactory);
+    }
+
+    /**
+     * Get the custom reserved field implementation factory for a given Asterix category,
+     * if it has been attached. Will return NULL if no factory is associated with the category
+     *
+     * @param category
+     * @return
+     */
+    public ReservedFieldFactory getCustomReservedFieldFactory(int category) {
+        return this.customReservedFieldFactories.get(category);
+    }
+
+    private AsterixDataBlock buildAsterixDataBlock(int category, ReservedFieldFactory customReservedFieldFactory) {
+        AsterixDataBlock dataBlock;
+        if (customReservedFieldFactory == null) {
+            dataBlock = new AsterixDataBlock(category);
+        } else {
+            dataBlock = new AsterixDataBlock(
+                    category,
+                    customReservedFieldFactory
+            );
+        }
+
+        return dataBlock;
     }
 }
