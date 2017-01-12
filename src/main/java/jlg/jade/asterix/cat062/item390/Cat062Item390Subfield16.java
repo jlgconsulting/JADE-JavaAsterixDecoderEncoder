@@ -41,6 +41,10 @@ public class Cat062Item390Subfield16 extends FixedLengthAsterixData {
         return standardInstrumentArrival;
     }
 
+    public void setStandardInstrumentArrival(String standardInstrumentArrival) {
+        this.standardInstrumentArrival = standardInstrumentArrival;
+    }
+
     @Override
     protected String setDisplayName() {
         return "Cat062Item390Subfield16 - Standard Instrument Arrvial";

@@ -46,6 +46,18 @@ public class Cat062Item390Subfield14 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the stand emptiness value
+     * - 0 means Empty
+     * - 1 means Occupied
+     * - 2 means Unknown
+     * - 3 means Invalid
+     * @param standEmptiness
+     */
+    public void setStandEmptiness(int standEmptiness) {
+        this.standEmptiness = standEmptiness;
+    }
+
+    /**
      * @return The stand availability value
      * - 0 means Available
      * - 1 means Not available
@@ -54,6 +66,18 @@ public class Cat062Item390Subfield14 extends FixedLengthAsterixData {
      */
     public int getStandAvailability() {
         return standAvailability;
+    }
+
+    /**
+     * Set the stand availability value
+     * - 0 means Available
+     * - 1 means Not available
+     * - 2 means Unknown
+     * - 3 means Invalid
+     * @param standAvailability
+     */
+    public void setStandAvailability(int standAvailability) {
+        this.standAvailability = standAvailability;
     }
 
     @Override

@@ -43,6 +43,10 @@ public class Cat062Item390Subfield13 extends FixedLengthAsterixData {
         return aircraftStand;
     }
 
+    public void setAircraftStand(String aircraftStand) {
+        this.aircraftStand = aircraftStand;
+    }
+
     @Override
     protected String setDisplayName() {
         return "Cat062Item390Subfield13 - Aircraft Stand";

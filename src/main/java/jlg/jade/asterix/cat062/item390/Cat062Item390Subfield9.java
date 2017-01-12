@@ -41,6 +41,14 @@ public class Cat062Item390Subfield9 extends FixedLengthAsterixData {
         return runwayDesignator;
     }
 
+    /**
+     * Set the runway designator, made of two digits and one letter
+     * @param runwayDesignator
+     */
+    public void setRunwayDesignator(String runwayDesignator) {
+        this.runwayDesignator = runwayDesignator;
+    }
+
     @Override
     protected String setDisplayName() {
         return "Cat062Item390Subfield9 - Runway Designation";

@@ -41,6 +41,10 @@ public class Cat062Item390Subfield15 extends FixedLengthAsterixData {
         return standardInstrumentDeparture;
     }
 
+    public void setStandardInstrumentDeparture(String standardInstrumentDeparture) {
+        this.standardInstrumentDeparture = standardInstrumentDeparture;
+    }
+
     @Override
     protected String setDisplayName() {
         return "Cat062Item390Subfield15 - Standard Instrumented Departure";

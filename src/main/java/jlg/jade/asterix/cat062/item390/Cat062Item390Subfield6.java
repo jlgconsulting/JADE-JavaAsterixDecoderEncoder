@@ -48,6 +48,18 @@ public class Cat062Item390Subfield6 extends FixedLengthAsterixData {
         return wakeTurbulenceCategory;
     }
 
+    /**
+     * Set the wake turbulence category
+     * - L stands for Light
+     * - M stands for Medium
+     * - H stands for Heavy
+     * - J stands for Super
+     * @param wakeTurbulenceCategory
+     */
+    public void setWakeTurbulenceCategory(String wakeTurbulenceCategory) {
+        this.wakeTurbulenceCategory = wakeTurbulenceCategory;
+    }
+
     @Override
     protected String setDisplayName() {
         return "Cat062Item390Subfield6 - Wake Turbulence Category";

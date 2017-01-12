@@ -65,6 +65,18 @@ public class Cat062Item390Subfield4 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the traffic type
+     * - 0 is Unknown
+     * - 1 is GAT
+     * - 2 is OAT
+     * - 3 is NA
+     * @param trafficType
+     */
+    public void setTrafficType(int trafficType) {
+        this.trafficType = trafficType;
+    }
+
+    /**
      * @return The flight rules
      * - 0 is IFR
      * - 1 is VFR
@@ -73,6 +85,18 @@ public class Cat062Item390Subfield4 extends FixedLengthAsterixData {
      */
     public int getFlightRules() {
         return flightRules;
+    }
+
+    /**
+     * Set the flight rules
+     * - 0 is IFR
+     * - 1 is VFR
+     * - 2 is NA
+     * - 3 is CVFR
+     * @param flightRules
+     */
+    public void setFlightRules(int flightRules) {
+        this.flightRules = flightRules;
     }
 
     /**
@@ -87,12 +111,34 @@ public class Cat062Item390Subfield4 extends FixedLengthAsterixData {
     }
 
     /**
+     * Set the RVSM value
+     * - 0 is Unknown
+     * - 1 is Approved
+     * - 2 is Exempt
+     * - 3 is Not approved
+     * @param rvsm
+     */
+    public void setRvsm(int rvsm) {
+        this.rvsm = rvsm;
+    }
+
+    /**
      * @return The priority of the flight
      * - 0 is Normal flight
      * - 1 is High priority flight
      */
     public int getPriority() {
         return priority;
+    }
+
+    /**
+     * Set the priority fo the flight
+     * - 0 is Normal flight
+     * - 1 is High priority flight
+     * @param priority
+     */
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     @Override

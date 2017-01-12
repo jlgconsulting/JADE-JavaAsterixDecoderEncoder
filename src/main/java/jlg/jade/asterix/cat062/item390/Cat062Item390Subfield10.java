@@ -16,7 +16,6 @@ import jlg.jade.common.UnsignedNumericDecoder;
  */
 public class Cat062Item390Subfield10 extends FixedLengthAsterixData {
     private int cfl;
-    private int cflFlightLevel;
 
     @Override
     protected int setSizeInBytes() {
@@ -34,6 +33,14 @@ public class Cat062Item390Subfield10 extends FixedLengthAsterixData {
      */
     public int getCfl() {
         return cfl;
+    }
+
+    /**
+     * Set the CFL value. LSB is 1/4 FL
+     * @param cfl
+     */
+    public void setCfl(int cfl) {
+        this.cfl = cfl;
     }
 
     /**

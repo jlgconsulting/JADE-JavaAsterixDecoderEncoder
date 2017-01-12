@@ -40,11 +40,19 @@ public class Cat062Item390Subfield11 extends FixedLengthAsterixData {
         return controlPosition;
     }
 
+    public void setControlPosition(int controlPosition) {
+        this.controlPosition = controlPosition;
+    }
+
     /**
      * @return The control center ID
      */
     public int getControlCenter() {
         return controlCenter;
+    }
+
+    public void setControlCenter(int controlCenter) {
+        this.controlCenter = controlCenter;
     }
 
     @Override

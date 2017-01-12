@@ -43,6 +43,10 @@ public class Cat062Item390Subfield7 extends FixedLengthAsterixData {
         return departureAirport;
     }
 
+    public void setDepartureAirport(String departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
     @Override
     protected String setDisplayName() {
         return "Cat062Item390Subfield7 - Departure Airport";
