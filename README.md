@@ -1,5 +1,7 @@
 # JADE (Java Asterix Decoder Encoder)
 
+![Build Status](http://176.223.222.182:8082/app/rest/builds/buildType:(id:JadeJavaAsterixDecoderEncoder_Build)/statusIcon)
+
 JADE is an API for decoding and encoding ASTERIX messages. The following categories are planned to be implemented:
 - Category 062
 - Category 048
