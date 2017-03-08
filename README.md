@@ -114,3 +114,32 @@ decoder.attachCustomReservedFieldFactory(62, new SomeCustomAsterixFieldFactory()
 List<AsterixDataBlock> dataBlocks = asterixDecoder.decode(...);
 
 ```
+
+## Installations
+
+You can include JADE in your app using Maven.
+
+* Add a repositories section to your pom.xml file.
+
+````xml
+...
+<repositories>
+    <repository>
+        <id>jlg-maven-repository</id>
+        <url>http://maven.jlg.ro</url>
+    </repository>
+</repositories>
+...
+````
+
+* Add the maven dependency
+
+````xml
+...
+<dependency>
+    <groupId>jlg-consulting</groupId>
+    <artifactId>jade</artifactId>
+    <version>0.9.31</version>
+</dependency>
+...
+
