@@ -119,10 +119,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem010().isValid()) {
                 this.item010Invalid = this.item010Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 010 - Data source identifier",
-                    item010Present,
-                    item010Invalid);
         }
 
         //increment counters for item 000
@@ -131,10 +127,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem000().isValid()) {
                 this.item000Invalid = this.item000Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 000 - Message Type",
-                    item000Present,
-                    item000Invalid);
+
 
             switch (record.getItem000().getMessageType()) {
                 case (Cat004MessageType.STCA):
@@ -160,11 +153,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
                     break;
                 }
             }
-            appendItemCounterMsg("  ALIVE", nbAliveMessages, 0);
-            appendItemCounterMsg("  STCA", nbStcaMessages, 0);
-            appendItemCounterMsg("  APW", nbApwMessages, 0);
-            appendItemCounterMsg("  MSAW", nbMsawMessages, 0);
-            appendItemCounterMsg("  EOC", nbEocMessages, 0);
         }
 
         //increment counters for item 015
@@ -173,10 +161,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem015().isValid()) {
                 this.item015Invalid = this.item015Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 015 - SDPS Identifier (Skipped)",
-                    item015Present,
-                    item015Invalid);
         }
 
         //increment counters for item 020
@@ -185,10 +169,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem020().isValid()) {
                 this.item020Invalid = this.item020Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 020 - Time of Message",
-                    item020Present,
-                    item020Invalid);
         }
 
         //increment counters for item 040
@@ -197,10 +177,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem040().isValid()) {
                 this.item040Invalid = this.item040Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 040 - Alert Identifier",
-                    item040Present,
-                    item040Invalid);
         }
 
         //increment counters for item 045
@@ -209,10 +185,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem045().isValid()) {
                 this.item045Invalid = this.item045Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 045 - Alert Status",
-                    item045Present,
-                    item045Invalid);
         }
 
         //increment counters for item 060
@@ -221,10 +193,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem060().isValid()) {
                 this.item060Invalid = this.item060Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 060 - Safety Net Function and Status (Skipped)",
-                    item060Present,
-                    item060Invalid);
+
         }
 
         //increment counters for item 030
@@ -233,10 +202,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem030().isValid()) {
                 this.item030Invalid = this.item030Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 030 - Track Number 1",
-                    item030Present,
-                    item030Invalid);
         }
 
         //increment counters for item 170
@@ -245,10 +210,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem170().isValid()) {
                 this.item170Invalid = this.item170Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 170 - Aircraft Characteristics 1",
-                    item170Present,
-                    item170Invalid);
         }
 
         //increment counters for item 120
@@ -257,10 +218,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem120().isValid()) {
                 this.item120Invalid = this.item120Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 120 - Conflict Characteristics",
-                    item120Present,
-                    item120Invalid);
+
         }
 
         //increment counters for item 070
@@ -269,10 +227,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem070().isValid()) {
                 this.item070Invalid = this.item070Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 070 - Conflict Timing and Separation",
-                    item070Present,
-                    item070Invalid);
+
         }
 
         //increment counters for item 076
@@ -281,10 +236,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem076().isValid()) {
                 this.item076Invalid = this.item076Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 076 - Vertical Deviation",
-                    item076Present,
-                    item076Invalid);
+
         }
 
         //increment counters for item 074
@@ -293,10 +245,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem074().isValid()) {
                 this.item074Invalid = this.item074Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 074 - Longitudinal Deviation",
-                    item074Present,
-                    item074Invalid);
+
         }
 
         //increment counters for item 075
@@ -305,10 +254,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem075().isValid()) {
                 this.item075Invalid = this.item075Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 075 - Transversal Distance Deviation",
-                    item075Present,
-                    item075Invalid);
+
         }
 
         //increment counters for item 100
@@ -317,10 +263,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem100().isValid()) {
                 this.item100Invalid = this.item100Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 100 - Area Definitions",
-                    item100Present,
-                    item100Invalid);
+
         }
 
         //increment counters for item 035
@@ -329,10 +272,7 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem035().isValid()) {
                 this.item035Invalid = this.item035Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 035 - Track Number 2",
-                    item035Present,
-                    item035Invalid);
+
         }
 
         //increment counters for item 171
@@ -341,10 +281,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem171().isValid()) {
                 this.item171Invalid = this.item171Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 171 - Aircraft Characteristics 2",
-                    item171Present,
-                    item171Invalid);
         }
 
         //increment counters for item 110
@@ -353,10 +289,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getItem110().isValid()) {
                 this.item110Invalid = this.item110Invalid + 1;
             }
-            appendItemCounterMsg(
-                    "Item 110 - FDPS Control Identifier (Skipped)",
-                    item110Present,
-                    item110Invalid);
         }
 
 
@@ -365,7 +297,6 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getReservedExpansionField().isValid()) {
                 this.itemReInvalid = this.getItemReInvalid() + 1;
             }
-            appendItemCounterMsg("RE", getItemRePresent(), getItemReInvalid());
         }
 
         if (record.getSpecialPurposeField() != null) {
@@ -373,8 +304,9 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
             if (!record.getSpecialPurposeField().isValid()) {
                 this.itemSpInvalid = this.getItemSpInvalid() + 1;
             }
-            appendItemCounterMsg("SP", getItemSpPresent(), getItemSpInvalid());
         }
+
+        createPrintMsg();
     }
 
     public int getNbRecords() {
@@ -544,4 +476,129 @@ public class Cat004ItemCounter extends DebugMessageSource implements AsterixItem
     public int getItemSpInvalid() {
         return itemSpInvalid;
     }
+
+    private void createPrintMsg() {
+        clearDebugMsg();
+        appendNewLine();
+        appendItemCounterMsg("Asterix Category 004 Counters", "Nb. decoded", "Nb. invalid");
+
+        appendItemCounterMsg(
+                "Item 010 - Data source identifier",
+                item010Present,
+                item010Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 000 - Message Type",
+                item000Present,
+                item000Invalid
+                            );
+
+        appendItemCounterMsg("  ALIVE", nbAliveMessages, 0);
+        appendItemCounterMsg("  STCA", nbStcaMessages, 0);
+        appendItemCounterMsg("  APW", nbApwMessages, 0);
+        appendItemCounterMsg("  MSAW", nbMsawMessages, 0);
+        appendItemCounterMsg("  EOC", nbEocMessages, 0);
+
+        appendItemCounterMsg(
+                "Item 015 - SDPS Identifier (Skipped)",
+                item015Present,
+                item015Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 020 - Time of Message",
+                item020Present,
+                item020Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 040 - Alert Identifier",
+                item040Present,
+                item040Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 045 - Alert Status",
+                item045Present,
+                item045Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 060 - Safety Net Function and Status (Skipped)",
+                item060Present,
+                item060Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 030 - Track Number 1",
+                item030Present,
+                item030Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 170 - Aircraft Characteristics 1",
+                item170Present,
+                item170Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 120 - Conflict Characteristics",
+                item120Present,
+                item120Invalid
+                            );
+
+
+        appendItemCounterMsg(
+                "Item 070 - Conflict Timing and Separation",
+                item070Present,
+                item070Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 076 - Vertical Deviation",
+                item076Present,
+                item076Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 074 - Longitudinal Deviation",
+                item074Present,
+                item074Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 075 - Transversal Distance Deviation",
+                item075Present,
+                item075Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 100 - Area Definitions",
+                item100Present,
+                item100Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 035 - Track Number 2",
+                item035Present,
+                item035Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 171 - Aircraft Characteristics 2",
+                item171Present,
+                item171Invalid
+                            );
+
+        appendItemCounterMsg(
+                "Item 110 - FDPS Control Identifier (Skipped)",
+                item110Present,
+                item110Invalid
+                            );
+
+        appendItemCounterMsg("RE", getItemRePresent(), getItemReInvalid());
+        appendItemCounterMsg("SP", getItemSpPresent(), getItemSpInvalid());
+    }
+
 }
