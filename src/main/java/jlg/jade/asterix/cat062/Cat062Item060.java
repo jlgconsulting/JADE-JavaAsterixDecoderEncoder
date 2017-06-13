@@ -71,6 +71,7 @@ public class Cat062Item060 extends FixedLengthAsterixData {
     @Override
     protected boolean validate() {
         if (this.modeADecimal < 0 || this.modeADecimal > 4095) {
+            appendWarningMessage("Mode A value out of range [0-4095] in decimal.");
             return false;
         }
         return true;
