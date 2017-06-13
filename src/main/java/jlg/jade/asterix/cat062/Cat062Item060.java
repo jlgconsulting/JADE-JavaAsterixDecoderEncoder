@@ -38,8 +38,7 @@ public class Cat062Item060 extends FixedLengthAsterixData {
             this.modeAChange = true;
             //assume bit 5 is 0 => we subtract 32 (2 pow 5) from octet value (as if bit 5 was 0)
             firstOctetValueForModeA = Byte.toUnsignedInt(input[offset]) - 32;
-        }
-        else {
+        } else {
             this.modeAChange = false;
             firstOctetValueForModeA = Byte.toUnsignedInt(input[offset]);
         }
@@ -57,20 +56,23 @@ public class Cat062Item060 extends FixedLengthAsterixData {
     @Override
     public byte[] encode() {
         int decimalValueToDecode = this.modeADecimal;
-        if(this.modeAChange){
+        if (this.modeAChange) {
             //but 14 represents if mode a has changed => if true we need to add 2^13 to our result
             decimalValueToDecode += Math.pow(2, 13);
         }
 
         byte[] itemAsByteArray = ByteBuffer.allocate(this.sizeInBytes)
-                .putShort((short) decimalValueToDecode)
-                .array();
+                                           .putShort((short) decimalValueToDecode)
+                                           .array();
 
         return itemAsByteArray;
     }
 
     @Override
     protected boolean validate() {
+        if (this.modeADecimal < 0 || this.modeADecimal > 4095) {
+            return false;
+        }
         return true;
     }
 
