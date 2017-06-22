@@ -95,7 +95,7 @@
     <distributionManagement>
         <repository>
             <id>jlg-maven-repository</id>
-            <url>ftp://maven.jlg.ro:5999/</url>
+            <url>ftp://maven.one-sky.ro</url>
         </repository>
     </distributionManagement>
 </project>
