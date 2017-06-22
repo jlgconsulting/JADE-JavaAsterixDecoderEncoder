@@ -28,7 +28,7 @@
     <repositories>
         <repository>
             <id>jlg-maven-repository</id>
-            <url>http://maven.jlg.ro</url>
+            <url>http://maven.one-sky.ro</url>
         </repository>
     </repositories>
 
