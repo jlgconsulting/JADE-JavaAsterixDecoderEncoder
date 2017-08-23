@@ -32,4 +32,8 @@ public abstract class AsterixMessageTypeData extends FixedLengthAsterixData {
     public int getMessageType() {
         return messageType;
     }
+
+    public void setMessageType(int messageType) {
+        this.messageType = messageType;
+    }
 }

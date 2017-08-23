@@ -42,4 +42,8 @@ public class Cat004Item040 extends FixedLengthAsterixData {
     public int getAlertIdentifier() {
         return alertIdentifier;
     }
+
+    public void setAlertIdentifier(int alertIdentifier) {
+        this.alertIdentifier = alertIdentifier;
+    }
 }

@@ -35,4 +35,8 @@ public class Cat004Item030 extends FixedLengthAsterixData {
     public int getTrackNumber() {
         return trackNumber;
     }
+
+    public void setTrackNumber(int trackNumber) {
+        this.trackNumber = trackNumber;
+    }
 }

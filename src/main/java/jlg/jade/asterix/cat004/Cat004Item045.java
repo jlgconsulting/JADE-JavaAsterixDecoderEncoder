@@ -73,4 +73,7 @@ public class Cat004Item045 extends FixedLengthAsterixData {
         return alertStatus;
     }
 
+    public void setAlertStatus(int alertStatus) {
+        this.alertStatus = alertStatus;
+    }
 }
